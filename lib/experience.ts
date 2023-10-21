@@ -1,5 +1,6 @@
 export const WorkExperience = [
     {
+        
         title: 'College - graduated',
         description:
             'Graduated as graphic designer.',
@@ -22,5 +23,6 @@ export const WorkExperience = [
         description:
             'Frontend for non profit and goverment.',
         date: '2023 - current',
+        highlight: true,
     },
 ];
