@@ -29,11 +29,18 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-      }, 
+      },
       padding: {
         'card-outer': '16px',
         'card-inner': '14px',
-        default: '24px',
+        'default': '24px',
+      },
+      borderRadius: {
+        'card-inner': '8px',
+        'card-outer': '12px',
+      },
+      borderColor: {
+        'active': '#B3775F'
       },
       gap: {
         xs: '8px',
@@ -44,8 +51,10 @@ module.exports = {
       backgroundColor: {
         'black': '#111',
         'grid': '#E4E5E4',
-        'card-inner': '#E4E5E4',
-      },
+        'card-inner': '#D5D5D4',
+      },  width: {
+        '198': '792px'
+      }
     },
     plugins: [require("tailwindcss-animate")],
   }
