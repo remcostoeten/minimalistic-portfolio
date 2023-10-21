@@ -1,9 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+ 
 @import './variables/colors.scss';
 @import './base/theme.scss';
+@import './base/utillity-classes.scss';
 :root {
   --foreground-rgb:$black;
   --background-start-rgb: 214, 219, 220;
