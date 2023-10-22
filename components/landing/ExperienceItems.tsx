@@ -1,34 +1,73 @@
 'use client';
-import Grid from "@/components/landing/Grid";
-import { containerVariants } from "@/lib/animations";
+import { fadeScaleUp, smoothFadeUp } from "@/lib/animations";
 import { WorkExperience } from "@/lib/experience";
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function ExperienceItems() {
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShow(true);
+    }, 333);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  const containerVariants = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+
+  const highlightVariants = {
+    initial: {
+      borderColor: "transparent",
+    },
+    animate: {
+      borderColor: "#3182CE",
+    },
   };
 
   return (
     <motion.div
+      className="grid gap-4 overflow-hidden"
       variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className="bg-grid p-card-inner flex flex-col-reverse flex-col gap-s"
+      initial="initial"
+      animate={show ? "animate" : "initial"}
     >
-      {WorkExperience.map((experience, index) => (
+      {WorkExperience.map((work, index) => (
         <motion.div
           key={index}
-          variants={itemVariants}
-          className={`bg-card-inner rounded-card-inner p-card-inner ${experience.highlight ? 'border-2 border-active' : 'border-1 border-gray-500'} `}
+          className={`self-stretch flex w-full flex-col bg-card-inner p-card-inner card-inner rounded-card-inner ${
+            work.highlight ? "border-2  border-active" : ""
+          }`}
+          variants={smoothFadeUp}
         >
-          <h3>{experience.title}</h3>
-          <p>{experience.description}</p>
-          <p>{experience.date}</p>
+          <div className="flex w-full flex-grow flex-row max-md:max-w-full items-baseline justify-start gap-12">
+            <time className="text-theme text-16" style={{ whiteSpace: "nowrap" }}>
+              {work.date}
+            </time>
+            <div className="text-black text-16 leading-25" style={{ whiteSpace: "nowrap" }}>
+              {work.company} <br /> {work.title} <br />
+            </div>
+          </div>
+          {work.highlight && (
+            <motion.div
+              className="h-1 bg-theme mt-2"
+              variants={highlightVariants}
+              transition={{ duration: 0.3, repeat: Infinity, repeatType: "reverse" }}
+            />
+          )}
         </motion.div>
       ))}
     </motion.div>
   );
-};
+}
