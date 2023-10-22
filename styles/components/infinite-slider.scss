@@ -20,7 +20,7 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: flex-start;
-    width: 500px;
+    width: max-content;
     min-width: fit-content;
 
     &__inner {
@@ -104,4 +104,8 @@
   border-width: 0 10px 10px 10px;
   border-color: transparent transparent $bg-card-inner transparent;
   transform: rotate(180deg);
+}
+
+.w-max-content {
+  width: max-content;
 }
