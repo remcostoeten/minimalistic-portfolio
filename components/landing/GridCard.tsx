@@ -3,7 +3,7 @@ import { personalData } from "../personal-data";
 
 export default function GridCard() {
   return (
-    <div className="style-0">
+    <div className="about-card">
       <div className="style-1">
         <div className="style-2">
           <div className="style-3">
@@ -21,7 +21,7 @@ export default function GridCard() {
       </div>
       <div className="style-9">
         <div className="style-10">
-          <h1 className="style-11">{personalData.name}</h1>
+          <h1>{personalData.name}</h1>
         </div>
         <div className="style-12">
           <h1 className="style-13">{personalData.about.short}</h1>

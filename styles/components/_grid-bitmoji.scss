@@ -1,4 +1,4 @@
-.style-0 {
+.about-card {
     place-content: flex-start;
     align-items: flex-start;
     background-color: rgb(197, 172, 140);
@@ -11,10 +11,25 @@
     overflow: hidden;
     padding: 24px;
     top: 0px;
-    width: 480px;
     will-change: transform;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
+
+    h1 {
+        font-style: normal;
+        font-weight: 700;
+        color: rgb(14, 14, 14);
+        font-size: 28px;
+        letter-spacing: normal;
+        text-transform: none;
+        text-decoration: none solid rgb(14, 14, 14);
+        line-height: 33.6px;
+        text-align: center;
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+    }
 }
 
 .style-1 {
@@ -176,22 +191,7 @@
     -webkit-font-smoothing: antialiased;
 }
 
-.style-11 {
-    font-family: Zodiak, sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    color: rgb(14, 14, 14);
-    font-size: 28px;
-    letter-spacing: normal;
-    text-transform: none;
-    text-decoration: none solid rgb(14, 14, 14);
-    line-height: 33.6px;
-    text-align: center;
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-}
+
 
 .style-12 {
     outline: none;

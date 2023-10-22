@@ -33,7 +33,7 @@ const AnimationDemo: React.FC = () => {
     animate: { opacity: 1, x: 0 },
   };
 
-  const boxVariants = (stiffness: number, xValue: number) => ({
+  const boxVariants = (stiffness: any, xValue: any) => ({
     initial: { x: -xValue },
     animate: {
       x: xValue,
@@ -110,6 +110,7 @@ const AnimationDemo: React.FC = () => {
           <div key={key} className="box-container">
             <motion.div
               className="box bg-green-500"
+              // @ts-ignore
               variants={boxVariants(boxes[key - 1].stiffness, boxes[key - 1].xValue)}
               initial="initial"
               animate={selectedExample === null || selectedExample === key ? 'animate' : 'initial'}
@@ -123,7 +124,7 @@ const AnimationDemo: React.FC = () => {
                 step="1"
                 id={`stiffness-slider-${key}`}
                 value={boxes[key - 1].stiffness}
-                onInput={(e) => handleStiffnessChange(key - 1, Number(e.target.value))}
+                onInput={(e) => handleStiffnessChange(key - 1, Number((e.target as HTMLInputElement).value))}
               />
               <span>{boxes[key - 1].stiffness}</span>
             </div>
@@ -136,7 +137,7 @@ const AnimationDemo: React.FC = () => {
                 step="1"
                 id={`xValue-slider-${key}`}
                 value={boxes[key - 1].xValue}
-                onInput={(e) => handleXValueChange(key - 1, Number(e.target.value))}
+                onInput={(e) => handleXValueChange(key - 1, Number((e.target as HTMLInputElement).value))}
               />
               <span>{boxes[key - 1].xValue}</span>
             </div>
