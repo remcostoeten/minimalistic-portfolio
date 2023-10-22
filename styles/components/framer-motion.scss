@@ -1,0 +1,41 @@
+.box {
+    width: 50vw;
+    height: 50px;
+    margin: 10px;
+    animation: rainbow 5s linear infinite;
+}
+
+@keyframes rainbow {
+    0% {
+        background-color: #f00;
+    }
+    16.67% {
+        background-color: #ff0;
+    }
+    33.33% {
+        background-color: #0f0;
+    }
+    50% {
+        background-color: #0ff;
+    }
+    66.67% {
+        background-color: #00f;
+    }
+    83.33% {
+        background-color: #f0f;
+    }
+    100% {
+        background-color: #f00;
+    }
+}
+
+@function random-color() {
+    $hue: random(360);
+    $saturation: random(100);
+    $lightness: random(100);
+    @return hsl($hue, $saturation, $lightness);
+}
+
+.box {
+    background-color: random-color();
+}

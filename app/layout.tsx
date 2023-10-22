@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
-import { PT_Serif_Caption } from 'next/font/google'
+import { Cormorant, Libre_Baskerville, Noto_Serif_Ahom, Playfair_Display, Stalinist_One } from 'next/font/google'
 import { Lora } from 'next/font/google'
 import '../styles/styles.scss'
-const serif = Lora({
+const serif = Libre_Baskerville({
   subsets: ['latin'],
-  weight: '400'
+  weight: ['400', '700'],
 })
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${serif.className} bg-black`}><main className="mt-[100px] p-[20px]">{children}</main></body>
+      <body className={`${serif.className} bg-white`}><main className="mt-[100px] p-[20px]">{children}</main></body>
     </html>
   )
 }

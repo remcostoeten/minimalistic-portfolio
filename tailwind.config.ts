@@ -34,13 +34,22 @@ module.exports = {
         'card-outer': '16px',
         'card-inner': '14px',
         'default': '24px',
+        
       },
       borderRadius: {
         'card-inner': '8px',
         'card-outer': '12px',
+        '16': '16px',
       },
       borderColor: {
         'active': '#B3775F'
+      },
+      fontSize: {
+        '16': '16px',
+        '18': "18px",
+        '20': '20px',
+        '22 ': '22px',
+        '28': '28px',
       },
       gap: {
         xs: '8px',
@@ -48,11 +57,14 @@ module.exports = {
         m: '16px',
         l: '24px',
       },
+      lineHeight: {
+        '25': '25px',
+      },
       backgroundColor: {
         'black': '#111',
         'grid': '#E4E5E4',
         'card-inner': '#D5D5D4',
-      },  width: {
+      }, width: {
         '198': '792px'
       }
     },

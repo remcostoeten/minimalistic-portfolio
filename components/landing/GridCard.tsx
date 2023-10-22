@@ -1,8 +1,9 @@
+import Icon from "../icons/icons";
 import { personalData } from "../personal-data";
 
 export default function GridCard() {
   return (
-    <div className="style-0" name="Person Card">
+    <div className="style-0">
       <div className="style-1">
         <div className="style-2">
           <div className="style-3">
@@ -10,7 +11,7 @@ export default function GridCard() {
               <div className="style-5">
                 <div className="style-6">
                   <div className="style-7">
-                    <img src="c.png" className="flex -translate-y-5 scale-[1.3] style-8" />
+                    <Icon src="bitmoji" alt=" Remco Stoeten Bitmoji" />
                   </div>
                 </div>
               </div>

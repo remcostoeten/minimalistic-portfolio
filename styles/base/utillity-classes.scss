@@ -9,3 +9,7 @@ text-theme-light {
 .text-black-secondary {
     color: $text-color-secondary;
 }
+
+.perspective {
+    perspective: 1000px;
+}

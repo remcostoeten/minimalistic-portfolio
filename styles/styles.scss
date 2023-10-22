@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
  
+@import './components/framer-motion.scss';
+@import './components/_grid-bitmoji.scss';
 @import './variables/colors.scss';
 @import './base/theme.scss';
 @import './base/utillity-classes.scss';

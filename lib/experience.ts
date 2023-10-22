@@ -20,12 +20,23 @@ export const WorkExperience = [
         description:
             'Frontend for digital agency.',
         date: '2017 - 2021',
-        },
+    },
     {
         company: 'College - graduated',
         title: 'Graphic designer',
         description:
             'Graduated as graphic designer.',
         date: '2013 - 2017',
+    },
+]
+
+export const GridItemsData = [
+    {
+        title: "Experience",
+        count: "7+ Years",
+    },
+    {
+        title: "Unfinished",
+        count: "15+ Projects",
     },
 ]

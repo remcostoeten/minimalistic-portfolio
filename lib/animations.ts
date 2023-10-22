@@ -1,5 +1,40 @@
 import { Variants } from 'framer-motion';
 
+export const fadeScaleUp = {
+  initial: {
+    opacity: 0,
+    scale: 0.9,
+    y: 50,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: .2,
+      type: " spring",
+      stiffness: 50,
+    },
+  },
+};
+
+export const smoothFadeUp = {
+  initial: {
+    opacity: 0,
+    y: 50,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      type: "spring",
+      stiffness: 55,
+    },
+  },
+};
+
+
 export const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {

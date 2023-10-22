@@ -1,3 +1,4 @@
+import Icon from "@/components/icons/icons";
 import ExperienceItems from "@/components/landing/ExperienceItems";
 import Grid from "@/components/landing/Grid";
 import { WorkExperience } from "@/lib/experience";
@@ -7,10 +8,11 @@ export default function page() {
 
   return (
     <>
-    
-      <Grid/>
+
+      <Grid />      
+
     </>
-    );
+  );
 }
 
 
