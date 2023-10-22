@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Cormorant, Libre_Baskerville, Lora, Noto_Serif_Ahom, Playfair_Display, Stalinist_One } from 'next/font/google';
 import { Tooltip, TooltipProvider } from '@/components/ui/tooltip';
 import '../styles/styles.scss';
+import ThemeContextProvider from '@/lib/context/ThemeContext';
 
 const serif = Libre_Baskerville({
   subsets: ['latin'],
@@ -19,12 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-
-        <html lang="en">
-          <body className={`${serif.className} bg-white`}>
-            <main className="mt-[100px] p-[20px]">{children}</main>
-          </body>
-        </html>
-
+    <html lang="en">
+      <body className={`${serif.className} bg-white`}>
+        <main className="mt-[100px] p-[20px]">{children}</main>
+      </body>
+    </html>
   );
 }
