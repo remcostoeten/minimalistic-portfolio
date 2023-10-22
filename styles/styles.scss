@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+ 
+@import './components/framer-motion.scss';
+@import './components/_grid-bitmoji.scss';
+@import './components/infinite-slider.scss';
+@import './variables/colors.scss';
+@import './utils/animations.scss';
+@import './base/theme.scss';
+@import './base/utillity-classes.scss';
+
+:root {
+  --foreground-rgb:$black;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
