@@ -1,0 +1,95 @@
+.infinite-slider {
+  position: relative;
+
+  svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .slide {
+    padding: 14px 20px;
+    gap: 20px;
+    height: min-content;
+    justify-content: flex-start;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    width: 500px;
+    min-width: fit-content;
+    
+    &__inner {
+      align-content: flex-start;
+      align-items: flex-start;
+      display: flex;
+      flex: none;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      gap: 0px;
+      height: min-content;
+      justify-content: center;
+      overflow: visible;
+      padding: 0;
+      position: relative;
+      width: min-content;
+      text-wrap: nowrap;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 50;
+  }
+
+  &::before {
+    background: linear-gradient(90deg, rgb(228, 229, 228) 0%, rgb(245, 245, 245) -2%, rgba(255, 255, 255, 0) 100%);
+    left: 0;
+  }
+
+  &::after {
+    background: linear-gradient(-90deg, rgb(228, 229, 228) 0%, rgb(245, 245, 245) -2%, rgba(255, 255, 255, 0) 100%);
+    right: 0;
+  }
+}
+
+
+
+.slider {
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 960px;
+}
+
+.slider::before,
+.slider::after {
+  content: "";
+  height: 100px;
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+}
+
+.slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+
+.slider::before {
+  left: 0;
+  top: 0;
+}
+
+.slider .slide-track {
+  animation: infiniteScroll 40s linear infinite;
+  display: flex;
+  width: calc(250px * 14);
+}
