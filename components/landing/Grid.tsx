@@ -4,6 +4,7 @@ import Icon from "../icons/icons";
 import { GridItemsData, WorkExperience } from "@/lib/experience";
 import ExperienceItems from "./ExperienceItems";
 import GridCard from "./GridCard";
+import InfiniteLogoSlider from "../effects/InfiniteLogoSlider";
 
 type blockProps = {
     children: React.ReactNode;
@@ -44,13 +45,15 @@ export default function Grid() {
                                     </div>
                                 </div>
                                 <div className="flex flex-col items-stretch max-md:w-full w-screen">
-                                    <div className="border bg-grid flex h-[234px] flex-col rounded-16 border-solid border-white border-opacity-0 max-md:max-w-full w-full overflow-hidden">
+                                    <div className=" bg-grid flex h-[234px] flex-col rounded-16  max-md:max-w-full w-full overflow-hidden">
                                         <GridCard />
                                     </div>
                                 </div>
                             </section>
                         </div>
-                        <div className="border bg-neutral-200 self-stretch flex w-full flex-col-reverse rounded-16 border-solid border-white border-opacity-0 max-md:max-w-fullC h-full"></div>
+                        <div className="infinite-slider flex w-full flex-col-reverse rounded-16 overflow-hiddeN bg-grid h-full">
+                            <InfiniteLogoSlider/>
+                        </div>
                     </div>
                 </div>
             </section>

@@ -2,10 +2,11 @@
 import React from 'react';
 
 type IconProps = {
-  src: string;
+  src: string | any;
   alt: string;
   width?: number;
   height?: number;
+  name?: string;
 };
 
 const Icon = ({ src, alt, ...props }: IconProps) => {
