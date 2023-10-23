@@ -1,9 +1,5 @@
 "use client";
 
-<<<<<<< HEAD
-=======
-import { SectionName } from "@/lib/types/types";
->>>>>>> 72aa5b8 ( compile typescript)
 import React, { useState, createContext, useContext, ReactNode } from "react";
 type SectionName = "Home" | "About" | "Projects" | "Contact";
 type ActiveSectionContextProviderProps = {
@@ -30,11 +26,6 @@ export default function ActiveSectionContextProvider({
         <ActiveSectionContext.Provider
             value={{
                 activeSection,
-<<<<<<< HEAD
-                // @ts-ignore
-                setActiveSection,
-=======
->>>>>>> 72aa5b8 ( compile typescript)
                 timeOfLastClick,
                 setTimeOfLastClick,
             }}

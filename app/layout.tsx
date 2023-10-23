@@ -6,6 +6,7 @@ import ThemeContextProvider from '@/lib/context/ThemeContext';
 import NavBar from '@/components/core/Navbar';
 import ActiveSectionContextProvider, { ActiveSectionContext } from '@/lib/context/ActiveSectionContext';
 import Intro from '@/components/landing/nav/Intro';
+import { siteConfig } from '@/config/site';
 
 const serif = Libre_Baskerville({
   subsets: ['latin'],
@@ -13,10 +14,60 @@ const serif = Libre_Baskerville({
 });
 
 
-export const metadata: Metadata = {
-  title: 'Remco Stoeten - remcostoeten.com',
-  description: 'Remco Stoeten - remcostoeten.com - Front end developer focussed in UI,working with TypeScript, NextJS, React and passion for cutting edge technologies.',
+export const metadata = {
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  author: 'Remco Stoeten',
+  url: siteConfig.url,
+  type: 'Portfolio site and SaaS',
+
+  openGraph: {
+    type: 'website',
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    site_name: siteConfig.name,
+    image: {
+      url: `${siteConfig.url}/images/og-image.jpg`,
+      alt: "Your Site's Open Graph Image",
+    },
+    profile: {
+      username: 'remco-stoeten',
+    },
+  },
+
+  linkedinProfile: 'https://www.linkedin.com/in/remco-stoeten/',
+  githubProfile: 'https://github.com/remcostoeten',
+  gitlabProfile: 'https://gitlab.com/remcostoeten',
+
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
+  },
+  robots: {
+    index: true,
+
+    follow: true,
+    googleBot: {
+      'index': true,
+      'follow': true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  authors: [
+    {
+      name: 'Remco Stoeten',
+      url: 'https://remcostoeten.com',
+    },
+  ],
 };
+
 
 export default function RootLayout({
   children,
