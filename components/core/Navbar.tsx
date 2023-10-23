@@ -8,7 +8,7 @@ import { topSlideIn } from "@/lib/animations";
 import { links } from "@/lib/data/menulinks";
 
 export default function NavBar() {
-    const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
+    const { activeSection,  setTimeOfLastClick } = useActiveSectionContext();
 
     return (
         <>
@@ -31,7 +31,6 @@ export default function NavBar() {
                                     )}
                                     href={link.hash}
                                     onClick={() => {
-                                        setActiveSection(link.name);
                                         setTimeOfLastClick(Date.now());
                                     }}
                                 >
