@@ -1,5 +1,29 @@
 @import '../variables/colors';
 
+.dark {
+  .infinite-slider {
+    border: 1px solid #201f1f;
+
+    &::before {
+      background: linear-gradient(-90deg, rgb(28, 28, 28) 22%, #111 -2% #111 100%);
+      left: 0;
+    }
+
+    &::after {
+      background: linear-gradient(-90deg, rgb(28, 28, 28) 22%, #111 -2% #111 100%);
+      right: 0;
+    }
+  }
+}
+
+body {
+  background-image: url('../../public/gear.svg');
+  background-position: 121% 55%, 0 0;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 480px 480px, auto;
+  padding-bottom: 170px;
+}
+
 .infinite-slider {
   position: relative;
   overflow: hidden;
@@ -52,20 +76,21 @@
   }
 
   &::before {
-    background: linear-gradient(90deg, rgb(228, 229, 228) 0%, rgb(245, 245, 245) -2%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(90deg, rgb(228, 229, 228) 0%, rgb(22, 22, 22) -2%, rgba(255, 255, 255, 0) 100%);
     left: 0;
   }
 
   &::after {
-    background: linear-gradient(-90deg, rgb(228, 229, 228) 0%, rgb(245, 245, 245) -2%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(-90deg, rgb(228, 229, 228) 0%, rgb(22, 22, 22) -2%, rgba(255, 255, 255, 0) 100%);
     right: 0;
   }
 }
 
-.slider {
-  margin: auto;
+.slider,
+.slider-reverse {
   position: relative;
   width: 960px;
+
 
   &::before,
   &::after {
@@ -88,10 +113,34 @@
   }
 
   .slide-track {
-    animation: infiniteScroll 40s linear infinite;
+    animation: infiniteScroll 60s linear infinite;
     display: flex;
     width: calc(250px * 14);
   }
+
+  .slide-track-reverse {
+    animation: infiniteScrollReverse 60s linear infinite;
+    display: flex;
+    width: calc(250px * 14);
+
+  }
+
+  &:hover {
+
+    .slide-track-reverse,
+    .slide-track {
+      animation-play-state: paused;
+    }
+  }
+
+  @keyframes stopPlaying {
+    0% {}
+
+    100% {
+      animation-play-state: paused;
+    }
+  }
+
 }
 
 .tooltip-triangle {
@@ -105,6 +154,9 @@
   border-color: transparent transparent $bg-card-inner transparent;
   transform: rotate(180deg);
 }
+
+
+
 
 .w-max-content {
   width: max-content;

@@ -3,11 +3,14 @@ import { Cormorant, Libre_Baskerville, Lora, Noto_Serif_Ahom, Playfair_Display, 
 import { Tooltip, TooltipProvider } from '@/components/ui/tooltip';
 import '../styles/styles.scss';
 import ThemeContextProvider from '@/lib/context/ThemeContext';
+import NavBar from '@/components/core/Navbar';
+import ActiveSectionContextProvider, { ActiveSectionContext } from '@/lib/context/ActiveSectionContext';
 
 const serif = Libre_Baskerville({
   subsets: ['latin'],
   weight: ['400', '700'],
 });
+
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -20,10 +23,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${serif.className} bg-white`}>
-        <main className="mt-[100px] p-[20px]">{children}</main>
-      </body>
-    </html>
+    <ThemeContextProvider>
+      <ActiveSectionContextProvider>
+        <html lang="en">
+          <body className={`${serif.className} bg-white dark:bg-body-dark`}>
+            <div className="container">
+              <NavBar />
+              <main className="mt-[100px] p-[20px]">{children}</main>
+            </div>
+          </body>
+        </html>
+      </ActiveSectionContextProvider >
+    </ThemeContextProvider>
   );
 }

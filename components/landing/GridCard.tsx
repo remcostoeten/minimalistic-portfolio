@@ -24,7 +24,7 @@ export default function GridCard() {
           <h1>{personalData.name}</h1>
         </div>
         <div className="style-12">
-          <h1 className="style-13">{personalData.about.short}</h1>
+          <p className="style-13">{personalData.about.short}</p>
         </div>
       </div>
     </div>

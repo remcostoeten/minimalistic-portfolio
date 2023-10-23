@@ -40,7 +40,8 @@ module.exports = {
         '16': '16px',
       },
       borderColor: {
-        'active': '#B3775F'
+        'active': '#B3775F',
+        'dark': '#1e231c',
       },
       fontSize: {
         '16': '16px',
@@ -58,10 +59,18 @@ module.exports = {
       lineHeight: {
         '25': '25px',
       },
+      color: {
+        'darkalt': '#7d7d7d',
+      },
       backgroundColor: {
         'black': '#111',
         'grid': '#E4E5E4',
-        'card-inner': '#D5D5D4',
+        'card-inner': '#161616',
+        'card-inner-dark': '#111',
+        'body-dark': '#161616',
+        'dark-alt': '#0d0d0d',
+        // 'body-dark': '#161616',
+        // 'dark-alt': '#141414',
       }, width: {
         '198': '792px'
       }
