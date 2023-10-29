@@ -21,7 +21,7 @@ const GridItem = ({ children }: blockProps) => (
 export default function Grid() {
     return (
         <div className="px-5">
-            <section className="flex max-md:flex-col gap-l max-md:items-stretch">
+            <section className="flex  max-md:flex-col gap-l max-md:items-stretch">
                 <div className="flex flex-col items-stretch max-md:w-full">
                     <div className="flex grow flex-col gap-m">
                         <div className="bg-grid dark:bg-card-inner-dark dark:border-dark gap-s self-stretch w-full justify-center items-center flex flex-col p-3.5 rounded-16">

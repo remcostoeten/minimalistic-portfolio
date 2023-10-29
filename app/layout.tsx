@@ -27,10 +27,8 @@ export default function RootLayout({
       <ActiveSectionContextProvider>
         <html lang="en">
           <body className={`${serif.className} bg-white dark:bg-body-dark`}>
-            <div className="container">
               <NavBar />
-              <main className="mt-[100px] p-[20px]">{children}</main>
-            </div>
+              <main className="mt-[100px] container p-[20px]">{children}</main>
           </body>
         </html>
       </ActiveSectionContextProvider >

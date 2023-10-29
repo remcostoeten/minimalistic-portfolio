@@ -23,5 +23,9 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "devDependencies": {
+    "tailwindcss": "^2.2.7",
+    "@tailwindcss/animation": "^0.2.1"
+  }
 }

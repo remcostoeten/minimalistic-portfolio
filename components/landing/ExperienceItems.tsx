@@ -1,5 +1,5 @@
 'use client';
-import { fadeScaleUp, smoothFadeUp } from "@/lib/animations";
+import { GridIn, fadeScaleUp, smoothFadeUp } from "@/lib/animations";
 import { WorkExperience } from "@/lib/experience";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
@@ -14,17 +14,6 @@ export default function ExperienceItems() {
     return () => clearTimeout(timeout);
   }, []);
 
-  const containerVariants = {
-    initial: {
-      opacity: 0,
-    },
-    animate: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
 
 
   const highlightVariants = {
@@ -39,7 +28,7 @@ export default function ExperienceItems() {
   return (
     <motion.div
       className="grid gap-4 overflow-hidden"
-      variants={containerVariants}
+      variants={GridIn}
       initial="initial"
       animate={show ? "animate" : "initial"}
     >

@@ -1,14 +1,27 @@
 import { Variants } from 'framer-motion';
 
+export const GridIn = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+
 export const topSlideIn = {
   hidden: {
-      opacity: 0,
-      y: -100,
-      pathLength: 0,
+    opacity: 0,
+    y: -100,
+    pathLength: 0,
   },
   visible: {
-      opacity: 1,
-      y: 0,
+    opacity: 1,
+    y: 0,
   }
 }
 
