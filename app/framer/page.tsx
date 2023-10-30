@@ -68,7 +68,7 @@ const AnimationDemo: React.FC = () => {
   };
 
   return (
-    <div className="w-screen h-screen p-16 grid place-items-center bg-violet-400 border-white border-4">
+    <div className="w-screen h-screen p-16 grid text-white place-items-center">
       <h1 className="text-4xl font-bold mb-4">Framer Motion Animation Demo</h1>
       <div className="flex flex-col gap-2">
         <div className="slider-container">
@@ -106,7 +106,7 @@ const AnimationDemo: React.FC = () => {
             </motion.div>
           ))}
         </motion.div>
-        {[1, 2, 3, 4, 5].map((key) => (
+        {[1].map((key) => (
           <div key={key} className="box-container">
             <motion.div
               className="box bg-green-500"
