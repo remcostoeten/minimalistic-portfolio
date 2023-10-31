@@ -26,7 +26,8 @@ export default function RootLayout({
     <ThemeContextProvider>
       <ActiveSectionContextProvider>
         <html lang="en">
-          <body className={`${serif.className} bg-white dark:bg-body-dark`}>
+          <body className={`${serif.className} 
+           dark:bg-body-dark h-screen items-center flex `}>
               <NavBar />
               <main className="mt-[100px] container p-[20px]">{children}</main>
           </body>
