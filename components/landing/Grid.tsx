@@ -9,6 +9,7 @@ import ExperienceItems from "./ExperienceItems";
 import GridCard from "./GridCard";
 import CountingNumber from "../effects/CountingNumbers";
 import { ChildProps } from "@/lib/types/types";
+import TextRevealSkew from "../effects/TextRevealSkew";
 
 
 const GridItem = ({ children }: ChildProps) => (
@@ -21,7 +22,16 @@ const GridItem = ({ children }: ChildProps) => (
 export default function Grid() {
     return (
         <div className="px-5">
-            <section className="flex  max-md:flex-col gap-l max-md:items-stretch">
+            <h2 className="text-white text-centet text-3xl pb-4">
+
+                <TextRevealSkew className="text-center" placeholderText={[
+                    { type: "heading1", text: "About me" },
+                ]} />
+            </h2 >
+
+            <section className="flex   max-md:flex-col gap-l max-md:items-stretch">
+
+
                 <div className="flex flex-col items-stretch max-md:w-full">
                     <div className="flex grow flex-col gap-m">
                         <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }}
@@ -38,7 +48,7 @@ export default function Grid() {
                                 <GridItem key={index}>
                                     <h4 className="text-16 text-color-light">{data.title}</h4>
                                     <h3 className="text-color text-22 text-2xl font-black">
-                                        <CountingNumber start={0} end={data.count} duration={2} delay={index * .8} />{data.countSuffix}
+                                        <CountingNumber start={0} end={data.count} duration={2} delay={index * .2} />{data.countSuffix}
                                     </h3>
                                 </GridItem>
                             ))}

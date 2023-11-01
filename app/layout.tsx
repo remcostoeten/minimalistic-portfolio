@@ -5,6 +5,7 @@ import '../styles/styles.scss';
 import ThemeContextProvider from '@/lib/context/ThemeContext';
 import NavBar from '@/components/core/Navbar';
 import ActiveSectionContextProvider, { ActiveSectionContext } from '@/lib/context/ActiveSectionContext';
+import Intro from '@/components/landing/nav/Intro';
 
 const serif = Libre_Baskerville({
   subsets: ['latin'],
@@ -29,7 +30,11 @@ export default function RootLayout({
           <body className={`${serif.className} 
            dark:bg-body-dark h-screen items-center flex `}>
               <NavBar />
-              <main className="mt-[100px] container p-[20px]">{children}</main>
+              <main className="mt-[100px] container p-[20px]">
+              <><Intro/>
+                
+                
+                {children}</></main>
           </body>
         </html>
       </ActiveSectionContextProvider >
