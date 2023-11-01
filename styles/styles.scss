@@ -11,18 +11,7 @@
 @import './base/theme.scss';
 @import './base/utillity-classes.scss';
 @import './components/loader.scss';
-
-html {
-  font-family: Nunito, "Nunito Placeholder", sans-serif;
-}
-
-.nunito {
-  font-family: Nunito, "Nunito Placeholder", sans-serif;
-}
-
-.serif {
-  font-family: '__Libre_Baskerville_2ed606', '__Libre_Baskerville_Fallback_2ed606'
-}
+@import './base/typography.scss';
 
 .shine-wrap {
   width: 100%;
@@ -44,6 +33,10 @@ html {
   --gradY: 50%;
   --c1: rgba(76, 33, 2, 0.369);
   --c2: rgba(168, 239, 255, 0.1);
+  --white: #ff;
+  --darkmain: #101011;
+  --mainaccent: #171718;
+
 }
 
 @media (prefers-color-scheme: dark) {

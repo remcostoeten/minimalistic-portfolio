@@ -4,23 +4,23 @@ $green: #00ff00;
 $red: #ff0000;
 
 @keyframes infiniteScroll {
-  0% {
-    transform: translateX(0);
-  }
+    0% {
+        transform: translateX(0);
+    }
 
-  100% {
-    transform: translateX(calc(-250px * 7));
-  }
+    100% {
+        transform: translateX(calc(-250px * 7));
+    }
 }
 
 @keyframes infiniteScrollReverse {
-  0% {
-    transform: translateX(calc(-250px * 7));
-  }
+    0% {
+        transform: translateX(calc(-250px * 7));
+    }
 
-  100% {
-    transform: translateX(0);
-  }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 
@@ -110,7 +110,6 @@ canvas {
         &:before {
             position: absolute;
             top: 0;
-
             color: #16a085;
             -webkit-animation-name: opacity;
             -webkit-animation-duration: 2s;

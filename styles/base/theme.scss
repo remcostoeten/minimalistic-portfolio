@@ -1,9 +1,19 @@
 body {
     background-color: $black;
+    transition: 250ms ease-in-out all;
 }
 
-
 .container {
-    max-width: 1200px;
+    max-width: 600px;
     margin: 0 auto;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    @media (max-width: 768px) {
+        padding: 0 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+        padding: 0 0.5rem;
+    }
 }
