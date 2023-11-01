@@ -35,9 +35,8 @@ export default function ExperienceItems() {
       {WorkExperience.map((work, index) => (
         <motion.div
           key={index}
-          className={`self-stretch flex w-full flex-col dark:bg-dark-alt bg-card-inner  p-card-inner card-inner rounded-card-inner ${
-            work.highlight ? "border-2  border-active " : ""
-          }`}
+          className={`self-stretch flex w-full flex-col dark:bg-dark-alt bg-card-inner  p-card-inner card-inner rounded-card-inner ${work.highlight ? "border-2  border-active " : ""
+            }`}
           variants={smoothFadeUp}
         >
           <div className="flex w-full flex-grow flex-row max-md:max-w-full items-baseline justify-start gap-12">
@@ -49,7 +48,7 @@ export default function ExperienceItems() {
             </div>
           </div>
           {work.highlight && (
-            <motion.div 
+            <motion.div
               className="h-1 bg-theme mt-2"
               variants={highlightVariants}
               transition={{ duration: 0.3, repeat: Infinity, repeatType: "reverse" }}

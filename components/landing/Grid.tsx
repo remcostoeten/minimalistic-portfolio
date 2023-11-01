@@ -1,22 +1,19 @@
 'use client';
+import { GridItemsData } from "@/lib/experience";
+import { motion } from "framer-motion";
 import React from "react";
-import CompanyIcons from "../icons/icons";
+import { Cta } from "../core/buttons";
+import InfiniteLogoSlider from "../effects/InfiniteLogoSlider";
 import Icon from "../icons/icons";
-import { GridItemsData, WorkExperience } from "@/lib/experience";
 import ExperienceItems from "./ExperienceItems";
 import GridCard from "./GridCard";
-import InfiniteLogoSlider from "../effects/InfiniteLogoSlider";
-import { Cta } from "../core/buttons";
-import { motion } from "framer-motion";
-import { containerVariants } from "@/lib/animations";
+import CountingNumber from "../effects/CountingNumbers";
+import { ChildProps } from "@/lib/types/types";
 
-type blockProps = {
-    children: React.ReactNode;
-};
 
-const GridItem = ({ children }: blockProps) => (
+const GridItem = ({ children }: ChildProps) => (
 
-    <motion.div initial={{ opacity: 0, y: 50 }} transition={{delay: 0.9, duration: 0.4}}animate={{ opacity: 1, y: 0 }} className="bg-grid perspective dark:bg-card-inner-dark dark:border-dark dark:text-white flex h-[161px] flex-col grow shrink-0 basis-auto flex-1 rounded-16 justify-center items-center gap-y-4">
+    <motion.div initial={{ opacity: 0, y: 50 }} transition={{ delay: 0.9, duration: 0.4 }} animate={{ opacity: 1, y: 0 }} className="bg-grid perspective dark:bg-card-inner-dark dark:border-dark dark:text-white flex h-[161px] flex-col grow shrink-0 basis-auto flex-1 rounded-16 justify-center items-center gap-y-4">
         {children}
     </motion.div>
 );
@@ -40,7 +37,9 @@ export default function Grid() {
                             {GridItemsData.map((data, index) => (
                                 <GridItem key={index}>
                                     <h4 className="text-16 text-color-light">{data.title}</h4>
-                                    <h3 className="text-color text-22 text-2xl font-black">{data.count}</h3>
+                                    <h3 className="text-color text-22 text-2xl font-black">
+                                        <CountingNumber start={0} end={data.count} duration={2} delay={index * .8} />{data.countSuffix}
+                                    </h3>
                                 </GridItem>
                             ))}
                         </motion.div>
@@ -76,7 +75,7 @@ export default function Grid() {
                         </motion.div>
                         <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{
                             duration: 1.2
-                            , delay: 5
+                            , delay: 1.2
                         }} className="p-[32px] flex bg-grid dark:bg-card-inner-dark infinite-slider dark:border-darkdark:bg-card-inner-darkflex w-full gap-[40px] flex-col rounded-16 overflow-hidden bg-grid h-full items-center">
                             <h2 className="text-28  text-white/60 text-center ">My Stack</h2>
                             <div className="flex flex-col gap-l">

@@ -3,11 +3,13 @@ import { Variants } from 'framer-motion';
 export const GridIn = {
   initial: {
     opacity: 0,
+    y:-5,
   },
   animate: {
-    opacity: 1,
+   y:0, opacity: 1, 
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: .2,
+      delay: .4
     },
   },
 };

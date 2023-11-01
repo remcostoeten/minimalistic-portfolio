@@ -33,11 +33,13 @@ export const WorkExperience = [
 export const GridItemsData = [
   {
     title: "Experience",
-    count: "7+ Years",
+    count: "7",
+    countSuffix: "+Years",
   },
   {
     title: "Unfinished",
-    count: "15+ Projects",
+    count: "15",
+    countSuffix: "+ Projects",
   },
 ]
 
