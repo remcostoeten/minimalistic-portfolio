@@ -29,11 +29,11 @@ export default function RootLayout({
         <html lang="en">
           <body className={`${serif.className} 
            dark:bg-body-dark h-screen items-center flex `}>
-              <NavBar />
-              <main className="mt-[100px] container p-[20px]">
-              <><Intro/>
-                
-                
+            <NavBar />
+            <main className="mt-[100px] container p-[20px]">
+              <><Intro />
+
+
                 {children}</></main>
           </body>
         </html>

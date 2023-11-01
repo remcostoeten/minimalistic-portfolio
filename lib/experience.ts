@@ -59,7 +59,6 @@ export const TechnologyIcons = [
   { name: 'Git', icon: 'git.svg', description: 'git push -f', tooltip: 'wel..', url: 'https://git-scm.com/' },
   { name: 'JavaScript', icon: 'js.svg', description: '$(".the").mother(language)', tooltip: 'I miss jQuery', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
   { name: 'React', icon: 'react.svg', description: 'UI library', tooltip: 'JS UI library', url: 'https://reactjs.org/' }, { name: 'Prisma', icon: 'prisma.svg', description: 'Database toolkit', tooltip: 'Next-generation Node.js and TypeScript ORM', url: 'https://www.prisma.io/' },
-
   { name: 'TypeScript', icon: 'ts.svg', description: 'Typed JS', tooltip: 'JS with static typing', url: 'https://www.typescriptlang.org/' },
   { name: 'Drizzle', icon: 'drizzle.svg', description: 'TyPESaFE ORM', tooltip: 'Complicated AF', url: 'https://www.trufflesuite.com/drizzle' },
   { name: 'PlanetScale', icon: 'planetscale.svg', description: 'Database platform', tooltip: 'Database platform built on Vitess', url: 'https://planetscale.com/' },
