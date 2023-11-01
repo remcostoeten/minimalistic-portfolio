@@ -1,11 +1,12 @@
- 
- 'use client';
-                        
+// @ts-nocheck
+'use client';
 
- import React from "react"
-import { motion } from "framer-motion"
 
-const Wrapper = (props) => {
+import React from "react"
+import { MotionValue, motion } from "framer-motion"
+import ts from "typescript";
+
+const Wrapper = (props: { children: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; }) => {
   return <span className="word-wrapper">{props.children}</span>
 }
 
@@ -15,7 +16,7 @@ const tagMap = {
   heading2: "h2",
 }
 
-const AnimatedCharacters = (props) => {
+const AnimatedCharacters = (props: { text: string; type: string | number; }) => {
   const item = {
     hidden: {
       y: "200%",
@@ -31,7 +32,7 @@ const AnimatedCharacters = (props) => {
 
   const splitWords = props.text.split(" ")
 
-  const words = []
+  const words: any[] = []
 
   for (const [, item] of splitWords.entries()) {
     words.push(item.split(""))
@@ -48,7 +49,7 @@ const AnimatedCharacters = (props) => {
       {words.map((word, index) => {
         return (
           <Wrapper key={index}>
-            {words[index].flat().map((element, index) => {
+            {words[index].flat().map((element: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | MotionValue<number> | MotionValue<string> | null | undefined, index: React.Key | null | undefined) => {
               return (
                 <span
                   style={{

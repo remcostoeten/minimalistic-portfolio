@@ -1,5 +1,7 @@
+import db from '@/lib/db';
 import { faker } from '@faker-js/faker';
 import { revalidatePath } from 'next/cache';
+import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal, PromiseLikeOfReactNode } from 'react';
 
 export default async function Home() {
   const posts = await db.post.findMany({ orderBy: { createdAt: 'desc' } });
@@ -25,7 +27,7 @@ export default async function Home() {
         </button>
       </form>
 
-      {posts.map((post) => (
+      {posts.map((post: { id: Key | null | undefined; content: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode | null | undefined; }) => (
         <div key={post.id} className="bg-white mb-3 px-5 py-3 rounded-md">
           {post.content}
         </div>

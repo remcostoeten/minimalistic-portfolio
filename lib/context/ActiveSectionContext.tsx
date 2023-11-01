@@ -1,8 +1,7 @@
 "use client";
 
-import { SectionName } from "@/utils/types";
 import React, { useState, createContext, useContext, ReactNode } from "react";
-
+type SectionName = "Home" | "About" | "Projects" | "Contact";
 type ActiveSectionContextProviderProps = {
     children: React.ReactNode;
 };
@@ -27,6 +26,7 @@ export default function ActiveSectionContextProvider({
         <ActiveSectionContext.Provider
             value={{
                 activeSection,
+                // @ts-ignore
                 setActiveSection,
                 timeOfLastClick,
                 setTimeOfLastClick,
