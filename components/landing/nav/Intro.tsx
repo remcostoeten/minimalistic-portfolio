@@ -1,12 +1,9 @@
 'use client';
-import { motion } from 'framer-motion';
-import React from 'react';
-import Image from 'next/image';
 import { PageTitle, SubTitle } from '@/components/core/Typography';
 import SwappingWords from '@/components/effects/SwappingWords';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
-import AnimatedCharacters from '@/components/effects/AnimatedText';
-import TextRevealSkew from '@/components/effects/TextRevealSkew';
 
 const links = [
     { name: 'Home', hash: '#home' },
@@ -28,7 +25,7 @@ const item = {
 const Intro = () => {
     return (
         <div className='pt-[40px] contained geist flex flex-col gap-[64px]'>
-            <motion.div variants={reveal} initial="hidden" animate="show" className=" flex justify-between flex flex-col gap-2 text-center justify-center">
+            <motion.div variants={reveal} initial="hidden" animate="show" className=" flex justify-between  flex-col gap-2 text-center ">
                 <motion.div variants={item} className="flex flex-row justify-between items-center gap-4">
                     <motion.div variants={item} className="flex flex-col gap-4">
                         <motion.span variants={item} className="flex flex-col gap-1">
@@ -41,7 +38,7 @@ const Intro = () => {
                                         'Aspiring fullstacks',
                                         'Decent guy',
                                     ]}
-                                    interval={2000} />
+                                    interval={4000} />
                             </SubTitle>
                         </motion.span>
                         <motion.nav initial={{ opacity: 0, y: 10 }}
