@@ -1,5 +1,5 @@
      .style-0 {
-         place - content: center flex-start;
+         center flex-start;
          align-items: center;
          display: flex;
          flex: 0 0 auto;
@@ -14,7 +14,7 @@
      }
 
      .style-1 {
-         place - content: flex-start center;
+         flex-start center;
          align-items: flex-start;
          display: flex;
          flex: 0 0 auto;
@@ -30,7 +30,7 @@
      }
 
      .style-2 {
-         place - content: flex-start;
+
          align-items: flex-start;
          display: flex;
          flex: 0 0 auto;
@@ -45,7 +45,6 @@
      }
 
      .style-3 {
-         place - content: center flex-start;
          align-items: center;
          display: flex;
          flex: 0 0 auto;
@@ -60,7 +59,7 @@
      }
 
      .style-4 {
-         place - content: flex-start;
+
          align-items: flex-start;
          display: flex;
          flex: 1 0 0px;
@@ -76,7 +75,7 @@
      }
 
      .style-5 {
-         place - content: flex-start;
+
          align-items: flex-start;
          display: flex;
          flex: 0 0 auto;
@@ -141,7 +140,7 @@
      }
 
      .style-8 {
-         place - content: flex-start;
+
          align-items: flex-start;
          display: flex;
          flex: 0 0 auto;
@@ -571,7 +570,7 @@
      }
 
      .style-26 {
-         place - content: center flex-start;
+         center flex-start;
          align-items: center;
          display: flex;
          flex: 0 0 auto;
@@ -813,7 +812,7 @@
      }
 
      .style-39 {
-         place - content: flex-start;
+
          align-items: flex-start;
          display: flex;
          flex: 0 0 auto;
@@ -877,7 +876,7 @@
      }
 
      .style-42 {
-         place - content: center flex-start;
+         center flex-start;
          align-items: center;
          display: flex;
          flex: 0 0 auto;

@@ -27,7 +27,7 @@ interface FlexerProps {
  *
  * // This will create a flex container with row direction, items aligned at the center, items justified at the start, and a fade-in animation.
  */
-const Flexer: React.FC<FlexerProps> = ({ direction = 'flex-col', align = 'items-stretch', justify = 'justify-start', children, useMotion = false, motionProps, gap = '0' }) => {
+const Flexer: React.FC<FlexerProps> = ({ direction = 'flex-col', align = 'items-stretch', justify = 'justify-start', children, useMotion = false, motionProps, gap }) => {
     const Component = useMotion ? motion.div : 'div';
     return (
         <Component className={`flex ${direction} ${align} ${justify} gap-${gap}`} {...motionProps}>
@@ -36,6 +36,4 @@ const Flexer: React.FC<FlexerProps> = ({ direction = 'flex-col', align = 'items-
     );
 };
 
-export default Flexer; x// Add gap prop here const Flexer: React.FC<FlexerProps> = ({ direction = 'flex-col', align = 'items-stretch', justify = 'justify-start', children, useMotion = false, motionProps, gap = '0' }) => {         <Component className={`flex ${ direction } ${ align } ${ justify } {...motionProps }>
-
-
+export default Flexer;
