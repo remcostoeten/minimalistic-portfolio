@@ -51,7 +51,7 @@ $red: #ff0000;
 
 
 
-.animation-container {
+.animation-contained {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -101,7 +101,7 @@ canvas {
     overflow: hidden;
     color: #ecf0f1;
 
-    &__container {
+    &__contained {
         overflow: hidden;
         height: 26px;
         padding-left: 8px;
@@ -152,7 +152,7 @@ canvas {
     font-size: 24px;
     color: #ecf0f1;
 
-    &__container {
+    &__contained {
         font-weight: 600;
         overflow: hidden;
         height: 40px;
@@ -543,7 +543,7 @@ canvas {
 .fade {
 
     // Read more fade
-    .text-container {
+    .text-contained {
         position: relative;
         max-height: 100px;
         /* or however tall you want the preview to be */

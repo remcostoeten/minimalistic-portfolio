@@ -9,13 +9,13 @@ interface TextData {
 
 interface TextRevealSkewProps {
     placeholderText: TextData[];
-    className?: string; 
+    className?: string;
 }
 
 const TextRevealSkew: React.FC<TextRevealSkewProps> = ({ placeholderText, className }) => {
     const [replay, setReplay] = useState<boolean>(true);
 
-    const container: Variants = {
+    const reveal: Variants = {
         visible: {
             transition: {
                 staggerChildren: 0.025,
@@ -36,10 +36,10 @@ const TextRevealSkew: React.FC<TextRevealSkewProps> = ({ placeholderText, classN
                 className={`reveal-animation ${className}`}
                 initial="hidden"
                 animate={replay ? "visible" : "hidden"}
-                variants={container}
+                variants={reveal}
             >
-                <div className="container">
-      
+                <div className="">
+
                 </div>
             </motion.div>
         </>

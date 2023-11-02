@@ -19,14 +19,13 @@ const SwappingWords: React.FC<Props> = ({ words, interval = 2000 }) => {
 
     return (
         <span className="swap">
-                <span className="swap__container">
-                  <ul className="swap__container__list">
+            <span className="swap__contained">
+                <ul className="swap__contained__list">
                     {words.map((word, index) => (
                         <li
                             key={index}
-                            className={`swap__container__list__item font-light ${
-                                index === currentIndex ? 'active' : ''
-                            }`}
+                            className={`swap__contained__list__item font-light ${index === currentIndex ? 'active' : ''
+                                }`}
                         >
                             {word}
                         </li>

@@ -74,11 +74,11 @@ export default function RootLayout({
     <ThemeContextProvider>
       <ActiveSectionContextProvider>
         <html className={`${GeistSans.variable} ${GeistMono.variable}`} lang="en">
-          <body className={`${serif.className} 
+          <body className={`${serif.className}
            dark:bg-body-dark h-screen flex `}>
-            <main className="mx-auto container">
+            <main className="mx-auto ">
               <Intro />
-              <div className="container">
+              <div className="contained">
                 {children}
               </div>
             </main>

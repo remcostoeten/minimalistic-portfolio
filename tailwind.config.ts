@@ -45,7 +45,7 @@ module.exports = {
       },
       borderColor: {
         'active': '#B3775F',
-        'dark': '#1e231c',
+        'dark': 'var(--mainaccentn)',
       },
       fontSize: {
         '16': '16px',

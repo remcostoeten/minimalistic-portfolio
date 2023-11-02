@@ -8,7 +8,7 @@ const Box: React.FC = () => {
     animate: { y: 0, opacity: 1, transition: { duration: 1 } },
   };
 
-  const containerVariants = {
+  const Variants = {
     initial: { opacity: 0 },
     animate: { opacity: 1, transition: { duration: 1 } },
   };
@@ -21,12 +21,12 @@ const Box: React.FC = () => {
   return (
     <div>
       <h1>Welcome to my page!</h1>
-      <motion.div className="container" variants={containerVariants} initial="initial" animate="animate">
+      <motion.div className="" variants={Variants} initial="initial" animate="animate">
         {[1, 2, 3, 4, 5].map((key) => (
           <motion.div key={key} className="box" variants={boxVariants} />
         ))}
-        <motion.div className="container" variants={containerVariants} initial="initial" animate="animate">
-          <motion.div className="box-container">
+        <motion.div className="" variants={Variants} initial="initial" animate="animate">
+          <motion.div className="box-">
             <motion.div className="box-left" variants={boxVariants} />
             <motion.div className="box-right" variants={boxVariants} />
           </motion.div>
