@@ -76,7 +76,7 @@ export default function RootLayout({
         <html className={`${GeistSans.variable} ${GeistMono.variable}`} lang="en">
           <body className={`${serif.className} 
            dark:bg-body-dark h-screen flex `}>
-            <main className="mx-auto ">
+            <main className="mx-auto container">
               <Intro />
               <div className="container">
                 {children}
