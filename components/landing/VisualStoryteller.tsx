@@ -7,14 +7,13 @@ import { motion } from "framer-motion";
 
 export default function VisualStoryteller(props) {
   return (
-    <motion.section geist
-      className="w-[650px] pt-10 mt-10 max-w-full ml-5 mb-8 self-start"
+    <motion.section
+      className="w-[650px] geist pt-10 mt-10 max-w-full ml-5 mb-8 self-start"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      transition={{ delay: 0.8, duration: 1, type: "spring", stiffness: 100 }}
     >
       <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0 relative">
-        {/*a circle 40x  40px absolute on top off the thin line diff */}
         <motion.div
           className="w-10 h-10 rounded-full z-10 bg-[#E9E8E9] absolute -left-[22px] -top-0 max-md:hidden"
           initial={{ opacity: 0, scale: 0 }}
@@ -33,18 +32,24 @@ export default function VisualStoryteller(props) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          <div className="flex gap-4 geist grow flex-col max-md:max-w-full max-md:mt-10">
-            <h4 className="text-gray-200 text-lg font-medium">
+          <div className="flex gap-[10px] geist grow flex-col max-md:max-w-full max-md:mt-10">
+            <motion.h4 initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="text-gray-200 text-lg font-medium">
               Visual Storyteller
-            </h4>
-            <p className="text-gray-400 text-lg self-start max-md:max-w-full">
+            </motion.h4>d
+            <motion.p initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="text-gray-400 text-lg self-start max-md:max-w-full">
               Step into a mesmerizing realm of visual wonders with no bounds,
               and every pixel tells a compelling tale. <br /> <br /> Step into a
               captivating visual design realm, where pixels become masterful
               storytellers. Transcend the ordinary, leaving an indelible
               impression. Unveil the power of visual storytelling and be
               inspired by our artistic vision.
-            </p>
+            </motion.p>
             <motion.div
               className="shadow-sm bg-zinc-300 flex w-[600px] h-[300px] flex-col mt-10 rounded-lg self-start max-md:max-w-full max-md:mt-10"
               initial={{ opacity: 0 }}
@@ -84,6 +89,6 @@ export default function VisualStoryteller(props) {
           </div>
         </motion.div>
       </div>
-    </motion.section>
+    </motion.section >
   );
 }

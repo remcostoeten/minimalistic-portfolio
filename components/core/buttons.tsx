@@ -1,4 +1,5 @@
 import { ChildProps } from "@/lib/types/types"
+import { motion } from "framer-motion";
 
 const Cta = ({ children }: ChildProps) => {
     return (
@@ -13,10 +14,13 @@ const Cta = ({ children }: ChildProps) => {
 }
 
 
-export const GhostButton = ({ children }: ChildProps) => {
+const GhostButton = ({ children }: ChildProps) => {
     return (
-        <button
-            className="ghostbtn geist font-normal border-solid bg-body-dark rounded-lg flex flex-row items-center gap-3 text-sm w-auto h-10 px-6 relative box-border antialiased "
+        <motion.button
+            className="ghostbtn geist font-normal border-solid bg-body-dark rounded-lg flex flex-row items-center gap-3 text-sm w-auto h-10 px-6 relative box-border antialiased p-4 "
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "100%" }}
+            transition={{ delay: 0.6, duration: 1, type: "spring", stiffness: 25 }}
         >
             <div
                 className="outline-none flex flex-col justify-start flex-shrink-0 text-black transform-none opacity-100 relative flex-none h-auto overflow-visible whitespace-pre w-auto box-border antialiased"
@@ -27,9 +31,10 @@ export const GhostButton = ({ children }: ChildProps) => {
                     {children}
                 </p>
             </div>
-        </button>
+        </motion.button>
     );
 };
+
 const glowButton = ({ children }: ChildProps) => {
     return (<>
         <div className="sp">
@@ -104,4 +109,4 @@ const glowButton = ({ children }: ChildProps) => {
     )
 }
 
-export { glowButton, Cta }
+export { glowButton, Cta, GhostButton }

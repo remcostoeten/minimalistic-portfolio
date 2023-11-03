@@ -36,7 +36,7 @@ const Intro = () => {
                                         'Frontend developer!',
                                         'Divjesschuiver',
                                         'Aspiring fullstacks',
-                                        'Decent guy',
+                                        'Recovering Magento developer',
                                     ]}
                                     interval={4000} />
                             </SubTitle>
