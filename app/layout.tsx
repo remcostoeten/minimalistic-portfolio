@@ -5,6 +5,7 @@ import ActiveSectionContextProvider from '@/lib/context/ActiveSectionContext';
 import { siteConfig } from '@/config/site';
 import { GeistMono, GeistSans } from "geist/font";
 import Intro from '@/components/landing/nav/Intro';
+import { Analytics } from '@vercel/analytics/react';
 
 const serif = Libre_Baskerville({
   subsets: ['latin'],
@@ -82,8 +83,10 @@ export default function RootLayout({
                 {children}
               </div>
             </main>
+            <Analytics />
           </body>
         </html>
+
       </ActiveSectionContextProvider >
     </ThemeContextProvider>
   );
