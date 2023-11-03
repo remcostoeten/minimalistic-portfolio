@@ -4,6 +4,7 @@
  */
 import * as React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function VisualStoryteller(props) {
   return (
@@ -15,10 +16,12 @@ export default function VisualStoryteller(props) {
     >
       <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0 relative">
         <motion.div
-          className="w-10 h-10 rounded-full z-10 bg-[#E9E8E9] absolute -left-[22px] -top-0 max-md:hidden"
+          className="circle flex items-center justify-centers align-middle w-10 h-10 rounded-full z-10 bg-[#e8e8e8] absolute -left-[22px] -top-0 max-md:hidden"
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0, duration: 1, type: "spring", stiffness: 100 }} />
+          transition={{ delay: 0, duration: 1, type: "spring", stiffness: 100 }} >
+          <Image src="/icons/code.svg" width={30} height={30} alt="Html To JSX converter" />
+        </motion.div>
         <motion.div
           className="flex flex-col items-stretch w-[2px] h-[100%] top-[90px] bg-[#323333] absolute left-0  max-md:w-full max-md:ml-0"
           initial={{ opacity: 0, height: 0 }}
@@ -38,7 +41,7 @@ export default function VisualStoryteller(props) {
               transition={{ delay: 0.8 }}
               className="text-gray-200 text-lg font-medium">
               Visual Storyteller
-            </motion.h4>d
+            </motion.h4>
             <motion.p initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
