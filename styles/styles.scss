@@ -2,17 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './variables/colors.scss';
+@import './base/theme.scss';
+@import './base/utillity-classes.scss';
+
+@import './utils/animations.scss';
+
+@import './base/typography.scss';
+
 @import './components/buttons.scss';
 @import './components/framer-motion.scss';
 @import './components/_grid-bitmoji.scss';
 @import './components/infinite-slider.scss';
-@import './variables/colors.scss';
-@import './utils/animations.scss';
-@import './base/theme.scss';
-@import './base/utillity-classes.scss';
 @import './components/loader.scss';
-@import './base/typography.scss';
-
+@import './components/showcase.scss';
 
 .shine-wrap {
   width: 100%;
