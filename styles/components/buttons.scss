@@ -1,3 +1,17 @@
+.ghostbtn {
+  transition: 125ms ease-in-out all;
+  border: 1px solid lighten(rgb(16, 16, 16), 15%);
+  width: fit-content;
+  font-size: 12px;
+
+  $darkmain: var(--darkmain);
+
+  &:hover {
+    cursor: pointer;
+    background-color: lighten(#101010, 5%);
+  }
+}
+
 .sparkle-button {
   --active: 0;
   --bg: radial-gradient(40% 50% at center 100%,
@@ -234,13 +248,13 @@
     color: #333;
     transition: all 0.5s ease-in-out;
   }
-  
+
   .btn-txt {
     z-index: 1;
     font-weight: 800;
     letter-spacing: 4px;
   }
-  
+
   .type1::after {
     content: "";
     position: absolute;
@@ -254,13 +268,13 @@
     width: 10px;
     z-index: -1;
   }
-  
+
   .button:hover {
     box-shadow: 1px 1px 200px #252525;
     color: #fff;
     border: none;
   }
-  
+
   .type1:hover::after {
     visibility: visible;
     transform: scale(100) translateX(2px);

@@ -1,4 +1,22 @@
-.container {
-    max-width: 1200px;
+$contained: 1024px;
+
+body {
+    background-color: $black;
+    transition: 250ms ease-in-out all;
+}
+
+.contained {
+    max-width: $contained;
     margin: 0 auto;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    @media (max-width: $contained) {
+        padding: 0 0.5rem;
+        margin: 0 1rem;
+    }
+}
+
+.mini-contained {
+    width: 600px;
 }

@@ -1,8 +1,7 @@
 "use client";
 
-import { SectionName } from "@/lib/types/types";
 import React, { useState, createContext, useContext, ReactNode } from "react";
-
+type SectionName = "Home" | "About" | "Projects" | "Contact";
 type ActiveSectionContextProviderProps = {
     children: React.ReactNode;
 };

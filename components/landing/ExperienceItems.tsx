@@ -1,5 +1,5 @@
 'use client';
-import { fadeScaleUp, smoothFadeUp } from "@/lib/animations";
+import { GridIn, fadeScaleUp, smoothFadeUp } from "@/lib/animations";
 import { WorkExperience } from "@/lib/experience";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
@@ -14,17 +14,6 @@ export default function ExperienceItems() {
     return () => clearTimeout(timeout);
   }, []);
 
-  const containerVariants = {
-    initial: {
-      opacity: 0,
-    },
-    animate: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
 
 
   const highlightVariants = {
@@ -39,16 +28,15 @@ export default function ExperienceItems() {
   return (
     <motion.div
       className="grid gap-4 overflow-hidden"
-      variants={containerVariants}
+      variants={GridIn}
       initial="initial"
       animate={show ? "animate" : "initial"}
     >
       {WorkExperience.map((work, index) => (
         <motion.div
           key={index}
-          className={`self-stretch flex w-full flex-col dark:bg-dark-alt bg-card-inner  p-card-inner card-inner rounded-card-inner ${
-            work.highlight ? "border-2  border-active " : ""
-          }`}
+          className={`self-stretch flex w-full flex-col dark:bg-dark-alt dark-gradient  p-card-inner card-inner rounded-card-inner ${work.highlight ? "border-2  border-active " : ""
+            }`}
           variants={smoothFadeUp}
         >
           <div className="flex w-full flex-grow flex-row max-md:max-w-full items-baseline justify-start gap-12">
@@ -60,7 +48,7 @@ export default function ExperienceItems() {
             </div>
           </div>
           {work.highlight && (
-            <motion.div 
+            <motion.div
               className="h-1 bg-theme mt-2"
               variants={highlightVariants}
               transition={{ duration: 0.3, repeat: Infinity, repeatType: "reverse" }}

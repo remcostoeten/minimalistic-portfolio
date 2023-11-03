@@ -15,6 +15,10 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['var(--font-geist-sans)'],
+        mono: ['var(--font-geist-mono)'],
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
@@ -41,7 +45,7 @@ module.exports = {
       },
       borderColor: {
         'active': '#B3775F',
-        'dark': '#1e231c',
+        'dark': 'var(--mainaccentn)',
       },
       fontSize: {
         '16': '16px',
@@ -63,14 +67,13 @@ module.exports = {
         'darkalt': '#7d7d7d',
       },
       backgroundColor: {
-        'black': '#111',
+        'body': '#020000',
         'grid': '#E4E5E4',
         'card-inner': '#161616',
         'card-inner-dark': '#111',
-        'body-dark': '#161616',
+        'body-dark': 'var(--darkmain)',
+        'body-dark-accent': 'var(--mainaccentn)',
         'dark-alt': '#0d0d0d',
-        // 'body-dark': '#161616',
-        // 'dark-alt': '#141414',
       }, width: {
         '198': '792px'
       }

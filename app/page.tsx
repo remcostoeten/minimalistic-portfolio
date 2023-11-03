@@ -1,18 +1,13 @@
-import Icon from "@/components/icons/icons";
-import ExperienceItems from "@/components/landing/ExperienceItems";
+import Greeting from "@/components/landing/Greeting";
 import Grid from "@/components/landing/Grid";
-import { WorkExperience } from "@/lib/experience";
-import React from "react";
+import VisualStoryteller from "@/components/landing/VisualStoryteller";
 
 export default function page() {
-
   return (
     <>
-
-      <Grid />      
-
+      <Greeting />
+      <VisualStoryteller />
+      <Grid />
     </>
-  );
+  )
 }
-
-

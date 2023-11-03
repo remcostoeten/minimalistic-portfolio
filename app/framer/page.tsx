@@ -13,7 +13,7 @@ const AnimationDemo: React.FC = () => {
   const [duration, setDuration] = useState<number>(1);
   const [selectedExample, setSelectedExample] = useState<number | null>(null);
 
-  const containerVariants = {
+  const Variants = {
     initial: { opacity: 0 },
     animate: { opacity: 1, transition: { staggerChildren: 0.1 } },
   };
@@ -68,10 +68,10 @@ const AnimationDemo: React.FC = () => {
   };
 
   return (
-    <div className="w-screen h-screen p-16 grid place-items-center bg-violet-400 border-white border-4">
+    <div className="w-screen h-screen p-16 grid text-white place-items-center">
       <h1 className="text-4xl font-bold mb-4">Framer Motion Animation Demo</h1>
       <div className="flex flex-col gap-2">
-        <div className="slider-container">
+        <div className="slider-">
           <label htmlFor="duration">Duration:</label>
           <input
             type="range"
@@ -85,10 +85,10 @@ const AnimationDemo: React.FC = () => {
           <span>{duration}</span>
         </div>
       </div>
-      <div className="box-container mt-8">
+      <div className="box- mt-8">
         <motion.div
-          className="container"
-          variants={containerVariants}
+          className=""
+          variants={Variants}
           initial="initial"
           animate="animate"
         >
@@ -106,8 +106,8 @@ const AnimationDemo: React.FC = () => {
             </motion.div>
           ))}
         </motion.div>
-        {[1, 2, 3, 4, 5].map((key) => (
-          <div key={key} className="box-container">
+        {[1].map((key) => (
+          <div key={key} className="box-">
             <motion.div
               className="box bg-green-500"
               // @ts-ignore
@@ -115,7 +115,7 @@ const AnimationDemo: React.FC = () => {
               initial="initial"
               animate={selectedExample === null || selectedExample === key ? 'animate' : 'initial'}
             ></motion.div>
-            <div className="slider-container">
+            <div className="slider-">
               <label htmlFor={`stiffness-slider-${key}`}>Stiffness {key}:</label>
               <input
                 type="range"
@@ -128,7 +128,7 @@ const AnimationDemo: React.FC = () => {
               />
               <span>{boxes[key - 1].stiffness}</span>
             </div>
-            <div className="slider-container">
+            <div className="slider-">
               <label htmlFor={`xValue-slider-${key}`}>X Value {key}:</label>
               <input
                 type="range"

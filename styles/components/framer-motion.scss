@@ -1,25 +1,26 @@
 .box {
-    width: 50vw;
+    width: 20vw;
     height: 50px;
     margin: 10px;
     animation: rainbow 5s linear infinite;
+    opacity: .5;
 }
 
 @keyframes rainbow {
     0% {
-        background-color: #f00;
+        background-color: rgb(115, 0, 255);
     }
     16.67% {
-        background-color: #ff0;
+        background-color: rgb(247, 0, 255);
     }
     33.33% {
-        background-color: #0f0;
+        background-color: rgb(102, 0, 255);
     }
     50% {
-        background-color: #0ff;
+        background-color: rgb(212, 0, 255);
     }
     66.67% {
-        background-color: #00f;
+        background-color: rgb(255, 0, 221);
     }
     83.33% {
         background-color: #f0f;
