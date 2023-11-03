@@ -11,7 +11,7 @@ export default function VisualStoryteller(props) {
       className="w-[650px] geist pt-10 mt-10 max-w-full ml-5 mb-8 self-start"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ delay: 0.8, duration: 1, type: "spring", stiffness: 100 }}
+      transition={{ delay: 1, duration: 1, type: "spring", stiffness: 100 }}
     >
       <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0 relative">
         <motion.div
