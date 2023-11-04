@@ -1,7 +1,7 @@
-import ListLayout from '@/layouts/ListLayoutWithTags'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
-import { genPageMetadata } from 'app/seo'
+import { genPageMetadata } from '@/app/(seo-blog)/seo'
+import ListLayout from '@/layouts/ListLayout'
 
 const POSTS_PER_PAGE = 5
 
@@ -14,6 +14,7 @@ export default function BlogPage() {
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber
   )
+
   const pagination = {
     currentPage: pageNumber,
     totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),

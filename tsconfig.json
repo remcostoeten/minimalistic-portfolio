@@ -10,7 +10,7 @@
     "skipLibCheck": true,
     "strict": false,
     "forceConsistentCasingInFileNames": false,
-    "noEmit": false,
+    "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -26,7 +26,9 @@
     "paths": {
       "@/*": [
         "./*"
-      ]
+      ],
+      "contentlayer/generated": ["./.contentlayer/generated"],
+
     },
     "strictNullChecks": true
   },

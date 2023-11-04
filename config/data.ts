@@ -12,5 +12,6 @@ export const siteConfig: SiteConfig = {
         email: 'mailto:remcostoeten@hotmail.com',
         baseurl: 'https://remcostoeten.com',
     },
+    locale: 'nl_NL, nl, en_US, en',
 };
 

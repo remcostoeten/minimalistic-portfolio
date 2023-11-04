@@ -1,3 +1,4 @@
+import { siteConfig } from '@/config/data'
 import { Metadata } from 'next'
 
 interface PageSEOProps {
@@ -12,18 +13,12 @@ export function genPageMetadata({ title, description, image, ...rest }: PageSEOP
   return {
     title,
     openGraph: {
-      title: `${title} | ${siteMetadata.title}`,
-      description: description || siteMetadata.description,
+      title: `${title} | ${siteConfig.name}`,
+      description: description || siteConfig.description,
       url: './',
-      siteName: siteMetadata.title,
-      images: image ? [image] : [siteMetadata.socialBanner],
+      siteName: siteConfig.name,
       locale: 'en_US',
       type: 'website',
-    },
-    twitter: {
-      title: `${title} | ${siteMetadata.title}`,
-      card: 'summary_large_image',
-      images: image ? [image] : [siteMetadata.socialBanner],
     },
     ...rest,
   }

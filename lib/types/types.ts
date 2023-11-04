@@ -1,3 +1,4 @@
+import { CommentsConfig } from "pliny/comments";
 import { links } from "../data/menulinks";
 
 export type ChildProps = {
@@ -7,6 +8,7 @@ export type ChildProps = {
 export type SectionName = (typeof links)[number]["name"];
 
 export interface SiteConfig {
+    comments: CommentsConfig;
     name: string;
     description: string;
     url: string;
@@ -18,5 +20,6 @@ export interface SiteConfig {
         email?: string;
         baseurl?: string;
     };
+    locale: string;
 }
 
