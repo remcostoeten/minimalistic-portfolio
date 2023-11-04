@@ -1,85 +1,95 @@
-'use client';
-import * as React from "react";
+'use client'
 import { motion } from "framer-motion";
 import Image from "next/image";
 import ShowcaseLabel from "../core/Labels";
-import { GhostButton } from "../core/buttons";
-
+import { ProjectData } from "@/config/data/ProjectData";
 export default function VisualStoryteller(_props) {
   return (
-    <motion.section
-      className="w-[650px] geist pt-10 mt-10 max-w-full ml-5 mb-8 self-start"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 1, duration: 1, type: "spring", stiffness: 100 }}
-    >
-      <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0 relative">
-        <motion.div
-          className="circle flex items-center justify-centers align-middle w-10 h-10 rounded-full z-10 bg-[#e8e8e8] absolute -left-[22px] -top-0 max-md:hidden"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0, duration: 1, type: "spring", stiffness: 100 }} >
-          <Image src="/icons/react.svg" width={30} height={30} alt="Html To JSX converter" />
-        </motion.div>
-        <motion.div
-          className="flex flex-col items-stretch w-[2px]  !h-[79%] top-[90px] bg-[#323333] absolute left-0  max-md:w-full max-md:ml-0 hover:bg-black"
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "100%" }}
-          transition={{ delay: 0.2, duration: 1, type: "spring", stiffness: 100 }}
-        />
-        <motion.div
-          className="flex flex-col items-stretch w-full ml-5  pl-4 max-md:w-full max-md:ml-0"
+    <div>
+      {ProjectData.map((data, index) => (
+        <motion.section
+          key={index}
+          className="w-[650px] geist pt-10 mt-10 max-w-full ml-5 mb-8 self-start"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 1, duration: 1, type: "spring", stiffness: 100 }}
         >
-          <div className="flex gap-[10px] geist grow flex-col max-md:max-w-full max-md:mt-10">
-            <motion.h4 initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              className="text-gray-200 text-lg font-medium">
-              Visual Storyteller
-            </motion.h4>
-            <motion.p initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="text-gray-400 text-lg self-start max-md:max-w-full">
-              Step into a mesmerizing realm of visual wonders with no bounds,
-              and every pixel tells a compelling tale. <br /> <br /> Step into a
-              captivating visual design realm, where pixels become masterful
-              storytellers. Transcend the ordinary, leaving an indelible
-              impression. Unveil the power of visual storytelling and be
-              inspired by our artistic vision.
-            </motion.p>
+          <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0 relative">
             <motion.div
-              className="shadow-sm bg-zinc-300 flex w-[600px] h-[300px] flex-col mt-10 rounded-lg self-start max-md:max-w-full max-md:mt-10"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
+              className="circle flex items-center justify-center align-middle w-10 h-10 rounded-full z-10 bg-[#e8e8e8] absolute -left-[22px] -top-0 max-md:hidden"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0, duration: 1, type: "spring", stiffness: 100 }}
+            >
+              <Image src="/icons/react.svg" width={30} height={30} alt="Html To JSX converter" />
+            </motion.div>
+            <motion.div
+              className="flex flex-col items-stretch w-[2px] !h-[79%] top-[90px] bg-[#323333] absolute left-0 max-md:w-full max-md:ml-0 hover:bg-"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "100%" }}
+              transition={{ delay: 0.2, duration: 1, type: "spring", stiffness: 100 }}
             />
             <motion.div
-              className="flex w-[296px] max-w-full items-start gap-2.5 mt-2 self-start max-md:justify-center"
+              className="flex flex-col items-stretch w-full ml-5 pl-4 max-md:w-full max-md:ml-0"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
+              transition={{ delay: 0.4 }}
             >
-              <div className="flex gap-2" >
-                <ShowcaseLabel>NextJS</ShowcaseLabel>
-                <ShowcaseLabel>TypeScript</ShowcaseLabel>
-                <ShowcaseLabel>Tool</ShowcaseLabel>
+              <div className="flex gap-[10px] geist grow flex-col max-md:max-w-full max-md:mt-10">
+                <motion.h4
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8 }}
+                  className="text-gray-200 text-lg font-medium"
+                >
+                  {data.title}
+                </motion.h4>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                  className="text-gray-400 text-lg self-start max-md:max-w-full"
+                >
+                  Step into a mesmerizing realm of visual wonders with no bounds,
+                  and every pixel tells a compelling tale. <br /> <br /> Step into a
+                  captivating visual design realm, where pixels become masterful
+                  storytellers. Transcend the ordinary, leaving an indelible
+                  impression. Unveil the power of visual storytelling and be
+                  inspired by our artistic vision.
+                </motion.p>
+                <motion.div
+                  className="shadow-sm bg-zinc-300 flex w-[600px] h-[300px] flex-col mt-10 rounded-lg self-start max-md:max-w-full max-md:mt-10"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.6 }}
+                />
+                <motion.div
+                  className="flex w-[296px] max-w-full items-start gap-2.5 mt-2 self-start max-md:justify-center"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8 }}
+                >
+                  <div className="flex gap-2">
+                    <ShowcaseLabel>NextJS</ShowcaseLabel>
+                    <ShowcaseLabel>TypeScript</ShowcaseLabel>
+                    <ShowcaseLabel>Tool</ShowcaseLabel>
+                  </div>
+                </motion.div>
+                <motion.button
+                  type="button"
+                  className="border bg-transparent bg-opacity-90 flex w-full flex justify-center items-center text-[#F2F5F6] text-sm py-2 flex-col mt-3 rounded-md border-solid border-neutral-600 self-start max-md:max-w-full text-"
+                  aria-label="View project"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1 }}
+                >
+                  View project
+                </motion.button>
               </div>
             </motion.div>
-            <motion.button
-              type="text"
-              className="border bg-transparent bg-opacity-90 flex w-full flex justify-center items-center text-[#F2F5F6] text-sm py-2  flex-col mt-3 rounded-md border-solid border-neutral-600 self-start max-md:max-w-full text-"
-              aria-label="Input 4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-            >View project</motion.button>
           </div>
-        </motion.div>
-      </div >
-    </motion.section >
+        </motion.section>
+      ))}
+    </div>
   );
 }
