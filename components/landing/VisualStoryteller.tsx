@@ -27,7 +27,7 @@ export default function VisualStoryteller(_props) {
         <motion.section
           id="projects"
           key={index}
-          className="w-[650px] geist pt-10 mt-10 max-w-full ml-5 mb-8 self-start"
+          className={`w-[650px] geist pt-10 mt-10 max-w-full ml-5 mb-8 self-start ${isExpanded ? 'fade-in' : ''}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1, type: "spring", stiffness: 100 }}
@@ -102,7 +102,7 @@ export default function VisualStoryteller(_props) {
                   transition={{ delay: 1 }}
                 >
                   <Link href={data.url} target="_blank">
-                    <GhostButton>View Project</GhostButton>
+                    View Project
                   </Link>
                 </motion.button>
               </div>
@@ -112,13 +112,17 @@ export default function VisualStoryteller(_props) {
         </motion.section>
       ))}
       </div>
-      {
-        isExpanded ? (
-          <GhostButton onClick={() => setIsExpanded(false)}>Read Less</GhostButton>
-        ) : (
-          <><div className="fade"></div><GhostButton onClick={handleReadMoreClick}>Read More</GhostButton></>
-        )
-      }
-    </>
-  );
+      <span className="mx-10">
+        {
+          isExpanded ? (
+            <GhostButton onClick={() => setIsExpanded(false)} className="fade-in">
+              Read Less
+            </GhostButton>
+          ) : (
+            <><div className="fade absolute"></div><GhostButton onClick={handleReadMoreClick} className="fade-in">
+              Read More
+            </GhostButton></>
+    }
+  }
+        );
 }

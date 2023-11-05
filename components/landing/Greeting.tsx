@@ -4,13 +4,19 @@ import { motion } from "framer-motion";
 import { GhostButton } from "../core/buttons";
 import Flexer from "../core/layout/Flexer";
 import { toast } from 'sonner';
+import { useEffect } from "react";
 
 export default function Greeting() {
-    toast('My toast', {
-        description: 'Site is under construction',
-        duration: 5000,
-    });
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            toast('Site is under constructions', {
+                description: 'And is strictly for testing purposes only.',
+                duration: 5000,
+            });
+        }, 2000);
 
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
         <Flexer gap="10">
