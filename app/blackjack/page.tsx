@@ -31,7 +31,7 @@ const Page = () => {
   const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '0', '10', 'A'];
 
   return (
-    <div className='rounded-lg border border-zinc-200 bg-white text-zinc-950 shadow-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 mb-4 flex gap-4 flex-col w-full' >
+    <div className='p-10 rounded-lg border border-zinc-200 bg-white text-zinc-950 shadow-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 mb-4 flex gap-4 flex-col w-full' >
       <h1 className="text-2xl font-bold mb-4">Blackjack Decision Maker</h1>
       <div className="flex flex-col md:flex-row gap-8 w-full">
         <div className='rounded-lg border border-zinc-200 bg-white text-zinc-950 shadow-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 mb-4 flex gap-4 flex-col w-full' >
@@ -41,7 +41,7 @@ const Page = () => {
               <button
                 key={value}
                 onClick={() => setPlayerCard1(value)}
-                className="px-2 py-1 bg-blue-500 text-white rounded"
+                className="px-2 py-1 bg-indigo-900 text-white rounded"
               >
                 {value}
               </button>
@@ -56,7 +56,7 @@ const Page = () => {
               <button
                 key={value}
                 onClick={() => setPlayerCard2(value)}
-                className="px-2 py-1 bg-blue-500 text-white rounded"
+                className="px-2 py-1 bg-indigo-500 text-white rounded"
               >
                 {value}
               </button>
@@ -71,7 +71,7 @@ const Page = () => {
               <button
                 key={value}
                 onClick={() => setDealerUpcard(value)}
-                className="px-2 py-1 bg-blue-500 text-white rounded"
+                className="px-2 py-1 bg-red-950 text-white rounded"
               >
                 {value}
               </button>
