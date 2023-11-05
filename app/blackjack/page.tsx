@@ -1,15 +1,21 @@
 'use client';
 import React, { useState } from 'react';
-import blackjackData from '@/lib/blackjack.json'; // Assuming the JSON file is correctly located
+import blackjackData from '@/lib/blackjack.json';
+import { Button } from '@/components/ui/Button';
+import { Card } from '@/components/ui/Card';
 
-const BlackjackDecision = () => {
-  const [playerHand, setPlayerHand] = useState('');
+const Page = () => {
+  const [playerCard1, setPlayerCard1] = useState('');
+  const [playerCard2, setPlayerCard2] = useState('');
   const [dealerUpcard, setDealerUpcard] = useState('');
   const [decision, setDecision] = useState('');
 
   const handleCalculateDecision = () => {
-    if (playerHand && dealerUpcard) {
-      const playerHandValue = playerHand.toUpperCase();
+    if (playerCard1 && playerCard2 && dealerUpcard) {
+      const cardValuesMap = { 'A': 1, 'J': 10, 'Q': 10, 'K': 10 };
+      const card1Value = isNaN(Number(playerCard1)) ? cardValuesMap[playerCard1] : parseInt(playerCard1);
+      const card2Value = isNaN(Number(playerCard2)) ? cardValuesMap[playerCard2] : parseInt(playerCard2);
+      const playerHandValue = (card1Value + card2Value).toString().toUpperCase();
       const dealerUpcardValue = dealerUpcard.toUpperCase();
 
       if (blackjackData.strategy[playerHandValue]) {
@@ -19,49 +25,66 @@ const BlackjackDecision = () => {
         setDecision('Invalid input');
       }
     } else {
-      setDecision('Please enter both hands');
+      setDecision('Please enter all hands');
     }
   };
 
+  const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '0', '10', 'A'];
+
   return (
-    <div className="p-4">
+    <Card className="p-4 text-[#eee] h-full w-full grid place-items-center">
       <h1 className="text-2xl font-bold mb-4">Blackjack Decision Maker</h1>
-      <div className="mb-4">
-        <label className="block text-sm font-medium">Your Hand:</label>
-        <input
-          type="text"
-          value={playerHand}
-          onChange={(e) => setPlayerHand(e.target.value)}
-          placeholder="e.g., 10 or A2"
-          className="w-32 border border-gray-300 rounded py-1 px-2"
-        />
+      <div className="flex gap-8">
+        <Card className="mb-4 flex gap-4 flex-col">
+          <label className="block text-sm font-medium">Your First Card:</label>
+          <div className="grid grid-cols-4 gap-2">
+            {cardValues.map((value) => (
+              <button
+                key={value}
+                onClick={() => setPlayerCard1(value)}
+                className="px-2 py-1 bg-blue-500 text-white rounded"
+              >
+                {value}
+              </button>
+            ))}
+          </div>
+          <span>Selected: {playerCard1}</span>
+        </Card>
+        <Card className="mb-4 flex gap-4 flex-col">
+          <label className="block text-sm font-medium">Your Second Card:</label>
+          <div className="grid grid-cols-4 gap-2">
+            {cardValues.map((value) => (
+              <button
+                key={value}
+                onClick={() => setPlayerCard2(value)}
+                className="px-2 py-1 bg-blue-500 text-white rounded"
+              >
+                {value}
+              </button>
+            ))}
+          </div>
+          <span>Selected: {playerCard2}</span>
+        </Card>
+        <Card className="mb-4 flex gap-4 flex-col">
+          <label className="block text-sm font-medium">Dealer's Card:</label>
+          <div className="grid grid-cols-4 gap-2">
+            {cardValues.map((value) => (
+              <button
+                key={value}
+                onClick={() => setDealerUpcard(value)}
+                className="px-2 py-1 bg-blue-500 text-white rounded"
+              >
+                {value}
+              </button>
+            ))}
+          </div>
+          <span>Selected: {dealerUpcard}</span>
+        </Card>
       </div>
-      <div className="mb-4">
-        <label className="block text-sm font-medium">Dealer's Upcard:</label>
-        <input
-          type="text"
-          value={dealerUpcard}
-          onChange={(e) => setDealerUpcard(e.target.value)}
-          placeholder="e.g., 6 or K"
-          className="w-32 border border-gray-300 rounded py-1 px-2"
-        />
-      </div>
-      <button
-        onClick={handleCalculateDecision}
-        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-      >
-        Calculate Decision
-      </button>
-      <div className="mt-4">
-        {decision && (
-          <p className="font-semibold">
-            Best Decision: <span className="text-green-500">{decision}</span>
-          </p>
-        )}
-      </div>
-    </div>
+      <Button onClick={handleCalculateDecision}>Calculate Decision</Button>
+      <div>Decision: {decision}</div>
+    </Card>
   );
 };
 
-export default BlackjackDecision;
-
+export default Page;
