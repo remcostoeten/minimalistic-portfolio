@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const links = [
-    { name: 'Home', hash: '#home' },
+    { name: 'Home', hash: '/' },
     { name: 'About', hash: '#about' },
     { name: 'Projects', hash: '#projects' },
     { name: 'Contact', hash: '#contact' },
@@ -30,7 +30,7 @@ const Intro = () => {
                 <motion.div variants={item} className="flex flex-row justify-between items-center gap-4">
                     <motion.div variants={item} className="flex flex-col gap-4">
                         <motion.span variants={item} className="flex flex-col gap-1">
-                            <PageTitle isGeist>Remco</PageTitle>
+                            <PageTitle isGeist><Link href='/'>Remco</Link></PageTitle>
                             <SubTitle isGeist>
                                 <SwappingWords
                                     words={[

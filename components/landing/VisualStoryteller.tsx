@@ -1,4 +1,5 @@
 
+
 'use client'
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -23,6 +24,7 @@ export default function VisualStoryteller(_props) {
         transition: 'max-height 0.5s ease-in-out'
       }}>     {ProjectData.map((data, index) => (
         <motion.section
+          id="projects"
           key={index}
           className="w-[650px] geist pt-10 mt-10 max-w-full ml-5 mb-8 self-start"
           initial={{ opacity: 0 }}
