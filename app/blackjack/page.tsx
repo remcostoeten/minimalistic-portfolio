@@ -1,8 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import blackjackData from '@/lib/blackjack.json';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import { Button } from '@nextui-org/react';
 
 const Page = () => {
   const [playerCard1, setPlayerCard1] = useState('');
@@ -32,10 +31,10 @@ const Page = () => {
   const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '0', '10', 'A'];
 
   return (
-    <Card className="p-4 text-[#eee] h-full w-full flex flex-col md:grid place-items-center">
+    <div className='rounded-lg border border-zinc-200 bg-white text-zinc-950 shadow-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50' className="p-4 text-[#eee] h-full w-full flex flex-col md:grid place-items-center">
       <h1 className="text-2xl font-bold mb-4">Blackjack Decision Maker</h1>
       <div className="flex flex-col md:flex-row gap-8 w-full">
-        <Card className="mb-4 flex gap-4 flex-col w-full">
+        <div className='rounded-lg border border-zinc-200 bg-white text-zinc-950 shadow-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 mb-4 flex gap-4 flex-col w-full' >
           <label className="block text-sm font-medium">Your First Card:</label>
           <div className="grid grid-cols-4 gap-2">
             {cardValues.map((value) => (
@@ -49,8 +48,8 @@ const Page = () => {
             ))}
           </div>
           <span>Selected: {playerCard1}</span>
-        </Card>
-        <Card className="mb-4 flex gap-4 flex-col w-full">
+        </div>
+        <div className='rounded-lg border border-zinc-200 bg-white text-zinc-950 shadow-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 mb-4 flex gap-4 flex-col w-full' >
           <label className="block text-sm font-medium">Your Second Card:</label>
           <div className="grid grid-cols-4 gap-2">
             {cardValues.map((value) => (
@@ -64,8 +63,8 @@ const Page = () => {
             ))}
           </div>
           <span>Selected: {playerCard2}</span>
-        </Card>
-        <Card className="mb-4 flex gap-4 flex-col w-full">
+        </div>
+        <div className='rounded-lg border border-zinc-200 bg-white text-zinc-950 shadow-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 mb-4 flex gap-4 flex-col w-full' >
           <label className="block text-sm font-medium">Dealer's Card:</label>
           <div className="grid grid-cols-4 gap-2">
             {cardValues.map((value) => (
@@ -79,11 +78,11 @@ const Page = () => {
             ))}
           </div>
           <span>Selected: {dealerUpcard}</span>
-        </Card>
+        </div>
       </div>
       <Button onClick={handleCalculateDecision}>Calculate Decision</Button>
       <div>Decision: {decision}</div>
-    </Card>
+    </div>
   );
 };
 
