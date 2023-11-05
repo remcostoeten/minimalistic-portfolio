@@ -1,4 +1,3 @@
-import { ChildProps } from "@/lib/types/types"
 import { motion } from "framer-motion";
 
 const Cta = ({ children }: ChildProps) => {
@@ -21,11 +20,26 @@ const CtaGhost = ({ children }: ChildProps) => {
     )
 }
 
-const GhostButton = ({ children, onClick, className }: ChildProps) => {
+interface ChildProps {
+    children: React.ReactNode;
+    onClick: () => void;
+    className?: string;
+    size?: 'large' | 'medium' | 'small';
+}
+
+const GhostButton = ({ children, onClick, className, size }: ChildProps) => {
+    let buttonStyle = "h-10 px-6 text-sm";
+
+    if (size === 'large') {
+        buttonStyle = "h-12 px-8 !text-lg  !py-[7px] !px-[28px] ";
+    } else if (size === 'small') {
+        buttonStyle = "h-8 px-4 text-xs";
+    }
+
     return (
         <motion.button
             onClick={onClick}
-            className={`ghostbtn geist font-normal border-solid bg-body-dark rounded-lg flex flex-row items-center gap-3 text-sm w-auto h-10 px-6 relative box-border antialiased p-2q ${className}`}
+            className={`ghostbtn geist font-normal border-solid bg-body-dark rounded-lg flex flex-row items-center gap-3 w-auto relative box-border antialiased p-2q ${className} ${buttonStyle}`}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "100%" }}
             transition={{ delay: 0.8, duration: 1, type: "spring", stiffness: 25 }}

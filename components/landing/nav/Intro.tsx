@@ -18,18 +18,26 @@ const reveal = {
     show: { opacity: 1, y: 0 }
 };
 
-const item = {
-    hidden: { opacity: 0, y: -25 },
-    show: { opacity: 1, y: 0 }
+const menuItemAnimation = {
+    hidden: { opacity: 0, y: 35, x: 15 },
+    show: { opacity: 1, y: 0, x: 0 },
+    transition: {
+        staggerChildren: 0.3,
+        type: "tween",
+        damping: 25,
+        stiffness: 25,
+        duration: 0.8,
+        ease: "easeOut"
+    },
 };
-
-const container = {
+const menuContainerAnimation = {
     hidden: { opacity: 0 },
     show: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.5
-        }
+            staggerChildren: 0.3,
+            duration: 0.5
+        },
     }
 };
 
@@ -38,9 +46,9 @@ const Intro = () => {
     return (
         <div className='pt-[40px] contained geist flex flex-col gap-[64px]'>
             <motion.div variants={reveal} initial="hidden" animate="show" className=" flex justify-between  flex-col gap-2 text-center ">
-                <motion.div variants={item} className="flex flex-row justify-between items-center gap-4">
-                    <motion.div variants={item} className="flex flex-col gap-4">
-                        <motion.span variants={item} className="flex flex-col gap-1">
+                <motion.div variants={menuItemAnimation} className="flex flex-row justify-between items-center gap-4">
+                    <motion.div variants={menuItemAnimation} className="flex flex-col gap-4">
+                        <motion.span variants={menuItemAnimation} className="flex flex-col gap-1">
                             <PageTitle isGeist><Link href='/'>Remco</Link></PageTitle>
                             <SubTitle isGeist>
                                 <SwappingWords
@@ -59,16 +67,23 @@ const Intro = () => {
                                 delay: .8,
                             }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="items-center justify-start flex flex-row flex-nowrap gap-6 h-auto overflow-hidden relative w-full p-0">
+                            className="items-center justify-start flex flex-row flex-nowrap gap-6 h-auto  relative w-full p-0">
                             <motion.ul
-                                variants={container}
+                                variants={menuContainerAnimation}
                                 initial="hidden"
                                 animate="show"
                                 className='flex gap-4'
+                                transition={{ staggerChildren: 1.1 }}
                             >
                                 {links.map((link, index) => (
                                     <motion.li
-                                        variants={item}
+                                        initial={{ opacity: 0, y: 10, x: 15 }}
+                                        transition={{
+                                            duration: .4,
+                                            delay: .8,
+                                            staggerChildren: 1.1
+                                        }}
+                                        animate={{ opacity: 1, y: 0, x: 0 }}
                                         key={index}
                                     >
                                         <Link href={link.hash} className="text-base  geist text-white">

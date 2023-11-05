@@ -4,6 +4,7 @@ export type ChildProps = {
     children: React.ReactNode;
     onClick?: () => void;
     className?: string;
+    size?: 'large' | 'medium' | 'small';
 };
 
 export type SectionName = (typeof links)[number]["name"];
