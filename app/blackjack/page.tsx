@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import blackjackData from '@/lib/blackjack.json';
 import { Button } from '@nextui-org/react';
 
@@ -16,6 +16,10 @@ const Page = () => {
       const card2Value = isNaN(Number(playerCard2)) ? cardValuesMap[playerCard2] : parseInt(playerCard2);
       const playerHandValue = (card1Value + card2Value).toString().toUpperCase();
       const dealerUpcardValue = dealerUpcard.toUpperCase();
+
+      useEffect(() => {
+        handleCalculateDecision();
+      }, [playerCard1, playerCard2, dealerUpcard]);
 
       if (blackjackData.strategy[playerHandValue]) {
         const action = blackjackData.strategy[playerHandValue][dealerUpcardValue];

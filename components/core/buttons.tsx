@@ -21,11 +21,11 @@ const CtaGhost = ({ children }: ChildProps) => {
     )
 }
 
-const GhostButton = ({ children, ...rest }: ChildProps) => {
+const GhostButton = ({ children, onClick, className }: ChildProps) => {
     return (
         <motion.button
-            {...rest}
-            className="ghostbtn geist font-normal border-solid bg-body-dark rounded-lg flex flex-row items-center gap-3 text-sm w-auto h-10 px-6 relative box-border antialiased p-2q"
+            onClick={onClick}
+            className={`ghostbtn geist font-normal border-solid bg-body-dark rounded-lg flex flex-row items-center gap-3 text-sm w-auto h-10 px-6 relative box-border antialiased p-2q ${className}`}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "100%" }}
             transition={{ delay: 0.8, duration: 1, type: "spring", stiffness: 25 }}

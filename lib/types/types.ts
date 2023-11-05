@@ -3,6 +3,7 @@ import { links } from "../data/menulinks";
 export type ChildProps = {
     children: React.ReactNode;
     onClick?: () => void;
+    className?: string;
 };
 
 export type SectionName = (typeof links)[number]["name"];
