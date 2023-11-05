@@ -14,7 +14,7 @@ import TextRevealSkew from "../effects/TextRevealSkew";
 
 const GridItem = ({ children }: ChildProps) => (
 
-    <motion.div initial={{ opacity: 0, y: 50 }} transition={{ delay: 0.9, duration: 0.4 }} animate={{ opacity: 1, y: 0 }} className="body-dark-accent perspective dark:body-dark-accent dark:border-dark dark:text-white flex h-[161px] flex-col grow shrink-0 basis-auto flex-1 rounded-16 justify-center items-center gap-y-4">
+    <motion.div initial={{ opacity: 0, y: 50 }} transition={{ delay: 0.9, duration: 0.4 }} animate={{ opacity: 1, y: 0 }} className="border-1 body-dark-accent perspective dark:body-dark-accent dark:border-dark dark:text-white flex h-[161px] flex-col grow shrink-0 basis-auto flex-1 rounded-16 justify-center items-center gap-y-4">
         {children}
     </motion.div>
 );

@@ -9,6 +9,7 @@ import { Button, ButtonGroup } from '@nextui-org/react';
 import { GhostButton } from '../core/buttons';
 import Link from 'next/link';
 import useInView from '@/hooks/useInView';
+import { motion } from 'framer-motion';
 
 export default function VisualStoryteller() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -35,17 +36,24 @@ export default function VisualStoryteller() {
           });
 
           return (
-            <section
+            <motion.section
               ref={ref}
               id="projects"
               key={index}
               className="w-[650px] geist pt-10 mt-10 max-w-full ml-5 mb-8 self-start"
+              initial={{ opacity: 0, y: 10, x: 15 }}
+              transition={{
+                duration: .4,
+                delay: .8,
+                staggerChildren: 1.1
+              }}
+              animate={{ opacity: 1, y: 0, x: 0 }}
             >
               <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0 relative">
                 <div
                   className="circle flex items-center justify-center align-middle w-10 h-10 rounded-full z-10 bg-[#e8e8e8] absolute -left-[22px] -top-0 max-md:hidden"
                 >
-                  <Image src="/icons/react.svg" width={30} height={30} alt="Html To JSX converter" />
+                  <Image src={data.icon} width={30} height={30} alt="Html To JSX converter" />
                 </div>
                 <div
                   className="flex flex-col items-stretch w-[2px] !h-[79%] top-[90px] bg-[#323333] absolute left-0 max-md:w-full max-md:ml-0 hover:bg-"
@@ -70,10 +78,33 @@ export default function VisualStoryteller() {
                     />
                     <div
                       className="flex w-[296px] max-w-full items-start gap-2.5 mt-2 self-start max-md:justify-center"
+                      as={motion.div}
+                      initial="hidden"
+                      animate="show"
+                      variants={{
+                        hidden: { opacity: 0 },
+                        show: {
+                          opacity: 1,
+                          transition: {
+                            staggerChildren: 1.1
+                          }
+                        }
+                      }}
                     >
                       <div className="flex gap-2">
                         {data.labels.map((label, index) => (
-                          <ShowcaseLabel key={index}>{label}</ShowcaseLabel>
+                          <motion.div
+                            key={index}
+                            variants={{
+                              hidden: { y: 20, opacity: 0 },
+                              show: { y: 0, opacity: 1, scale: 3 }
+                            }}
+                            transition={{
+                              staggerChildren: 1.1
+                            }}
+                          >
+                            <ShowcaseLabel>{label}</ShowcaseLabel>
+                          </motion.div>
                         ))}
                       </div>
                     </div>
@@ -89,23 +120,29 @@ export default function VisualStoryteller() {
                   </div>
                 </div>
               </div>
-            </section>
+            </motion.section>
           );
         })}
       </div>
-      <span className="mx-10">
+      <motion.span className="mx-10" initial={{ opacity: 0, y: -120, x: 15 }}
+        transition={{
+          duration: .8,
+          delay: 1,
+        }}
+        animate={{ opacity: 1, y: 0, x: 0 }}
+      >
         {isExpanded ? (
-          <GhostButton onClick={() => setIsExpanded(false)} className="fade-in">
-            Read Less
-          </GhostButton>
+          <Button variant='ghost' onClick={() => setIsExpanded(false)} className="fade-in">
+            View Less
+          </Button>
         ) : (
           <><div className='fade absolute'></div>
-            <GhostButton size='large' onClick={handleReadMoreClick} className="fade-in">
-              Read More
-            </GhostButton>
+            <Button variant='ghost' onClick={handleReadMoreClick} className="fade-in">
+              View more
+            </Button>
           </>
         )}
-      </span>
+      </motion.span>
     </div>
   );
 }
