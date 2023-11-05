@@ -1,25 +1,59 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Card } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import blackjackData from '@/lib/blackjack.json';
-import { Button } from '@nextui-org/react';
+import {toast} from 'sonner'
+// Function to get the strategy based on player's hand and dealer's card
+function getStrategy(playerHand, dealerCard) {
+  const strategy = blackjackData.strategy[playerHand];
+  if (strategy) {
+    return strategy[dealerCard];
+  } else {
+    throw new Error(`No strategy found for player's hand: ${playerHand}`);
+  }
+}
 
 const Page = () => {
   const [playerCard1, setPlayerCard1] = useState('');
   const [playerCard2, setPlayerCard2] = useState('');
   const [dealerUpcard, setDealerUpcard] = useState('');
   const [decision, setDecision] = useState('');
+  const [winChance, setWinChance] = useState(0); // Initialize win chance to 0
+  const [selectedCard1, setSelectedCard1] = useState('');
+  const [selectedCard2, setSelectedCard2] = useState('');
+  const [selectedDealerCard, setSelectedDealerCard] = useState('');
+  const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'A', 'Q', 'K'];
+  const [playerStrategy, setPlayerStrategy] = useState();
+  useEffect(() => {
+    document.body.classList.add('blackjack');
+    return () => {
+      document.body.classList.remove('blackjack');
+    };
 
-  const handleCalculateDecision = () => {
+    toast.success('Work in progress.!');
+  }, []);
+
+  useEffect(() => {
     if (playerCard1 && playerCard2 && dealerUpcard) {
-      const cardValuesMap = { 'A': 1, 'J': 10, 'Q': 10, 'K': 10 };
+      const cardValuesMap = { 'A': 11, 'J': 10, 'Q': 10, 'K': 10 };
       const card1Value = isNaN(Number(playerCard1)) ? cardValuesMap[playerCard1] : parseInt(playerCard1);
       const card2Value = isNaN(Number(playerCard2)) ? cardValuesMap[playerCard2] : parseInt(playerCard2);
-      const playerHandValue = (card1Value + card2Value).toString().toUpperCase();
-      const dealerUpcardValue = dealerUpcard.toUpperCase();
+      let playerHandValue;
+      if (card1Value === 10 && card2Value === 10) {
+        playerHandValue = 'T,T';
+      } else if (playerCard1 === 'A' && playerCard2 === 'A') {
+        playerHandValue = 'A,A';
+      } else if (card1Value === 10 && card2Value === 11) {
+        playerHandValue = 'A,T';
+      } else if (card1Value === 11 && card2Value === 10) {
+        playerHandValue = 'A,T';
+      } else {
+        playerHandValue = (card1Value + card2Value).toString().toUpperCase();
+      }
 
-      useEffect(() => {
-        handleCalculateDecision();
-      }, [playerCard1, playerCard2, dealerUpcard]);
+      const dealerUpcardValue = dealerUpcard.toUpperCase();
 
       if (blackjackData.strategy[playerHandValue]) {
         const action = blackjackData.strategy[playerHandValue][dealerUpcardValue];
@@ -27,66 +61,105 @@ const Page = () => {
       } else {
         setDecision('Invalid input');
       }
-    } else {
-      setDecision('Please enter all hands');
     }
+  }, [playerCard1, playerCard2, dealerUpcard]);
+
+  const calculateHandValue = (hand) => {
+    const cardValuesMap = { 'A': 11, 'J': 10, 'Q': 10, 'K': 10 };
+    return hand.split('').reduce((total, card) => {
+      return total + (cardValuesMap[card] || parseInt(card));
+    }, 0);
   };
 
-  const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '0', '10', 'A'];
-
   return (
-    <div className='p-10 rounded-lg border border-zinc-200 bg-white text-zinc-950 shadow-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 mb-4 flex gap-4 flex-col w-full' >
-      <h1 className="text-2xl font-bold mb-4">Blackjack Decision Maker</h1>
-      <div className="flex flex-col md:flex-row gap-8 w-full">
-        <div className='rounded-lg border border-zinc-200 bg-white text-zinc-950 shadow-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 mb-4 flex gap-4 flex-col w-full' >
-          <label className="block text-sm font-medium">Your First Card:</label>
-          <div className="grid grid-cols-4 gap-2">
+    <>
+      {decision && (
+        <div className={`geist shadow animated-decision inset-0 absolute z-10 pointer-events-none flex items-center justify-center ${decision.toLowerCase()}`}>
+          {decision}
+        </div>
+      )}
+      <section className=" mx-auto p-4 flex flex-col gap-2 md:p-8">
+
+      <Card className="p-5 flex flex-col gap-2">
+          <h2 className="text-2xl font-bold mb-4">Result:</h2>
+          <p className={`text-lg ${decision === 'hit' ? 'text-green-500' : 'text-red-500'} dark:text-zinc-400`}>{decision}</p>
+        </Card>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
+          <Card className="p-5 flex flex-col gap-8">
+            <label htmlFor="card1">Your Card 1</label>
+            <Input
+              id="card1"
+              placeholder="Enter card value"
+              value={playerCard1}
+              onChange={(e) => setPlayerCard1(e.target.value)}
+            />
+            <div className="flex flex-wrap gap-2 mt-4">
+              {cardValues.map((value) => (
+                <button
+                  key={value}
+                  className={selectedCard1 === value ? 'selected' : ''}
+                  onClick={() => {
+                    setPlayerCard1(value);
+                    setSelectedCard1(value);
+                  }}
+                >
+                  <img style={{ width: '120px' }} src={`/cards/${value}.svg`} alt={value} />
+                </button>
+              ))}
+            </div>
+          </Card>
+
+          <Card className="p-5 flex flex-col gap-8">
+            <label htmlFor="card2">Your Card 2</label>
+            <Input
+              id="card2"
+              placeholder="Enter card value"
+              value={playerCard2}
+              onChange={(e) => setPlayerCard2(e.target.value)}
+            />
+            <div className="flex flex-wrap gap-2 mt-4">
+              {cardValues.map((value) => (
+                <button
+                  key={value}
+                  className={selectedCard2 === value ? 'selected' : ''}
+                  onClick={() => {
+                    setPlayerCard2(value);
+                    setSelectedCard2(value);
+                  }}
+                >
+                  <img style={{ width: '121px' }} src={`/cards/${value}.svg`} alt={value} />
+                </button>
+              ))}
+            </div>
+          </Card>
+        </div>
+
+        <Card className="p-5 flex flex-col gap-8">
+          <label htmlFor="dealerCard">Dealer's Card</label>
+          <Input
+            id="dealerCard"
+            placeholder="Enter card value"
+            value={dealerUpcard}
+            onChange={(e) => setDealerUpcard(e.target.value)}
+          />
+          <div className="flex flex-wrap gap-2 mt-4">
             {cardValues.map((value) => (
               <button
                 key={value}
-                onClick={() => setPlayerCard1(value)}
-                className="px-2 py-1 bg-indigo-900 text-white rounded"
+                className={selectedDealerCard === value ? 'selected' : ''}
+                onClick={() => {
+                  setDealerUpcard(value);
+                  setSelectedDealerCard(value);
+                }}
               >
-                {value}
+                <img style={{ width: '121px' }} src={`/cards/${value}.svg`} alt={value} />
               </button>
             ))}
           </div>
-          <span>Selected: {playerCard1}</span>
-        </div>
-        <div className='rounded-lg border border-zinc-200 bg-white text-zinc-950 shadow-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 mb-4 flex gap-4 flex-col w-full' >
-          <label className="block text-sm font-medium">Your Second Card:</label>
-          <div className="grid grid-cols-4 gap-2">
-            {cardValues.map((value) => (
-              <button
-                key={value}
-                onClick={() => setPlayerCard2(value)}
-                className="px-2 py-1 bg-indigo-500 text-white rounded"
-              >
-                {value}
-              </button>
-            ))}
-          </div>
-          <span>Selected: {playerCard2}</span>
-        </div>
-        <div className='rounded-lg border border-zinc-200 bg-white text-zinc-950 shadow-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 mb-4 flex gap-4 flex-col w-full' >
-          <label className="block text-sm font-medium">Dealer's Card:</label>
-          <div className="grid grid-cols-4 gap-2">
-            {cardValues.map((value) => (
-              <button
-                key={value}
-                onClick={() => setDealerUpcard(value)}
-                className="px-2 py-1 bg-red-950 text-white rounded"
-              >
-                {value}
-              </button>
-            ))}
-          </div>
-          <span>Selected: {dealerUpcard}</span>
-        </div>
-      </div>
-      <Button onClick={handleCalculateDecision}>Calculate Decision</Button>
-      <div>Decision: {decision}</div>
-    </div>
+        </Card>
+
+      </section>
+    </>
   );
 };
 
