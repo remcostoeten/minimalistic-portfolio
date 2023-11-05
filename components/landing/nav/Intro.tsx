@@ -10,6 +10,7 @@ const links = [
     { name: 'About', hash: '#about' },
     { name: 'Projects', hash: '#projects' },
     { name: 'Contact', hash: '#contact' },
+    { name: 'Blackjack', hash: '/blackjack' },
 ];
 
 const reveal = {

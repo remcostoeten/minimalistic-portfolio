@@ -32,10 +32,10 @@ const Page = () => {
   const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '0', '10', 'A'];
 
   return (
-    <Card className="p-4 text-[#eee] h-full w-full grid place-items-center">
+    <Card className="p-4 text-[#eee] h-full w-full flex flex-col md:grid place-items-center">
       <h1 className="text-2xl font-bold mb-4">Blackjack Decision Maker</h1>
-      <div className="flex gap-8">
-        <Card className="mb-4 flex gap-4 flex-col">
+      <div className="flex flex-col md:flex-row gap-8 w-full">
+        <Card className="mb-4 flex gap-4 flex-col w-full">
           <label className="block text-sm font-medium">Your First Card:</label>
           <div className="grid grid-cols-4 gap-2">
             {cardValues.map((value) => (
@@ -50,7 +50,7 @@ const Page = () => {
           </div>
           <span>Selected: {playerCard1}</span>
         </Card>
-        <Card className="mb-4 flex gap-4 flex-col">
+        <Card className="mb-4 flex gap-4 flex-col w-full">
           <label className="block text-sm font-medium">Your Second Card:</label>
           <div className="grid grid-cols-4 gap-2">
             {cardValues.map((value) => (
@@ -65,7 +65,7 @@ const Page = () => {
           </div>
           <span>Selected: {playerCard2}</span>
         </Card>
-        <Card className="mb-4 flex gap-4 flex-col">
+        <Card className="mb-4 flex gap-4 flex-col w-full">
           <label className="block text-sm font-medium">Dealer's Card:</label>
           <div className="grid grid-cols-4 gap-2">
             {cardValues.map((value) => (
