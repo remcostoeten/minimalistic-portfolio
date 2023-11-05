@@ -31,7 +31,7 @@ export default function VisualStoryteller() {
       }}>
         {ProjectData.map((data, index) => {
           const [ref, isVisible] = useInView({
-            threshold: 0.1,
+            threshold: 0.,
             freezeOnceVisible: true
           });
 
@@ -41,9 +41,9 @@ export default function VisualStoryteller() {
               id="projects"
               key={index}
               className="w-[650px] geist pt-10 mt-10 max-w-full ml-5 mb-8 self-start"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isVisible ? 1 : 0 }}
-              transition={{ delay: 1, duration: 1, type: "spring", stiffness: 100 }}
+              initial={{ opacity: .5, y: 100 , sacle: 3 }}
+              animate={{ opacity: isVisible ? 1 : .5, y: isVisible ? 0 :  100, scale: isVisible ? 1 : 3 }}
+              transition={{ delay: .3, duration: 1, type: "spring", stiffness: 100 }}
             >
               <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0 relative">
                 <motion.div

@@ -23,6 +23,17 @@ const item = {
     show: { opacity: 1, y: 0 }
 };
 
+const container = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.5
+        }
+    }
+};
+
+
 const Intro = () => {
     return (
         <div className='pt-[40px] contained geist flex flex-col gap-[64px]'>
@@ -49,13 +60,23 @@ const Intro = () => {
                             }}
                             animate={{ opacity: 1, y: 0 }}
                             className="items-center justify-start flex flex-row flex-nowrap gap-6 h-auto overflow-hidden relative w-full p-0">
-                            {links.map((link, index) => (
-                                <motion.div variants={item} key={index}>
-                                    <Link href={link.hash} className="text-base  geist text-white">
-                                        {link.name}
-                                    </Link>
-                                </motion.div>
-                            ))}
+                            <motion.ul
+                                variants={container}
+                                initial="hidden"
+                                animate="show"
+                                className='flex gap-4'
+                            >
+                                {links.map((link, index) => (
+                                    <motion.li
+                                        variants={item}
+                                        key={index}
+                                    >
+                                        <Link href={link.hash} className="text-base  geist text-white">
+                                            {link.name}
+                                        </Link>
+                                    </motion.li>
+                                ))}
+                            </motion.ul>
                         </motion.nav>
                     </motion.div>
                     <motion.div initial={{ opacity: 0, y: -25 }}
@@ -74,6 +95,7 @@ const Intro = () => {
                 transition={{
                     duration: .4,
                     delay: 1,
+
                 }}
                 animate={{ opacity: 1, y: 0 }}>
 
