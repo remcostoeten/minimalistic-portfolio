@@ -31,7 +31,7 @@ const Page = () => {
   const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '0', '10', 'A'];
 
   return (
-    <div className='rounded-lg border border-zinc-200 bg-white text-zinc-950 shadow-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50' className="p-4 text-[#eee] h-full w-full flex flex-col md:grid place-items-center">
+    <div className='rounded-lg border border-zinc-200 bg-white text-zinc-950 shadow-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 mb-4 flex gap-4 flex-col w-full' >
       <h1 className="text-2xl font-bold mb-4">Blackjack Decision Maker</h1>
       <div className="flex flex-col md:flex-row gap-8 w-full">
         <div className='rounded-lg border border-zinc-200 bg-white text-zinc-950 shadow-sm dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 mb-4 flex gap-4 flex-col w-full' >
