@@ -102,7 +102,7 @@ export default function VisualStoryteller(_props) {
                   transition={{ delay: 1 }}
                 >
                   <Link href={data.url} target="_blank">
-                    <CtaGhost>View Project</CtaGhost>
+                    <GhostButton>View Project</GhostButton>
                   </Link>
                 </motion.button>
               </div>
