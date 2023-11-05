@@ -1,6 +1,5 @@
+import { siteConfig } from './data';
 import { seoKeywords } from './keywords';
-import { siteConfig } from './site';
-
 const MetaData = {
     title: {
         default: siteConfig.name,

@@ -8,7 +8,7 @@ export type ChildProps = {
 export type SectionName = (typeof links)[number]["name"];
 
 export interface SiteConfig {
-    comments: CommentsConfig;
+    comments?: CommentsConfig;
     name: string;
     description: string;
     url: string;

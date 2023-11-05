@@ -1,26 +1,31 @@
-import siteConfig from '@/data/siteConfig'
+import React from 'react';
 import headerNavLinks from '@/data/headerNavLinks'
 import Logo from '@/data/logo.svg'
 import Link from './Link'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
+import { siteConfig } from '@/config/data'
 
-const Header = () => {
+type HeaderProps = {
+  headerTitle: string;
+}
+
+const Header: React.FC<HeaderProps> = ({ headerTitle }) => {
   return (
     <header className="flex items-center justify-between py-10">
       <div>
-        <Link href="/" aria-label={siteConfig.headerTitle}>
+        <Link href="/" aria-label={headerTitle}>
           <div className="flex items-center justify-between">
             <div className="mr-3">
               <Logo />
             </div>
-            {typeof siteConfig.headerTitle === 'string' ? (
+            {typeof headerTitle === 'string' ? (
               <div className="hidden h-6 text-2xl font-semibold sm:block">
-                {siteConfig.headerTitle}
+                {headerTitle}
               </div>
             ) : (
-              siteConfig.headerTitle
+              headerTitle
             )}
           </div>
         </Link>

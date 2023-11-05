@@ -1,14 +1,13 @@
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog, Authors } from 'contentlayer/generated'
-import Comments from '@/components/Comments'
-import Link from '@/components/Link'
-import PageTitle from '@/components/PageTitle'
-import SectionContainer from '@/components/SectionContainer'
-import Image from '@/components/Image'
-import Tag from '@/components/Tag'
-import siteConfig from '@/data/siteConfig'
-import ScrollTopAndComment from '@/components/ScrollTopAndComment'
+import Comments from '@cb/Comments'
+import Link from '@cb/Link'
+import PageTitle from '@cb/PageTitle'
+import SectionContainer from '@cb/SectionContainer'
+import Image from '@cb/Image'
+import Tag from '@cb/Tag'
+import ScrollTopAndComment from '@cb/ScrollTopAndComment'
 
 const editUrl = (path) => `${siteConfig.siteRepo}/blob/main/data/${path}`
 const discussUrl = (path) =>
@@ -19,6 +18,21 @@ const postDateTemplate: Intl.DateTimeFormatOptions = {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
+}
+export interface SiteConfig {
+  siteName: string
+  siteUrl: string
+  siteRepo: string
+  locale: string
+  comments: boolean
+}
+
+export const siteConfig: SiteConfig = {
+  siteName: 'My Site',
+  siteUrl: 'https://example.com',
+  siteRepo: 'https://github.com/remcostoeten/Portfolio-Grid-UI',
+  locale: 'en-US',
+  comments: true,
 }
 
 interface LayoutProps {

@@ -1,6 +1,7 @@
+//@ts-nocheck
 'use client'
 
-import siteConfig from '@/data/siteConfig'
+import { siteConfig } from '@/config/data'
 import { useEffect, useState } from 'react'
 
 const ScrollTopAndComment = () => {

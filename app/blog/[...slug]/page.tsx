@@ -1,5 +1,7 @@
 import 'katex/dist/katex.css'
 
+import PageTitle from '@cb/PageTitle'
+import { components } from '@cb/MDXComponents'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import { sortPosts, coreContent, allCoreContent } from 'pliny/utils/contentlayer'
 import { allBlogs, allAuthors } from 'contentlayer/generated'
@@ -9,8 +11,6 @@ import PostLayout from '@/layouts/PostLayout'
 import PostBanner from '@/layouts/PostBanner'
 import { Metadata } from 'next'
 import { siteConfig } from '@/config/data'
-import PageTitle from '@/components/(blog)/PageTitle'
-import { components } from '@/components/(blog)/MDXComponents'
 
 const defaultLayout = 'PostLayout'
 const layouts = {
@@ -38,8 +38,10 @@ export async function generateMetadata({
   const publishedAt = new Date(post.date).toISOString()
   const modifiedAt = new Date(post.lastmod || post.date).toISOString()
   const authors = authorDetails.map((author) => author.name)
+  let imageList: string[] = []; // Declare imageList here
+
   if (post.images) {
-    imageList = typeof post.images === 'string' ? [post.images] : post.images
+    imageList = typeof post.images === 'string' ? [post.images] : post.images;
   }
   const ogImages = imageList.map((img) => {
     return {

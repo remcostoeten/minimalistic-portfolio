@@ -1,11 +1,11 @@
 'use client'
 
-import siteConfig from '@/config/siteConfig'
 import { ThemeProvider } from 'next-themes'
+import MetaData from '@/config/metadata'
 
 export function ThemeProviders({ children }: { children: React.ReactNode }) {
     return (
-        <ThemeProvider attribute="class" defaultTheme={siteConfig.theme} enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             {children}
         </ThemeProvider>
     )

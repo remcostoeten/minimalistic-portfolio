@@ -27,8 +27,10 @@
       "@/*": [
         "./*"
       ],
+      "@cb/*": [
+        "./components/(blog)/*"
+      ],
       "contentlayer/generated": ["./.contentlayer/generated"],
-
     },
     "strictNullChecks": true
   },

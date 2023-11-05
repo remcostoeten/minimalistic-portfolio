@@ -1,6 +1,5 @@
 import { SiteConfig } from '@/lib/types/types';
-
-export const siteConfig: SiteConfig = {
+export interface CoreConfig {
     name: 'remcostoeten',
     description: 'Remco Stoeten - remcostoeten.com - Software Engineer/Developer/Divjesschuiver.',
     url: 'https://remcostoeten.com',
@@ -13,5 +12,51 @@ export const siteConfig: SiteConfig = {
         baseurl: 'https://remcostoeten.com',
     },
     locale: 'nl_NL, nl, en_US, en',
-};
+    comments: undefined,
+    siteUrl: 'https://remcostoeten.com',
+    siteRepo: 'https://github.com/remcostoeten/Portfolio-Grid-UI',
+    siteLogo: '/static/images/logo.png',
+    image: '/static/images/avatar.png',
+    socialBanner: '/static/images/twitter-card.png',
+    email: 'remcostoeten@hotmail.com',
+    github: 'https://github.com/remcostoeten',
+    twitter: 'https://twitter.com/remcostoeten',
+    facebook: 'https://www.facebook.com/remcostoeten',
+    youtube: 'https://www.youtube.com/channel/UCJvKJXxJ0X6vJLc0vKwUyZw',
+    linkedin: 'https://www.linkedin.com/in/remcostoeten/',
+    author: 'Remco Stoeten',
+    language: 'en-US',
+    theme: 'system',
 
+}
+
+export const siteConfig: SiteConfig & CoreConfig = {
+    name: 'remcostoeten',
+    description: 'Remco Stoeten - remcostoeten.com - Software Engineer/Developer/Divjesschuiver.',
+    url: 'https://remcostoeten.com',
+    links: {
+        gitlab: 'https://gitlab.com/remcostoeten',
+        github: 'https://github.com/remcostoeten',
+        linkedin: 'https://www.linkedin.com/in/remcostoeten/',
+        whatsapp: 'https://api.whatsapp.com/send?phone=yourphonenumber',
+        email: 'mailto:remcostoeten@hotmail.com',
+        baseurl: 'https://remcostoeten.com',
+    },
+    locale: 'nl_NL, nl, en_US, en',
+    comments: undefined,
+    siteUrl: 'https://remcostoeten.com',
+    siteRepo: 'https://github.com/remcostoeten/Portfolio-Grid-UI',
+    siteLogo: '/static/images/logo.png',
+    image: '/static/images/avatar.png',
+    socialBanner: '/static/images/twitter-card.png',
+    email: 'remcostoeten@hotmail.com',
+    github: 'https://github.com/remcostoeten',
+    twitter: 'https://twitter.com/remcostoeten',
+    facebook: 'https://www.facebook.com/remcostoeten',
+    youtube: 'https://www.youtube.com/channel/UCJvKJXxJ0X6vJLc0vKwUyZw',
+    linkedin: 'https://www.linkedin.com/in/remcostoeten/',
+    author: 'Remco Stoeten',
+    language: 'en-US',
+    theme: 'system',
+
+}
