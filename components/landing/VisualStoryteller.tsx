@@ -8,6 +8,7 @@ import { ProjectData } from "@/config/data/ProjectData";
 import React, { useState } from "react";
 import { Button } from "@nextui-org/react";
 import { glowButton, Cta, CtaGhost, GhostButton } from "../core/buttons";
+import Link from "next/link";
 
 export default function VisualStoryteller(_props) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -100,7 +101,9 @@ export default function VisualStoryteller(_props) {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1 }}
                 >
-                  View project
+                  <Link href={data.url} target="_blank">
+                    <CtaGhost>View Project</CtaGhost>
+                  </Link>
                 </motion.button>
               </div>
             </motion.div>

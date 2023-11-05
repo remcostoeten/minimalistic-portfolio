@@ -6,8 +6,7 @@ import { siteConfig } from '@/config/site';
 import { GeistMono, GeistSans } from "geist/font";
 import Intro from '@/components/landing/nav/Intro';
 import { Analytics } from '@vercel/analytics/react';
-import { Toaster, toast } from 'sonner';
-
+import { Toaster } from 'sonner';
 
 const serif = Libre_Baskerville({
   subsets: ['latin'],
@@ -67,10 +66,8 @@ export const metadata = {
     },
   ],
 };
-toast('My toast', {
-  description: 'Site is under construction',
-  duration: 5000,
-});
+
+
 export default function RootLayout({
   children,
 }: {

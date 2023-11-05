@@ -3,8 +3,15 @@
 import { motion } from "framer-motion";
 import { GhostButton } from "../core/buttons";
 import Flexer from "../core/layout/Flexer";
+import { toast } from 'sonner';
 
 export default function Greeting() {
+    toast('My toast', {
+        description: 'Site is under construction',
+        duration: 5000,
+    });
+
+
     return (
         <Flexer gap="10">
             <motion.h3 className='border-box pb-[32px] text-gray-100 block font-sans text-[28px]  leading-9 tracking-tighter whitespace-pre-wrap break-words antialiased w-[600px]'

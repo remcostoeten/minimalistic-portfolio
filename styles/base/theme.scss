@@ -1,8 +1,10 @@
 $contained: 1024px;
 
-body {
+body,
+html {
     background-color: $black;
     transition: 250ms ease-in-out all;
+    scroll-behavior: smooth;
 }
 
 .contained {
