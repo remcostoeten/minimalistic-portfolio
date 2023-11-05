@@ -21,9 +21,10 @@ const CtaGhost = ({ children }: ChildProps) => {
     )
 }
 
-const GhostButton = ({ children }: ChildProps) => {
+const GhostButton = ({ children, ...rest }: ChildProps) => {
     return (
         <motion.button
+            {...rest}
             className="ghostbtn geist font-normal border-solid bg-body-dark rounded-lg flex flex-row items-center gap-3 text-sm w-auto h-10 px-6 relative box-border antialiased p-2q"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "100%" }}
@@ -41,7 +42,6 @@ const GhostButton = ({ children }: ChildProps) => {
         </motion.button>
     );
 };
-
 const glowButton = ({ children }: ChildProps) => {
     return (<>
         <div className="sp">
@@ -117,3 +117,4 @@ const glowButton = ({ children }: ChildProps) => {
 }
 
 export { glowButton, Cta, GhostButton, CtaGhost }
+

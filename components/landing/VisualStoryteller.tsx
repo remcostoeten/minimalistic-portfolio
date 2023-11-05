@@ -1,12 +1,27 @@
+
 'use client'
 import { motion } from "framer-motion";
 import Image from "next/image";
 import ShowcaseLabel from "../core/Labels";
 import { ProjectData } from "@/config/data/ProjectData";
+import React, { useState } from "react";
+import { Button } from "@nextui-org/react";
+import { glowButton, Cta, CtaGhost, GhostButton } from "../core/buttons";
+
 export default function VisualStoryteller(_props) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleReadMoreClick = () => {
+    setIsExpanded(true);
+  };
+
   return (
-    <div>
-      {ProjectData.map((data, index) => (
+    <>
+      <div style={{
+        maxHeight: isExpanded ? 'none' : '1280px',
+        overflow: 'hidden',
+        transition: 'max-height 0.5s ease-in-out'
+      }}>     {ProjectData.map((data, index) => (
         <motion.section
           key={index}
           className="w-[650px] geist pt-10 mt-10 max-w-full ml-5 mb-8 self-start"
@@ -50,12 +65,12 @@ export default function VisualStoryteller(_props) {
                   transition={{ delay: 0.4 }}
                   className="text-gray-400 text-lg self-start max-md:max-w-full"
                 >
-                  Step into a mesmerizing realm of visual wonders with no bounds,
-                  and every pixel tells a compelling tale. <br /> <br /> Step into a
-                  captivating visual design realm, where pixels become masterful
-                  storytellers. Transcend the ordinary, leaving an indelible
-                  impression. Unveil the power of visual storytelling and be
-                  inspired by our artistic vision.
+                  {data.description.split('\n').map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
                 </motion.p>
                 <motion.div
                   className="shadow-sm bg-zinc-300 flex w-[600px] h-[300px] flex-col mt-10 rounded-lg self-start max-md:max-w-full max-md:mt-10"
@@ -70,9 +85,9 @@ export default function VisualStoryteller(_props) {
                   transition={{ delay: 0.8 }}
                 >
                   <div className="flex gap-2">
-                    <ShowcaseLabel>NextJS</ShowcaseLabel>
-                    <ShowcaseLabel>TypeScript</ShowcaseLabel>
-                    <ShowcaseLabel>Tool</ShowcaseLabel>
+                    {data.labels.map((label, index) => (
+                      <ShowcaseLabel key={index}>{label}</ShowcaseLabel>
+                    ))}
                   </div>
                 </motion.div>
                 <motion.button
@@ -87,9 +102,18 @@ export default function VisualStoryteller(_props) {
                 </motion.button>
               </div>
             </motion.div>
+
           </div>
         </motion.section>
       ))}
-    </div>
+      </div>
+      {
+        isExpanded ? (
+          <GhostButton onClick={() => setIsExpanded(false)}>Read Less</GhostButton>
+        ) : (
+          <><div className="fade"></div><GhostButton onClick={handleReadMoreClick}>Read More</GhostButton></>
+        )
+      }
+    </>
   );
 }

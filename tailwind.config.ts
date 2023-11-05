@@ -1,10 +1,13 @@
+const { nextui } = require("@nextui-org/react");
+
 module.exports = {
-  darkMode: ["class"],
+  darkMode: "class",
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     container: {
@@ -32,11 +35,11 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-      }, padding: {
+      },
+      padding: {
         'card-outer': '16px',
         'card-inner': '14px',
         'default': '24px',
-
       },
       borderRadius: {
         'card-inner': '8px',
@@ -74,10 +77,31 @@ module.exports = {
         'body-dark': 'var(--darkmain)',
         'body-dark-accent': 'var(--mainaccentn)',
         'dark-alt': '#0d0d0d',
-      }, width: {
+      },
+      width: {
         '198': '792px'
       }
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    nextui({
+      prefix: "nextui",
+      addCommonColors: false,
+      defaultTheme: "light",
+      defaultExtendTheme: "light",
+      layout: {},
+      themes: {
+        light: {
+          layout: {},
+          colors: {},
+        },
+        dark: {
+          layout: {},
+          colors: {},
+        },
+        // ... custom themes
+      },
+    }),
+  ],
 };

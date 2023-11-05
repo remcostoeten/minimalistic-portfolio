@@ -6,6 +6,7 @@ import { siteConfig } from '@/config/site';
 import { GeistMono, GeistSans } from "geist/font";
 import Intro from '@/components/landing/nav/Intro';
 import { Analytics } from '@vercel/analytics/react';
+import { NextUIProvider } from "@nextui-org/react";
 
 const serif = Libre_Baskerville({
   subsets: ['latin'],
@@ -74,9 +75,8 @@ export default function RootLayout({
   return (
     <ThemeContextProvider>
       <ActiveSectionContextProvider>
-        <html className={`${GeistSans.variable} ${GeistMono.variable}`} lang="en">
-          <body className={`${serif.className}
-           dark:bg-body-dark h-screen flex `}>
+        <html className={`${GeistSans.variable} ${GeistMono.variable} dark text-foreground bg-background`} lang="en">
+          <body className={`${serif.className} dark:bg-body-dark h-fit flex `}>
             <main className="mx-auto pt-8 pb-8 w-full pr-7">
               <Intro />
               <div className="contained">
