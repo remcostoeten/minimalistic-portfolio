@@ -22,6 +22,7 @@ const GridItem = ({ children }: ChildProps) => (
 export default function Grid() {
     return (
         <><h2 className="text-white text-centet text-3xl pb-4">
+            <h2 className="mt-20 text-28  text-white/60 text-center ">My Stack</h2>
 
             <TextRevealSkew className="text-center" placeholderText={[
                 { type: "heading1", text: "About me" },
@@ -32,7 +33,7 @@ export default function Grid() {
                 <div className="flex flex-col items-stretch max-md:w-full">
                     <div className="flex grow flex-col gap-m">
                         <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.6 }} className="body-dark-accent dark:body-dark-accent dark:border-dark gap-s self-stretch w-full justify-center items-center flex flex-col p-3.5 rounded-16">
+                            transition={{ duration: 0.5, delay: 0.6 }} className="border body-dark-accent dark:body-dark-accent dark:border-dark gap-s self-stretch w-full justify-center items-center flex flex-col p-3.5 rounded-16">
                             <ExperienceItems />
                         </motion.div>
                         <motion.div
@@ -82,7 +83,7 @@ export default function Grid() {
                         <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{
                             duration: 1.2,
                             delay: 1.2
-                        }} className="p-[32px] flex body-dark-accent dark:body-dark-accent infinite-slider dark:border-dark  w-full gap-[40px] flex-col rounded-16 overflow-hidden body-dark-accent h-full items-center">
+                        }} className="border border-dark p-[32px] flex body-dark-accent dark:body-dark-accent infinite-slider dark:border-dark  w-full gap-[40px] flex-col rounded-16 overflow-hidden body-dark-accent h-full items-center">
                             <h2 className="text-28  text-white/60 text-center ">My Stack</h2>
                             <div className="flex flex-col gap-l">
                                 <InfiniteLogoSlider />

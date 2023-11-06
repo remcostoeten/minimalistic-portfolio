@@ -45,14 +45,14 @@ export const GridItemsData = [
 
 export const TechnologyIcons = [
   { name: 'Figma', icon: 'figma.svg', description: 'I miss photoshop', tooltip: 'Actually i dont', url: 'https://www.figma.com/' },
-  { name: 'GraphQL', icon: 'graphql.svg', description: 'API query', tooltip: 'Learnng @ work', url: 'https://graphql.org/' },
+  { name: 'GraphQL', icon: 'graphql.svg', description: 'backend <> frontend', tooltip: 'Learnng @ work', url: 'https://graphql.org/' },
   { name: 'Next', icon: 'next.svg', description: 'Should try Remix..', tooltip: 'Vendor lock-in!', url: 'https://nextjs.org/' },
   { name: 'Turbo', icon: 'turbo.svg', description: 'Fast as fuu booooi', tooltip: 'High-performance build system', url: 'https://turbo.hotwire.dev/' },
-  { name: 'Docker', icon: 'docker.svg', description: 'Containerization', tooltip: 'App container platform', url: 'https://www.docker.com/' },
+  { name: 'Docker', icon: 'docker.svg', description: 'might go back to wamp.', tooltip: 'App container platform', url: 'https://www.docker.com/' },
   { name: 'Firebase', icon: 'firebase.svg', description: 'Fast prototyping db', tooltip: 'Very fast, goole tho', url: 'https://firebase.google.com/' },
-  { name: 'Photoshop', icon: 'photoshop.svg', description: 'Graphic design', tooltip: 'Adobe graphics editor', url: 'https://www.adobe.com/products/photoshop.html' },
+  { name: 'Photoshop', icon: 'photoshop.svg', description: 'gRaPhIc DeSiGn Is My PaSsIoN"', tooltip: 'Adobe graphics editor', url: 'https://www.adobe.com/products/photoshop.html' },
   { name: 'Vercel', icon: 'vercel.svg', description: 'Web hosting', tooltip: 'Cloud web hosting', url: 'https://vercel.com/' },
-  { name: 'ES6', icon: 'es6.svg', description: 'JS update', tooltip: 'JS language update', url: 'https://www.ecma-international.org/ecma-262/6.0/' },
+  { name: 'ES6', icon: 'es6.svg', description: 'The base', tooltip: '', url: 'https://www.ecma-international.org/ecma-262/6.0/' },
   { name: 'GitLab', icon: 'gitlab.svg', description: 'DevOps platform', tooltip: 'Git repository manager', url: 'https://about.gitlab.com/' },
   { name: 'Tailwind', icon: 'tailwind.svg', description: 'CSS framework', tooltip: 'Utility-first CSS', url: 'https://tailwindcss.com/' },
   { name: 'Neovim', icon: 'vim.svg', description: 'Gigachad status', tooltip: 'Not productive yet...', url: 'https://www.neovim.org/' },

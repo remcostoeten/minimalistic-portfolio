@@ -2,15 +2,17 @@
 
 .dark {
   .infinite-slider {
-    border: 1px solid #201f1f;
+    // border: 1px solid #201f1f;
 
     &::before {
-      background: linear-gradient(-90deg, rgb(28, 28, 28) 22%, #111 -2% #111 100%);
+      background: rgb(16, 16, 16);
+      background: linear-gradient(90deg, rgba(16, 16, 16, 1) 0%, rgba(255, 255, 255, 0) 100%);
       left: 0;
     }
 
     &::after {
-      background: linear-gradient(-90deg, rgb(28, 28, 28) 22%, #111 -2% #111 100%);
+      background: rgb(16, 16, 16);
+      background: linear-gradient(-90deg, rgba(16, 16, 16, 1) 0%, rgba(255, 255, 255, 0) 100%);
       right: 0;
     }
   }
