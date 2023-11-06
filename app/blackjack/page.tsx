@@ -4,7 +4,8 @@ import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import blackjackData from '@/lib/blackjack.json';
-import {toast} from 'sonner'
+import { toast } from 'sonner'
+import SingleHand from '@/components/misc/BlackjackSingleHand';
 // Function to get the strategy based on player's hand and dealer's card
 function getStrategy(playerHand, dealerCard) {
   const strategy = blackjackData.strategy[playerHand];
@@ -73,6 +74,8 @@ const Page = () => {
 
   return (
     <>
+      <SingleHand />
+
       {decision && (
         <div className={`geist shadow animated-decision inset-0 absolute z-10 pointer-events-none flex items-center justify-center ${decision.toLowerCase()}`}>
           {decision}
@@ -80,7 +83,7 @@ const Page = () => {
       )}
       <section className=" mx-auto p-4 flex flex-col gap-2 md:p-8">
 
-      <Card className="p-5 flex flex-col gap-2">
+        <Card className="p-5 flex flex-col gap-2">
           <h2 className="text-2xl font-bold mb-4">Result:</h2>
           <p className={`text-lg ${decision === 'hit' ? 'text-green-500' : 'text-red-500'} dark:text-zinc-400`}>{decision}</p>
         </Card>
