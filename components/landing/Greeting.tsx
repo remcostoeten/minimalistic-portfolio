@@ -35,7 +35,7 @@ export default function Greeting() {
                     Some slogan that should be very deep and motivational but deep down we know we all think they are cringe.
                 </motion.h3>
                 <Button
-                    className="w-fit"
+                    className="w-fit geist"
 
                     variant="ghost"><Link href="#contact">Get in touch</Link></Button>
             </Flexer>

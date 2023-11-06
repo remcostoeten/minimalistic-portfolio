@@ -89,7 +89,6 @@ export default function Grid() {
                                 <InfiniteLogoSlider />
                             </div>
                         </motion.div>
-                        <Cta>Learn more</Cta>
                     </div>
                 </motion.div>
             </section></>

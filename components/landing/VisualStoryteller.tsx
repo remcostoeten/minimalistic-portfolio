@@ -53,7 +53,7 @@ export default function VisualStoryteller() {
                 <div
                   className="circle flex items-center justify-center align-middle w-10 h-10 rounded-full z-10 bg-[#e8e8e8] absolute -left-[22px] -top-0 max-md:hidden"
                 >
-                  <Image src={data.icon} width={30} height={30} alt="Html To JSX converter" />
+                  {data.icon && <Image src={data.icon as string} width={30} height={30} alt="Html To JSX converter" />}
                 </div>
                 <div
                   className="flex flex-col items-stretch w-[2px] !h-[79%] top-[90px] bg-[#323333] absolute left-0 max-md:w-full max-md:ml-0 hover:bg-"
@@ -126,7 +126,7 @@ export default function VisualStoryteller() {
       </div>
       <motion.span className="mx-10" initial={{ opacity: 0, y: -120, x: 15 }}
         transition={{
-          duration: .8,
+          duration: .4,
           delay: 1,
         }}
         animate={{ opacity: 1, y: 0, x: 0 }}
