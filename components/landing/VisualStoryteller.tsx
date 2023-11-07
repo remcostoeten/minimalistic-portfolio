@@ -81,13 +81,13 @@ export default function VisualStoryteller() {
                       initial="hidden"
                       animate="show"
                       variants={{
-                        hidden: { opacity: 0 },
-                        show: {
-                          opacity: 1,
-                          transition: {
-                            staggerChildren: 1.1
-                          }
-                        }
+                        hidden: { y: 20, opacity: 0, scale: 0.9 },
+                        show: { y: 0, opacity: 1, scale: 1 }
+                      }}
+                      transition={{
+                        staggerChildren: .3,
+                        type: "spring",
+
                       }}
                     >
                       <div className="flex gap-2">
@@ -95,11 +95,13 @@ export default function VisualStoryteller() {
                           <motion.div
                             key={index}
                             variants={{
-                              hidden: { y: 20, opacity: 0 },
-                              show: { y: 0, opacity: 1, scale: 3 }
+                              hidden: { y: 20, opacity: 0, scale: 0.9 },
+                              show: { y: 0, opacity: 1, scale: 1 }
                             }}
                             transition={{
-                              staggerChildren: 1.1
+                              staggerChildren: .3,
+                              type: "spring",
+
                             }}
                           >
                             <ShowcaseLabel>{label}</ShowcaseLabel>
@@ -142,6 +144,6 @@ export default function VisualStoryteller() {
           </>
         )}
       </motion.span>
-    </div>
+    </div >
   );
 }
