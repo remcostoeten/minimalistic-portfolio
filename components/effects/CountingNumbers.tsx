@@ -6,19 +6,22 @@ interface CountingNumberProps {
     start: number;
     end: number | string;
     duration: number;
-    delay: number; // Add delay prop
+    delay: number;
     className?: string;
+    useFixed: boolean; // Add this prop
 }
-
-const CountingNumber: React.FC<CountingNumberProps> = ({ start, end, duration, delay, className }) => {
+const CountingNumber: React.FC<CountingNumberProps> = ({ start, end, duration, delay, className, useFixed }) => {
     const [currentNumber, setCurrentNumber] = useState(start);
 
     const easing = BezierEasing(0.985, 0.9, 0.9, 1);
     const totalSteps = duration * 60;
     let currentStep = 0;
 
+    // // Determine the number of decimal places in the end number
+    // const decimalPlaces = (typeof end === 'number' ? end : parseFloat(end)).toString().split('.')[1]?.length || 0;
+
     useEffect(() => {
-        const timeout = setTimeout(() => { // Add timeout
+        const timeout = setTimeout(() => {
             const interval = setInterval(() => {
                 currentStep += 1;
                 const t = currentStep / totalSteps;
@@ -33,14 +36,14 @@ const CountingNumber: React.FC<CountingNumberProps> = ({ start, end, duration, d
                     setCurrentNumber(nextValue);
                 }
             }, (duration * 1000) / totalSteps);
-        }, delay * 1000); // Convert delay to milliseconds
+        }, delay * 1000);
 
         return () => {
-            clearTimeout(timeout); // Clear timeout
+            clearTimeout(timeout);
         };
-    }, [start, end, duration, delay]); // Add delay to dependency array
+    }, [start, end, duration, delay]);
 
-    return <span className={className}>{Math.round(currentNumber)}</span>;
+    return <span className={className}>{useFixed ? currentNumber.toFixed(3) : currentNumber}</span>;
 };
 
 export default CountingNumber;

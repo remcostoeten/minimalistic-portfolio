@@ -42,7 +42,7 @@ const GhostButton = ({ children, onClick, className, size }: ChildProps) => {
             className={`ghostbtn geist font-normal border-solid bg-body-dark rounded-lg flex flex-row items-center gap-3 w-auto relative box-border antialiased p-2q ${className} ${buttonStyle}`}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "100%" }}
-            transition={{ delay: 0.8, duration: 1, type: "spring", stiffness: 25 }}
+            transition={{ delay: 0.8, duration: 2, type: "spring", stiffness: 25 }}
         >
             <div
                 className="outline-none flex flex-col justify-start flex-shrink-0 text-black transform-none opacity-100 relative flex-none h-auto overflow-visible whitespace-pre w-auto box-border antialiased"

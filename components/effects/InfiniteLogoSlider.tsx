@@ -15,7 +15,7 @@ export default function InfiniteLogoSlider() {
 
     return (
         <>
-            <div className="slider border border-dark">
+            <div className="slider">
                 <ul className="slide-track gap-l">
                     {TechnologyIcons.map((icon, index) => (
                         <motion.li

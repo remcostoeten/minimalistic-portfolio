@@ -76,9 +76,8 @@ export default function VisualStoryteller() {
                     <div
                       className="shadow-sm bg-zinc-300 flex w-[600px] h-[300px] flex-col mt-10 rounded-lg self-start max-md:max-w-full max-md:mt-10"
                     />
-                    <div
+                    <motion.div
                       className="flex w-[296px] max-w-full items-start gap-2.5 mt-2 self-start max-md:justify-center"
-                      as={motion.div}
                       initial="hidden"
                       animate="show"
                       variants={{
@@ -107,7 +106,7 @@ export default function VisualStoryteller() {
                           </motion.div>
                         ))}
                       </div>
-                    </div>
+                    </motion.div>
                     <Button variant='ghost'
                       type="button"
                       className="border bg-transparent bg-opacity-90 w-fit flex justify-center items-center text-[#F2F5F6] text-sm py-2 flex-col mt-3 rounded-md border-solid border-neutral-600 self-start max-md:max-w-full text-"

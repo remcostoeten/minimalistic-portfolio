@@ -38,7 +38,7 @@ export const GridItemsData = [
   },
   {
     title: "Unfinished",
-    count: "15",
+    count: "3.4159265359",
     countSuffix: "+ Projects",
   },
 ]

@@ -1,4 +1,5 @@
 'use client';
+import Logo from '@/components/core/Logo';
 import { PageTitle, SubTitle } from '@/components/core/Typography';
 import SwappingWords from '@/components/effects/SwappingWords';
 import { motion } from 'framer-motion';
@@ -49,8 +50,11 @@ const Intro = () => {
                 <motion.div variants={menuItemAnimation} className="flex flex-row justify-between items-center gap-4">
                     <motion.div variants={menuItemAnimation} className="flex flex-col gap-4">
                         <motion.span variants={menuItemAnimation} className="flex flex-col gap-1">
-                            <PageTitle isGeist><Link href='/'>Remco</Link></PageTitle>
-                            <SubTitle isGeist>
+                            <div className='flex gap-1 items-center relative'>
+                                <span className='absolute -left-10 -bottom-2'>
+                                    <Logo /></span>
+                                <PageTitle isGeist><Link href='/'>Remco</Link></PageTitle>
+                            </div><SubTitle isGeist>
                                 <SwappingWords
                                     words={[
                                         'Frontend developer!',
@@ -67,23 +71,25 @@ const Intro = () => {
                                 delay: .8,
                             }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="items-center justify-start flex flex-row flex-nowrap gap-6 h-auto  relative w-full p-0">
+                            className="flex gap-4 menu-items items-center justify-start flex flex-row flex-nowrap gap-6 h-auto  relative w-full p-0">
                             <motion.ul
-                                variants={menuContainerAnimation}
+                                variants={{
+                                    show: {
+                                        transition: {
+                                            staggerChildren: 0.1
+                                        }
+                                    }
+                                }}
                                 initial="hidden"
                                 animate="show"
                                 className='flex gap-4'
-                                transition={{ staggerChildren: 1.1 }}
                             >
                                 {links.map((link, index) => (
                                     <motion.li
-                                        initial={{ opacity: 0, y: 10, x: 15 }}
-                                        transition={{
-                                            duration: .4,
-                                            delay: .8,
-                                            staggerChildren: 1.1
+                                        variants={{
+                                            hidden: { opacity: 0, y: 10, x: 5 },
+                                            show: { opacity: 1, y: 0, x: 0, transition: { duration: .4, delay: .8 } }
                                         }}
-                                        animate={{ opacity: 1, y: 0, x: 0 }}
                                         key={index}
                                     >
                                         <Link href={link.hash} className="text-base  geist text-white">
@@ -99,8 +105,12 @@ const Intro = () => {
                             duration: .4,
                             delay: 1,
                         }}
+                        className='relative'
                         animate={{ opacity: 1, y: 0 }}
                     >
+                        <span className="wave absolute -right-10 -top-2 scale-[].5]" style={{ fontSize: '50px' }}>
+                            👋
+                        </span>
                         <Image src="/remco.jpeg"
                             width={90} height={90} alt="Avatar Remco Stoeten" className="rounded-full" />
                     </motion.div>

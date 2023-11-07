@@ -2,7 +2,8 @@
 
 .dark {
   .infinite-slider {
-    // border: 1px solid #201f1f;
+    display: flex;
+    align-items: center;
 
     &::before {
       background: rgb(16, 16, 16);
