@@ -835,3 +835,15 @@ canvas {
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
 }
+
+// Start 👋 wave animation
+.wave {
+    // animation-name: wave-animation, scaleIn;
+    // animation-duration: 2.3s, 1s;
+    // animation-timing-function: repeat, forwards;
+    transform-origin: 70% 70%;
+    display: inline-block;
+    scale: 0;
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation: wave-animation 2.3s infinite, scaleIn 1s 1750ms forwards;
+}

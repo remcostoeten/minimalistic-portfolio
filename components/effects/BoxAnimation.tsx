@@ -5,17 +5,17 @@ import { motion } from 'framer-motion';
 const Box: React.FC = () => {
   const boxVariants = {
     initial: { y: 200, opacity: 0 },
-    animate: { y: 0, opacity: 1, transition: { duration: 1 } },
+    animate: { y: 0, opacity: 1, transition: { duration: 2 } },
   };
 
   const Variants = {
     initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { duration: 1 } },
+    animate: { opacity: 1, transition: { duration: 2 } },
   };
 
   const shadowVariants = {
     initial: { scaleX: 0 },
-    animate: { scaleX: 1, transition: { duration: 1 } },
+    animate: { scaleX: 1, transition: { duration: 2 } },
   };
 
   return (

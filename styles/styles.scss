@@ -16,6 +16,8 @@
 @import './components/infinite-slider.scss';
 @import './components/loader.scss';
 @import './components/showcase.scss';
+@import './components/cursor.scss';
+
 
 .shine-wrap {
   width: 100%;
@@ -39,7 +41,7 @@
   --c2: rgba(168, 239, 255, 0.1);
   --white: #ff;
   --darkmain: #101010;
-  --mainaccent: #171718;
+  --mainaccent: #252121ee;
 
 }
 
