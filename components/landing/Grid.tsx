@@ -45,7 +45,7 @@ export default function Grid() {
                                 <GridItem key={index}>
                                     <h4 className="text-16 text-color-light">{data.title}</h4>
                                     <h3 className="text-color text-22 text-2xl font-black">
-                                        <CountingNumber start={0} end={data.count} duration={2} delay={index * .2} />{data.countSuffix}
+                                        {data.countSuffix}
                                     </h3>
                                 </GridItem>
                             ))}
@@ -88,7 +88,6 @@ export default function Grid() {
                                 <InfiniteLogoSlider />
                             </div>
                         </motion.div>
-                        <Cta>Learn more</Cta>
                     </div>
                 </motion.div>
             </section></>
