@@ -44,7 +44,7 @@ export default function VisualStoryteller() {
               initial={{ opacity: 0, y: 10, x: 15 }}
               transition={{
                 duration: .4,
-                delay: .8,
+                delay: .9,
                 staggerChildren: 1.1
               }}
               animate={{ opacity: 1, y: 0, x: 0 }}

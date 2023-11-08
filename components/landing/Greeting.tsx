@@ -21,9 +21,9 @@ export default function Greeting() {
     }, []);
 
     return (
-        <motion.div initial={{ opacity: 0, x: 5, y: 15 }}
+        <motion.div initial={{ opacity: 0, x: 10, y: 15 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
-            transition={{ delay: .5, duration: 2, type: "spring", stiffness: 100 }}
+            transition={{ delay: .7, duration: 1, type: "spring", stiffness: 25 }}
         >
             <Flexer useMotion gap="10"
             >
