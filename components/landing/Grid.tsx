@@ -14,25 +14,22 @@ import TextRevealSkew from "../effects/TextRevealSkew";
 
 const GridItem = ({ children }: ChildProps) => (
 
-    <motion.div initial={{ opacity: 0, y: 50 }} transition={{ delay: 0.9, duration: 0.4 }} animate={{ opacity: 1, y: 0 }} className="body-dark-accent perspective dark:body-dark-accent dark:border-dark dark:text-white flex h-[161px] flex-col grow shrink-0 basis-auto flex-1 rounded-16 justify-center items-center gap-y-4">
+    <motion.div initial={{ opacity: 0, y: 50 }} transition={{ delay: 1.3, duration: 1 }} animate={{ opacity: 1, y: 0 }} className="grid--card perspective dark:grid--card dark:border-dark dark:text-white flex h-[161px] flex-col grow shrink-0 basis-auto flex-1 rounded-16 justify-center items-center gap-y-4">
         {children}
     </motion.div>
 );
 
 export default function Grid() {
     return (
-        <><h2 className="text-white text-centet text-3xl pb-4">
-
-            <TextRevealSkew className="text-center" placeholderText={[
-                { type: "heading1", text: "About me" },
-            ]} />
-        </h2><section className="flex   max-md:flex-col gap-l max-md:items-stretch">
+        <>
+            <h2 className="text-32 text-color font-black">About me</h2>
+            <section className="flex mt-[60px] mb-[60px]  max-md:flex-col gap-l max-md:items-stretch">
 
 
                 <div className="flex flex-col items-stretch max-md:w-full">
                     <div className="flex grow flex-col gap-m">
                         <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.6 }} className="body-dark-accent dark:body-dark-accent dark:border-dark gap-s self-stretch w-full justify-center items-center flex flex-col p-3.5 rounded-16">
+                            transition={{ duration: 0.5, delay: 0.6 }} className="grid--card dark:grid--card dark:border-dark gap-s self-stretch w-full justify-center items-center flex flex-col p-3.5 rounded-16">
                             <ExperienceItems />
                         </motion.div>
                         <motion.div
@@ -54,7 +51,7 @@ export default function Grid() {
                 </div>
                 <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{
                     duration: 1.2,
-                    delay: 0.7
+                    delay: 1.7
                 }}
                     className="flex flex-col items-stretch w-[67%] max-md:w-full">
                     <div className="flex gap-l grow flex-col w-[741px] max-md:max-w-full">
@@ -66,14 +63,14 @@ export default function Grid() {
                             className="self-stretch max-md:max-w-full">
                             <section className="flex max-md:flex-col max-md:items-stretch gap-l">
                                 <div className="flex flex-col items-stretch max-md:w-full">
-                                    <div className="border body-dark-accent dark:body-dark-accent dark:border-dark  flex items-center justify-center w-[270px] max-w-full grow flex-col rounded-16">
+                                    <div className="border grid--card dark:grid--card dark:border-dark  flex items-center justify-center w-[270px] max-w-full grow flex-col rounded-16">
                                         <span className="perspective">
                                             <Icon src="gitlab" alt="GitLab Icon" width={110} height={110} />
                                         </span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col items-stretch max-md:w-full w-screen">
-                                    <div className="body-dark-accent flex h-[234px] flex-col rounded-16  max-md:max-w-full w-full overflow-hidden">
+                                    <div className="grid--card flex h-[234px] flex-col rounded-16  max-md:max-w-full w-full overflow-hidden">
                                         <GridCard />
                                     </div>
                                 </div>
@@ -82,14 +79,14 @@ export default function Grid() {
                         <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{
                             duration: 1.2,
                             delay: 1.2
-                        }} className="p-[32px] flex body-dark-accent dark:body-dark-accent infinite-slider dark:border-dark  w-full gap-[40px] flex-col rounded-16 overflow-hidden body-dark-accent h-full items-center">
-                            <h2 className="text-28  text-white/60 text-center ">My Stack</h2>
+                        }} className="p-[32px] flex items-center justify-center grid--card dark:grid--card infinite-slider dark:border-dark  w-full gap-[40px] flex-col rounded-16 overflow-hidden grid--card h-full items-center">
+                            <h4 className=" text-2xl experience-title">My stack</h4>
                             <div className="flex flex-col gap-l">
                                 <InfiniteLogoSlider />
                             </div>
                         </motion.div>
                     </div>
-                </motion.div>
-            </section></>
+                </motion.div >
+            </section ></>
     );
 }

@@ -35,16 +35,16 @@ export default function ExperienceItems() {
       {WorkExperience.map((work, index) => (
         <motion.div
           key={index}
-          className={`self-stretch flex w-full flex-col dark:bg-dark-alt  p-card-inner card-inner rounded-card-inner ${work.highlight ? "border-2  border-active " : ""
+          className={`self-stretch flex w-full flex-col                                                             grid--card-inner  p-card-inner card-inner rounded-card-inner ${work.highlight ? "border-2  border-active card-active " : ""
             }`}
           variants={smoothFadeUp}
         >
           <div className="flex w-full flex-grow flex-row max-md:max-w-full items-baseline justify-start gap-12">
-            <time className="text-theme dark:text-white/60 text-16" style={{ whiteSpace: "nowrap" }}>
-              {work.date}
+            <time className="experience-title text-16" style={{ whiteSpace: "nowrap" }}>
+              <span className="font-[600]">{work.date}</span>
             </time>
-            <div className="text-black dark:text-white/60 text-16 leading-25" style={{ whiteSpace: "nowrap" }}>
-              {work.company} <br /> {work.title} <br />
+            <div className="sub-title text-16 leading-25" style={{ whiteSpace: "nowrap" }}>
+              <span className="font-[600]">{work.company}</span> <br /> {work.title} <br />
             </div>
           </div>
           {work.highlight && (

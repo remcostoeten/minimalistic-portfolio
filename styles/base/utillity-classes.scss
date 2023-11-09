@@ -57,3 +57,50 @@ text-theme-light {
     transform: translateY(-240px);
     width: 100%;
 }
+
+.dark-background {
+    color: #151515;
+}
+
+.grid {
+    &--yellow {
+        background-color: #B8925E;
+    }
+
+    &--dark-text {
+        color: #0E0F0F;
+    }
+
+    &--light-text {
+        color: #d2d3d3;
+    }
+
+    &--grey,
+    &--card {
+        background-color: #151515;
+    }
+
+    &--grey-alt,
+    &--card-inner {
+        background-color: #262626;
+    }
+
+
+}
+
+.experience-title {
+    color: #a2a2a3;
+}
+
+.sub-title {
+    color: #a3a3a3;
+}
+
+.card-active {
+    transition: 0.5s;
+
+    &:hover {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(155, 163, 92, 0.3) 0px 30px 60px -30px, rgba(90, 103, 17, 0.35) 0px -2px 6px 0px inset;
+        transition: 0.3s;
+    }
+}
