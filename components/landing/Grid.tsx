@@ -70,7 +70,7 @@ export default function Grid() {
                                     </div>
                                 </div>
                                 <div className="flex flex-col items-stretch max-md:w-full w-screen">
-                                    <div className="grid--card flex h-[234px] flex-col rounded-16  max-md:max-w-full w-full overflow-hidden">
+                                    <div className="body-dark-accent flex h-[234px] flex-col rounded-16  max-md:max-w-full w-full overflow-hidden">
                                         <GridCard />
                                     </div>
                                 </div>
