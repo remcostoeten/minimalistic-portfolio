@@ -10,13 +10,6 @@ html {
 .contained {
     max-width: $contained;
     margin: 0 auto;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-
-    @media (max-width: $contained) {
-        padding: 0 0.5rem;
-        margin: 0 1rem;
-    }
 }
 
 .mini-contained {
