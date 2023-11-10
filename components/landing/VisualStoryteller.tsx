@@ -25,7 +25,7 @@ export default function VisualStoryteller() {
   return (
     <div>
       <div style={{
-        maxHeight: isExpanded ? 'none' : '1200px',
+        maxHeight: isExpanded ? '2000px' : '1200px',
         overflow: 'hidden',
         transition: 'max-height 0.5s ease-in-out'
       }}>
@@ -111,7 +111,6 @@ export default function VisualStoryteller() {
                     </motion.div>
                     <Button variant='ghost'
                       type="button"
-                      className="border bg-transparent bg-opacity-90 w-fit flex justify-center items-center text-[#F2F5F6] text-sm py-2 flex-col mt-3 rounded-md border-solid border-neutral-600 self-start max-md:max-w-full text-"
                       aria-label="View project"
                     >
                       <Link href={data.url} target="_blank">
