@@ -22,7 +22,7 @@ const Page = () => {
   const [playerCard2, setPlayerCard2] = useState('');
   const [dealerUpcard, setDealerUpcard] = useState('');
   const [decision, setDecision] = useState('');
-  const [winChance, setWinChance] = useState(0); // Initialize win chance to 0
+  const [winChance, setWinChance] = useState(0); 
   const [selectedCard1, setSelectedCard1] = useState('');
   const [selectedCard2, setSelectedCard2] = useState('');
   const [selectedDealerCard, setSelectedDealerCard] = useState('');
@@ -89,7 +89,7 @@ const Page = () => {
           {decision}
         </div>
       )}
-      <section className=" mx-auto p-4 flex flex-col gap-2 md:p-8">
+      <section className=" mx-auto flex flex-col gap-2">
 
         <Card className="p-5 flex flex-col gap-2">
           <h2 className="text-2xl font-bold mb-4">Result:</h2>

@@ -1,5 +1,6 @@
 'use client';
 import Logo from '@/components/core/Logo';
+import Navigation from '@/components/core/Navigation';
 import { PageTitle, SubTitle } from '@/components/core/Typography';
 import SwappingWords from '@/components/effects/SwappingWords';
 import { motion } from 'framer-motion';
@@ -65,40 +66,7 @@ const Intro = () => {
                                     interval={4000} />
                             </SubTitle>
                         </motion.span>
-                        <motion.nav initial={{ opacity: 0, y: 10 }}
-                            transition={{
-                                duration: .4,
-                                delay: .8,
-                            }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="flex gap-4 menu-items items-center justify-start flex flex-row flex-nowrap gap-6 h-auto  relative w-full p-0">
-                            <motion.ul
-                                variants={{
-                                    show: {
-                                        transition: {
-                                            staggerChildren: 0.1
-                                        }
-                                    }
-                                }}
-                                initial="hidden"
-                                animate="show"
-                                className='flex gap-4'
-                            >
-                                {links.map((link, index) => (
-                                    <motion.li
-                                        variants={{
-                                            hidden: { opacity: 0, y: 10, x: 5 },
-                                            show: { opacity: 1, y: 0, x: 0, transition: { duration: .4, delay: .8 } }
-                                        }}
-                                        key={index}
-                                    >
-                                        <Link href={link.hash} className="text-base  geist text-white">
-                                            {link.name}
-                                        </Link>
-                                    </motion.li>
-                                ))}
-                            </motion.ul>
-                        </motion.nav>
+                        <Navigation />  
                     </motion.div>
                     <motion.div initial={{ opacity: 0, y: -25 }}
                         transition={{
