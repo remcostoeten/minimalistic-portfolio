@@ -108,7 +108,7 @@ const Page = () => {
               {cardValues.map((value) => (
                 <button
                   key={value}
-                  className={selectedCard1 === value ? 'flex shadow-xl shadow-green-800 scale-125' : ''}
+                  className={selectedCard1 === value ? ' transition-all  ease-in-out duration-300 flex z-50 shadow-xl rainbow-shadow scale-150' : 'scale-100 transition-all  ease-in-out duration-300'}
                   onClick={() => {
                     setPlayerCard1(value);
                     setSelectedCard1(value);
@@ -132,7 +132,7 @@ const Page = () => {
               {cardValues.map((value) => (
                 <button
                   key={value}
-                  className={selectedCard2 === value ? 'flex shadow-xl shadow-green-800 scale-125' : ''}
+                  className={selectedCard2 === value ? ' transition-all  ease-in-out duration-300 flex shadow-xl rainbow-shadow scale-150 z-50' : 'scale-100 transition-all  ease-in-out duration-300'}
                   onClick={() => {
                     setPlayerCard2(value);
                     setSelectedCard2(value);
@@ -143,7 +143,7 @@ const Page = () => {
               ))}
             </div>
           </Card>
-        </div>
+        </div >
 
         <Card className="p-5 flex flex-col gap-8">
           <label htmlFor="dealerCard">Dealer's Card</label>
@@ -157,7 +157,7 @@ const Page = () => {
             {cardValues.map((value) => (
               <button
                 key={value}
-                className={selectedDealerCard === value ? 'flex shadow-xl shadow-red-800 scale-125' : ''}
+                className={selectedDealerCard === value ? ' transition-all  ease-in-out duration-300 flex z-50 shadow-xl rainbow-shadow scale-150' : 'scale-100 transition-all  ease-in-out duration-300'}
                 onClick={() => {
                   setDealerUpcard(value);
                   setSelectedDealerCard(value);
@@ -169,7 +169,7 @@ const Page = () => {
           </div>
         </Card>
 
-      </section>
+      </section >
     </>
   );
 };
