@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import blackjackData from '@/lib/blackjack.json';
 import { toast } from 'sonner'
 import SingleHand from '@/components/misc/BlackjackSingleHand';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 // Function to get the strategy based on player's hand and dealer's card
 function getStrategy(playerHand, dealerCard) {
   const strategy = blackjackData.strategy[playerHand];
@@ -74,7 +75,14 @@ const Page = () => {
 
   return (
     <>
-      <SingleHand />
+      <Accordion type="single" collapsible>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Single hand (WiP)</AccordionTrigger>
+          <AccordionContent>
+            <SingleHand />
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
 
       {decision && (
         <div className={`geist shadow animated-decision inset-0 absolute z-10 pointer-events-none flex items-center justify-center ${decision.toLowerCase()}`}>
@@ -100,7 +108,7 @@ const Page = () => {
               {cardValues.map((value) => (
                 <button
                   key={value}
-                  className={selectedCard1 === value ? 'selected' : ''}
+                  className={selectedCard1 === value ? 'flex shadow-xl shadow-green-800 scale-125' : ''}
                   onClick={() => {
                     setPlayerCard1(value);
                     setSelectedCard1(value);
@@ -124,7 +132,7 @@ const Page = () => {
               {cardValues.map((value) => (
                 <button
                   key={value}
-                  className={selectedCard2 === value ? 'selected' : ''}
+                  className={selectedCard2 === value ? 'flex shadow-xl shadow-green-800 scale-125' : ''}
                   onClick={() => {
                     setPlayerCard2(value);
                     setSelectedCard2(value);
@@ -149,7 +157,7 @@ const Page = () => {
             {cardValues.map((value) => (
               <button
                 key={value}
-                className={selectedDealerCard === value ? 'selected' : ''}
+                className={selectedDealerCard === value ? 'flex shadow-xl shadow-red-800 scale-125' : ''}
                 onClick={() => {
                   setDealerUpcard(value);
                   setSelectedDealerCard(value);
