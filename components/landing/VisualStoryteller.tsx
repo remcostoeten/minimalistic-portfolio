@@ -143,6 +143,6 @@ export default function VisualStoryteller() {
           </>
         )}
       </motion.span>
-    </div >
+    </ >
   );
 }
