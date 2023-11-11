@@ -23,7 +23,7 @@ export default function VisualStoryteller() {
   };
 
   return (
-    <div>
+    <>
       <div style={{
         maxHeight: isExpanded ? '2000px' : '1200px',
         overflow: 'hidden',
@@ -143,6 +143,6 @@ export default function VisualStoryteller() {
           </>
         )}
       </motion.span>
-    </ >
+    </>
   );
 }
