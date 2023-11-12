@@ -1,5 +1,5 @@
 import Icon from "../icons/icons";
-import { personalData } from "../personal-data";
+import { personalData } from "../../lib/data/personal-data";
 
 export default function GridCard() {
   return (
