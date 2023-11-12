@@ -107,10 +107,19 @@ const TransactionPage: React.FC = () => {
         try {
             await deleteDoc(doc(db, "transactions", transactionId));
             setTransactions((prevTransactions) => prevTransactions.filter((t) => t.id !== transactionId));
+
+            const transactionToDelete = transactions.find(t => t.id === transactionId);
+            if (transactionToDelete) {
+                if (transactionToDelete.type === "deposit") {
+                    setTotalDeposits((prevTotal) => prevTotal - transactionToDelete.amount);
+                } else {
+                    setTotalWithdrawals((prevTotal) => prevTotal - transactionToDelete.amount);
+                }
+            }
         } catch (error) {
             console.error("Error clearing transaction:", error);
         }
-    }, []);
+    }, [transactions]);
 
     const handleClearAllTransactions = useCallback(async () => {
         try {
