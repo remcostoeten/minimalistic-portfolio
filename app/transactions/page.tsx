@@ -15,16 +15,19 @@ import { Transaction } from "@/lib/types/types";
 const BalanceDisplay = React.lazy(() => import("@/components/transactions/Balance"));
 const TransactionForm = React.lazy(() => import("@/components/transactions/TransactionForm"));
 const TransactionList = React.lazy(() => import("@/components/transactions/TransactionList"));
+let modules = {};
 
-let db;
-
-const loadDb = async () => {
-    if (!db) {
-        const module = await import('@/lib/firebase');
-        db = module.db;
+const loadModule = async (moduleName, modulePath) => {
+    if (!modules[moduleName]) {
+        const module = await import(modulePath);
+        modules[moduleName] = moduleName === 'db' ? module.db : module.toast;
     }
-    return db;
+    return modules[moduleName];
 };
+
+const db = await loadModule('db', '@/lib/firebase');
+const toast = await loadModule('toast', 'sonner');
+
 
 const TransactionPage: React.FC = () => {
     const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -76,15 +79,16 @@ const TransactionPage: React.FC = () => {
             const docRef = await addDoc(collection(db, "transactions"), newTransaction);
             newTransaction.id = docRef.id;
             setTransactions((prevTransactions) => [newTransaction, ...prevTransactions]);
-
-
             if (type === "deposit") {
                 setTotalDeposits((prevTotal) => prevTotal + amount);
+                toast.success('Deposit added!');
             } else {
                 setTotalWithdrawals((prevTotal) => prevTotal + amount);
+                toast.success('Withdrawal added!');
             }
         } catch (error) {
-            console.error("Error adding transaction:", error);
+            console.error("Error adding transaction :", error);
+            toast.error('Error adding transaction!');
         }
     }, []);
 
@@ -92,8 +96,10 @@ const TransactionPage: React.FC = () => {
         try {
             await deleteDoc(doc(db, "transactions", transactionId));
             setTransactions((prevTransactions) => prevTransactions.filter((t) => t.id !== transactionId));
+            toast.success('Transaction cleared!');
         } catch (error) {
             console.error("Error clearing transaction:", error);
+            toast.error('Error clearing transaction!');
         }
     }, []);
 
@@ -109,8 +115,10 @@ const TransactionPage: React.FC = () => {
             setTransactions([]);
             setTotalDeposits(0);
             setTotalWithdrawals(0);
+            toast.success('All transactions cleared!');
         } catch (error) {
             console.error("Error clearing all transactions:", error);
+            toast.error('Error clearing all transactions!');
         }
     }, []);
 
