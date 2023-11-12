@@ -25,21 +25,6 @@ export const metadata = {
   url: siteConfig.url,
   type: 'Portfolio site and SaaS',
 
-  openGraph: {
-    type: 'website',
-    url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    site_name: siteConfig.name,
-    image: {
-      url: `${siteConfig.url}/images/og-image.jpg`,
-      alt: "Your Site's Open Graph Image",
-    },
-    profile: {
-      username: 'remco-stoeten',
-    },
-  },
-
   linkedinProfile: 'https://www.linkedin.com/in/remco-stoeten/',
   githubProfile: 'https://github.com/remcostoeten',
   gitlabProfile: 'https://gitlab.com/remcostoeten',
