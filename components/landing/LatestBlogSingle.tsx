@@ -1,7 +1,10 @@
 import React from 'react'
+import { SectionTitle } from '../core/Typography'
 
 export default function LatestBlogSingle() {
     return (
-        <><h3 className='pt-20text-[44] text-title'>My latests articles</h3></>
+        <>
+            <SectionTitle>Some articles</SectionTitle>
+        </>
     )
 }
