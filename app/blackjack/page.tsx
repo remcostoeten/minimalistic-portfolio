@@ -7,6 +7,7 @@ import blackjackData from '@/lib/blackjack.json';
 import { toast } from 'sonner'
 import SingleHand from '@/components/misc/BlackjackSingleHand';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Link from 'next/link';
 // Function to get the strategy based on player's hand and dealer's card
 function getStrategy(playerHand, dealerCard) {
   const strategy = blackjackData.strategy[playerHand];
@@ -22,7 +23,7 @@ const Page = () => {
   const [playerCard2, setPlayerCard2] = useState('');
   const [dealerUpcard, setDealerUpcard] = useState('');
   const [decision, setDecision] = useState('');
-  const [winChance, setWinChance] = useState(0); 
+  const [winChance, setWinChance] = useState(0);
   const [selectedCard1, setSelectedCard1] = useState('');
   const [selectedCard2, setSelectedCard2] = useState('');
   const [selectedDealerCard, setSelectedDealerCard] = useState('');
@@ -83,7 +84,7 @@ const Page = () => {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-
+      <span className='absolute top-1 right-1 text-xs text-white/10'><Link href='transactions'> Transactions</Link></span>
       {decision && (
         <div className={`geist shadow animated-decision inset-0 absolute z-10 pointer-events-none flex items-center justify-center ${decision.toLowerCase()}`}>
           {decision}
