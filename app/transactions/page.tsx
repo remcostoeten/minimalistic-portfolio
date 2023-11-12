@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useCallback, useMemo, useState, Suspense } from "react";
+import React, { useEffect, useCallback, useMemo, useState, Suspense, useRef } from "react";
 import {
     collection,
     onSnapshot,
@@ -15,24 +15,33 @@ import { Transaction } from "@/lib/types/types";
 const BalanceDisplay = React.lazy(() => import("@/components/transactions/Balance"));
 const TransactionForm = React.lazy(() => import("@/components/transactions/TransactionForm"));
 const TransactionList = React.lazy(() => import("@/components/transactions/TransactionList"));
-let modules = {};
+import { toast } from 'sonner'
+import autoAnimate from "@formkit/auto-animate";
+import { Card } from "@/components/ui/card";
+let db;
 
-const loadModule = async (moduleName, modulePath) => {
-    if (!modules[moduleName]) {
-        const module = await import(modulePath);
-        modules[moduleName] = moduleName === 'db' ? module.db : module.toast;
+
+
+const loadDb = async () => {
+    if (!db) {
+        const module = await import('@/lib/firebase');
+        db = module.db;
     }
-    return modules[moduleName];
+    return db;
 };
-
-const db = await loadModule('db', '@/lib/firebase');
-const toast = await loadModule('toast', 'sonner');
-
 
 const TransactionPage: React.FC = () => {
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [totalDeposits, setTotalDeposits] = useState(0);
     const [totalWithdrawals, setTotalWithdrawals] = useState(0);
+    const parentRef = useRef(null);
+
+    useEffect(() => {
+        if (parentRef.current) {
+            autoAnimate(parentRef.current);
+        }
+    }, []); // Empty dependency array means this effect runs once when the component mounts
+
 
     function generateUniqueID() {
         return Date.now().toString(36) + Math.random().toString(36).substr(2);
@@ -79,6 +88,8 @@ const TransactionPage: React.FC = () => {
             const docRef = await addDoc(collection(db, "transactions"), newTransaction);
             newTransaction.id = docRef.id;
             setTransactions((prevTransactions) => [newTransaction, ...prevTransactions]);
+
+
             if (type === "deposit") {
                 setTotalDeposits((prevTotal) => prevTotal + amount);
                 toast.success('Deposit added!');
@@ -96,10 +107,8 @@ const TransactionPage: React.FC = () => {
         try {
             await deleteDoc(doc(db, "transactions", transactionId));
             setTransactions((prevTransactions) => prevTransactions.filter((t) => t.id !== transactionId));
-            toast.success('Transaction cleared!');
         } catch (error) {
             console.error("Error clearing transaction:", error);
-            toast.error('Error clearing transaction!');
         }
     }, []);
 
@@ -115,10 +124,8 @@ const TransactionPage: React.FC = () => {
             setTransactions([]);
             setTotalDeposits(0);
             setTotalWithdrawals(0);
-            toast.success('All transactions cleared!');
         } catch (error) {
             console.error("Error clearing all transactions:", error);
-            toast.error('Error clearing all transactions!');
         }
     }, []);
 
@@ -145,12 +152,12 @@ const TransactionPage: React.FC = () => {
     ), [totalDeposits, totalWithdrawals]);
 
     return (
-        <div>
+        <Card className="p-10" ref={parentRef}>
             <h1>Transaction Tracker</h1>
             {memoizedTransactionForm}
             {memoizedTransactionList}
             {memoizedBalanceDisplay}
-        </div>
+        </Card>
     );
 };
 

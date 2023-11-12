@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "^8.2.0",
+    "@formkit/auto-animate": "^0.8.1",
     "@nextui-org/react": "^2.2.0",
     "@prisma/client": "^5.5.2",
     "@radix-ui/react-accordion": "^1.1.2",
