@@ -5,7 +5,7 @@ import React from 'react';
 type TypographyProps = {
     isGeist?: boolean;
     children: React.ReactNode;
-};
+};1
 
 export const PageTitle = ({ children, isGeist }: TypographyProps) => (
     <motion.h1
@@ -20,6 +20,20 @@ export const PageTitle = ({ children, isGeist }: TypographyProps) => (
     >
         {children}
     </motion.h1 >
+);
+
+export const SectionTitle = ({ children, isGeist }: TypographyProps) => (
+    <motion.h2
+        initial={{ opacity: 0, y: 25 }}
+        transition={{
+            duration: .4,
+            delay: .6,
+        }}
+        animate={{ opacity: 1, y: 0 }}
+        className={`pt-20 text-[44px] text-center section-title' no-underline break-words antialiased ${isGeist ? 'geist' : ''}`}
+    >
+        {children}
+    </motion.h2>
 );
 
 export const SubTitle = ({ children, isGeist }: TypographyProps) => (
