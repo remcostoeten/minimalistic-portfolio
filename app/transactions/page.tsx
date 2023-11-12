@@ -12,11 +12,19 @@ import {
     Timestamp,
 } from "firebase/firestore";
 import { Transaction } from "@/lib/types/types";
-import { db } from "@/lib/firebase";
-
 const BalanceDisplay = React.lazy(() => import("@/components/transactions/Balance"));
 const TransactionForm = React.lazy(() => import("@/components/transactions/TransactionForm"));
 const TransactionList = React.lazy(() => import("@/components/transactions/TransactionList"));
+
+let db;
+
+const loadDb = async () => {
+    if (!db) {
+        const module = await import('@/lib/firebase');
+        db = module.db;
+    }
+    return db;
+};
 
 const TransactionPage: React.FC = () => {
     const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -28,28 +36,31 @@ const TransactionPage: React.FC = () => {
     }
 
     useEffect(() => {
-        const unsubscribe = onSnapshot(collection(db, "transactions"), (snapshot) => {
-            const fetchedTransactions: Transaction[] = [];
-            let deposits = 0;
-            let withdrawals = 0;
+        let unsubscribe;
+        loadDb().then(db => {
+            unsubscribe = onSnapshot(collection(db, "transactions"), (snapshot) => {
+                const fetchedTransactions: Transaction[] = [];
+                let deposits = 0;
+                let withdrawals = 0;
 
-            snapshot.forEach((doc) => {
-                const transaction = doc.data() as Transaction;
-                fetchedTransactions.push(transaction);
+                snapshot.forEach((doc) => {
+                    const transaction = doc.data() as Transaction;
+                    fetchedTransactions.push(transaction);
 
-                if (transaction.type === "deposit") {
-                    deposits += transaction.amount;
-                } else {
-                    withdrawals += transaction.amount;
-                }
+                    if (transaction.type === "deposit") {
+                        deposits += transaction.amount;
+                    } else {
+                        withdrawals += transaction.amount;
+                    }
+                });
+
+                setTransactions(fetchedTransactions);
+                setTotalDeposits(deposits);
+                setTotalWithdrawals(withdrawals);
             });
-
-            setTransactions(fetchedTransactions);
-            setTotalDeposits(deposits);
-            setTotalWithdrawals(withdrawals);
         });
 
-        return () => unsubscribe();
+        return () => unsubscribe && unsubscribe();
     }, []);
 
     const handleFormSubmit = useCallback(async (amount: number, type: "deposit" | "withdrawal", date: string) => {
@@ -65,6 +76,7 @@ const TransactionPage: React.FC = () => {
             const docRef = await addDoc(collection(db, "transactions"), newTransaction);
             newTransaction.id = docRef.id;
             setTransactions((prevTransactions) => [newTransaction, ...prevTransactions]);
+
 
             if (type === "deposit") {
                 setTotalDeposits((prevTotal) => prevTotal + amount);

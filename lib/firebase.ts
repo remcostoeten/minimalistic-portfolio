@@ -5,13 +5,14 @@ import { getStorage } from 'firebase/storage';
 import { addDoc, doc, updateDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: process.env.API_KEY,
-    authDomain: process.env.AUTH_DOMAIN,
-    projectId: process.env.PROJECT_ID,
-    storageBucket: process.env.STORAGE_BUCKET,
-    messagingSenderId: process.env.MESSAGING_SENDER_ID,
-    appId: process.env.APP_ID
+    apiKey: "AIzaSyCabh0AJrarpPaYX4WGowZeor3YQ9809mw",
+    authDomain: "portfolio---debt.firebaseapp.com",
+    projectId: "portfolio---debt",
+    storageBucket: "portfolio---debt.appspot.com",
+    messagingSenderId: "413639141078",
+    appId: "1:413639141078:web:c2ee1dd283d1ac3b1bcb77"
 };
+
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
