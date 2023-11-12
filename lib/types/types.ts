@@ -24,7 +24,7 @@ export interface SiteConfig {
     };
 }
 
-export interface Transaction {
+export type Transaction {
     id: string;
     amount: number;
     type: "deposit" | "withdrawal";

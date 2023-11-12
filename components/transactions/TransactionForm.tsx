@@ -1,23 +1,35 @@
 // TransactionForm.tsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { db } from "@vercel/postgres";
+import { getDocs, collection } from "firebase/firestore";
 
 interface TransactionFormProps {
-    onSubmit: (amount: number, type: "deposit" | "withdrawal", date: string) => void;
+    onSubmit: (amount: number, type: "deposit" | "withdrawal", date: string, group: string) => void;
 }
 
 const TransactionForm: React.FC<TransactionFormProps> = ({ onSubmit }) => {
     const [amount, setAmount] = useState("");
     const [transactionType, setTransactionType] = useState<"deposit" | "withdrawal">("deposit");
     const [selectedDate, setSelectedDate] = useState<string>(new Date().toLocaleDateString());
+    const [group, setGroup] = useState<string>("");
+   const [categories, setCategories] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState(""); useEffect(() => {
+        const fetchCategories = async () => {
+            const categoryData = await getDocs(collection(db, "categories"));
+            setCategories(categoryData.docs.map(doc => doc.data()));
+        };
+
+        fetchCategories();
+    }, []);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!amount) {
-            // You can add validation here if needed
             return;
         }
-        onSubmit(parseFloat(amount), transactionType, selectedDate);
+        onSubmit(parseFloat(amount), transactionType, selectedDate, group);
         setAmount("");
+        setGroup("");
     };
 
     return (
@@ -40,7 +52,11 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onSubmit }) => {
                 Date:
                 <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
             </label>
-            <button type="submit">Submit</button>
+            <label>
+                Group:
+                <Input type="text" value={group} onChange={(e) => setGroup(e.target.value)} />
+            </label>
+            <Button type="submit">Submit</Button>
         </form>
     );
 };
