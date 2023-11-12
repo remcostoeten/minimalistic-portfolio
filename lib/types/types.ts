@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore";
 import { links } from "../data/menulinks";
 
 export type ChildProps = {
@@ -27,6 +28,7 @@ export interface Transaction {
     id: string;
     amount: number;
     type: "deposit" | "withdrawal";
-    timestamp: any;
+    timestamp: Timestamp;
     date: string;
 }
+
