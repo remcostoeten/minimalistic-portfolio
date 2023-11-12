@@ -23,3 +23,10 @@ export interface SiteConfig {
     };
 }
 
+export interface Transaction {
+    id: string;
+    amount: number;
+    type: "deposit" | "withdrawal";
+    timestamp: any;
+    date: string;
+}
