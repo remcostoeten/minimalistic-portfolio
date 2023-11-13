@@ -1,7 +1,7 @@
-// TransactionForm.tsx
-import React, { useEffect, useState } from "react";
-import { db } from "@vercel/postgres";
-import { getDocs, collection } from "firebase/firestore";
+'use client';
+import React, { useState } from "react";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 
 interface TransactionFormProps {
     onSubmit: (amount: number, type: "deposit" | "withdrawal", date: string, group: string) => void;
@@ -12,19 +12,11 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onSubmit }) => {
     const [transactionType, setTransactionType] = useState<"deposit" | "withdrawal">("deposit");
     const [selectedDate, setSelectedDate] = useState<string>(new Date().toLocaleDateString());
     const [group, setGroup] = useState<string>("");
-   const [categories, setCategories] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState(""); useEffect(() => {
-        const fetchCategories = async () => {
-            const categoryData = await getDocs(collection(db, "categories"));
-            setCategories(categoryData.docs.map(doc => doc.data()));
-        };
-
-        fetchCategories();
-    }, []);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!amount) {
+            // You can add validation here if needed
             return;
         }
         onSubmit(parseFloat(amount), transactionType, selectedDate, group);
