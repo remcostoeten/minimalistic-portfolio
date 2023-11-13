@@ -10,21 +10,17 @@ import {
     getDocs,
     doc,
     Timestamp,
-    Unsubscribe,
-    DocumentData,
-    DocumentReference,
-    Transaction,
-    QuerySnapshot,
 } from "firebase/firestore";
+import { Transaction } from "@/lib/types/types";
 const BalanceDisplay = React.lazy(() => import("@/components/transactions/Balance"));
 const TransactionForm = React.lazy(() => import("@/components/transactions/TransactionForm"));
 const TransactionList = React.lazy(() => import("@/components/transactions/TransactionList"));
 import { toast } from 'sonner'
 import autoAnimate from "@formkit/auto-animate";
-
 import { Card } from "@/components/ui/card";
-import CategoryForm from "@/components/transactions/CategoryForm";
 let db;
+
+
 
 const loadDb = async () => {
     if (!db) {
@@ -52,21 +48,26 @@ const TransactionPage: React.FC = () => {
     }
 
     useEffect(() => {
-        let unsubscribe: Unsubscribe | undefined;
+        let unsubscribe;
         loadDb().then(db => {
-            unsubscribe = onSnapshot(collection(db, "transactions"), (snapshot: QuerySnapshot<DocumentData>) => {
+            unsubscribe = onSnapshot(collection(db, "transactions"), (snapshot) => {
                 const fetchedTransactions: Transaction[] = [];
                 let deposits = 0;
-                type Transaction = {
-                    id: string;
-                    amount: number;
-                    type: "deposit" | "withdrawal";
-                    timestamp: Timestamp;
-                    date: string;
-                };
-
                 let withdrawals = 0;
 
+                snapshot.forEach((doc) => {
+                    const transaction = doc.data() as Transaction;
+                    fetchedTransactions.push(transaction);
+
+                    if (transaction.type === "deposit") {
+                        deposits += transaction.amount;
+                    } else {
+                        withdrawals += transaction.amount;
+                    }
+                });
+
+                setTransactions(fetchedTransactions);
+                setTotalDeposits(deposits);
                 setTotalWithdrawals(withdrawals);
             });
         });
@@ -84,9 +85,10 @@ const TransactionPage: React.FC = () => {
         };
 
         try {
-            const docRef: DocumentReference<DocumentData> = await addDoc(collection(db, "transactions"), newTransaction);
+            const docRef = await addDoc(collection(db, "transactions"), newTransaction);
             newTransaction.id = docRef.id;
             setTransactions((prevTransactions) => [newTransaction, ...prevTransactions]);
+
 
             if (type === "deposit") {
                 setTotalDeposits((prevTotal) => prevTotal + amount);
@@ -100,15 +102,6 @@ const TransactionPage: React.FC = () => {
             toast.error('Error adding transaction!');
         }
     }, []);
-
-    const handleCreateCategory = async (category: string) => {
-        try {
-            await addDoc(collection(db, "categories"), { name: category });
-            console.log("Category added successfully");
-        } catch (error) {
-            console.error("Error adding category: ", error);
-        }
-    };
 
     const handleClearTransaction = useCallback(async (transactionId: string) => {
         try {
@@ -135,11 +128,6 @@ const TransactionPage: React.FC = () => {
             console.error("Error clearing all transactions:", error);
         }
     }, []);
-    const memoizedTransactionForm = useMemo(() => (
-        <Suspense fallback={<div>Loading TransactionForm...</div>}>
-            <TransactionForm onSubmit={handleFormSubmit} />
-        </Suspense>
-    ), [handleFormSubmit]);
 
     const memoizedTransactionList = useMemo(() => (
         <Suspense fallback={<div>Loading TransactionList...</div>}>
@@ -157,13 +145,12 @@ const TransactionPage: React.FC = () => {
         </Suspense>
     ), [totalDeposits, totalWithdrawals]);
 
+
     return (
         <Card className="p-10" ref={parentRef}>
             <h1>Transaction Tracker</h1>
-            {memoizedTransactionForm}
             {memoizedTransactionList}
             {memoizedBalanceDisplay}
-            <CategoryForm onSubmit={handleCreateCategory} />
         </Card>
     );
 };

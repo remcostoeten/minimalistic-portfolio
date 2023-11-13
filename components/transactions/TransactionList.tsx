@@ -10,7 +10,7 @@ interface Transaction {
 }
 
 interface TransactionListProps {
-    transactions: Transaction[];
+    transactions: any;
     onClearTransaction: (transactionId: string) => void;
     onClearAllTransactions: () => void;
 }

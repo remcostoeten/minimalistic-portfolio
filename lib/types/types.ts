@@ -1,3 +1,4 @@
+import { Transaction } from './types';
 import { Timestamp } from "firebase/firestore";
 import { links } from "../data/menulinks";
 
