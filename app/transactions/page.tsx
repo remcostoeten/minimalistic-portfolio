@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useCallback, useMemo, useState, Suspense, useRef } from "react";
+import React, { useEffect, useCallback, useMemo, useState, Suspense } from "react";
 import {
     collection,
     onSnapshot,
@@ -10,63 +10,50 @@ import {
     getDocs,
     doc,
     Timestamp,
-    Unsubscribe,
-    DocumentData,
-    DocumentReference,
-    Transaction,
-    QuerySnapshot,
 } from "firebase/firestore";
-const BalanceDisplay = React.lazy(() => import("@/components/transactions/Balance"));
-const TransactionForm = React.lazy(() => import("@/components/transactions/TransactionForm"));
-const TransactionList = React.lazy(() => import("@/components/transactions/TransactionList"));
-import { toast } from 'sonner'
-import autoAnimate from "@formkit/auto-animate";
+import { Transaction } from "@/lib/types/types";
+import BalanceDisplay from "@/components/transactions/Balance";
+import TransactionForm from "@/components/transactions/TransactionForm";
+import TransactionList from "@/components/transactions/TransactionList";
+import { toast } from 'sonner';
+import { db } from "@/lib/firebase";
 
-import { Card } from "@/components/ui/card";
-import CategoryForm from "@/components/transactions/CategoryForm";
-let db;
-
-const loadDb = async () => {
-    if (!db) {
-        const module = await import('@/lib/firebase');
-        db = module.db;
-    }
-    return db;
-};
 
 const TransactionPage: React.FC = () => {
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [totalDeposits, setTotalDeposits] = useState(0);
     const [totalWithdrawals, setTotalWithdrawals] = useState(0);
-    const parentRef = useRef(null);
-
-    useEffect(() => {
-        if (parentRef.current) {
-            autoAnimate(parentRef.current);
-        }
-    }, []); // Empty dependency array means this effect runs once when the component mounts
-
 
     function generateUniqueID() {
         return Date.now().toString(36) + Math.random().toString(36).substr(2);
     }
 
     useEffect(() => {
-        let unsubscribe: Unsubscribe | undefined;
+        let unsubscribe;
+        const loadDb = async () => {
+            const module = await import('@/lib/firebase');
+            return module.db;
+        };
+
         loadDb().then(db => {
-            unsubscribe = onSnapshot(collection(db, "transactions"), (snapshot: QuerySnapshot<DocumentData>) => {
+            unsubscribe = onSnapshot(collection(db, "transactions"), (snapshot) => {
                 const fetchedTransactions: Transaction[] = [];
                 let deposits = 0;
-                type Transaction = {
-                    id: string;
-                    amount: number;
-                    type: "deposit" | "withdrawal";
-                    timestamp: Timestamp;
-                    date: string;
-                };
-
                 let withdrawals = 0;
 
+                snapshot.forEach((doc) => {
+                    const transaction = doc.data() as Transaction;
+                    fetchedTransactions.push(transaction);
+
+                    if (transaction.type === "deposit") {
+                        deposits += transaction.amount;
+                    } else {
+                        withdrawals += transaction.amount;
+                    }
+                });
+
+                setTransactions(fetchedTransactions);
+                setTotalDeposits(deposits);
                 setTotalWithdrawals(withdrawals);
             });
         });
@@ -84,10 +71,9 @@ const TransactionPage: React.FC = () => {
         };
 
         try {
-            const docRef: DocumentReference<DocumentData> = await addDoc(collection(db, "transactions"), newTransaction);
+            const docRef = await addDoc(collection(db, "transactions"), newTransaction);
             newTransaction.id = docRef.id;
             setTransactions((prevTransactions) => [newTransaction, ...prevTransactions]);
-
             if (type === "deposit") {
                 setTotalDeposits((prevTotal) => prevTotal + amount);
                 toast.success('Deposit added!');
@@ -101,21 +87,14 @@ const TransactionPage: React.FC = () => {
         }
     }, []);
 
-    const handleCreateCategory = async (category: string) => {
-        try {
-            await addDoc(collection(db, "categories"), { name: category });
-            console.log("Category added successfully");
-        } catch (error) {
-            console.error("Error adding category: ", error);
-        }
-    };
-
     const handleClearTransaction = useCallback(async (transactionId: string) => {
         try {
             await deleteDoc(doc(db, "transactions", transactionId));
             setTransactions((prevTransactions) => prevTransactions.filter((t) => t.id !== transactionId));
+            toast.success('Transaction cleared!');
         } catch (error) {
             console.error("Error clearing transaction:", error);
+            toast.error('Error clearing transaction!');
         }
     }, []);
 
@@ -131,10 +110,13 @@ const TransactionPage: React.FC = () => {
             setTransactions([]);
             setTotalDeposits(0);
             setTotalWithdrawals(0);
+            toast.success('All transactions cleared!');
         } catch (error) {
             console.error("Error clearing all transactions:", error);
+            toast.error('Error clearing all transactions!');
         }
     }, []);
+
     const memoizedTransactionForm = useMemo(() => (
         <Suspense fallback={<div>Loading TransactionForm...</div>}>
             <TransactionForm onSubmit={handleFormSubmit} />
@@ -158,13 +140,12 @@ const TransactionPage: React.FC = () => {
     ), [totalDeposits, totalWithdrawals]);
 
     return (
-        <Card className="p-10" ref={parentRef}>
+        <div>
             <h1>Transaction Tracker</h1>
             {memoizedTransactionForm}
             {memoizedTransactionList}
             {memoizedBalanceDisplay}
-            <CategoryForm onSubmit={handleCreateCategory} />
-        </Card>
+        </div>
     );
 };
 
