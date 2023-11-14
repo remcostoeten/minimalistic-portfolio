@@ -1,5 +1,8 @@
 import React, { useMemo } from 'react';
 import { useTable, useFilters } from 'react-table';
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
+import { Card } from '../ui/card';
 
 interface Transaction {
     id?: string;
@@ -51,36 +54,36 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions, onClear
     } = useTable({ columns, data }, useFilters);
 
     return (
-        <div>
-            <h2>Transactions</h2>
-            <table {...getTableProps()}>
-                <thead>
-                    {headerGroups.map(headerGroup => (
-                        <tr {...headerGroup.getHeaderGroupProps()}>
-                            {headerGroup.headers.map(column => (
-                                <th {...column.getHeaderProps()}>
-                                    {column.render('Header')}
-                                    <div>{column.canFilter ? column.render('Filter') : null}</div>
-                                </th>
+        <Card className="overflow-x-auto">
+        <h2 className="mb-4 text-lg font-semibold text-gray-700">Transactions</h2>
+        <table {...getTableProps()} className="w-full text-sm text-gray-500 whitespace-nowrap divide-y divide-gray-200 border-b border-gray-200">
+            <thead className="bg-gray-50">
+                {headerGroups.map(headerGroup => (
+                    <tr {...headerGroup.getHeaderGroupProps()} className="text-left font-medium text-gray-700">
+                        {headerGroup.headers.map(column => (
+                            <th {...column.getHeaderProps()} className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {column.render('Header')}
+                                <div>{column.canFilter ? column.render('Filter') : null}</div>
+                            </th>
+                        ))}
+                    </tr>
+                ))}
+            </thead>
+            <tbody {...getTableBodyProps()} className="bg-white divide-y divide-gray-200">
+                {rows.map(row => {
+                    prepareRow(row);
+                    return (
+                        <tr {...row.getRowProps()} className="hover:bg-gray-50">
+                            {row.cells.map(cell => (
+                                <td {...cell.getCellProps()} className="px-6 py-4">{cell.render('Cell')}</td>
                             ))}
                         </tr>
-                    ))}
-                </thead>
-                <tbody {...getTableBodyProps()}>
-                    {rows.map(row => {
-                        prepareRow(row);
-                        return (
-                            <tr {...row.getRowProps()}>
-                                {row.cells.map(cell => (
-                                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                                ))}
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
-            <button onClick={onClearAllTransactions}>Clear All Transactions</button>
-        </div>
+                    );
+                })}
+            </tbody>
+        </table>
+        <Button onClick={onClearAllTransactions} className="mt-4">Clear All Transactions</Button>
+    </Card>
     );
 };
 
@@ -90,7 +93,7 @@ function DefaultColumnFilter({
     const count = preFilteredRows.length;
 
     return (
-        <input
+        <Input
             value={filterValue || ''}
             onChange={e => {
                 setFilter(e.target.value || undefined);

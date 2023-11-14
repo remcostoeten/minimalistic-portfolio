@@ -1,4 +1,9 @@
-import Loader from '@/components/effects/Loader'
+import MiniSpinner from '@/components/effects/MiniSpinner';
+
 export default function Loading() {
-    return <Loader />
-  }
+  return (
+    <>
+      <MiniSpinner />
+    </>
+  );
+}
