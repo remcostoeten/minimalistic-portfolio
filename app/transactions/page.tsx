@@ -18,6 +18,7 @@ const TransactionList = React.lazy(() => import("@/components/transactions/Trans
 import { toast } from 'sonner'
 import autoAnimate from "@formkit/auto-animate";
 import { Card } from "@/components/ui/card";
+import { TransactionsTableShell } from "@/components/data-table/TableShell";
 let db;
 
 
@@ -147,11 +148,12 @@ const TransactionPage: React.FC = () => {
 
 
     return (
-        <Card className="p-10" ref={parentRef}>
+        <><Card className="p-10" ref={parentRef}>
             <h1>Transaction Tracker</h1>
             {memoizedTransactionList}
             {memoizedBalanceDisplay}
-        </Card>
+        </Card><TransactionsTableShell data={transactions} /></>
+
     );
 };
 
