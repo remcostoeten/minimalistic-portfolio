@@ -1,6 +1,8 @@
-'use client';
 import React, { useState, useEffect } from 'react';
 import { Input } from '../ui/input';
+import TableSkeleton from '../loaders/Skeleton';
+import { CardBody } from '@nextui-org/react';
+import { Card } from '../ui/card';
 
 type Row = {
   round: number;
@@ -29,24 +31,30 @@ const BetTable = ({ startingBet, rounds }) => {
   }, [startingBet, rounds]);
 
   return (
-    <table className=" min-w-full divide-y divide-gray-700 shadow-md text-white bg-gray-800">
-      <thead className="bg-gray-700">
-        <tr>
-          <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Round</th>
-          <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Bet</th>
-          <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Total Cost</th>
-        </tr>
-      </thead>
-      <tbody className="bg-gray-800 divide-y divide-gray-700">
-        {rows.map((row, index) => (
-          <tr key={index}>
-            <td className="px-6 py-4 whitespace-nowrap">{row.round}</td>
-            <td className="px-6 py-4 whitespace-nowrap">{row.bet}</td>
-            <td className="px-6 py-4 whitespace-nowrap">{row.totalCost}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div className='fade'>
+      {isLoading ? (
+        <TableSkeleton />
+      ) : (
+        <table className="min-w-full divide-y shadow-md text-white">
+          <thead className="bg-gray-700">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Round</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Bet</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Total Cost</th>
+            </tr>
+          </thead>
+          <tbody className="bg-gray-800 divide-y divide-gray-700">
+            {rows.map((row, index) => (
+              <tr key={index}>
+                <td className="px-6 py-4 whitespace-nowrap">{row.round}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{row.bet}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{row.totalCost}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
   );
 };
 
@@ -56,13 +64,13 @@ const BetCalculationTable = () => {
   const [rounds, setRounds] = useState(20);
 
   return (
-    <div className="p-10 bg-gray-900 text-white ">
+    <Card className="p-10 text-white">
       <Input type="number" value={bet1} onChange={e => setBet1(e.target.value)} className="bg-gray-800 text-white" />
       <BetTable startingBet={bet1} rounds={rounds} />
       <Input type="number" value={bet2} onChange={e => setBet2(e.target.value)} className="bg-gray-800 text-white" />
       <BetTable startingBet={bet2} rounds={rounds} />
       <Input type="number" value={rounds} onChange={e => setRounds(e.target.value)} className="bg-gray-800 text-white" />
-    </div>
+    </Card>
   );
 };
 
