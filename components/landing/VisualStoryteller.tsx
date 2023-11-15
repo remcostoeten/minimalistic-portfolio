@@ -25,7 +25,7 @@ export default function VisualStoryteller() {
   return (
     <>
       <div style={{
-        maxHeight: isExpanded ? '2000px' : '1200px',
+        maxHeight: isExpanded ? '2250px' : '1200px',
         overflow: 'hidden',
         transition: 'max-height 0.5s ease-in-out'
       }}>
@@ -65,7 +65,7 @@ export default function VisualStoryteller() {
                     <h4 className="text-gray-200 text-lg font-medium">
                       {data.title}
                     </h4>
-                    <p className="text-gray-400 text-lg self-start max-md:max-w-full">
+                    <p className="text-gray-400 text-md self-start max-md:max-w-full">
                       {data.description.split('\n').map((line, i) => (
                         <React.Fragment key={i}>
                           {line}
@@ -74,7 +74,7 @@ export default function VisualStoryteller() {
                       ))}
                     </p>
                     <div
-                      className="shadow-sm bg-zinc-300 flex w-[600px] h-[300px] flex-col mt-10 rounded-lg self-start max-md:max-w-full max-md:mt-10"
+                      className="shadow-sm bg-zinc-300 flex w-[600px] h-[300px] flex-col rounded-lg self-start max-md:max-w-full"
                     />
                     <motion.div
                       className="flex w-[296px] max-w-full items-start gap-2.5 mt-2 self-start max-md:justify-center"
