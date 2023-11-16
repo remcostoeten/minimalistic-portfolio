@@ -3,6 +3,7 @@
 import { useState } from "react";
 import React from "react";
 import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 
 function BettingTable() {
   const [bet1, setBet1] = useState(0);
@@ -53,6 +54,15 @@ function BettingTable() {
     </div>
   );
 
+  const clearAll = () => {
+    setBet1(0);
+    setBet2(0);
+    setWins(0);
+    setLosses(0);
+    setMultiplier1(1);
+    setMultiplier2(1);
+  }
+
 
   return (
     <div className="p-6 border-shad border text-white flex flex-col gap-4">
@@ -66,19 +76,15 @@ function BettingTable() {
           <LabeledInput id="multiplier1" label="Enter your multiplier for bet 1" value={multiplier1} onChange={handleMultiplierChange1} />
           <LabeledInput id="multiplier2" label="Enter your multiplier for bet 2" value={multiplier2} onChange={handleMultiplierChange2} />
         </div>
-        <div className='flex flex-col items-center gap-2'>
-          <label htmlFor="multiplier2" className="block text-sm font-medium text-gray-200">
-            Enter your multiplier for bet 2
-          </label>
-          <Input
-            type="number"
-            id="multiplier2"
-            className="mt-1 block w-full py-2 px-3 border-shad text-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            value={multiplier2}
-            onChange={handleMultiplierChange2} />
+        <Input
+          type="number"
+          id="multiplier2"
+          className="mt-1 block w-full py-2 px-3 border-shad text-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          value={multiplier2}
+          onChange={(event) => handleMultiplierChange2({ target: { value: +event.target.value } })}
+        />
+          />
         </div>
-      </form>
-      <p>Total winnings: €{totalWinnings.toLocaleString()},-</p>
       <p>Total losses: €{totalLosses.toLocaleString()},-</p>
       <table className="min-w-full divide-y divide-gray-700 text-white">
         <thead className="bg-gray-500">
