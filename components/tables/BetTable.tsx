@@ -31,6 +31,7 @@ function BettingTable() {
 
   return (
     <div className="p-6 bg-gray-800 text-white">
+      <p>Dubble down calculator. Two seperate collumns to compare strategies.</p>
       <form className="mb-4 flex gap-2 text-left items-center">
         <div className='flex flex-col items-center gap-2'>
           <label htmlFor="bet1" className="block text-sm font-medium text-gray-200">
@@ -54,20 +55,34 @@ function BettingTable() {
             value={bet2}
             onChange={handleInputChange2} />
         </div>
+        <div className='flex flex-col items-center gap-2'>
+          <label htmlFor="wins" className="block text-sm font-medium text-gray-200">
+            Enter number of wins
+          </label>
+          <Input
+            type="number"
+            id="wins"
+            className="mt-1 block w-full py-2 px-3 border border-gray-700 bg-gray-700 text-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            value={wins}
+            onChange={handleWinsChange} />
+        </div>
+        <div className='flex flex-col items-center gap-2'>
+          <label htmlFor="losses" className="block text-sm font-medium text-gray-200">
+            Enter number of losses
+          </label>
+          <Input
+            type="number"
+            id="losses"
+            className="mt-1 block w-full py-2 px-3 border border-gray-700 bg-gray-700 text-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            value={losses}
+            onChange={handleLossesChange} />
+        </div>
       </form>
+      <p>Total winnings: €{totalWinnings.toLocaleString()},-</p>
+      <p>Total losses: €{totalLosses.toLocaleString()},-</p>
       <table className="min-w-full divide-y divide-gray-700 text-white">
         <thead>
-          <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Step
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Bet 1
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Bet 2
-            </th>
-          </tr>
+          {/* Existing table header */}
         </thead>
         <tbody className="bg-gray-700 divide-y divide-gray-600">
           {[...Array(20)].map((_, i) => (
