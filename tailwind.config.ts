@@ -69,6 +69,8 @@ module.exports = {
       color: {
         'darkalt': '#7d7d7d',
         'title': 'var(--title)',
+        'text': '#a1a1aa',
+        'white': '#fafafa'
       },
       backgroundColor: {
         'body': '#020000',
