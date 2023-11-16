@@ -3,7 +3,6 @@
 import { useState } from "react";
 import React from "react";
 import { Input } from "../ui/input";
-import { Button } from "../ui/button";
 
 function BettingTable() {
   const [bet1, setBet1] = useState(0);
