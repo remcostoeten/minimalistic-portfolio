@@ -76,44 +76,47 @@ function BettingTable() {
           <LabeledInput id="multiplier1" label="Enter your multiplier for bet 1" value={multiplier1} onChange={handleMultiplierChange1} />
           <LabeledInput id="multiplier2" label="Enter your multiplier for bet 2" value={multiplier2} onChange={handleMultiplierChange2} />
         </div>
-        <Input
-          type="number"
-          id="multiplier2"
-          className="mt-1 block w-full py-2 px-3 border-shad text-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          value={multiplier2}
-          onChange={(event) => handleMultiplierChange2({ target: { value: +event.target.value } })}
-        />
+        <div className='flex flex-col items-center gap-2'>
+          <label htmlFor="multiplier2" className="block text-sm font-medium text-gray-200">
+            Enter your multiplier for bet 2
+          </label>
+          <Input
+            type="number"
+            id="multiplier2"
+            className="mt-1 block w-full py-2 px-3 border-shad text-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            value={multiplier2}
+            onChange={(event) => handleMultiplierChange2({ target: { value: +event.target.value } })}
           />
         </div>
-      <p>Total losses: €{totalLosses.toLocaleString()},-</p>
-      <table className="min-w-full divide-y divide-gray-700 text-white">
-        <thead className="bg-gray-500">
-          <tr>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
-              Step
-            </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
-              Bet 1
-            </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
-              Bet 2
-            </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
-              Individual Win Titration
-            </th>
-          </tr>
-        </thead>
-        <tbody className="bg-gray-700 divide-y divide-gray-600">
-          {[...Array(20)].map((_, i) => (
-            <tr key={i}>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{i + 1}</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{(bet1 * Math.pow(multiplier1, i)).toLocaleString()},-</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">€{(bet2 * Math.pow(multiplier2, i)).toLocaleString()},-</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{(wins * Math.pow(2, i)).toLocaleString()},-</td>
+        <p>Total losses: €{totalLosses.toLocaleString()},-</p>
+        <table className="min-w-full divide-y divide-gray-700 text-white">
+          <thead className="bg-gray-500">
+            <tr>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                Step
+              </th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                Bet 1
+              </th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                Bet 2
+              </th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                Individual Win Titration
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="bg-gray-700 divide-y divide-gray-600">
+            {[...Array(20)].map((_, i) => (
+              <tr key={i}>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{i + 1}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{(bet1 * Math.pow(multiplier1, i)).toLocaleString()},-</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">€{(bet2 * Math.pow(multiplier2, i)).toLocaleString()},-</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{(wins * Math.pow(2, i)).toLocaleString()},-</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
     </div>
   );
 }
