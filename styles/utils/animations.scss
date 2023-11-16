@@ -3,6 +3,37 @@ $black: #000;
 $green: #00ff00;
 $red: #ff0000;
 
+
+.fadee {
+    position: relative;
+}
+
+.fadee> :first-child {
+    position: absolute;
+    width: 100%;
+    transition: opacity 0.3s;
+}
+
+.fadee> :first-child:not(.loaded) {
+    opacity: 1;
+}
+
+.fadee> :first-child.loaded {
+    opacity: 0;
+}
+
+.fadee> :last-child {
+    transition: opacity 0.3s;
+}
+
+.fadee> :last-child:not(.loaded) {
+    opacity: 0;
+}
+
+.fadee> :last-child.loaded {
+    opacity: 1;
+}
+
 @keyframes infiniteScroll {
     0% {
         transform: translateX(0);

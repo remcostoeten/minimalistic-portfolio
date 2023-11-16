@@ -1,4 +1,4 @@
-import MiniSpinner from '@/components/effects/MiniSpinner';
+import MiniSpinner from '@/components/loaders/MiniSpinner';
 
 export default function Loading() {
   return (

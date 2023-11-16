@@ -8,6 +8,7 @@ import { toast } from 'sonner'
 import SingleHand from '@/components/misc/BlackjackSingleHand';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Link from 'next/link';
+import BettingTable from '@/components/tables/BetTable';
 // Function to get the strategy based on player's hand and dealer's card
 function getStrategy(playerHand, dealerCard) {
   const strategy = blackjackData.strategy[playerHand];
@@ -76,6 +77,7 @@ const Page = () => {
 
   return (
     <>
+      <BettingTable />
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
           <AccordionTrigger>Single hand (WiP)</AccordionTrigger>
