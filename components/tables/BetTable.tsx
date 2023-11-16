@@ -63,7 +63,6 @@ function BettingTable() {
     setMultiplier2(1);
   }
 
-
   return (
     <div className="p-6 border-shad border text-white flex flex-col gap-4">
       <p className="border-b  ">Dubble down calculator. Two seperate collumns to compare strategies.</p>
