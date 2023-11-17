@@ -58,9 +58,9 @@ const Intro = () => {
                             </div><SubTitle isGeist>
                                 <SwappingWords
                                     words={[
-                                        'Frontend developer!',
                                         'Divjesschuiver',
-                                        'Aspiring fullstacks',
+                                        'Aspiring fullstack',
+                                        'Senior in not finishing projects',
                                         'Recovering Magento developer',
                                     ]}
                                     interval={4000} />
