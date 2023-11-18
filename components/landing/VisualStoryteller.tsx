@@ -24,7 +24,7 @@ export default function VisualStoryteller() {
   return (
     <>
       <div style={{
-        maxHeight: isExpanded ? '2250px' : '1200px',
+        maxHeight: isExpanded ? '2250px' : '1000px',
         overflow: 'hidden',
         transition: 'max-height 0.5s ease-in-out'
       }}>
@@ -39,7 +39,7 @@ export default function VisualStoryteller() {
               ref={ref}
               id="projects"
               key={index}
-              className="w-[650px] geist pt-10 mt-10 max-w-full ml-5 mb-8 self-start"
+              className="w-[650px] geist pt-10 max-w-full ml-5 mb-8 self-start"
               initial={{ opacity: 0, y: 10, x: 15 }}
               transition={{
                 duration: .4,
@@ -108,27 +108,21 @@ export default function VisualStoryteller() {
                         ))}
                       </div>
                     </motion.div>
-                    <Button variant='ghost'
-                      type="button"
-                      aria-label="View project"
+                    <Button
+                      href={data.url}
+                      as={Link}
+                      color="secondary"
+                      showAnchorIcon
+                      variant="ghost"
+                      target='_blank'
+                      className='text-[#fff] border-[#282828]'
                     >
-                      <Link href={data.url} target="_blank">
-                        View Project
-                      </Link>
+                      View Project
                     </Button>
                   </div>
                 </div>
               </div>
-              <Button
-                href={data.url}
-                as={Link}
-                color="primary"
-                showAnchorIcon
-                variant="ghost"
-                target='_blank'
-              >
-                View Project
-              </Button>
+
             </motion.section>
           );
         })}
@@ -145,7 +139,7 @@ export default function VisualStoryteller() {
             View Less
           </Button>
         ) : (
-          <><div className='fade absolute'></div><Button variant='ghost' onClick={handleReadMoreClick} className="fade-in">
+          <><div className='fade absolute'></div><Button variant='ghost' onClick={handleReadMoreClick} className="mt-10 fade-in">
             View more
           </Button></>
         )}

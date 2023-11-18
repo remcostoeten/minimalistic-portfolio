@@ -2,6 +2,7 @@
 import Logo from '@/components/core/Logo';
 import Navigation from '@/components/core/Navigation';
 import { PageTitle, SubTitle } from '@/components/core/Typography';
+import Sprinkle from '@/components/effects/Sprinkle';
 import SwappingWords from '@/components/effects/SwappingWords';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -53,8 +54,9 @@ const Intro = () => {
                             <div className='flex gap-1 items-center relative'>
                                 <Link href='/' className='absolute -left-10 -bottom-2'>
                                     <Logo /></Link>
-                                <PageTitle isGeist><Link href='/'>Remco</Link></PageTitle>
-                            </div><SubTitle isGeist>
+                                <Sprinkle className='text-4xl font-medium text-gray-100 block box-border leading-6 m-0 p-0 text-left no-underline break-words antialiased geist' t1='Remco ' t2='' />
+                            </div>
+                            <SubTitle isGeist>
                                 <SwappingWords
                                     words={[
                                         'Divjesschuiver',
