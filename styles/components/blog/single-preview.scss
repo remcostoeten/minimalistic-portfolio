@@ -1,0 +1,112 @@
+.blog-preview {
+    align-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+    flex: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    height: min-content;
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    width: 100%;
+
+    &__single {
+        flex: 1 0 0px;
+        height: auto;
+        max-width: 390px;
+        min-width: 320px;
+        position: relative;
+        transform: perspective(1200px);
+        width: 1px;
+
+        a {
+            background-color: var(--token-eca15548-b8b3-457a-984e-26ad86de3a8a, rgb(229, 229, 229));
+            max-width: 100%;
+            width: 100%;
+            border-radius: 16px;
+            opacity: 1;
+            align-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            gap: 0px;
+            height: min-content;
+            justify-content: center;
+            max-width: 440px;
+            overflow: visible;
+            padding: 2px;
+            position: relative;
+            text-decoration: none;
+            width: 400px;
+        }
+    }
+
+    &__innner {
+        background-color: var(--token-eca15548-b8b3-457a-984e-26ad86de3a8a, rgb(229, 229, 229));
+        border-radius: 14px;
+        opacity: 1;
+        align-content: center;
+        align-items: center;
+        display: flex;
+        flex: none;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 24px;
+        height: min-content;
+        justify-content: center;
+        overflow: visible;
+        padding: 14px;
+        position: relative;
+        width: 100%;
+    }
+
+    &__top {
+        .label {
+            background-color: var(--token-b0e9fe13-e947-42c8-a3e7-3ed6a792ffd5, rgb(212, 212, 212));
+            border-radius: 6px;
+            opacity: 1;
+            align-content: center;
+            align-items: center;
+            display: flex;
+            flex: none;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 6px;
+            height: min-content;
+            justify-content: center;
+            overflow: hidden;
+            padding: 4px 8px;
+            position: relative;
+            width: min-content;
+            will-change: var(--framer-will-change-override, transform);
+        }
+
+        .read-time {
+            align-items: center;
+            display: flex;
+            flex: none;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 6px;
+            height: min-content;
+            justify-content: flex-start;
+            overflow: visible;
+            padding: 0;
+            position: relative;
+            width: min-content;
+            font-size: 10px;
+
+            &::before {
+                content: url('../../../public/clock.svg');
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+
+    }
+}
+
+// usage ::after
