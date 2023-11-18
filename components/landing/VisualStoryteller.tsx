@@ -5,9 +5,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import ShowcaseLabel from '../core/Labels';
 import { ProjectData } from '@/config/data/ProjectData';
-import { Button, ButtonGroup } from '@nextui-org/react';
-import { GhostButton } from '../core/buttons';
-import Link from 'next/link';
+import { Link, Button } from "@nextui-org/react";
+
 import useInView from '@/hooks/useInView';
 import { motion } from 'framer-motion';
 
@@ -120,6 +119,16 @@ export default function VisualStoryteller() {
                   </div>
                 </div>
               </div>
+              <Button
+                href={data.url}
+                as={Link}
+                color="primary"
+                showAnchorIcon
+                variant="ghost"
+                target='_blank'
+              >
+                View Project
+              </Button>
             </motion.section>
           );
         })}
@@ -136,11 +145,9 @@ export default function VisualStoryteller() {
             View Less
           </Button>
         ) : (
-          <><div className='fade absolute'></div>
-            <Button variant='ghost' onClick={handleReadMoreClick} className="fade-in">
-              View more
-            </Button>
-          </>
+          <><div className='fade absolute'></div><Button variant='ghost' onClick={handleReadMoreClick} className="fade-in">
+            View more
+          </Button></>
         )}
       </motion.span>
     </>

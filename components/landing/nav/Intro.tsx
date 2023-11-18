@@ -43,7 +43,6 @@ const menuContainerAnimation = {
     }
 };
 
-
 const Intro = () => {
     return (
         <div className='pt-[40px] contained geist flex flex-col gap-[64px]'>
@@ -52,8 +51,8 @@ const Intro = () => {
                     <motion.div variants={menuItemAnimation} className="flex flex-col gap-4">
                         <motion.span variants={menuItemAnimation} className="flex flex-col gap-1">
                             <div className='flex gap-1 items-center relative'>
-                                <span className='absolute -left-10 -bottom-2'>
-                                    <Logo /></span>
+                                <Link href='/' className='absolute -left-10 -bottom-2'>
+                                    <Logo /></Link>
                                 <PageTitle isGeist><Link href='/'>Remco</Link></PageTitle>
                             </div><SubTitle isGeist>
                                 <SwappingWords

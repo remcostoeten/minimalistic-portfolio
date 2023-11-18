@@ -8,8 +8,8 @@ export const ProjectData = [
     },
     {
         title: "Visual Studio Code UI recreated in React",
-        description: "Why you ask? I have the same question...Iteration no.lost count for a portfolio idea. Far from done and abandoned, but I do think the landing UI is cool and showworthy nonetheless.", url: 'https://vsc.remcostoeten.com',
-        labels: ['TypeScript', 'NextJS', 'TailwindCSS', "SCSS"],
+        description: "Why you ask? I have the same question...Iteration no.lost count for a portfolio idea. Far from done and abandoned, but I do think the landing UI is cool and showworthy nonetheless.", labels: ['TypeScript', 'NextJS', 'TailwindCSS', "SCSS"],
+        url: "https://vsc.remcostoeten.com",
         icon: '/icons/vscodeicon.svg'
     },
     {
