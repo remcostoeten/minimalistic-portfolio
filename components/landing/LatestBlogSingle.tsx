@@ -11,13 +11,13 @@ export default function LatestBlogSingle() {
                 <SectionTitle>Some articles</SectionTitle>
                 <div className='blog-preview'>
                     {/* <div className="grid grid-cols-3 gap-4 dark:bg-gray-900 rounded-lg"> */}
-                    <div className="w-1/3 flex flex-col rounded-lg overflow-hidden shadow-lg">
-                        <div className="px-2 py-4 bg-[#151515]">
-                            <div className="flex justify-between items-center text-sm">
+                    <div className="w-1/3 flex flex-col blog-card bg-[#151515] rounded-lg overflow-hidden shadow-lg">
+                        <div className="px-2 pt-2 pb-4 ">
+                            <div className="geist flex justify-between items-center text-sm">
                                 <ShowcaseLabel>NextJS</ShowcaseLabel>
                                 <div className="flex items-center text-gray-400">
                                     <svg
-                                        className=" h-5 w-5"
+                                        className=" h-3 w-3"
                                         fill="none"
                                         height="24"
                                         stroke="currentColor"
@@ -31,22 +31,24 @@ export default function LatestBlogSingle() {
                                         <circle cx="12" cy="12" r="10" />
                                         <polyline points="12 6 12 12 16 14" />
                                     </svg>
+
                                     <span className="ml-2">5 min read</span>
                                 </div>
                             </div>
                         </div>
                         <Image
                             alt="Blog image"
-                            className="object-cover"
+                            className="object-cover px-3 rounded-lg bg-[#151515]"
                             height="350"
                             src="/b1.webp"
                             style={{
                                 aspectRatio: "500/350",
                                 objectFit: "cover",
+                                borderRadius: "16px",
                             }}
                             width="500"
                         />
-                        <div className="px-6 py-4">
+                        <div className="px-3 py-4">
                             <div className="flex justify-between items-start">
                                 <div>
                                     <h3 className="font-bold text-xl mb-2 line-clamp-2 text-white text-[24px]">Using Firebase in NextJS</h3>

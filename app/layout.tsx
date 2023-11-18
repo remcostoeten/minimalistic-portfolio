@@ -77,7 +77,7 @@ export default function RootLayout({
       <ActiveSectionContextProvider>
         <html className={`${GeistSans.variable} ${GeistMono.variable} dark text-foreground bg-background`} lang="en">
           <body className={`${serif.className} dark-background pb-20 min-h-screen flex `}>
-            <span className='absolute top-0 right-0 bg-gradient-to-r from-green-400 to-[#101010]'></span>
+            <span className='absolute top-0 right-0 bg-gradient-to-r from-green-400 to-[##0E0E0E]'></span>
             <main className="mx-auto pt-8 px-6">
               <Intro />
               <div className="contained">
