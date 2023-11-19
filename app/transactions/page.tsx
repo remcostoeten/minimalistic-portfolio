@@ -1,3 +1,4 @@
+//@ts-ignore
 'use client';
 import React, { useEffect, useCallback, useMemo, useState, Suspense } from "react";
 import {
@@ -10,6 +11,7 @@ import {
     getDocs,
     doc,
     Timestamp,
+    Unsubscribe,
 } from "firebase/firestore";
 import { Transaction } from "@/lib/types/types";
 import BalanceDisplay from "@/components/transactions/Balance";
@@ -18,8 +20,7 @@ import TransactionList from "@/components/transactions/TransactionList";
 import { toast } from 'sonner';
 import { db } from "@/lib/firebase";
 
-
-const TransactionPage: React.FC = () => {
+const TransactionPage = () => {
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [totalDeposits, setTotalDeposits] = useState(0);
     const [totalWithdrawals, setTotalWithdrawals] = useState(0);
@@ -29,7 +30,7 @@ const TransactionPage: React.FC = () => {
     }
 
     useEffect(() => {
-        let unsubscribe;
+        let unsubscribe: Unsubscribe;
         const loadDb = async () => {
             const module = await import('@/lib/firebase');
             return module.db;

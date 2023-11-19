@@ -81,6 +81,15 @@ text-theme-light {
     color: #0E0E0E;
 }
 
+
+.white-icon {
+    fill: red;
+
+    path {
+        fill: blue !important;
+    }
+}
+
 .grid {
     &--yellow {
         background-color: #B8925E;
