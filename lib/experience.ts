@@ -64,6 +64,24 @@ export const Socials = [
   }
 ]
 
+export const HeaderSocials = [
+  {
+    name: 'Github',
+    icon: '/icons/githubline.svg',
+    url: 'https://githgub.com/remcostoeten',
+  },
+  {
+    name: 'Whatsapp',
+    icon: 'icons/whatsappline.svg',
+    url: 'https://wa.me/31636590707',
+  },
+  {
+    name: 'LinkedIn',
+    icon: 'icons/linkedinline.svg',
+    url: 'https://www.linkedin.com/in/remco-stoeten/',
+  }
+]
+
 export const TechnologyIcons = [
   { name: 'Figma', icon: 'figma.svg', description: 'I miss photoshop', tooltip: 'Actually i dont', url: 'https://www.figma.com/' },
   { name: 'GraphQL', icon: 'graphql.svg', description: 'backend <> frontend', tooltip: 'Learnng @ work', url: 'https://graphql.org/' },

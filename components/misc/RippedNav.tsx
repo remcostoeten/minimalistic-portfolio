@@ -1,5 +1,5 @@
 'use client';
-import { phoneNumber } from '@/config/data';
+import { phoneNumber, siteConfig } from '@/config/data';
 import { fadeInDelays100 } from '@/lib/animations';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -8,10 +8,27 @@ import Dropdown from '../core/Dropdown';
 import Logo from '../core/Logo';
 import { SubTitle } from '../core/Typography';
 import SwappingWords from '../effects/SwappingWords';
+import { HeaderSocials, Socials } from '@/lib/experience';
+import Image from 'next/image';
 
+type SocialProps = {
+    link?: string;
+    icon?: React.ReactNode;
+    key?: any;
+};
+
+const SocialCircle = ({ link, key, icon }: SocialProps) => {
+    const url = new URL(link);
+    const platform = url.hostname.split('.')[0];
+
+    return (
+        <Link key={key} href={link} className="rounded-full flex items-center justify-center w-10 h-10 bg-[#262626] social-circle">
+            <Image src={String(icon)} alt={platform} width="15" height="15" />
+        </Link>
+    );
+};
 export default function RippedNav() {
     const whatsappUrl = `https://wa.me/${phoneNumber}`;
-
     return (
         <>
             <motion.nav className="style-0" data-framer-name="Desktop" initial={{ opacity: 0, y: 50, x: 15 }}
@@ -101,16 +118,20 @@ export default function RippedNav() {
                             <Dropdown />
                         </div>
                     </div>
-                    <div className="style-38" data-framer-name="Social Links & Buttons">
-                        <div className="style-39" data-framer-name="Social Links">
+                    <div className="style-38" aria-label="Social Links & Buttons">
+                        <div className="style-39" aria-label="Social Links">
+                            {HeaderSocials.map((social, index) => (
+                                <SocialCircle key={index} link={social.url} icon={social.icon} />
+                            ))}
                             <div className="style-40">
                                 <div className="style-41" tabIndex={0}>
-                                    <Link className='flex items-center justify-center' href={whatsappUrl} target='_blank'>
-                                        <div className="!bg-[#262626] style-43 flex items-center justify-center social-circel" >
+                                    <Link className='flex items-center justify-center
+                                ' href={whatsappUrl} target=' _blank'>
+                                        <div className="bg-[#262626] style-43 flex items-center justify-center " >
                                             <div
                                                 className="style-44"
                                             >
-                                                <div className="!bg-[#262626] style-45 social-circel">
+                                                <div className="bg-[#262626] social-circle style-45 social-circel">
                                                     <svg
                                                         style={{ transform: 'translate(7px,2px)' }}
                                                         xmlns="http://www.w3.org/2000/svg"
@@ -131,11 +152,9 @@ export default function RippedNav() {
                             </div>
                             <div className="style-48">
                                 <div className="style-49" tabIndex={0}>
-                                    <a
-                                        className="style-50"
-                                        data-framer-name="Medium"
-                                        data-highlight="true"
-                                        href="https://github.com"
+                                    <Link
+                                        className="style-50 social-circle"
+                                        href="https://github.com/remcostoeten"
                                         target="_blank"
                                         rel="noopener"
                                         tabIndex={0}
@@ -163,16 +182,16 @@ export default function RippedNav() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="style-57">
                                 <div className="style-58" tabIndex={0}>
                                     <a
-                                        className="style-59"
+                                        className="style-59 social-circle"
                                         data-framer-name="Medium"
                                         data-highlight="true"
-                                        href="https://linkedin.com"
+                                        href={siteConfig.links.linkedin}
                                         target="_blank"
                                         rel="noopener"
                                         tabIndex={0}
@@ -210,7 +229,7 @@ export default function RippedNav() {
                                     <a
                                         className="style-69 text-black !bg-[#E5E5E5]"
                                         data-framer-name="Small"
-                                        href="https://cal.com"
+                                        href=""
                                         target="_blank"
                                         rel="noopener"
                                     >

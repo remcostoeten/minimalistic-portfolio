@@ -1,0 +1,15 @@
+.social-circle {
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background-color: var(--theme);
+    }
+
+    svg {
+        fill: #e5e5e5;
+
+        path {
+            fill: #e5e5e5;
+        }
+    }
+}
