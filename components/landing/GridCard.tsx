@@ -1,5 +1,11 @@
+/**
+ * GridCard component.
+ *
+ * TODO: Migrate CSS classes to Tailwind
+ */
+
 import Icon from "../icons/icons";
-import { personalData } from "../personal-data";
+import { personalData } from "../../config/data/personal-data";
 
 export default function GridCard() {
   return (

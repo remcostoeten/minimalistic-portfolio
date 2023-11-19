@@ -3,6 +3,7 @@ import { SectionTitle } from '../core/Typography'
 import Image from 'next/image'
 import ShowcaseLabel from '../core/Labels'
 import { blogPosts } from '@/lib/data/BlogPosts'
+import Link from 'next/link'
 
 export default function LatestBlogSingle() {
     return (
@@ -20,7 +21,21 @@ export default function LatestBlogSingle() {
                                     )) : <ShowcaseLabel>{post.label}</ShowcaseLabel>}
                                 </div>
                                 <div className="flex items-center text-gray-400">
-                                    <span className="ml-2">{post.readTime}</span>
+                                    <svg
+                                        className=" h-5 w-5"
+                                        fill="none"
+                                        height="24"
+                                        stroke="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        viewBox="0 0 24 24"
+                                        width="24"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <circle cx="12" cy="12" r="10" />
+                                        <polyline points="12 6 12 12 16 14" />
+                                    </svg>  <span className="ml-2">{post.readTime}</span>
                                 </div>
                             </div>
                             <Image
@@ -42,7 +57,7 @@ export default function LatestBlogSingle() {
                                     </p>
                                 </div>
                                 <div className="ml-4">
-                                    <a href="#">
+                                    <Link href={post.url} target="_blank">
                                         <svg
                                             className=" h-6 w-6 text-white"
                                             fill="none"
@@ -58,7 +73,7 @@ export default function LatestBlogSingle() {
                                             <path d="M7 7h10v10" />
                                             <path d="M7 17 17 7" />
                                         </svg>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

@@ -10,6 +10,7 @@ import GridCard from "./GridCard";
 import CountingNumber from "../effects/CountingNumbers";
 import { ChildProps } from "@/lib/types/types";
 import TextRevealSkew from "../effects/TextRevealSkew";
+import { SectionTitle } from "../core/Typography";
 
 
 const GridItem = ({ children }: ChildProps) => (
@@ -22,7 +23,7 @@ const GridItem = ({ children }: ChildProps) => (
 export default function Grid() {
     return (
         <>
-            <h2 className="text-32 text-color font-black">About me</h2>
+            <SectionTitle>Who dis?</SectionTitle>
             <section className="flex mt-[60px] mb-[60px]  max-md:flex-col gap-l max-md:items-stretch">
 
 
@@ -54,7 +55,7 @@ export default function Grid() {
                     delay: 1.7
                 }}
                     className="flex flex-col items-stretch w-[67%] max-md:w-full">
-                    <div className="flex gap-l grow flex-col w-[741px] max-md:max-w-full">
+                    <div className="flex gap-l grow flex-col  max-md:max-w-full">
                         <motion.div
                             initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{
                                 duration: 1.2,
@@ -79,7 +80,7 @@ export default function Grid() {
                         <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{
                             duration: 1.2,
                             delay: 1.2
-                        }} className="p-[32px] flex items-center justify-center grid--card dark:grid--card infinite-slider dark:border-dark  w-full gap-[40px] flex-col rounded-16 overflow-hidden grid--card h-full items-center">
+                        }} className="p-[32px] flex  justify-center grid--card dark:grid--card infinite-slider dark:border-dark  w-full gap-[40px] flex-col rounded-16 overflow-hidden grid--card h-full items-center">
                             <h4 className=" text-2xl experience-title">My stack</h4>
                             <div className="flex flex-col gap-l">
                                 <InfiniteLogoSlider />

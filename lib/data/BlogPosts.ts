@@ -11,8 +11,8 @@ export const blogPosts = [
         url: "https://snippets.remcostoeten.com/Components-nextjs-react/scroll-in-view-trigger"
     },
     {
-        label: ["Firebase", "noSQL", "Cloud"],
-        readTime: "5 min read",
+        label: ["Firebase", "noSQL",],
+        readTime: "2 min read",
         imageSrc: "/b1.webp",
         title: "Store data in Firebase",
         description: "Showcasing how easy it is to store data in Firebase using NextJS.",

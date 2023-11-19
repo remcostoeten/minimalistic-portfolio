@@ -27,7 +27,7 @@ export default function InfiniteLogoSlider() {
                             onMouseLeave={() => setHoveredIndex(null)}
                         >
                             <Link
-                                className="slide cursor-pointer flex gap gap-[20px] text-20 text-theme dark:bg-dark-alt dark:text-white/40  rounded-card-inner relative"
+                                className="slide cursor-pointer flex gap gap-[20px] text-20 text-theme dark:bg-[#151515] dark:text-white/40  rounded-card-inner relative"
                                 href={icon.url} target="_blank" rel="noopener noreferrer"
                             >
                                 <Image src={`/icons/${icon.icon}`} alt={icon.name} width={50} height={50} />
@@ -63,7 +63,7 @@ export default function InfiniteLogoSlider() {
                                 onMouseLeave={() => setHoveredIndex(null)}
                             >
                                 <Link
-                                    className="slide cursor-pointer flex gap gap-[20px] text-20 text-theme dark:bg-dark-alt dark:border-dark dark:text-white/40 bg-card-inner rounded-card-inner relative"
+                                    className="slide cursor-pointer flex gap gap-[20px] text-20 text-theme dark:bg-[#151515] dark:border-dark dark:text-white/40 bg-card-inner rounded-card-inner relative"
                                     href={icon.url} target="_blank" rel="noopener noreferrer"
                                 >
                                     <Image src={`/icons/${icon.icon}`} alt={icon.name} width={50} height={50} />

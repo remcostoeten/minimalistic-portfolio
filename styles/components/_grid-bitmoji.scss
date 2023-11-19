@@ -180,9 +180,6 @@
     flex-shrink: 0;
     transform: none;
     position: relative;
-    --framer-link-text-color: #0099ff;
-    --framer-link-text-decoration: underline;
-    --framer-paragraph-spacing: 0px;
     flex: 0 0 auto;
     height: auto;
     white-space: pre;
@@ -190,8 +187,6 @@
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
 }
-
-
 
 .style-12 {
     outline: none;
@@ -206,12 +201,8 @@
     flex-shrink: 0;
     transform: none;
     position: relative;
-    --framer-link-text-color: #0099ff;
-    --framer-link-text-decoration: underline;
-    --framer-paragraph-spacing: 0px;
     flex: 0 0 auto;
     height: auto;
-    max-width: 320px;
     white-space: pre-wrap;
     width: auto;
     word-break: break-word;
