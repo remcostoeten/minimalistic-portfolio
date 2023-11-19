@@ -35,7 +35,33 @@ export const GridItemsData = [
     title: "Experience",
     count: "7",
     countSuffix: "+Years",
+  }, {
+    title: "Experience",
+    count: "7",
+    countSuffix: "+Years",
+  }, {
+    title: "Experience",
+    count: "7",
+    countSuffix: "+Years",
   },
+]
+
+export const Socials = [
+  {
+    name: 'Github',
+    icon: 'icons/github.svg',
+    url: 'https://githgub.com/remcostoeten',
+  },
+  {
+    name: 'Gitlab',
+    icon: 'icons/gitlab.svg',
+    url: 'https://gitlab.com/remcostoeten',
+  },
+  {
+    name: 'LinkedIn',
+    icon: 'icons/linkedin.svg',
+    url: 'https://www.linkedin.com/in/remco-stoeten/',
+  }
 ]
 
 export const TechnologyIcons = [

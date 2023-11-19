@@ -1,17 +1,13 @@
 'use client';
-import { GridItemsData } from "@/lib/experience";
+import { Socials } from "@/lib/experience";
+import { ChildProps } from "@/lib/types/types";
 import { motion } from "framer-motion";
-import React from "react";
-import { Cta } from "../core/buttons";
+import Image from "next/image";
+import { SectionTitle } from "../core/Typography";
 import InfiniteLogoSlider from "../effects/InfiniteLogoSlider";
 import Icon from "../icons/icons";
 import ExperienceItems from "./ExperienceItems";
 import GridCard from "./GridCard";
-import CountingNumber from "../effects/CountingNumbers";
-import { ChildProps } from "@/lib/types/types";
-import TextRevealSkew from "../effects/TextRevealSkew";
-import { SectionTitle } from "../core/Typography";
-
 
 const GridItem = ({ children }: ChildProps) => (
 
@@ -25,8 +21,6 @@ export default function Grid() {
         <>
             <SectionTitle>Who dis?</SectionTitle>
             <section className="flex mt-[60px] mb-[60px]  max-md:flex-col gap-l max-md:items-stretch">
-
-
                 <div className="flex flex-col items-stretch max-md:w-full">
                     <div className="flex grow flex-col gap-m">
                         <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }}
@@ -39,12 +33,9 @@ export default function Grid() {
                                 delay: 0.85
                             }}
                             className="self-stretch gap-m flex items-center justify-center">
-                            {GridItemsData.map((data, index) => (
-                                <GridItem key={index}>
-                                    <h4 className="text-16 text-color-light">{data.title}</h4>
-                                    <h3 className="text-color text-22 text-2xl font-black">
-                                        {data.countSuffix}
-                                    </h3>
+                            {Socials.map((data) => (
+                                <GridItem>
+                                    <Image src={data.icon} alt={data.name} width='40' height='40' />
                                 </GridItem>
                             ))}
                         </motion.div>
