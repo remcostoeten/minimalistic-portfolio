@@ -85,7 +85,7 @@ $size: clamp(20px, 1.5vw, 30px);
             opacity: 0.7;
 
             >path {
-                fill: var(--green);
+                fill: var(--theme);
             }
         }
     }
@@ -93,10 +93,10 @@ $size: clamp(20px, 1.5vw, 30px);
     >.magic-text {
         animation: background-pan 3s linear infinite;
         background: linear-gradient(to right,
-                var(--green),
-                var(--darkggreen),
-                var(--green),
-                var(--darkggreen));
+                var(--theme),
+                var(--darktheme),
+                var(--theme),
+                var(--darktheme));
         background-size: 200%;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;

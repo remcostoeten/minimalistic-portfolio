@@ -13,4 +13,4 @@ export const siteConfig: SiteConfig = {
         baseurl: 'https://remcostoeten.com',
     },
 };
-
+export const phoneNumber = '31636590707';

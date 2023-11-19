@@ -35,7 +35,7 @@ export default function Grid() {
                             className="self-stretch gap-m flex items-center justify-center">
                             {Socials.map((data) => (
                                 <GridItem>
-                                    <Image src={data.icon} alt={data.name} width='40' height='40' />
+                                    <Image src={data.icon} alt={data.name} width='60' height='60' />
                                 </GridItem>
                             ))}
                         </motion.div>

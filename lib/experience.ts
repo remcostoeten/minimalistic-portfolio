@@ -49,7 +49,7 @@ export const GridItemsData = [
 export const Socials = [
   {
     name: 'Github',
-    icon: 'icons/github.svg',
+    icon: '/github.svg',
     url: 'https://githgub.com/remcostoeten',
   },
   {
@@ -59,7 +59,7 @@ export const Socials = [
   },
   {
     name: 'LinkedIn',
-    icon: 'icons/linkedin.svg',
+    icon: '/linkedin.svg',
     url: 'https://www.linkedin.com/in/remco-stoeten/',
   }
 ]

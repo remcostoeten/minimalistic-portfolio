@@ -6,6 +6,7 @@
 
 import Icon from "../icons/icons";
 import { personalData } from "../../config/data/personal-data";
+import ReactMarkdown from "react-markdown";
 
 export default function GridCard() {
   return (
@@ -30,7 +31,9 @@ export default function GridCard() {
           <h1>{personalData.name}</h1>
         </div>
         <div className="style-12">
-          <p className="style-13">{personalData.about.short}</p>
+          <div className="style-12">
+            <p className="style-13" dangerouslySetInnerHTML={{ __html: personalData.about.short }} />
+          </div>
         </div>
       </div>
     </div>
