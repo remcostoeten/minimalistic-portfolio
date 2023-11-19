@@ -9,6 +9,7 @@ import Icon from "../icons/icons";
 import ExperienceItems from "./ExperienceItems";
 import GridCard from "./GridCard";
 import { fadeInDelays100 } from "@/lib/animations";
+import Link from "next/link";
 
 let delay = 6;
 
@@ -31,7 +32,9 @@ export default function Grid() {
                         <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[7] }} className="self-stretch gap-m flex items-center justify-center">
                             {Socials.map((data) => (
                                 <GridItem>
-                                    <Image src={data.icon} alt={data.name} width='60' height='60' />
+                                    <Link href={data.url} target="_blank">
+                                        <Image src={data.icon} alt={data.name} width='60' height='60' />
+                                    </Link>
                                 </GridItem>
                             ))}
                         </motion.div>
@@ -43,8 +46,8 @@ export default function Grid() {
                             <section className="flex max-md:flex-col max-md:items-stretch gap-l">
                                 <div className="flex flex-col items-stretch max-md:w-full">
                                     <div className="border grid--card dark:grid--card dark:border-dark  flex items-center justify-center w-[270px] max-w-full grow flex-col rounded-16">
-                                        <span className="perspective">
-                                            <Icon src="gitlab" alt="GitLab Icon" width={110} height={110} />
+                                        <span className="p-4 perspective flex items-center justify-center text-center text-[#a3a3a3]  ">
+                                            You can purcashe this spot for 100,- per month.
                                         </span>
                                     </div>
                                 </div>

@@ -37,7 +37,6 @@
     flex: 0 0 auto;
     height: 72px;
     position: relative;
-    width: 72px;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
 }
@@ -162,7 +161,7 @@
     overflow: visible;
     padding: 0px;
     position: relative;
-    width: 1px;
+    width: fit-content;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
 }
