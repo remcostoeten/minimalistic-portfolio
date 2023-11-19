@@ -112,7 +112,7 @@ export default function VisualStoryteller() {
                       href={data.url}
                       as={Link}
                       color="secondary"
-                      showAnchorIcon
+                      // showAnchorIcon
                       variant="ghost"
                       target='_blank'
                       className='text-[#fff] border-[#282828]'
