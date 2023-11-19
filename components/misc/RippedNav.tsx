@@ -152,7 +152,6 @@ export default function RippedNav() {
                                                     >
                                                         <g
                                                             color='var(--token-a91ceb05-0965-4cb2-945b-86782aa67eb5, rgb(82, 82, 82)) /* {"name":"text-secondary"} */'
-                                                            weight="regular"
                                                             className="style-55"
                                                         >
                                                             <path
@@ -190,7 +189,6 @@ export default function RippedNav() {
                                                     >
                                                         <g
                                                             color='var(--token-a91ceb05-0965-4cb2-945b-86782aa67eb5, rgb(82, 82, 82)) /* {"name":"text-secondary"} */'
-                                                            weight="regular"
                                                             className="style-64"
                                                         >
                                                             <path
@@ -233,7 +231,6 @@ export default function RippedNav() {
                                                 >
                                                     <g
                                                         color="var(--token-a5634a3e-d7fd-42f9-9a88-14274d3a57cf, rgb(245, 245, 245))"
-                                                        weight="regular"
                                                         className="style-75"
                                                     >
                                                         <path

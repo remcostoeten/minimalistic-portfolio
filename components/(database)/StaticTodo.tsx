@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { GhostButton } from '../core/buttons';
+import { toast } from 'sonner';
 
 interface Todo {
     title: string;
@@ -15,6 +16,11 @@ interface Todo {
 
 export default function StaticTodo() {
     const [todos, setTodos] = useState<Todo[]>([]);
+
+    useEffect(() => {
+        toast.success('WiP, experimenting')
+    }
+        , []);
 
     const focusItem = (index: number) => {
         setTodos((prevTodos) =>
