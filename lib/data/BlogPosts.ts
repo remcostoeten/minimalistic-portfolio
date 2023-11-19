@@ -1,28 +1,30 @@
 export const blogPosts = [
+
     {
-        label: "NextJS",
-        readTime: "5 min read",
-        imageSrc: "/b1.webp",
-        title: "Using Firebase in NextJS",
-        description: "A article to showcase how to fetch and post data to Firebase in NextJS app router.",
-        highlighted: true,
-        url: "https://snippets.remcostoeten.com/Components-nextjs-react/firebase-create-firestore-data"
-    },
-    {
-        label: "Framer motion",
+
+        label: ["Framer motion", "Hooks"],
         readTime: "2 min read",
         imageSrc: "/b2.png",
         title: "Scroll in view hook",
-        description: "A article to showcase how to use scroll in view hook in framer motion.",
+        description: "Beautifull scroll in view animations using a custom hook for Framer Motion.",
         highlighted: false,
         url: "https://snippets.remcostoeten.com/Components-nextjs-react/scroll-in-view-trigger"
     },
     {
-        label: "Prisma, PostgreSQL",
+        label: ["Firebase", "noSQL", "Cloud"],
+        readTime: "5 min read",
+        imageSrc: "/b1.webp",
+        title: "Store data in Firebase",
+        description: "Showcasing how easy it is to store data in Firebase using NextJS.",
+        highlighted: true,
+        url: "https://snippets.remcostoeten.com/Components-nextjs-react/firebase-create-firestore-data"
+    },
+    {
+        label: ["Prisma", "PostgreSQL"],
         readTime: "2 min read",
         imageSrc: "/b3.webp",
-        title: "Use Prisma As ORM",
-        description: "A article to showcase how to use Prisma as ORM to post and get data from PostgreSQL.",
+        title: "Prisma as datalayer",
+        description: "Basic schema usage with Prisma and PostgreSQL.",
         url: "https://snippets.remcostoeten.com/Components-nextjs-react/prisma",
         highlighted: false
     }

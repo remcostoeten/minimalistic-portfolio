@@ -1,6 +1,5 @@
 import React from 'react'
 import { SectionTitle } from '../core/Typography'
-import Link from 'next/link'
 import Image from 'next/image'
 import ShowcaseLabel from '../core/Labels'
 import { blogPosts } from '@/lib/data/BlogPosts'
@@ -13,9 +12,13 @@ export default function LatestBlogSingle() {
                 <div className='blog-preview'>
                     {blogPosts.map((post, index) => (
                         <div key={index}
-                            className={`w-1/3 flex p-[14px] gap-[24px] flex-col blog-card bg-[#151515] rounded-lg overflow-hidden shadow-lg ${post.highlighted ? 'highlighted' : ''}`}>
-                            <div className="geist flex justify-between items-center text-sm">
-                                <ShowcaseLabel>{post.label}</ShowcaseLabel>
+                            className={`w-1/3 flex p-[14px] gap-[24px] flex-col blog-card bg-[#151515] rounded-[16px] overflow-hidden shadow-lg ${post.highlighted ? 'highlighted' : ''}`}>
+                            <div className="geist flex gap-1 justify-between items-center text-sm">
+                                <div className='flex gap-2'>
+                                    {Array.isArray(post.label) ? post.label.map((label, index) => (
+                                        <ShowcaseLabel key={index}>{label}</ShowcaseLabel>
+                                    )) : <ShowcaseLabel>{post.label}</ShowcaseLabel>}
+                                </div>
                                 <div className="flex items-center text-gray-400">
                                     <span className="ml-2">{post.readTime}</span>
                                 </div>
