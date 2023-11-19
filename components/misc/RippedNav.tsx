@@ -14,8 +14,8 @@ export default function RippedNav() {
 
     return (
         <>
-            <motion.nav className="style-0" data-framer-name="Desktop" initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+            <motion.nav className="style-0" data-framer-name="Desktop" initial={{ opacity: 0, y: 50, x: 15 }}
+                animate={{ opacity: 1, y: 0, x: 0 }}
                 transition={{
                     duration: fadeInDelays100[4],
                     delay: fadeInDelays100[2],
