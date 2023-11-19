@@ -17,8 +17,8 @@ export default function RippedNav() {
             <motion.nav className="style-0" data-framer-name="Desktop" initial={{ opacity: 0, y: 50, x: 15 }}
                 animate={{ opacity: 1, y: 0, x: 0 }}
                 transition={{
-                    duration: fadeInDelays100[4],
-                    delay: fadeInDelays100[2],
+                    duration: fadeInDelays100[6],
+                    delay: fadeInDelays100[4],
                 }}
             >  <span className="wave absolute -right-10 -top-2" style={{ fontSize: '50px' }}>
                     👋

@@ -5,6 +5,7 @@ html {
     background-color: $black;
     transition: 250ms ease-in-out all;
     scroll-behavior: smooth;
+    animation: bodyBgFadeIn 10s cubic-bezier(0.175, 0.2, 0.32, .4) forwards;
 }
 
 .contained {

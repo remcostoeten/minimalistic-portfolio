@@ -9,6 +9,7 @@ import { Link, Button } from "@nextui-org/react";
 
 import useInView from '@/hooks/useInView';
 import { motion } from 'framer-motion';
+import { fadeInDelays100 } from '@/lib/animations';
 
 export default function VisualStoryteller() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -40,13 +41,7 @@ export default function VisualStoryteller() {
               id="projects"
               key={index}
               className="w-[650px] geist pt-10 max-w-full ml-5 mb-8 self-start"
-              initial={{ opacity: 0, y: 10, x: 15 }}
-              transition={{
-                duration: .4,
-                delay: 1.2,
-                staggerChildren: 1.1
-              }}
-              animate={{ opacity: 1, y: 0, x: 0 }}
+              initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[10] + index }}
             >
               <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0 relative">
                 <div
@@ -77,17 +72,7 @@ export default function VisualStoryteller() {
                     />
                     <motion.div
                       className="flex w-[296px] max-w-full items-start gap-2.5 mt-2 self-start max-md:justify-center"
-                      initial="hidden"
-                      animate="show"
-                      variants={{
-                        hidden: { y: 20, opacity: 0, scale: 0.9 },
-                        show: { y: 0, opacity: 1, scale: 1 }
-                      }}
-                      transition={{
-                        staggerChildren: .3,
-                        type: "spring",
-
-                      }}
+                      initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[11] + index }}
                     >
                       <div className="flex gap-2">
                         {data.labels.map((label, index) => (
