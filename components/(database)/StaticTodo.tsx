@@ -1,4 +1,9 @@
+'use client';
+import { Checkbox, Textarea } from '@nextui-org/react';
 import React, { useState, useEffect, useRef } from 'react';
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
+import { GhostButton } from '../core/buttons';
 
 interface Todo {
     title: string;
@@ -96,7 +101,7 @@ export default function StaticTodo() {
                                     key={index}
                                 >
                                     <div className="flex-none w-10 leading-none">
-                                        <input
+                                        <Checkbox
                                             type="checkbox"
                                             checked={item.checked}
                                             onClick={() => {
@@ -114,7 +119,7 @@ export default function StaticTodo() {
                                             >
                                                 {item.title || 'New todo...'}
                                             </h3>
-                                            <input
+                                            <Input
                                                 type="text"
                                                 data-x-show="item.open"
                                                 className="text-md w-full bg-transparent text-gray-300 leading-none focus:outline-none mb-2"
@@ -124,20 +129,19 @@ export default function StaticTodo() {
                                             />
                                         </div>
                                         <div className="w-full" data-x-show="item.open">
-                                            <textarea
+                                            <Textarea
                                                 className="text-md w-full bg-transparent text-gray-300 leading-tight focus:outline-none"
                                                 rows={10}
                                                 data-x-model="item.notes"
                                                 placeholder="Notes"
-                                            ></textarea>
+                                            ></Textarea>
                                         </div>
                                         <div className="w-full flex justify-end" data-x-show="item.open">
-                                            <button
-                                                className="p-1 -mr-1 focus:outline-none hover:text-red-300"
+                                            <GhostButton
                                                 onClick={() => removeItem(index)}
                                             >
                                                 <i className="mdi mdi-trash-can-outline"></i>
-                                            </button>
+                                            </GhostButton>
                                         </div>
                                     </div>
                                 </li>
@@ -148,12 +152,12 @@ export default function StaticTodo() {
                     )}
                 </div>
                 <div className="flex justify-center">
-                    <button
+                    <Button
                         className="py-1 px-10 border border-gray-800 hover:border-gray-700 rounded leading-none focus:outline-none text-xl"
                         onClick={addItem}
                     >
-                        <i className="mdi mdi-plus"></i>
-                    </button>
+                        Add todo <i className="mdi mdi-plus"></i>
+                    </Button>
                 </div>
             </div>
         </div>
