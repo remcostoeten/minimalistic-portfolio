@@ -3,7 +3,7 @@ export const ProjectData = [
         title: 'HTML To React/TypeScript converter',
         description: 'I hate ads and waiting for cloudflare protection so I build my own HTML to JSX/TSX converter, which also supports instant creation of components with props.',
         url: 'https://remcostoeten.com/html-to-jsx',
-        labels: ['React', 'TypeScript', 'NextJS', 'Tailwind', 'Context', "Regex"],
+        labels: ['TypeScript', 'Tailwind', 'Context', "Regex"],
         icon: '/icons/react.svg'
     },
     {

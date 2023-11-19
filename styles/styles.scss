@@ -31,6 +31,16 @@
 }
 
 :root {
+  --theme: rgba(253, 186, 114, 0.8509803922);
+  --darmtheme: rgba(231, 160, 84, 0.851);
+  --sprinklesize: 18px;
+  --green: #8BB928;
+  --darkgreen: #374a0c;
+  --purple: rgb(123, 31, 162);
+  --violet: rgb(103, 58, 183);
+  --pink: rgb(244, 143, 177);
+  --black-text: ##e7e5e4;
+  --offblack: #101010;
   --foreground-rgb: $black;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;

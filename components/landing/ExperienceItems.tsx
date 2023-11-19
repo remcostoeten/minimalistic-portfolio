@@ -35,7 +35,7 @@ export default function ExperienceItems() {
       {WorkExperience.map((work, index) => (
         <motion.div
           key={index}
-          className={`self-stretch flex w-full flex-col                                                             grid--card-inner  p-card-inner card-inner rounded-card-inner ${work.highlight ? "border-2  border-active card-active " : ""
+          className={`self-stretch flex w-full flex-col grid--card-inner  p-card-inner card-inner rounded-card-inner ${work.highlight ? "highlighted" : ""
             }`}
           variants={smoothFadeUp}
         >

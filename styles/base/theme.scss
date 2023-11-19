@@ -1,10 +1,11 @@
-$contained: 1440px;
+$contained: 1280px;
 
 body,
 html {
     background-color: $black;
     transition: 250ms ease-in-out all;
     scroll-behavior: smooth;
+    animation: bodyBgFadeIn 10sxforwards;
 }
 
 .contained {

@@ -13,6 +13,6 @@ export const personalData = {
     },
     about: {
         title: 'About me',
-        short: "I'm a 26-year-old creative developer passionate about complex UIs, exploring Next.js with TypeScript, Python, Lua, and venturing into Go and DevOps.",
-    },
-};
+        short: "I'm recovering ex-magento developer. I've overcome PHP and now building <a href='https://gitlab.com/pleio/frontend'>open source</a> software at <a href='https://gitlab.com/pleio'>Pleio</a>.I love CSS and UI.Primairly doing TSX, Next and SQL and have done some Laugh.In the future I want to dive into Go, OCaml and dev- ops",
+    }
+}

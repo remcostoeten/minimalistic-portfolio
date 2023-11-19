@@ -67,7 +67,6 @@ const Intro = () => {
                                     interval={4000} />
                             </SubTitle>
                         </motion.span>
-                        <Navigation link={undefined} index={undefined} />
                     </motion.div>
                     <motion.div initial={{ opacity: 0, y: -25 }}
                         transition={{

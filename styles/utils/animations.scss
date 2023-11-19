@@ -3,6 +3,20 @@ $black: #000;
 $green: #00ff00;
 $red: #ff0000;
 
+@keyframes bodyBgFadeIn {
+    0% {
+        background-color: rgb(8, 1, 15);
+    }
+
+    25% {
+        background-color: #111111;
+
+    }
+
+    100% {
+        background-color: #111111;
+    }
+}
 
 .fadee {
     position: relative;
@@ -134,7 +148,7 @@ canvas {
 
     &__contained {
         overflow: hidden;
-        height: 26px;
+        height: 36px;
         padding-left: 8px;
 
         &:after,

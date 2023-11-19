@@ -1,15 +1,15 @@
 import Greeting from "@/components/landing/Greeting";
 import Grid from "@/components/landing/Grid";
 import LatestBlogSingle from "@/components/landing/LatestBlogSingle";
-import VisualStoryteller from "@/components/landing/VisualStoryteller";
+import VisualStoryteller from "@/components/loaders/VisualStoryteller";
 
 export default function page() {
   return (
     <>
-      <Greeting />
-      <VisualStoryteller />
-      <LatestBlogSingle />
-      <Grid />
+      <div className="contained h-[20px]"></div >
+      <div id="about"><Grid /></div>
+      <div id="work">   <VisualStoryteller /></div>
+      <div id="articles"><LatestBlogSingle /></div>
     </>
   )
 }
