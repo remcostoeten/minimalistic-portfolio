@@ -1,7 +1,5 @@
 'use client';
 import React, { useState } from "react";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "./firebase"; // import your Firebase config
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { toast } from "sonner";

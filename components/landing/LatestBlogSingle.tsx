@@ -3,6 +3,7 @@ import { SectionTitle } from '../core/Typography'
 import Link from 'next/link'
 import Image from 'next/image'
 import ShowcaseLabel from '../core/Labels'
+import { blogPosts } from '@/lib/data/BlogPosts'
 
 export default function LatestBlogSingle() {
     return (

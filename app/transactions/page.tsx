@@ -1,4 +1,5 @@
 //@ts-ignore
+//@ts-no-check
 'use client';
 import React, { useEffect, useCallback, useMemo, useState, Suspense } from "react";
 import {

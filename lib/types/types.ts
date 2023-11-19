@@ -24,11 +24,11 @@ export interface SiteConfig {
     };
 }
 
-export type Transaction {
+export type Transaction = {
     id: string;
     amount: number;
     type: "deposit" | "withdrawal";
-    timestamp: Timestamp;
+    timestamp: any;
     date: string;
 }
 

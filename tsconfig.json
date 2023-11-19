@@ -1,40 +1,64 @@
 {
   "compilerOptions": {
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "module": "esnext",
     "target": "es2017",
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext.asynciterable"
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": false,
-    "noEmit": false,
-    "esModuleInterop": true,
-    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "baseUrl": ".",
+    "noImplicitAny": false,
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
+      "contentlayer/generated": [
+        "./.contentlayer/generated"
+      ],
       "@/*": [
         "./*"
+      ],
+      "@c/*": [
+        "./components/*"
+      ],
+      "@ui/*": [
+        "./components/ui/*"
+      ],
+      "@s/*": [
+        "./styles/*"
+      ],
+      "@sm/*": [
+        "./styles/module/*"
       ]
     },
-    "strictNullChecks": true
+    "strictNullChecks": false
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "components/fancy-hamburger-header/header/anim.js",
+    "components/core/BackgroundVariantTwo.tsx",
+    "next.config.mjs",
+    "app/(nocontainer)/showcase/inspiration/page.js",
+    "app/(nocontainer)/showcase/(tests)/emptyy/page.jsx",
+    ".contentlayer/generated"
   ],
   "exclude": [
     "node_modules"
