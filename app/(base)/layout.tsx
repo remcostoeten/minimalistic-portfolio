@@ -1,7 +1,7 @@
 
 
 import { Libre_Baskerville } from 'next/font/google';
-import '../styles/styles.scss';
+import '@/styles/styles.scss';
 import ThemeContextProvider from '@/lib/context/ThemeContext';
 import ActiveSectionContextProvider from '@/lib/context/ActiveSectionContext';
 import { siteConfig } from '@/config/site';

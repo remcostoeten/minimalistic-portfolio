@@ -1,4 +1,3 @@
-import Greeting from "@/components/landing/Greeting";
 import Grid from "@/components/landing/Grid";
 import LatestBlogSingle from "@/components/landing/LatestBlogSingle";
 import VisualStoryteller from "@/components/loaders/VisualStoryteller";
