@@ -11,6 +11,8 @@ import { Analytics } from '@vercel/analytics/react';
 import { Toaster } from 'sonner';
 import RippedNav from '@/components/misc/RippedNav';
 import { ApolloProvider } from '@apollo/client';
+import apolloClient from '@/lib/apolloClient';
+import { ApolloProvider } from '@apollo/client';
 
 const serif = Libre_Baskerville({
   subsets: ['latin'],
