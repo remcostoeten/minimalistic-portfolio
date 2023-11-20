@@ -10,6 +10,7 @@ import { SubTitle } from '../core/Typography';
 import SwappingWords from '../effects/SwappingWords';
 import { HeaderSocials, Socials } from '@/lib/experience';
 import Image from 'next/image';
+import Framer from '../effects/Framer';
 
 type SocialProps = {
     link?: string;
@@ -22,9 +23,11 @@ const SocialCircle = ({ link, key, icon }: SocialProps) => {
     const platform = url.hostname.split('.')[0];
 
     return (
-        <Link key={key} href={link} className="rounded-full flex items-center justify-center w-10 h-10 bg-[#262626] social-circle">
-            <Image src={String(icon)} alt={platform} width="15" height="15" />
-        </Link>
+        <Framer>
+            <Link key={key} href={link} className="rounded-full flex items-center justify-center max-w-10 max-h-10 bg-[#262626] social-circle">
+                <Image src={String(icon)} alt={platform} width="15" height="15" />
+            </Link>
+        </Framer>
     );
 };
 export default function RippedNav() {
@@ -123,147 +126,45 @@ export default function RippedNav() {
                             {HeaderSocials.map((social, index) => (
                                 <SocialCircle key={index} link={social.url} icon={social.icon} />
                             ))}
-                            <div className="style-40">
-                                <div className="style-41" tabIndex={0}>
-                                    <Link className='flex items-center justify-center
-                                ' href={whatsappUrl} target=' _blank'>
-                                        <div className="bg-[#262626] style-43 flex items-center justify-center " >
-                                            <div
-                                                className="style-44"
-                                            >
-                                                <div className="bg-[#262626] social-circle style-45 social-circel">
-                                                    <svg
-                                                        style={{ transform: 'translate(7px,2px)' }}
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        fill="#e5e5e5"
-                                                        version="1.1"
-                                                        viewBox="0 0 30.667 30.667"
-                                                        xmlSpace="preserve"
-                                                    >
-                                                        <path d="M30.667 14.939c0 8.25-6.74 14.938-15.056 14.938a15.1 15.1 0 01-7.276-1.857L0 30.667l2.717-8.017a14.787 14.787 0 01-2.159-7.712C.559 6.688 7.297 0 15.613 0c8.315.002 15.054 6.689 15.054 14.939zM15.61 2.382c-6.979 0-12.656 5.634-12.656 12.56 0 2.748.896 5.292 2.411 7.362l-1.58 4.663 4.862-1.545c2 1.312 4.393 2.076 6.963 2.076 6.979 0 12.658-5.633 12.658-12.559C28.27 8.016 22.59 2.382 15.61 2.382zm7.604 15.998c-.094-.151-.34-.243-.708-.427-.367-.184-2.184-1.069-2.521-1.189-.34-.123-.586-.185-.832.182-.243.367-.951 1.191-1.168 1.437-.215.245-.43.276-.799.095-.369-.186-1.559-.57-2.969-1.817-1.097-.972-1.838-2.169-2.052-2.536-.217-.366-.022-.564.161-.746.165-.165.369-.428.554-.643.185-.213.246-.364.369-.609.121-.245.06-.458-.031-.643-.092-.184-.829-1.984-1.138-2.717-.307-.732-.614-.611-.83-.611-.215 0-.461-.03-.707-.03s-.646.089-.983.456-1.291 1.252-1.291 3.054c0 1.804 1.321 3.543 1.506 3.787.186.243 2.554 4.062 6.305 5.528 3.753 1.465 3.753.976 4.429.914.678-.062 2.184-.885 2.49-1.739.308-.858.308-1.593.215-1.746z"></path>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </Link>
-                                </div>
-                            </div>
-                            <div className="style-48">
-                                <div className="style-49" tabIndex={0}>
-                                    <Link
-                                        className="style-50 social-circle"
-                                        href="https://github.com/remcostoeten"
-                                        target="_blank"
-                                        rel="noopener"
-                                        tabIndex={0}
-                                    >
-                                        <div className="!bg-[#262626]  style-51" data-framer-name="Button">
-                                            <div className="style-52">
-                                                <div className="style-53">
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        viewBox="0 0 256 256"
-                                                        focusable="false"
-                                                        color='var(--token-a91ceb05-0965-4cb2-945b-86782aa67eb5, rgb(82, 82, 82)) /* {"name":"text-secondary"} */'
-                                                        className="style-54"
-                                                    >
-                                                        <g
-                                                            color='var(--token-a91ceb05-0965-4cb2-945b-86782aa67eb5, rgb(82, 82, 82)) /* {"name":"text-secondary"} */'
-                                                            className="style-55"
-                                                        >
-                                                            <path
-                                                                d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.72,41.72,0,0,1,200,104Z"
-                                                                className="style-56"
-                                                            />
-                                                        </g>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </Link>
-                                </div>
-                            </div>
-                            <div className="style-57">
-                                <div className="style-58" tabIndex={0}>
-                                    <a
-                                        className="style-59 social-circle"
-                                        data-framer-name="Medium"
-                                        data-highlight="true"
-                                        href={siteConfig.links.linkedin}
-                                        target="_blank"
-                                        rel="noopener"
-                                        tabIndex={0}
-                                    >
-                                        <div className="!bg-[#262626] style-60" data-framer-name="Button">
-                                            <div className="style-61">
-                                                <div className="style-62">
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        viewBox="0 0 256 256"
-                                                        focusable="false"
-                                                        color='var(--token-a91ceb05-0965-4cb2-945b-86782aa67eb5, rgb(82, 82, 82)) /* {"name":"text-secondary"} */'
-                                                        className="style-63"
-                                                    >
-                                                        <g
-                                                            color='var(--token-a91ceb05-0965-4cb2-945b-86782aa67eb5, rgb(82, 82, 82)) /* {"name":"text-secondary"} */'
-                                                            className="style-64"
-                                                        >
-                                                            <path
-                                                                d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"
-                                                                className="style-65"
-                                                            />
-                                                        </g>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
                         </div>
-                        <div className=" style-66" data-framer-name="Buttons">
-                            <div className="style-67 ">
-                                <div className="style-68 " tabIndex={0}>
-                                    <a
-                                        className="style-69 text-black !bg-[#E5E5E5]"
-                                        data-framer-name="Small"
-                                        href=""
-                                        target="_blank"
-                                        rel="noopener"
-                                    >
-                                        <div
-                                            className="style-70"
-                                            data-framer-component-type="RichTextContainer"
+                        <Framer>
+                            <div className=" style-66" data-framer-name="Buttons">
+                                <div className="style-67 ">
+                                    <div className="style-68 " tabIndex={0}>
+                                        <Link
+                                            className="style-69 text-black !bg-[#E5E5E5]"
+                                            data-framer-name="Small"
+                                            href=""
+                                            target="_blank"
+                                            rel="noopener"
                                         >
-                                            <p className="">Let's Talk</p>
-                                        </div>
-                                        <div className="style-72">
-                                            <div className="style-73">
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 256 256"
-                                                    focusable="false"
-                                                    color="var(--token-a5634a3e-d7fd-42f9-9a88-14274d3a57cf, rgb(245, 245, 245))"
-                                                    className="style-74"
-                                                >
-                                                    <g
-                                                        color="var(--token-a5634a3e-d7fd-42f9-9a88-14274d3a57cf, rgb(245, 245, 245))"
-                                                        className="style-75"
-                                                    >
-                                                        <path
-                                                            d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"
-                                                            className="style-76"
-                                                        />
-                                                    </g>
-                                                </svg>
+                                            <div
+                                                className="style-70"
+                                            >
+                                                <p className="">Let's Talk</p>
                                             </div>
-                                        </div>
-                                    </a>
+                                            <div className="style-72">
+                                                <div className="style-73">
+                                                    <svg
+                                                        viewBox="0 0 256 256"
+                                                        className="style-74"
+                                                    >
+                                                        <g
+                                                            className="style-75"
+                                                        >
+                                                            <path
+                                                                d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"
+                                                                className="style-76"
+                                                            />
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </Framer>
                     </div>
                 </div >
             </motion.nav >

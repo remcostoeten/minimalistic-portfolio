@@ -1,5 +1,11 @@
+$social-circle-size: 40px;
+
 .social-circle {
     transition: all 0.3s ease-in-out;
+    min-width: $social-circle-size;
+    min-height: $social-circle-size;
+    max-width: $social-circle-size;
+    max-height: $social-circle-size;
 
     &:hover {
         background-color: var(--theme);
