@@ -5,11 +5,17 @@ import HeaderBar from '@/components/core/HeaderBar';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import client from '@/lib/(graphql)/ApolloClient';
 import ActiveSectionContextProvider from '@/lib/context/ActiveSectionContext';
+<<<<<<< HEAD
 import ThemeContextProvider from '@/lib/context/ThemeContext';
 import '@/styles/styles.scss';
 import { ApolloProvider } from '@apollo/client';
 import { loadDevMessages, loadErrorMessages } from "@apollo/client/dev";
 import { __DEV__ } from '@apollo/client/utilities/globals';
+=======
+import { siteConfig } from '@/config/site';
+import { GeistMono, GeistSans } from "geist/font";
+import Intro from '@/components/landing/nav/Intro';
+>>>>>>> 36880af ( install graphql)
 import { Analytics } from '@vercel/analytics/react';
 import { Libre_Baskerville } from 'next/font/google';
 import { Toaster } from 'sonner';
@@ -27,11 +33,11 @@ const serif = Libre_Baskerville({
 
 import { TooltipProvider } from '@/components/ui/tooltip';
 export default function RootLayout({
-
   children,
 }: {
   children: React.ReactNode;
 }) {
+<<<<<<< HEAD
 
 <<<<<<< HEAD
   if (__DEV__) {  // Adds messages only in a dev environment
@@ -73,6 +79,15 @@ return (
             <Cursor />
             <body className=' dark-background pb-20 min-h-screen flex'>
               <span className='absolute top-0 right-0 bg-gradient-to-r from-green-400 to-[#0E0E0E]'></span>
+=======
+  return (
+    <ApolloProvider client={apolloClient}>
+      <ThemeContextProvider>
+        <ActiveSectionContextProvider>
+          <html className={`${GeistSans.variable} ${GeistMono.variable} dark text-foreground bg-background`} lang="en">
+            <body className={`${serif.className} dark-background pb-20 min-h-screen flex `}>
+              <span className='absolute top-0 right-0 bg-gradient-to-r from-green-400 to-[##0E0E0E]'></span>
+>>>>>>> 36880af ( install graphql)
               <main className="mx-auto pt-8 px-6">
                 <div className="contained">
                   <RippedNav />
@@ -83,10 +98,16 @@ return (
               <Analytics />
             </body>
           </html>
+<<<<<<< HEAD
         </TooltipProvider>
 
       </ActiveSectionContextProvider >
     </ThemeContextProvider >
 >>>>>>> 6bacca5 ( just some dev work.)
+=======
+        </ActiveSectionContextProvider >
+      </ThemeContextProvider>
+    </ApolloProvider>
+>>>>>>> 36880af ( install graphql)
   );
 }
