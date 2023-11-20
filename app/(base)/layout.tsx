@@ -20,6 +20,8 @@ import { Analytics } from '@vercel/analytics/react';
 import { Libre_Baskerville } from 'next/font/google';
 import { Toaster } from 'sonner';
 import { ApolloProvider } from '@apollo/client';
+import apolloClient from '@/lib/apolloClient';
+import { ApolloProvider } from '@apollo/client';
 import HeaderBar from '@/components/core/HeaderBar';
 import client from '@/lib/(graphql)/ApolloClient';
 import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
