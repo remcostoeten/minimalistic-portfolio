@@ -20,6 +20,7 @@ import TransactionForm from "@/components/transactions/TransactionForm";
 import TransactionList from "@/components/transactions/TransactionList";
 import { toast } from 'sonner';
 import { db } from "@/lib/firebase";
+import { Card, CardBody, CardHeader } from "@nextui-org/react";
 
 const TransactionPage = () => {
     const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -142,12 +143,14 @@ const TransactionPage = () => {
     ), [totalDeposits, totalWithdrawals]);
 
     return (
-        <div>
-            <h1>Transaction Tracker</h1>
-            {memoizedTransactionForm}
-            {memoizedTransactionList}
-            {memoizedBalanceDisplay}
-        </div>
+        <Card>
+            <CardHeader><h1>Transaction tracker</h1></CardHeader>
+            <CardBody>
+                {memoizedTransactionForm}
+                {memoizedTransactionList}
+                {memoizedBalanceDisplay}
+            </CardBody>
+        </Card>
     );
 };
 
