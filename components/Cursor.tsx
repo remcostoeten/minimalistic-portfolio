@@ -2,7 +2,7 @@
 'use client'
 'use client';
 import { useEffect, useRef, useState } from 'react';
-// import PinkCursor from '../icons/PinkCursor';
+import PinkCursor from '@/components/core/CursorIcon';
 
 export default function Cursor() {
   const trailer = useRef<HTMLDivElement>(null);
@@ -72,8 +72,8 @@ export default function Cursor() {
           left: 0,
           background: 'none'
         }}>
-        {/* <PinkCursor /> */}
+        <PinkCursor />
       </div>
     </div>
   );
-}
+} 1
