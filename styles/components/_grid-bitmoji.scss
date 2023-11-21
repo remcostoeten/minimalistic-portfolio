@@ -19,10 +19,6 @@
         height: calc(100% + 12px);
     }
 
-    @include mobile {
-        height: calc(100% + 12px);
-    }
-
     h1 {
         font-style: normal;
         font-weight: 700;

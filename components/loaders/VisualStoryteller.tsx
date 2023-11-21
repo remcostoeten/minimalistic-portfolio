@@ -24,18 +24,17 @@ export default function VisualStoryteller() {
     setIsExpanded(true);
   };
 
+  const isMobile = window.innerWidth <= 768;
+
   const displayedProjects = isExpanded || !isMobile ? ProjectData : ProjectData.slice(0, 1);
+
 
   return (
     <>
-      <SectionTitle>
-        <motion.span
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[12] }}>
-          Things I made
-        </motion.span>
-      </SectionTitle>
+      <SectionTitle><motion.span
+
+        initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[12] }}
+      >Things I made</motion.span> </SectionTitle>
       <div style={{
         maxHeight: isExpanded ? (window.innerWidth <= 768 ? '650px' : '2250px') : '1000px',
         overflow: 'hidden',
@@ -86,7 +85,7 @@ export default function VisualStoryteller() {
                       className="flex w-fulls sm:w-[296px] max-w-full items-start gap-2.5 mt-2 self-start max-md:justify-center"
                       initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[11] + index }}
                     >
-                      <div className="flex gap-2  ml-16 sm:ml-0 overflow-x-no-scrollbar ml-16 overflow-x-no-scrollbar">
+                      <div className="flex gap-2 ml-16 overflow-x-no-scrollbar">
                         {data.labels.map((label, index) => (
                           <motion.div
                             key={index}
