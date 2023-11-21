@@ -9,7 +9,6 @@ import Logo from './Logo';
 import { SubTitle } from './Typography';
 import SwappingWords from '../effects/SwappingWords';
 import Contact from '../landing/Contact';
-import Framer from '../effects/Framer';
 
 export default function HeaderBar() {
     const whatsappUrl = `https://wa.me/${phoneNumber}`;
