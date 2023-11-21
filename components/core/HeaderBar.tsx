@@ -25,7 +25,7 @@ export default function HeaderBar() {
             >  <span className="wave absolute -right-10 -top-2" style={{ fontSize: '50px' }}>
                     👋
                 </span>
-                <div className="style-1" aria-label="Nav">
+                <div className="style-1 showAlternativeCursor" aria-label="Nav">
                     <div className="style-2" data-framer-name="Logo & Links">
                         <div className="style-3" data-framer-name="Logo">
                             <div className="style-4" data-framer-name="Logo">

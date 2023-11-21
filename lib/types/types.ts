@@ -1,3 +1,5 @@
+import { iconProps } from '@/utils/types';
+import { Timestamp } from "firebase/firestore";
 import { links } from "../data/menulinks";
 
 export type ChildProps = {
