@@ -19,11 +19,11 @@ const serif = Libre_Baskerville({
 });
 
 
+import Cursor from '@/components/Cursor';
 export default function RootLayout({
 
   children,
 }: {
-
   children: React.ReactNode;
 }) {
 
