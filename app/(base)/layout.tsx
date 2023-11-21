@@ -39,12 +39,12 @@ const serif = Libre_Baskerville({
 });
 
 
+import Cursor from '@/components/Cursor';
 import { TooltipProvider } from '@/components/ui/tooltip';
 export default function RootLayout({
 
   children,
 }: {
-
   children: React.ReactNode;
 }) {
 <<<<<<< HEAD

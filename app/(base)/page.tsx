@@ -4,6 +4,7 @@
 <<<<<<< HEAD
 'use client';
 
+<<<<<<< HEAD
 =======
 >>>>>>> 6bacca5 ( just some dev work.)
 import Head from 'next/head'
@@ -11,6 +12,11 @@ import Head from 'next/head'
 'use client';
 
 >>>>>>> 205f6c5 ( add some spinners components/ls)
+=======
+'use client';
+
+import Head from 'next/head'
+>>>>>>> 600c52d ( just some dev work.)
 import Grid from "@/components/landing/Grid";
 import { Suspense, lazy } from 'react';
 import { seoKeywords } from '@/config/keywords';
@@ -27,6 +33,12 @@ import GraphComponent from "../graphql/GraphComponent";
 export default function page() {
   return (
     <>
+      <Head>
+        <title>Remco Stoeten - remcostoeten.com</title>
+        <meta name="description" content="Remco Stoeten - remcostoeten.com - Front-end developer" />
+        <meta name="keywords" content={seoKeywords.join(', ')} />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <GraphComponent />
       <GraphComponent />
       <Head>
