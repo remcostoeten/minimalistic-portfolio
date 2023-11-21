@@ -5,6 +5,7 @@ html {
     background-color: $black;
     transition: 250ms ease-in-out all;
     scroll-behavior: smooth;
+    animation: bodyBgFadeIn 10s forwards;
 }
 
 .contained {
@@ -17,7 +18,7 @@ html {
     }
 
     @media (max-width: 768px) {
-        padding: 0 12px 0 0;
+        padding: 0 12px;
     }
 }
 
