@@ -59,7 +59,7 @@
     "app/(nocontainer)/showcase/inspiration/page.js",
     "app/(nocontainer)/showcase/(tests)/emptyy/page.jsx",
     ".contentlayer/generated"
-  ],
+, "contentlayer.config.js"  ],
   "exclude": [
     "node_modules"
   ]
