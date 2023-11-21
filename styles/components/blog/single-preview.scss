@@ -12,6 +12,9 @@
     position: relative;
     width: 100%;
 
+    @include mobile {
+        flex-direction: column;
+    }
 
 
     &__single {

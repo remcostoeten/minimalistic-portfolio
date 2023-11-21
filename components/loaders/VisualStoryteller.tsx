@@ -10,6 +10,7 @@ import { Link, Button } from "@nextui-org/react";
 import useInView from '@/hooks/useInView';
 import { motion } from 'framer-motion';
 import { fadeInDelays100 } from '@/lib/animations';
+import { SectionTitle } from '../core/Typography';
 
 export default function VisualStoryteller() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -22,14 +23,23 @@ export default function VisualStoryteller() {
     setIsExpanded(true);
   };
 
+  const isMobile = window.innerWidth <= 768;
+
+  const displayedProjects = isExpanded || !isMobile ? ProjectData : ProjectData.slice(0, 1);
+
+
   return (
     <>
+      <SectionTitle><motion.span
+
+        initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[12] }}
+      >Things I made</motion.span> </SectionTitle>
       <div style={{
-        maxHeight: isExpanded ? '2250px' : '1000px',
+        maxHeight: isExpanded ? (window.innerWidth <= 768 ? '650px' : '2250px') : '1000px',
         overflow: 'hidden',
         transition: 'max-height 0.5s ease-in-out'
       }}>
-        {ProjectData.map((data, index) => {
+        {displayedProjects.map((data, index) => {
           const [ref, isVisible] = useInView({
             threshold: 0.,
             freezeOnceVisible: true
@@ -40,7 +50,7 @@ export default function VisualStoryteller() {
               ref={ref}
               id="projects"
               key={index}
-              className="w-[650px] geist pt-10 max-w-full ml-5 mb-8 self-start"
+              className="w-[650px] geist sm:pt-10 max-w-full sm:ml-5 mb-8 self-start"
               initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[10] + index }}
             >
               <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0 relative">
@@ -50,10 +60,10 @@ export default function VisualStoryteller() {
                   {data.icon && <Image src={data.icon as string} width={30} height={30} alt="Html To JSX converter" />}
                 </div>
                 <div
-                  className="flex flex-col items-stretch w-[2px] !h-[79%] top-[90px] bg-[#323333] absolute left-0 max-md:w-full max-md:ml-0 hover:bg-"
+                  className="hidden sm:flex flex-col items-stretch w-[2px] !h-[79%] top-[90px] bg-[#323333] absolute left-0 max-md:w-full max-md:ml-0 hover:bg-"
                 />
                 <div
-                  className="flex flex-col items-stretch w-full ml-5 pl-4 max-md:w-full max-md:ml-0"
+                  className="flex flex-col items-stretch w-full sm:ml-5 sm:pl-4 max-md:w-full max-md:ml-0"
                 >
                   <div className="flex gap-[10px] geist grow flex-col max-md:max-w-full max-md:mt-10">
                     <h4 className="text-gray-200 text-lg font-medium">
@@ -68,13 +78,13 @@ export default function VisualStoryteller() {
                       ))}
                     </p>
                     <div
-                      className="shadow-sm bg-zinc-300 flex w-[600px] h-[300px] flex-col rounded-lg self-start max-md:max-w-full"
+                      className="shadow-sm bg-zinc-300 flex sm:w-[600px] w-full h-[300px] flex-col rounded-lg self-start max-md:max-w-full"
                     />
                     <motion.div
-                      className="flex w-[296px] max-w-full items-start gap-2.5 mt-2 self-start max-md:justify-center"
+                      className="flex w-fulls sm:w-[296px] max-w-full items-start gap-2.5 mt-2 self-start max-md:justify-center"
                       initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[11] + index }}
                     >
-                      <div className="flex gap-2">
+                      <div className="flex gap-2 ml-16 overflow-x-no-scrollbar">
                         {data.labels.map((label, index) => (
                           <motion.div
                             key={index}
@@ -124,11 +134,11 @@ export default function VisualStoryteller() {
             View Less
           </Button>
         ) : (
-          <><div className='fade absolute'></div><Button variant='ghost' onClick={handleReadMoreClick} className="mt-10 fade-in">
+          <><div className='fade absolute'></div><Button variant='ghost' onClick={handleReadMoreClick} className="block sm:flex mt-10 fade-in">
             View more
           </Button></>
         )}
-      </motion.span>
+      </motion.span >
     </>
   );
 }
