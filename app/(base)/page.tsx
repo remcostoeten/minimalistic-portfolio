@@ -1,20 +1,17 @@
-import Head from 'next/head'
+'use client';
+
 import Grid from "@/components/landing/Grid";
 import { Suspense, lazy } from 'react';
 import { seoKeywords } from '@/config/keywords';
 
 const LatestBlogSingle = lazy(() => import("@/components/landing/LatestBlogSingle"));
 const VisualStoryteller = lazy(() => import("@/components/loaders/VisualStoryteller"));
+import GraphComponent from "../graphql/GraphComponent";
 
 export default function page() {
   return (
     <>
-      <Head>
-        <title>Remco Stoeten - remcostoeten.com</title>
-        <meta name="description" content="Remco Stoeten - remcostoeten.com - Front-end developer" />
-        <meta name="keywords" content={seoKeywords.join(', ')} />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+      <GraphComponent />
       <div className="contained h-[20px]"></div >
       <div id="about"><Grid /></div>
       <div id="work">

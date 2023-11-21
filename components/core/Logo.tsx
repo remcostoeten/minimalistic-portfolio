@@ -9,7 +9,8 @@ export default function Logo() {
         className="icon-svg scale-[1.4]"
         xmlSpace="preserve">
         <path
-          fill="#15151599"
+          fill="#
+          15151599"
           strokeDasharray="1px 1px"
           strokeDashoffset="0"
           d="M23.885 19.583a13.83 13.83 0 001.604-3.552c1.474 3.161 4.679 5.36 8.39 5.36v3.219h-.029c-5.098 0-9.25 4.156-9.25 9.265h-3.214c-.01-4.669 2.557-8.743 6.355-10.884a12.485 12.485 0 01-3.856-3.408z"

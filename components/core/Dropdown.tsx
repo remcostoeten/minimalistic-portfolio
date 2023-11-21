@@ -9,6 +9,8 @@ const Dropdown: React.FC = () => {
   const dropdownItems = [
     { url: '/blackjack', text: 'Blackjack' },
     { url: '/todo', text: 'Todo' },
+    { url: '/graphql', text: 'GraphQL' },
+    { url: '/spinners', text: 'Spinners' },
   ];
 
   const handleButtonClick = () => {
