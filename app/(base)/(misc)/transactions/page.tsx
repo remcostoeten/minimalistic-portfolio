@@ -21,6 +21,7 @@ import TransactionList from "@/components/transactions/TransactionList";
 import { toast } from 'sonner';
 import { db } from "@/lib/firebase";
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
+import { db } from "@/lib/firebase/firebase";
 
 const TransactionPage = () => {
     const [transactions, setTransactions] = useState<Transaction[]>([]);
