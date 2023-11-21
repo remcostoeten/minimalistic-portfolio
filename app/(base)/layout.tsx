@@ -4,9 +4,6 @@ import { Libre_Baskerville } from 'next/font/google';
 import '@/styles/styles.scss';
 import ThemeContextProvider from '@/lib/context/ThemeContext';
 import ActiveSectionContextProvider from '@/lib/context/ActiveSectionContext';
-import { siteConfig } from '@/config/site';
-import { GeistMono, GeistSans } from "geist/font";
-import Intro from '@/components/landing/nav/Intro';
 import { Analytics } from '@vercel/analytics/react';
 import { Toaster } from 'sonner';
 import { ApolloProvider } from '@apollo/client';
@@ -23,8 +20,10 @@ const serif = Libre_Baskerville({
 
 
 export default function RootLayout({
+
   children,
 }: {
+
   children: React.ReactNode;
 }) {
 
