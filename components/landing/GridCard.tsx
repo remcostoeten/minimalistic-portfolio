@@ -6,7 +6,13 @@
 
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import Icon from "../icons/icons";
+<<<<<<< HEAD
 import { personalData } from "@/config/data/personal-data";
+=======
+import { personalData } from "../../config/data/personal-data";
+import Image from "next/image";
+import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
+>>>>>>> a77dd63 ( change grid)
 
 import Image from "next/image";
 import Link from "next/link";
@@ -15,7 +21,12 @@ export default function GridCard() {
     <>
       I'm a recovering ex-Magento developer. I've
       <Tooltip>
+<<<<<<< HEAD
         <TooltipTrigger><span className='tooltip-border'>Overcome PHP</span></TooltipTrigger>
+=======
+        <TooltipTrigger><span className=
+          'tooltip-border'>Overcome PHP</span></TooltipTrigger>
+>>>>>>> a77dd63 ( change grid)
         <TooltipContent>
           <p className="lowercase text-white">Those 5 years of Magento were hard, but I survived ❤️</p>
         </TooltipContent>

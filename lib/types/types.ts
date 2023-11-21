@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+import { iconProps } from '@/utils/types';
+import { Timestamp } from "firebase/firestore";
+>>>>>>> a77dd63 ( change grid)
 import { links } from "../data/menulinks";
 
 export type ChildProps = {
