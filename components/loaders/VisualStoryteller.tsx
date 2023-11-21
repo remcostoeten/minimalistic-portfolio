@@ -1,7 +1,7 @@
 
 
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import ShowcaseLabel from '../core/Labels';
 import { ProjectData } from '@/config/data/ProjectData';
@@ -14,26 +14,28 @@ import { SectionTitle } from '../core/Typography';
 
 export default function VisualStoryteller() {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [ref, isVisible] = useInView({
-    threshold: 0.1,
-    freezeOnceVisible: true
-  });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth <= 768);
+  }, []);
 
   const handleReadMoreClick = () => {
     setIsExpanded(true);
   };
 
-  const isMobile = window.innerWidth <= 768;
-
   const displayedProjects = isExpanded || !isMobile ? ProjectData : ProjectData.slice(0, 1);
-
 
   return (
     <>
-      <SectionTitle><motion.span
-
-        initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[12] }}
-      >Things I made</motion.span> </SectionTitle>
+      <SectionTitle>
+        <motion.span
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[12] }}>
+          Things I made
+        </motion.span>
+      </SectionTitle>
       <div style={{
         maxHeight: isExpanded ? (window.innerWidth <= 768 ? '650px' : '2250px') : '1000px',
         overflow: 'hidden',

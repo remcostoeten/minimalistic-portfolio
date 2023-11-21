@@ -1,6 +1,6 @@
 'use client';
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import clsx from "clsx";
 import { useActiveSectionContext } from "@/lib/context/ActiveSectionContext";
@@ -15,7 +15,7 @@ import {
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-
+import { toast } from "sonner";
 export default function NavBar() {
     const { activeSection, setTimeOfLastClick } = useActiveSectionContext();
 
