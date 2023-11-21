@@ -1,5 +1,7 @@
 'use client';
 
+'use client';
+
 import Head from 'next/head'
 import Grid from "@/components/landing/Grid";
 import { Suspense, lazy } from 'react';
@@ -9,10 +11,12 @@ const LatestBlogSingle = lazy(() => import("@/components/landing/LatestBlogSingl
 const VisualStoryteller = lazy(() => import("@/components/loaders/VisualStoryteller"));
 import GraphComponent from "../graphql/GraphComponent";
 import Spinner from '@/components/loaders/Spinners';
+import GraphComponent from "../graphql/GraphComponent";
 
 export default function page() {
   return (
     <>
+      <GraphComponent />
       <Head>
         <title>Remco Stoeten - remcostoeten.com</title>
         <meta name="description" content="Remco Stoeten - remcostoeten.com - Front-end developer" />
