@@ -24,17 +24,18 @@ export default function VisualStoryteller() {
     setIsExpanded(true);
   };
 
-  const isMobile = window.innerWidth <= 768;
-
   const displayedProjects = isExpanded || !isMobile ? ProjectData : ProjectData.slice(0, 1);
-
 
   return (
     <>
-      <SectionTitle><motion.span
-
-        initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[12] }}
-      >Things I made</motion.span> </SectionTitle>
+      <SectionTitle>
+        <motion.span
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[12] }}>
+          Things I made
+        </motion.span>
+      </SectionTitle>
       <div style={{
         maxHeight: isExpanded ? (window.innerWidth <= 768 ? '650px' : '2250px') : '1000px',
         overflow: 'hidden',
