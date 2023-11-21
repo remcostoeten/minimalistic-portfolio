@@ -6,6 +6,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import client from '@/lib/(graphql)/ApolloClient';
 import ActiveSectionContextProvider from '@/lib/context/ActiveSectionContext';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import ThemeContextProvider from '@/lib/context/ThemeContext';
 import '@/styles/styles.scss';
 import { ApolloProvider } from '@apollo/client';
@@ -16,6 +17,8 @@ import { siteConfig } from '@/config/site';
 import { GeistMono, GeistSans } from "geist/font";
 import Intro from '@/components/landing/nav/Intro';
 >>>>>>> 36880af ( install graphql)
+=======
+>>>>>>> d6a56f9 ( minor bugs)
 import { Analytics } from '@vercel/analytics/react';
 import { Libre_Baskerville } from 'next/font/google';
 import { Toaster } from 'sonner';
@@ -38,8 +41,10 @@ const serif = Libre_Baskerville({
 
 import { TooltipProvider } from '@/components/ui/tooltip';
 export default function RootLayout({
+
   children,
 }: {
+
   children: React.ReactNode;
 }) {
 <<<<<<< HEAD
