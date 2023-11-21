@@ -11,8 +11,9 @@ export default function RootLayout({
 
   children: React.ReactNode;
 }) {
-  retrun(
-    <ThemeContextProvider>
+    
+return (
+<ThemeContextProvider>
       <ActiveSectionContextProvider>
         <html className='dark text-foreground bg-background' lang="en">
           <body className=' dark-background pb-20 min-h-screen flex'>
