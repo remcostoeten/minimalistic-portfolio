@@ -1,42 +1,34 @@
-import { links } from "@/lib/data/menulinks";
+export async function getGitHubStars(): Promise<string | null> {
+  try {
+    const response = await fetch(
+      "https://api.github.com/repos/remcostoeten/minimalist-portfolio",
+      {
+        headers: {
+          Accept: "application/vnd.github+json",
+          Authorization: `Bearer ${env.GITHUB_ACCESS_TOKEN}`,
+        },
+        next: {
+          revalidate: 60,
+        },
+      }
+    )
 
-export type ChildProps = {
-  children: React.ReactNode;
-  onClick?: () => void;
-  className?: string;
-  size?: 'large' | 'medium' | 'small';
-};
+    if (!response?.ok) {
+      return null
+    }
 
-export type SectionName = (typeof links)[number]["name"];
+    const json = await response.json()
 
-export interface SiteConfig {
-  name: string;
-  description: string;
-  url: string;
-  links: {
-    gitlab?: string;
-    github?: string;
-    linkedin?: string;
-    whatsapp?: string;
-    email?: string;
-    baseurl?: string;
-  };
+    return parseInt(json["stargazers_count"]).toLocaleString()
+  } catch (error) {
+    return null
+  }
 }
 
-export type Transaction = {
-  id: string;
-  amount: number;
-  type: "deposit" | "withdrawal";
-  timestamp: any;
-  date: string;
-}
-
-export type iconProps = {
-  name: string;
-  size?: string;
-  className?: string;
-  color?: string;
-  onClick?: () => void;
-  w?: string | number;
-  h?: string | number;
-}
+//
+// Usage
+//
+//  const stars = await getGitHubStars()
+// {stars && (
+//         {stars} stars on GitHub
+// )}

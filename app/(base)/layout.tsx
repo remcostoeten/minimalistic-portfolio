@@ -4,16 +4,16 @@ import ActiveSectionContextProvider from '@/lib/context/ActiveSectionContext';
 import { Analytics } from '@vercel/analytics/react';
 import { Toaster } from 'sonner';
 import RippedNav from '@/components/misc/RippedNav';
+import Cursor from '@/components/Cursor';
 export default function RootLayout({
 
   children,
 }: {
-
   children: React.ReactNode;
 }) {
-    
-return (
-<ThemeContextProvider>
+
+  return (
+    <ThemeContextProvider>
       <ActiveSectionContextProvider>
         <html className='dark text-foreground bg-background' lang="en">
           <body className=' dark-background pb-20 min-h-screen flex'>
@@ -24,6 +24,7 @@ return (
                 {children}
               </div>
             </main>
+            <Cursor />
             <Toaster />
             <Analytics />
           </body>
