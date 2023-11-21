@@ -20,7 +20,10 @@ import { Analytics } from '@vercel/analytics/react';
 import { Libre_Baskerville } from 'next/font/google';
 import { Toaster } from 'sonner';
 import { ApolloProvider } from '@apollo/client';
-import apolloClient from '@/lib/apolloClient';
+import HeaderBar from '@/components/core/HeaderBar';
+import client from '@/lib/(graphql)/ApolloClient';
+import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
+import { __DEV__ } from '@apollo/client/utilities/globals';
 import { ApolloProvider } from '@apollo/client';
 import HeaderBar from '@/components/core/HeaderBar';
 import client from '@/lib/(graphql)/ApolloClient';
@@ -40,18 +43,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <<<<<<< HEAD
+=======
+
+>>>>>>> 205f6c5 ( add some spinners components/ls)
   if (__DEV__) {  // Adds messages only in a dev environment
     loadDevMessages();
     loadErrorMessages();
   }
+<<<<<<< HEAD
 
   if (__DEV__) {
     loadDevMessages();
     loadErrorMessages();
   }
 
+=======
+>>>>>>> 205f6c5 ( add some spinners components/ls)
   return (
     <ApolloProvider client={client}>
       <ThemeContextProvider>
