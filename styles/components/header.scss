@@ -8,17 +8,11 @@
         }
     }
 
-    ul {
-        display: none;
-    }
-
-
     .style-1 {
         @include tablet {
             place-content: unset;
         }
     }
-
 
     @include mobile {
         .style-66 {
