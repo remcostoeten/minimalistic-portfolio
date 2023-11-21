@@ -1,0 +1,101 @@
+#express-loading-icon {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+#express-loading-icon svg {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+}
+
+#express-loading-icon.disappear {
+    animation: fadeOut 500ms ease-in forwards;
+}
+
+#express-loading-icon.disappear img {
+    animation-duration: 0s;
+}
+
+#express-loading-icon-spinner {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    animation: icon-rotate 2.5s ease-in-out infinite;
+    background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAAAAwSURBVAhbY/yvc+3/jytaDGy7mBgYTyb9+W9aKcHAxM3OwBhW9ff/BdGfDH9z5BgATdwP7RHL6nYAAAAASUVORK5CYII=);
+    background-size: cover;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes icon-rotate {
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+/* no italic for CCJK */
+
+#express-loading-icon {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+#express-loading-icon svg {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+}
+
+#express-loading-icon.disappear {
+    animation: fadeOut 500ms ease-in forwards;
+}
+
+#express-loading-icon.disappear img {
+    animation-duration: 0s;
+}
+
+#express-loading-icon-spinner {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    animation: icon-rotate 2.5s ease-in-out infinite;
+    background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAAAAwSURBVAhbY/yvc+3/jytaDGy7mBgYTyb9+W9aKcHAxM3OwBhW9ff/BdGfDH9z5BgATdwP7RHL6nYAAAAASUVORK5CYII=);
+    background-size: cover;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes icon-rotate {
+    to {
+        transform: rotateZ(360deg);
+    }
+}
