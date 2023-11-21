@@ -29,4 +29,17 @@ export const seoKeywords: string[] = [
   "Responsive Design Principles",
   "Web Standards",
   "Frontend Frameworks (React, Vue, Angular)",
+  "Portfolio",
+  "Next.js",
+  "TypeScript",
+  "Front-end Developer",
+  "Dutch",
+  "React",
+  "Grid Component",
+  "Lazy Loading",
+  "Suspense",
+  "Head Component",
+  "Meta Tags",
+  "Viewport",
+  "Loading Fallback"
 ];
