@@ -5,16 +5,30 @@ html {
     background-color: $black;
     transition: 250ms ease-in-out all;
     scroll-behavior: smooth;
-    animation: bodyBgFadeIn 10sxforwards;
+    animation: bodyBgFadeIn 10s forwards;
 }
 
 .contained {
     max-width: $contained;
     margin: 0 auto;
+
+    @media (max-width: 1280px) {
+        max-width: 90vw;
+        padding: 0 20px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 0 12px;
+    }
 }
 
 .mini-contained {
     width: 600px;
+
+    @media (max-width: 600px) {
+        width: 100%;
+        padding: 0 15px;
+    }
 }
 
 .blackjack {

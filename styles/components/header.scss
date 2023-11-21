@@ -1,0 +1,29 @@
+.navbar {
+    transition: 250ms ease all;
+
+    .wave,
+    swap {
+        @include below-desktop {
+            display: none;
+        }
+    }
+
+    ul {
+        display: none;
+    }
+
+
+    .style-1 {
+        @include tablet {
+            place-content: unset;
+        }
+    }
+
+
+    @include mobile {
+        .style-66 {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+}

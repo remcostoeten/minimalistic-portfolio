@@ -7,9 +7,10 @@
 @import './base/utillity-classes.scss';
 
 @import './utils/animations.scss';
-
+@import './utils/mixins.scss';
 @import './base/typography.scss';
 
+@import './components/header.scss';
 @import './components/buttons.scss';
 @import './components/framer-motion.scss';
 @import './components/_grid-bitmoji.scss';

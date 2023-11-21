@@ -14,7 +14,7 @@ export default function RippedNav() {
 
     return (
         <>
-            <motion.nav className="style-0" data-framer-name="Desktop" initial={{ opacity: 0, y: 50, x: 15 }}
+            <motion.nav className="style-0 navbar" initial={{ opacity: 0, y: 50, x: 15 }}
                 animate={{ opacity: 1, y: 0, x: 0 }}
                 transition={{
                     duration: fadeInDelays100[6],
@@ -55,7 +55,7 @@ export default function RippedNav() {
                                 ]}
                                 interval={4000} />
                         </SubTitle>
-                        <div className="style-14" data-framer-name="Links">
+                        <ul className="style-14" data-framer-name="Links">
                             <div
                                 className="style-15"
                                 data-framer-component-type="RichTextContainer"
@@ -99,7 +99,7 @@ export default function RippedNav() {
                                 </p>
                             </div>
                             <Dropdown />
-                        </div>
+                        </ul>
                     </div>
                     <div className="style-38" data-framer-name="Social Links & Buttons">
                         <div className="style-39" data-framer-name="Social Links">
