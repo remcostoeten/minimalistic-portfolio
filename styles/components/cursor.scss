@@ -1,5 +1,4 @@
-$cursorsize: 10px;
-$white: #fff;
+$cursorsize: 40px;
 
 .interactable {
     aspect-ratio: 1 / 1.5;
@@ -10,6 +9,32 @@ $white: #fff;
     transition: background-size 400ms ease, opacity 400ms ease;
 }
 
+.cursor-disable {
+    position: relative;
+
+    &::after,
+    &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 70%;
+        height: 2px;
+        background-color: red;
+        transform-origin: center;
+    }
+}
+
+    &::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+
+    }
+
+    &::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+
+    }
+}
 
 .interactable:hover {
     background-size: 105%;
