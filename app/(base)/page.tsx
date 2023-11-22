@@ -24,9 +24,9 @@ export default function page() {
       <div className="contained h-[20px]"></div >
       <div id="about"><Grid /></div>
       <div id="work">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div><Spinner size='small' /></div>}>
           <VisualStoryteller />
-        </Suspense>
+          /</Suspense>
       </div>
       <div id="articles">
         <Suspense fallback={<div><Spinner size='medium' /></div>}>

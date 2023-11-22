@@ -1,3 +1,5 @@
+// @ts-ignore
+// @ts-nocheck
 'use client';
 import { ApolloProvider } from '@apollo/client';
 import Cursor from '@/components/Cursor';
@@ -10,8 +12,8 @@ import '@/styles/styles.scss';
 import { Analytics } from '@vercel/analytics/react';
 import { Toaster } from 'sonner';
 import { Libre_Baskerville } from 'next/font/google';
+import dynamic from 'next/dynamic';
 
-// Use dynamic imports for modules that aren't immediately necessary
 const loadDevMessages = dynamic(() => import('@apollo/client/dev').then(mod => mod.loadDevMessages));
 const loadErrorMessages = dynamic(() => import('@apollo/client/dev').then(mod => mod.loadErrorMessages));
 const __DEV__ = dynamic(() => import('@apollo/client/utilities/globals').then(mod => mod.__DEV__));
