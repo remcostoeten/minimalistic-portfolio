@@ -1,5 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+
 .geist {
     font-family: var(--font-geist-sans) !important;
+}
+
+.libre {
+    font-family: var(--heading-font);
+}
+
+.heading-font {
+    @extend .libre
 }
 
 .slogan {
@@ -7,4 +17,16 @@
     font-size: 31px;
     line-height: 41px;
     color: rgb(243, 245, 247);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+time {
+    &:not(.regular-font) {
+        @extend .heading-font;
+    }
 }
