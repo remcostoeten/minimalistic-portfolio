@@ -10,6 +10,7 @@ import { Toaster } from 'sonner';
 import { __DEV__ } from '@apollo/client/utilities/globals';
 import { Inter, Libre_Baskerville } from 'next/font/google';
 import { siteConfig } from '@/config/data';
+import Preloader from '@/components/effects/Preloader';
 
 export const metadata = {
   title: {
@@ -47,6 +48,7 @@ export const metadata = {
   },
   robots: {
     index: true,
+
     googleBot: {
       'index': true,
       'follow': true,
@@ -79,7 +81,7 @@ export default function RootLayout({
     <ThemeContextProvider>
       <ActiveSectionContextProvider>
         <html className={`${inter.className} dark text-foreground bg-background`} lang="en">
-          <body className={`${serif.className} dark-background pb-20 min-h-screen flex `}>
+          <body className='dark-background pb-20 min-h-screen flex'>
             <TooltipProvider>
               <Cursor />
               <span className='absolute top-0 right-0 bg-gradient-to-r from-green-400 to-[##0E0E0E]'></span>
