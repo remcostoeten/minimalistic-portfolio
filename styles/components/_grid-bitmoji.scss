@@ -15,6 +15,10 @@
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
 
+    @include mobile {
+        height: calc(100% + 12px);
+    }
+
     h1 {
         font-style: normal;
         font-weight: 700;
@@ -29,6 +33,25 @@
         padding: 0px;
         box-sizing: border-box;
         -webkit-font-smoothing: antialiased;
+    }
+
+
+    p {
+        font-style: normal;
+        color: rgb(14, 14, 14);
+        font-size: 20px;
+        text-transform: none;
+        text-decoration: none solid rgb(14, 14, 14);
+        line-height: 26px;
+        text-align: left;
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+
+        a {
+            text-decoration: underline;
+        }
     }
 }
 
@@ -208,25 +231,4 @@
     overflow-wrap: break-word;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
-}
-
-.style-13 {
-    font-family: Nunito, 'Nunito Placeholder', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    color: rgb(14, 14, 14);
-    font-size: 20px;
-    letter-spacing: normal;
-    text-transform: none;
-    text-decoration: none solid rgb(14, 14, 14);
-    line-height: 26px;
-    text-align: left;
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-
-    a {
-        text-decoration: underline ;
-    }
 }

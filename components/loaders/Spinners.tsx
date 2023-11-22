@@ -3,6 +3,7 @@ type SpinnerProps = {
     absolute?: boolean;
     size?: 'extrasmall' | 'small' | 'medium' | 'large' | 'extralarge';
     variant?: 'mini' | 'cutout';
+    text?: string;
 };
 
 const sizeToDimensions = {
@@ -12,6 +13,25 @@ const sizeToDimensions = {
     large: '75px',
     extralarge: '100px',
 };
+
+export const TextLoader = ({ text }: SpinnerProps) => {
+    return (
+        <div>
+            <div className="wrapper">
+                <div className="loading-text">
+                    <p>
+                        {text}
+                        <span className="dot-one"> .</span>
+                        <span className="dot-two"> .</span>
+                        <span className="dot-three"> .</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+
 
 export default function Spinner({ variant = 'mini', size = 'medium' }: SpinnerProps) {
     const dimensions = typeof size === 'string' ? sizeToDimensions[size] : size;

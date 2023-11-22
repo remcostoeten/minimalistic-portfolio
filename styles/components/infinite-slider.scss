@@ -111,14 +111,33 @@
     animation: infiniteScroll 60s linear infinite;
     display: flex;
     width: calc(250px * 14);
-  }
-
-  .slide-track-reverse {
-    animation: infiniteScrollReverse 60s linear infinite;
-    display: flex;
-    width: calc(250px * 14);
 
   }
+
+  .slider-track-reverse {
+    animation: infiniteScrollReverse 120s linear infinite;
+  }
+
+  @keyframes infiniteScroll {
+    0% {
+      transform: translate(0);
+    }
+
+    100% {
+      transform: translateX(calc(-250px * 7));
+    }
+  }
+
+  @keyframes infiniteScrollReverse {
+    0% {
+      transform: translateX(-2400px);
+    }
+
+    100% {
+      transform: translateX(calc(250px * 7));
+    }
+  }
+
 
   &:hover {
 

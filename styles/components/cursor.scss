@@ -1,30 +1,72 @@
-    .mask,
-    .body {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #afa18f;
-        font-size: 64px;
-        line-height: 66px;
-        cursor: default;
+$cursorsize: 10px;
+$white: #fff;
 
-        p {
-            width: 1000px;
-            padding: 40px;
-        }
+.interactable {
+    aspect-ratio: 1 / 1.5;
+    width: clamp(120px, 40vmin, 600px);
+    background-position: center 50%;
+    background-size: 100%;
+    opacity: 0.4;
+    transition: background-size 400ms ease, opacity 400ms ease;
+}
 
-        span {
-            color: #ec4e39;
+
+.interactable:hover {
+    background-size: 105%;
+    opacity: 0.8;
+}
+
+#trailer {
+    height: $cursorsize;
+    width: $cursorsize;
+    background-color: $white;
+    border-radius: 20px;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 10000;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 9999999999999999999;
+    mix-blend-mode: difference;
+    transition: opacity, scale 500ms ease;
+    display: grid;
+    place-items: center;
+    scale: 1;
+}
+
+.showAlternativeCursor {
+    cursor: none;
+
+    * {
+        cursor: none;
+    }
+}
+
+#trailer {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#custom-cursor {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+body,
+.menu {
+    &:hover {
+        #trailer {
+            opacity: 1 !important;
         }
     }
+}
 
-    .mask {
-        mask-image: url('../../public/mask.svg');
-        mask-repeat: no-repeat;
-        mask-size: 40px;
-        background: #ec4e39;
-        position: absolute;
-        color: black;
+#trailer {
+    .menu {
+        &:has(.showAlternativeCursor) {
+            opacity: 1 !important;
+            pointer-events: none;
+        }
     }
+}

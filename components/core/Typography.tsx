@@ -30,7 +30,7 @@ export const SectionTitle = ({ children, isGeist }: TypographyProps) => (
             delay: .6,
         }}
         animate={{ opacity: 1, y: 0 }}
-        className={`pt-20 text-[44px] text-center section-title' no-underline break-words antialiased text-[#a3a3a3] ${isGeist ? 'geist' : ''}`}
+        className={`sm;pt-20 text-[44px] sm:text-center section-title' no-underline break-words antialiased text-[#a3a3a3] ${isGeist ? 'geist' : ''}`}
     >
         {children}
     </motion.h2>

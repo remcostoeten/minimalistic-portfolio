@@ -97,6 +97,7 @@ text-theme-light {
     &--grey,
     &--card {
         background-color: rgb(13, 13, 13);
+
     }
 
     &--grey-alt,
@@ -120,5 +121,27 @@ text-theme-light {
     &:hover {
         box-shadow: rgba(50, 50, 93, 0.25) 50px 150px 100px -20px, rgba(155, 163, 92, 0.3) 0px 30px 60px -30px, rgba(90, 103, 17, 0.35) 0px -2px 6px 0px inset;
         transition: 0.3s;
+    }
+}
+
+.tooltip-border {
+    border-bottom: 1px dashed #26211D;
+    position: relative;
+
+    &::after {
+        
+    }
+}
+
+.overflow-x-no-scroll {
+
+    overflow-x: auto;
+    scrollbar-width: none;
+    /* For Firefox */
+    -ms-overflow-style: none;
+    /* For Internet Explorer and Edge */
+
+    &::-webkit-scrollbar {
+        display: none;
     }
 }
