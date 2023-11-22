@@ -1,0 +1,102 @@
+$screen-zero: 0;
+$screen-xxs: 320px;
+$screen-xs: 480px;
+$screen-s: 640px;
+$screen-m: 768px;
+$screen-l: 1024px;
+$screen-xl: 1440px;
+$breakpoints: (
+    mobile: $screen-xxs,
+    tablet: $screen-m,
+    desktop: $screen-l,
+);
+
+@mixin media($keys...) {
+    @each $key in $keys {
+        @media (min-width: map-get($breakpoints, $key)) {
+            @content;
+        }
+    }
+}
+
+@mixin below-desktop {
+    @media (min-width: #{$screen-zero}) and (max-width: #{$screen-l}) {
+        @content;
+    }
+}
+
+@mixin big-desktop {
+    @media (min-width: #{1920px}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$screen-l}) {
+        @content;
+    }
+}
+
+@mixin above-mobile {
+    @media (min-width: #{$screen-m}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{$screen-m}) and (max-width: #{$screen-l - 1px}) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (min-width: #{$screen-zero}) and (max-width: #{$screen-m - 1px}) {
+        @content;
+    }
+}
+
+@mixin mobile-small {
+    @media (min-width: #{$screen-zero}) and (max-width: #{$screen-s - 1px}) {
+        @content;
+    }
+}
+
+@mixin mobile-xs {
+    @media (min-width: #{$screen-xxs}) and (max-width: #{$screen-xs - 1px}) {
+        @content;
+    }
+}
+
+@mixin mobile-xxs {
+    @media (max-width: #{$screen-xxs - 1px}) {
+        @content;
+    }
+}
+
+@mixin category-grid {
+    @media (min-width: #{$screen-l}) and (max-width: #{$screen-category-grid}) {
+        @content;
+    }
+}
+
+@include tablet {
+    .hide-mobile-tablet {
+        display: none;
+    }
+}
+
+@include mobile {
+    .hide-mobile-tablet {
+        display: none !important;
+    }
+
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+@include mobile-small {
+    .hide-mobile-tablet {
+        display: none !important;
+    }
+}

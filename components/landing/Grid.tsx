@@ -45,14 +45,14 @@ export default function Grid() {
                         <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[9] }} className="self-stretch max-md:max-w-full">
                             <section className="flex max-md:flex-col max-md:items-stretch gap-l">
                                 <div className="flex flex-col items-stretch max-md:w-full">
-                                    <div className="border grid--card dark:grid--card dark:border-dark  flex items-center justify-center w-[270px] max-w-full grow flex-col rounded-16">
-                                        <span className="p-4 perspective flex items-center justify-center text-center text-[#a3a3a3]  ">
-                                            You can purcashe this spot for 100,- per month.
-                                        </span>
+                                    <div className="border grid--card dark:grid--card dark:border-dark  flex items-center justify-center sm:w-[270px] max-w-full grow flex-col rounded-16">
+                                        <p className="geist p-4 perspective flex items-center justify-center text-center text-[#a3a3a3]  ">
+                                            You can purcashe this spot for only €100,- per month.
+                                        </p>
                                     </div>
                                 </div>
                                 <div className="flex flex-col items-stretch max-md:w-full w-screen">
-                                    <div className="body-dark-accent flex h-[234px] flex-col rounded-16  max-md:max-w-full w-full overflow-hidden">
+                                    <div className="body-dark-accent flex sm:h-[250px] flex-col rounded-16  max-md:max-w-full w-full overflow-hidden">
                                         <GridCard />
                                     </div>
                                 </div>
