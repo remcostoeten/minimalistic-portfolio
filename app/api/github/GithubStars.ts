@@ -6,10 +6,14 @@ export async function getGitHubStars(): Promise<string | null> {
         headers: {
           Accept: "application/vnd.github+json",
 <<<<<<< HEAD
+<<<<<<< HEAD
           Authorization: `Bearer ${process.env.GITHUB_TOKEN}`
 =======
           Authorization: `Bearer ${env.GITHUB_ACCESS_TOKEN}`,
 >>>>>>> 6bacca5 ( just some dev work.)
+=======
+          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`
+>>>>>>> 5880759 (Apollo)
         },
         next: {
           revalidate: 60,
