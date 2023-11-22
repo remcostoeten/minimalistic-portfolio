@@ -3,16 +3,21 @@ import { phoneNumber } from '@/config/data';
 import { fadeInDelays100 } from '@/lib/animations';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Dropdown from './Dropdown';
 import Logo from './Logo';
 import { SubTitle } from './Typography';
 import SwappingWords from '../effects/SwappingWords';
 import Contact from '../landing/Contact';
 import Framer from '../effects/Framer';
+import { toast } from 'sonner'
 
 export default function HeaderBar() {
     const whatsappUrl = `https://wa.me/${phoneNumber}`;
+
+    useEffect(() => {
+        toast.message('Welcome to my portfolio!')
+    }, [])
 
     return (
         <>

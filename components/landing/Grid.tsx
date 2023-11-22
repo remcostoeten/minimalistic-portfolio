@@ -45,8 +45,10 @@ export default function Grid() {
                         <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[9] }} className="self-stretch max-md:max-w-full">
                             <section className="flex max-md:flex-col max-md:items-stretch gap-l">
                                 <div className="flex flex-col items-stretch max-md:w-full">
-                                    <div className="border grid--card dark:grid--card dark:border-dark  flex items-center justify-center sm:w-[270px] max-w-full grow flex-col rounded-16">
-                                        <p className="geist p-4 perspective flex items-center justify-center text-center text-[#a3a3a3]  ">
+                                    <div className="p-default
+
+                                    border grid--card dark:grid--card dark:border-dark  flex items-center justify-center sm:w-[270px] max-w-full grow flex-col rounded-16">
+                                        <p className="geistOldp-4 perspective flex items-center justify-center text-center text-[#a3a3a3]  ">
                                             You can purcashe this spot for only €100,- per month.
                                         </p>
                                     </div>
@@ -59,7 +61,8 @@ export default function Grid() {
                             </section>
                         </motion.div>
                         <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[10] }} className="p-[32px] flex  justify-center grid--card dark:grid--card infinite-slider dark:border-dark  w-full gap-[40px] flex-col rounded-16 overflow-hidden grid--card h-full items-center">
-                            <h4 className=" text-2xl experience-title">My stack</h4>
+                            <h4 className="regular-font text-2xl experience-title libre
+                            ">My stack</h4>
                             <div className="flex flex-col gap-l">
                                 <InfiniteLogoSlider />
                             </div>

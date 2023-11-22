@@ -46,7 +46,7 @@ const menuContainerAnimation = {
 
 const Intro = () => {
     return (
-        <div className='pt-[40px] contained geist flex flex-col gap-[64px]'>
+        <div className='pt-[40px] contained geistOldflex flex-col gap-[64px]'>
             <motion.div variants={reveal} initial="hidden" animate="show" className=" flex justify-between  flex-col gap-2 text-center ">
                 <motion.div variants={menuItemAnimation} className="flex flex-row justify-between items-center gap-4">
                     <motion.div variants={menuItemAnimation} className="flex flex-col gap-4">
