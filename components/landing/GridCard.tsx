@@ -4,18 +4,16 @@
  * TODO: Migrate CSS classes to Tailwind
  */
 
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import Icon from "../icons/icons";
-import { personalData } from "../../config/data/personal-data";
-import Image from "next/image";
-import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
+import { personalData } from "@/config/data/personal-data";
 
 export default function GridCard() {
   const shortDescription = (
     <>
       I'm a recovering ex-Magento developer. I've
       <Tooltip>
-        <TooltipTrigger><span className=
-          'tooltip-border'>Overcome PHP</span></TooltipTrigger>
+        <TooltipTrigger><span className='tooltip-border'>Overcome PHP</span></TooltipTrigger>
         <TooltipContent>
           <p className="lowercase text-white">Those 5 years of Magento were hard, but I survived ❤️</p>
         </TooltipContent>

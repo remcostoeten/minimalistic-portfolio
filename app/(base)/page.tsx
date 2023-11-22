@@ -8,6 +8,7 @@ import { seoKeywords } from '@/config/keywords';
 const LatestBlogSingle = lazy(() => import("@/components/landing/LatestBlogSingle"));
 const VisualStoryteller = lazy(() => import("@/components/loaders/VisualStoryteller"));
 import GraphComponent from "../graphql/GraphComponent";
+import Spinner from '@/components/loaders/Spinners';
 
 export default function page() {
   return (
@@ -27,7 +28,7 @@ export default function page() {
         </Suspense>
       </div>
       <div id="articles">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div><Spinner size='medium' /></div>}>
           <LatestBlogSingle />
         </Suspense>
       </div>
