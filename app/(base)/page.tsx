@@ -29,6 +29,7 @@ import Spinner from '@/components/loaders/Spinners';
 =======
 >>>>>>> 6bacca5 ( just some dev work.)
 import GraphComponent from "../graphql/GraphComponent";
+import Spinner from '@/components/loaders/Spinners';
 
 export default function page() {
   return (
@@ -57,10 +58,14 @@ export default function page() {
       </div>
       <div id="articles">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <Suspense fallback={<div><Spinner size='medium' /></div>}>
 =======
         <Suspense fallback={<div>Loading...</div>}>
 >>>>>>> 6bacca5 ( just some dev work.)
+=======
+        <Suspense fallback={<div><Spinner size='medium' /></div>}>
+>>>>>>> da3ba22 ( merge apollo client in dev)
           <LatestBlogSingle />
         </Suspense>
       </div>
