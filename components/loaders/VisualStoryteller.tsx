@@ -52,7 +52,7 @@ export default function VisualStoryteller() {
               ref={ref}
               id="projects"
               key={index}
-              className="w-[650px] geist sm:pt-10 max-w-full sm:ml-5 mb-8 self-start"
+              className="w-[650px] geistOldsm:pt-10 max-w-full sm:ml-5 mb-8 self-start"
               initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[10] + index }}
             >
               <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0 relative">
@@ -67,8 +67,8 @@ export default function VisualStoryteller() {
                 <div
                   className="flex flex-col items-stretch w-full sm:ml-5 sm:pl-4 max-md:w-full max-md:ml-0"
                 >
-                  <div className="flex gap-[10px] geist grow flex-col max-md:max-w-full max-md:mt-10">
-                    <h4 className="text-gray-200 text-lg font-medium">
+                  <div className="flex gap-[10px] geistOldgrow flex-col max-md:max-w-full max-md:mt-10">
+                    <h4 className="text-gray-200 text-lg font-medium regular-font">
                       {data.title}
                     </h4>
                     <p className="text-gray-400 text-md self-start max-md:max-w-full">

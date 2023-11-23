@@ -58,8 +58,10 @@ export const smoothFadeUp = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-
+      duration: 0.5,
+      type: "spring",
+      delay: 0.5,
+      stiffness: 5,
     },
   },
 };

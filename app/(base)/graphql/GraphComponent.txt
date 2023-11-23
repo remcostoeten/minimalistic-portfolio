@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useQuery } from '@apollo/client';
 import { Card } from '@nextui-org/react';
 import { GET_COMMITS, GET_REPOSITORIES } from '@/lib/graphql/queries';
-import Spinner, { LogoLoader } from '@/components/loaders/Spinners';
+import Spinner, { LogoLoader, TextLoader } from '@/components/loaders/Spinners';
 
 type Commit = {
     node: {
@@ -43,20 +43,23 @@ const CommitsList: React.FC<{ owner: string; repoName: string }> = ({ owner, rep
 export default function GraphComponent() {
     const { loading: repoLoading, error: repoError, data: repoData } = useQuery(GET_REPOSITORIES);
 
-    if (repoLoading) return <Spinner variant="cutout" size="small" />
+    if (repoLoading) return <TextLoader text="GraphQL data is loading" />
 
     if (repoError) return 'Whoops :(' + repoError;
 
     return (
         <Card className='px-10 '>
             {repoData.viewer.repositories.nodes.map((repo: Repository) => (
-                <div key={repo.name}>
-                    <h2>{repo.name}</h2>
-                    <p>{repo.description}</p>
-                    <a href={repo.url}>Go to Repository</a>
-                    <CommitsList owner="remcostoeten" repoName={repo.name} />
-                </div>
-            ))}
+                <Suspense fallback={<div><Spinner size='small' text={''} /></div>}>
+                    <div key={repo.name}>
+                        <h2>{repo.name}</h2>
+                        <p>{repo.description}</p>
+                        <a href={repo.url}>Go to Repository</a>
+                        <CommitsList owner="remcostoeten" repoName={repo.name} />
+                    </div>
+                </Suspense>
+            ))
+            }
         </Card >
     );
 };

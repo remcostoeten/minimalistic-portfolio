@@ -1,11 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
 
 .geist {
     font-family: var(--font-geist-sans) !important;
 }
 
-.inter {
-    font-family: 'Inter', sans-serif !important;
+.libre {
+    font-family: var(--heading-font);
+}
+
+.heading-font {
+    @extend .libre
 }
 
 .slogan {
@@ -15,8 +19,14 @@
     color: rgb(243, 245, 247);
 }
 
-
-
-p {
-    @extend .inter
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+time {
+    &:not(.regular-font) {
+        @extend .heading-font;
+    }
 }

@@ -8,18 +8,20 @@ import { blogPosts } from '@/lib/data/BlogPosts'
 export default function LatestBlogSingle() {
     return (
         <>
-            <div className='flex gap-4 flex-col'>
-                <SectionTitle><motion.span
-
-                    initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[12] }}
-                >Some articles</motion.span> </SectionTitle>
+            <div className='flex gap-4 flex-col
+            '>
+                <SectionTitle>
+                    <motion.span
+                        initial={{ opacity: 0, y: 50, x: -15 }} animate={{ opacity: 1, y: 0, x: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[12] }}
+                    >Some articles</motion.span>
+                </SectionTitle>
                 <div className='blog-preview  '>
                     {blogPosts.map((post, index) => (
                         <motion.div
-                            initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[8] + index * 0.1 }}
+                            initial={{ opacity: 0, y: 50, x: -15 }} animate={{ opacity: 1, y: 0, x: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[8] + index * 0.1 }}
                             key={index}
                             className={`sm:w-1/3 flex p-[14px] gap-[24px] flex-col blog-card bg-[#151515] rounded-[16px] overflow-hidden shadow-lg ${post.highlighted ? 'highlighted' : ''}`}>
-                            <div className="geist flex gap-1 justify-between items-center text-sm">
+                            <div className="geistOldflex gap-1 justify-between items-center text-sm">
                                 <motion.span initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[13] }} className='flex gap-2'>
                                     {Array.isArray(post.label) ? post.label.map((label, index) => (
                                         <ShowcaseLabel key={index}>{label}</ShowcaseLabel>
@@ -62,7 +64,7 @@ export default function LatestBlogSingle() {
                             <div className="flex justify-between items-start py-2 px-2">
                                 <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[17] }}>
                                     <h3 className="font-bold text-xl mb-2 line-clamp-2 text-white text-[24px]">{post.title}</h3>
-                                    <p className="text-[#a3a3a3] line-clamp-2 geist text-16">
+                                    <p className="text-[#a3a3a3] line-clamp-2 geistOldtext-16">
                                         {post.description}
                                     </p>
                                 </motion.div>
