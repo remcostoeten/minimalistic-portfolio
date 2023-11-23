@@ -9,28 +9,24 @@ import Icon from "../icons/icons";
 import { personalData } from "@/config/data/personal-data";
 
 import Image from "next/image";
+import Link from "next/link";
 export default function GridCard() {
   const shortDescription = (
-    <>
-      I'm a recovering ex-Magento developer. I've
-      <Tooltip>
-
-        <TooltipTrigger><span className='tooltip-border'>Overcome PHP</span></TooltipTrigger>
-
-        <TooltipTrigger><span className=
-          'tooltip-border'>Overcome PHP</span></TooltipTrigger>
+    <p className="inter">
+      I am a recovering <span className="relative"><Tooltip>
+        <TooltipTrigger>ex-magento</TooltipTrigger>
         <TooltipContent>
-          <p className="lowercase text-white">Those 5 years of Magento were hard, but I survived ❤️</p>
+          <p className="lowercase">Those 5 years of magento we're hard, but I survived ❤️</p>
         </TooltipContent>
-      </Tooltip>
-      and now I'm building <a href='https://gitlab.com/pleio/frontend'>open source</a> software at <a href='https://gitlab.com/pleio'>Pleio</a>. I love CSS and UI. I primarily work with TSX, Next, and SQL and have done some scripting in Python and Lua. In the future, I want to dive into Go, OCaml, and dev-ops.
-    </>
+      </Tooltip><span className="absolute -top-[0.5rem] right-[-6px] -z-10 text-xs -rotate-[13px] ">💀</span> </span>developer.
+      Currently building <Link target='_blank' href='https://gitlab.com/pleio/frontend'> open source</Link> software at <Link href='https://gitlab.com/pleio' target="_blank" > Pleio</Link> I 💗 CSS. Testing the waters in Lua and Python but Primairly focussing on Typescript and NextJS.
+      Will be doing some Go and <span className="relative">oCaml <span className="absolute -top-[0.5rem] right-[-6px] -z-10 text-xs -rotate-[13px] shadow">🐪</span></span>in the future.
+    </p >
   );
-
   return (
     <div className="about-card flex flex-col gap-4">
       <div className="bg-[#26211D] rounded-full absolute top-6 left-4 w-[72px] h-[72px]">
-        <Icon src="bitmoji" alt="Remco Stoeten Bitmoji" />
+        <Image src="/bit.png" alt="Remco Stoeten" width={72} height={72} className="rounded-full" />
       </div>
       <div className="flex items-start justify-start flex-col gap-2 pl-20 pr-4">
         <h1>{personalData.name}</h1>

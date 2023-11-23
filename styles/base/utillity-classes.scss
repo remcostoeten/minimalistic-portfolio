@@ -10,6 +10,12 @@
     color: A3A2A2;
 }
 
+.grid-height {
+    height: 700px;
+    min-height: 650px;
+    // height: calc(100% + 25%);
+}
+
 text-theme-light {
     color: $text-color-light;
 }
@@ -128,9 +134,7 @@ text-theme-light {
     border-bottom: 1px dashed #26211D;
     position: relative;
 
-    &::after {
-        
-    }
+    &::after {}
 }
 
 .overflow-x-no-scroll {

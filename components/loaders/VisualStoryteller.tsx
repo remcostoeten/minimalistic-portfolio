@@ -86,7 +86,7 @@ export default function VisualStoryteller() {
                       className="flex w-fulls sm:w-[296px] max-w-full items-start gap-2.5 mt-2 self-start max-md:justify-center"
                       initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[11] + index }}
                     >
-                      <div className="flex gap-2 ml-16 overflow-x-no-scrollbar">
+                      <div className="flex gap-2  ml-16 sm:ml-0 overflow-x-no-scrollbar">
                         {data.labels.map((label, index) => (
                           <motion.div
                             key={index}

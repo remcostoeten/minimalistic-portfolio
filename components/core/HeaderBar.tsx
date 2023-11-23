@@ -16,16 +16,11 @@ export default function HeaderBar() {
 
     return (
         <>
-            <motion.nav className="style-0 navbar" initial={{ opacity: 0, y: 50, x: 15 }}
-                animate={{ opacity: 1, y: 0, x: 0 }}
-                transition={{
-                    duration: fadeInDelays100[6],
-                    delay: fadeInDelays100[4],
-                }}
-            >  <span className="wave absolute -right-10 -top-2" style={{ fontSize: '50px' }}>
+            <nav className="style-0 navbar">
+                <span className="wave absolute -right-10 -top-2" style={{ fontSize: '50px' }}>
                     👋
                 </span>
-                <div className="style-1 showAlternativeCursor" aria-label="Nav">
+                <div className="style-1" aria-label="Nav">
                     <div className="style-2" data-framer-name="Logo & Links">
                         <div className="style-3" data-framer-name="Logo">
                             <div className="style-4" data-framer-name="Logo">
@@ -223,7 +218,7 @@ export default function HeaderBar() {
                         </div>
                     </div>
                 </div >
-            </motion.nav >
+            </nav >
             <style
                 dangerouslySetInnerHTML={{
                     __html:

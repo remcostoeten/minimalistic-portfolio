@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 .geist {
     font-family: var(--font-geist-sans) !important;
+}
+
+.inter {
+    font-family: 'Inter', sans-serif !important;
 }
 
 .slogan {
@@ -7,4 +13,10 @@
     font-size: 31px;
     line-height: 41px;
     color: rgb(243, 245, 247);
+}
+
+
+
+p {
+    @extend .inter
 }

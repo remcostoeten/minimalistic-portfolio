@@ -43,9 +43,14 @@ const CommitsList: React.FC<{ owner: string; repoName: string }> = ({ owner, rep
 export default function GraphComponent() {
     const { loading: repoLoading, error: repoError, data: repoData } = useQuery(GET_REPOSITORIES);
 
-    if (repoLoading) return <TextLoader text="GraphQL data is loading" />
-
-    if (repoError) return 'Whoops :(' + repoError;
+    if (repoLoading) return (
+        <>
+        </>
+    )
+    if (repoError) return (
+        <>
+        </>
+    )
 
     return (
         <Card className='px-10 '>
