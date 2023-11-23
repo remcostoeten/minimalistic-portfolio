@@ -11,7 +11,8 @@ import { motion } from 'framer-motion'
 export default function LatestBlogSingle() {
     return (
         <>
-            <div className='flex gap-4 flex-col'>
+            <div className='flex gap-4 flex-col
+            '>
                 <SectionTitle>
                     <motion.span
                         initial={{ opacity: 0, y: 50, x: -15 }} animate={{ opacity: 1, y: 0, x: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[12] }}

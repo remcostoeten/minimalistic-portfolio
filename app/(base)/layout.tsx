@@ -6,11 +6,10 @@ import ActiveSectionContextProvider from '@/lib/context/ActiveSectionContext';
 import ThemeContextProvider from '@/lib/context/ThemeContext';
 import '@/styles/styles.scss';
 import { Analytics } from '@vercel/analytics/react';
-import { Toaster } from 'sonner';
+import { Toaster, toast } from 'sonner';
 import { __DEV__ } from '@apollo/client/utilities/globals';
 import { Inter, Libre_Baskerville } from 'next/font/google';
 import { siteConfig } from '@/config/data';
-import Preloader from '@/components/effects/Preloader';
 
 export const metadata = {
   title: {
@@ -77,6 +76,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
   return (
     <ThemeContextProvider>
       <ActiveSectionContextProvider>
@@ -91,7 +91,7 @@ export default function RootLayout({
                   {children}
                 </div>
               </main>
-              <Toaster />
+              <Toaster invert />
               <Analytics />
             </TooltipProvider>
           </body>
