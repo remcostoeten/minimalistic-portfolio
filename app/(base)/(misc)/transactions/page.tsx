@@ -19,11 +19,7 @@ import BalanceDisplay from "@/components/transactions/Balance";
 import TransactionForm from "@/components/transactions/TransactionForm";
 import TransactionList from "@/components/transactions/TransactionList";
 import { toast } from 'sonner';
-<<<<<<< HEAD
 import { db } from "@/lib/firebase/firebase";
-=======
-import { db } from "@/lib/firebase";
->>>>>>> ffbe58f ( work on infinite sliderf)
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
 
 const TransactionPage = () => {

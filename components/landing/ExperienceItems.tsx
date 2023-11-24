@@ -35,7 +35,7 @@ export default function ExperienceItems() {
       {WorkExperience.map((work, index) => (
         <motion.div
           key={index}
-          className={`self-stretch flex w-full flex-col grid--card-inner  border p-card-inner card-inner rounded-card-inner ${work.highlight ? "highlighted" : ""
+          className={`self-stretch  border grid--card dark:grid--card dark:border-dark  flex w-full flex-col grid--card-inner  border p-card-inner card-inner rounded-card-inner ${work.highlight ? "highlighted" : ""
             }`}
           animate={{ opacity: 1, y: 0, x: 0 }}
           transition={{

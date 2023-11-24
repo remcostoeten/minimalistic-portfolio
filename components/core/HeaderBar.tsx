@@ -16,7 +16,9 @@ export default function HeaderBar() {
 
     return (
         <>
-            <nav className="style-0 navbar">
+            <motion.nav
+                initial={{ opacity: 0, x: -50, y: -50 }} animate={{ opacity: 1, x: 0, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[0] }}
+                className="style-0 navbar">
                 <span className="wave absolute -right-10 -top-2" style={{ fontSize: '50px' }}>
                     👋
                 </span>
@@ -218,7 +220,7 @@ export default function HeaderBar() {
                         </div>
                     </div>
                 </div >
-            </nav >
+            </motion.nav >
             <style
                 dangerouslySetInnerHTML={{
                     __html:

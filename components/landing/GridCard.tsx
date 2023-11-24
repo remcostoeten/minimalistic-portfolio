@@ -13,10 +13,10 @@ import Link from "next/link";
 export default function GridCard() {
   const shortDescription = (
     <p className="inter">
-      I am a recovering <span className="relative"><Tooltip>
+      I am a recovering <span className="dashed-tooltip relative"><Tooltip>
         <TooltipTrigger>ex-magento</TooltipTrigger>
         <TooltipContent>
-          <p className="lowercase">Those 5 years of magento we're hard, but I survived ❤️</p>
+          <p className="lowercase  !text-white">Those 5 years of magento we're hard, but I survived ❤️</p>
         </TooltipContent>
       </Tooltip><span className="absolute -top-[0.5rem] right-[-6px] -z-10 text-xs -rotate-[13px] ">💀</span> </span>developer.
       Currently building <Link target='_blank' href='https://gitlab.com/pleio/frontend'> open source</Link> software at <Link href='https://gitlab.com/pleio' target="_blank" > Pleio</Link> I 💗 CSS. Testing the waters in Lua and Python but Primairly focussing on Typescript and NextJS.
