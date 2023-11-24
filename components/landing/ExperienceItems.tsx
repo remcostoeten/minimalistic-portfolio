@@ -35,9 +35,12 @@ export default function ExperienceItems() {
       {WorkExperience.map((work, index) => (
         <motion.div
           key={index}
-          className={`self-stretch flex w-full flex-col grid--card-inner  p-card-inner card-inner rounded-card-inner ${work.highlight ? "highlighted" : ""
+          className={`self-stretch  border grid--card dark:grid--card dark:border-dark  flex w-full flex-col grid--card-inner  border p-card-inner card-inner rounded-card-inner ${work.highlight ? "highlighted" : ""
             }`}
-          variants={smoothFadeUp}
+          animate={{ opacity: 1, y: 0, x: 0 }}
+          transition={{
+
+          }}
         >
           <div className="flex w-full flex-grow flex-row max-md:max-w-full items-baseline justify-start gap-12">
             <time className="experience-title text-16" style={{ whiteSpace: "nowrap" }}>

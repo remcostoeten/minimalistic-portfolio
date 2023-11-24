@@ -15,7 +15,7 @@ export const PageTitle = ({ children, isGeist }: TypographyProps) => (
             delay: .5,
         }}
         animate={{ opacity: 1, y: 0 }}
-        className={`text-4xl font-medium text-gray-100 block box-border leading-6 m-0 p-0 text-left no-underline break-words antialiased ${isGeist ? 'geist' : ''}`
+        className={`libre stext-4xl font-medium text-gray-100 block box-border leading-6 m-0 p-0 text-left no-underline break-words antialiased ${isGeist ? 'geist' : ''}`
         }
     >
         {children}
@@ -30,7 +30,7 @@ export const SectionTitle = ({ children, isGeist }: TypographyProps) => (
             delay: .6,
         }}
         animate={{ opacity: 1, y: 0 }}
-        className={`sm;pt-20 text-[44px] sm:text-center section-title' no-underline break-words antialiased text-[#a3a3a3] ${isGeist ? 'geist' : ''}`}
+        className={`libre sm;pt-20 text-[44px] sm:text-center section-title' no-underline break-words antialiased text-[#a3a3a3] ${isGeist ? 'geist' : ''}`}
     >
         {children}
     </motion.h2>
@@ -44,7 +44,8 @@ export const SubTitle = ({ children, isGeist }: TypographyProps) => (
             delay: .6,
         }}
         animate={{ opacity: 1, y: 0 }}
-        className={`text-lg font-light text-gray-100 block box-border -ml-[10px] leading-6 m-0 p-0 text-left no-underline break-words antialiased ${isGeist ? 'geist' : ''}`}
+        className={`libre
+        text-lg font-light text-gray-100 block box-border -ml-[10px] leading-6 m-0 p-0 text-left no-underline break-words antialiased ${isGeist ? 'geist' : ''}`}
     >
         {children}
     </motion.h2>

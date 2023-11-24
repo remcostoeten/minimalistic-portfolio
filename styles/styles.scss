@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @import './variables/colors.scss';
 @import './base/theme.scss';
 @import './base/utillity-classes.scss';
@@ -55,6 +56,7 @@
   --darkmain: #101010;
   --mainaccent: #252121ee;
   --title: rgba(163, 163, 163);
+  --heading-font: 'Libre Baskerville', serif;
 }
 
 @media (prefers-color-scheme: dark) {

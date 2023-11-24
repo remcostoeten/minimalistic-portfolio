@@ -45,7 +45,7 @@ export default function Navigation({ link, index }) {
                         }
                     }
                 }} key={index}>
-                    <Link href={link.hash} className="text-base  geist text-white">
+                    <Link href={link.hash} className="text-base  geistOldtext-white">
                         {link.name}
                     </Link>
                 </motion.li>)}

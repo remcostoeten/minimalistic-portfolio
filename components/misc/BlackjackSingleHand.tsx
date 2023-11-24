@@ -70,7 +70,7 @@ const SingleHand = () => {
     return (
         <>
             {decision && (
-                <div className={`geist shadow animated-decision inset-0 absolute z-10 pointer-events-none flex items-center justify-center ${decision.toLowerCase()}`}>
+                <div className={`geistOldshadow animated-decision inset-0 absolute z-10 pointer-events-none flex items-center justify-center ${decision.toLowerCase()}`}>
                     {decision}
                 </div>
             )}
