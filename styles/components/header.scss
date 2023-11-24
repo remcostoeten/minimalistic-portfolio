@@ -1,5 +1,41 @@
+$fade-10: 500ms;
+$fade-50: 1s;
+$fade-100: 2s;
+$fadeInDuration : 1s;
+$header-height: 80px;
+
 .navbar {
     transition: 250ms ease all;
+    margin-bottom: 20px;
+    opacity: 0;
+
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50px, 0px);
+    animation: FadeIn $fadeInDuration $fade-100 cubic-bezier(0.165, 0.82, 0.075, 1) forwards;
+    background-color: rgba(21, 21, 21, 0.6);
+    border-radius: 20px;
+    height: $header-height;
+    place-content: center;
+    width: 100%;
+
+
+
+    position: relative;
+
+    @keyframes FadeIn {
+        0% {
+            transform: translate(50px, 15px);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translate(0px);
+            opacity: 1;
+        }
+    }
 
     .wave,
     swap {

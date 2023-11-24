@@ -1,3 +1,6 @@
+@import '../utils//mixins.scss';
+
+
 .about-card {
     place-content: flex-start;
     align-items: flex-start;
@@ -14,6 +17,10 @@
     will-change: transform;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
+
+    @include mobile {
+        height: calc(100% + 12px);
+    }
 
     @include mobile {
         height: calc(100% + 12px);
@@ -39,15 +46,12 @@
     p {
         font-style: normal;
         color: rgb(14, 14, 14);
-        font-size: 20px;
-        text-transform: none;
+        font-size: 17px;
+        font-weight: 500;
         text-decoration: none solid rgb(14, 14, 14);
         line-height: 26px;
-        text-align: left;
         margin: 0px;
         padding: 0px;
-        box-sizing: border-box;
-        -webkit-font-smoothing: antialiased;
 
         a {
             text-decoration: underline;
@@ -68,6 +72,14 @@
     display: contents;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
+}
+
+nav {
+    @media (max-width: 768px) {
+        .nav-items {
+            display: none;
+        }
+    }
 }
 
 .style-3 {
@@ -231,4 +243,25 @@
     overflow-wrap: break-word;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
+}
+
+.style-13 {
+    font-family: Nunito, 'Nunito Placeholder', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    color: rgb(14, 14, 14);
+    font-size: 20px;
+    letter-spacing: normal;
+    text-transform: none;
+    text-decoration: none solid rgb(14, 14, 14);
+    line-height: 26px;
+    text-align: left;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+
+    a {
+        text-decoration: underline;
+    }
 }

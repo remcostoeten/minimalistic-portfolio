@@ -19,7 +19,7 @@ import BalanceDisplay from "@/components/transactions/Balance";
 import TransactionForm from "@/components/transactions/TransactionForm";
 import TransactionList from "@/components/transactions/TransactionList";
 import { toast } from 'sonner';
-import { db } from "@/lib/firebase/firebase";
+import { db } from "@/lib/(database)/firebase";
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
 
 const TransactionPage = () => {
@@ -34,7 +34,7 @@ const TransactionPage = () => {
     useEffect(() => {
         let unsubscribe: Unsubscribe;
         const loadDb = async () => {
-            const module = await import('@/lib/firebase/firebase');
+            const module = await import('@/lib/(database)/firebase');
             return module.db;
         };
 

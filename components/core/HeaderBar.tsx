@@ -29,16 +29,11 @@ export default function HeaderBar() {
 
     return (
         <>
-            <motion.nav className="style-0 mb-10 navbar" initial={{ opacity: 0, y: 50, x: 15 }}
-                animate={{ opacity: 1, y: 0, x: 0 }}
-                transition={{
-                    duration: fadeInDelays100[6],
-                    delay: fadeInDelays100[4],
-                }}
+            <nav className="navbar"
             >  <span className="wave absolute -right-10 -top-2" style={{ fontSize: '50px' }}>
                     👋
                 </span>
-                <div className="style-1 showAlternativeCursor" aria-label="Nav">
+                <div className="style-1" aria-label="Nav">
                     <div className="style-2" data-framer-name="Logo & Links">
                         <div className="style-3" data-framer-name="Logo">
                             <div className="style-4" data-framer-name="Logo">
@@ -72,7 +67,7 @@ export default function HeaderBar() {
                                 ]}
                                 interval={4000} />
                         </SubTitle>
-                        <ul className="style-14" data-framer-name="Links">
+                        <ul className="nav-items flex gap-4 items-center" aria-label="Links">
                             <div
                                 className="style-15"
                                 data-framer-component-type="RichTextContainer"
@@ -236,7 +231,7 @@ export default function HeaderBar() {
                         </div>
                     </div>
                 </div >
-            </motion.nav >
+            </nav >
             <style
                 dangerouslySetInnerHTML={{
                     __html:
