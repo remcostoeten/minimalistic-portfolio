@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
@@ -7,46 +7,56 @@ interface TransactionFormProps {
     onSubmit: (amount: number, type: "deposit" | "withdrawal", date: string, group: string) => void;
 }
 
-const TransactionForm: React.FC<TransactionFormProps> = ({ onSubmit }) => {
-    const [amount, setAmount] = useState("");
-    const [transactionType, setTransactionType] = useState<"deposit" | "withdrawal">("deposit");
-    const [selectedDate, setSelectedDate] = useState<string>(new Date().toLocaleDateString());
-    const [group, setGroup] = useState<string>("");
+interface TransactionFormState {
+    amount: string;
+    transactionType: "deposit" | "withdrawal";
+    selectedDate: string;
+    group: string;
+}
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        if (!amount) {
-            // You can add validation here if needed
+const initialFormState: TransactionFormState = {
+    amount: "",
+    transactionType: "deposit",
+    selectedDate: new Date()?.toLocaleDateString() || "",
+    group: "",
+};
+
+const TransactionForm: React.FC<TransactionFormProps> = ({ onSubmit }) => {
+    const [form, setForm] = useState<TransactionFormState>(() => initialFormState);
+
+    const handleChange = useCallback(({ target: { name, value } }: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        setForm(prevForm => ({ ...prevForm, [name]: value }));
+    }, []);
+
+    const handleSubmit = useCallback((event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if (!form.amount) {
             return;
         }
-        onSubmit(parseFloat(amount), transactionType, selectedDate, group);
-        setAmount("");
-        setGroup("");
-    };
+        onSubmit(parseFloat(form.amount), form.transactionType, form.selectedDate, form.group);
+        setForm(initialFormState);
+    }, [form, onSubmit]);
 
     return (
         <form onSubmit={handleSubmit}>
             <label>
                 Amount:
-                <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} />
+                <input name="amount" type="number" value={form.amount} onChange={handleChange} />
             </label>
             <label>
                 Type:
-                <select
-                    value={transactionType}
-                    onChange={(e) => setTransactionType(e.target.value as "deposit" | "withdrawal")}
-                >
+                <select name="transactionType" value={form.transactionType} onChange={handleChange}>
                     <option value="deposit">Deposit</option>
                     <option value="withdrawal">Withdrawal</option>
                 </select>
             </label>
             <label>
                 Date:
-                <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
+                <input name="selectedDate" type="date" value={form.selectedDate} onChange={handleChange} />
             </label>
             <label>
                 Group:
-                <Input type="text" value={group} onChange={(e) => setGroup(e.target.value)} />
+                <Input name="group" type="text" value={form.group} onChange={handleChange} />
             </label>
             <Button type="submit">Submit</Button>
         </form>

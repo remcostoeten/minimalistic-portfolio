@@ -11,8 +11,6 @@ import GridCard from "./GridCard";
 import { fadeInDelays100 } from "@/lib/animations";
 import Link from "next/link";
 
-let delay = 6;
-
 const GridItem = ({ children }: ChildProps) => (
     <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[4] }} className="grid--card perspective dark:grid--card dark:border-dark dark:text-white flex h-[161px] flex-col grow shrink-0 basis-auto flex-1 rounded-16 justify-center items-center gap-y-4">
         {children}
@@ -31,7 +29,7 @@ export default function Grid() {
                         </motion.div>
                         <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[5] }} className="self-stretch gap-m flex items-center justify-center">
                             {Socials.map((data) => (
-                                <GridItem>
+                                <GridItem key={data.name}>
                                     <Link href={data.url} target="_blank">
                                         <Image src={data.icon} alt={data.name} width='60' height='60' />
                                     </Link>

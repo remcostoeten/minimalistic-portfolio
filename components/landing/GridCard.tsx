@@ -9,21 +9,23 @@ import Icon from "../icons/icons";
 import { personalData } from "@/config/data/personal-data";
 
 import Image from "next/image";
+import Link from "next/link";
+import { StringSpace } from "@/lib/utils";
 export default function GridCard() {
   const shortDescription = (
     <>
-      I'm a recovering ex-Magento developer. I've
+      I'm a recovering ex-Magento developer
       <Tooltip>
-
         <TooltipTrigger><span className='tooltip-border'>Overcome PHP</span></TooltipTrigger>
-
-        <TooltipTrigger><span className=
-          'tooltip-border'>Overcome PHP</span></TooltipTrigger>
         <TooltipContent>
-          <p className="lowercase text-white">Those 5 years of Magento were hard, but I survived ❤️</p>
+          <p className="lowercase text-black">Those 5 years of Magento were hard, but I survived ❤️</p>
         </TooltipContent>
       </Tooltip>
-      and now I'm building <a href='https://gitlab.com/pleio/frontend'>open source</a> software at <a href='https://gitlab.com/pleio'>Pleio</a>. I love CSS and UI. I primarily work with TSX, Next, and SQL and have done some scripting in Python and Lua. In the future, I want to dive into Go, OCaml, and dev-ops.
+      , currently building{StringSpace()}
+      <Link className="underline" href='https://gitlab.com/pleio/frontend'>open source</Link>
+      {StringSpace()}software at{StringSpace()}
+      <Link className="underline" href='https://gitlab.com/pleio'>Pleio</Link>.
+      Primarily using Typescript and NextJS. Done some scripting in Lua and Python, with a strong interest in oCaml, Go and dev-ops.
     </>
   );
 
@@ -34,7 +36,7 @@ export default function GridCard() {
       </div>
       <div className="flex items-start justify-start flex-col gap-2 pl-20 pr-4">
         <h1>{personalData.name}</h1>
-        <p className="geist">{shortDescription}</p>
+        <p className="text-[17px] font-[500]">{shortDescription}</p>
       </div>
     </div>
   );
