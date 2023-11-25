@@ -1,11 +1,11 @@
 'use client';
-import { Socials } from "@/lib/config/experience";
-import { ChildProps } from "@/lib/types/types";
+import { Socials } from "@/core/config/experience";
+import { ChildProps } from "@/core/types/types";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { SectionTitle } from "../core/Typography";
 import Icon from "../icons/icons";
-import { fadeInDelays100 } from "@/lib/utillities/animations";
+import { fadeInDelays100 } from "@/core/utillities/animations";
 import Link from "next/link";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import Spinner from "../loaders/Spinners";

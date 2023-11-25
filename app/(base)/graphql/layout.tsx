@@ -2,7 +2,7 @@
 'use client';
 import { ApolloProvider } from '@apollo/client';
 
-import client from '@/lib/(graphql)/ApolloClient';
+import client from '@/core/(graphql)/ApolloClient';
 
 import { loadDevMessages } from '@apollo/client/dev';
 import { loadErrorMessages } from '@apollo/client/dev';

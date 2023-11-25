@@ -9,7 +9,7 @@ import { Link, Button } from "@nextui-org/react";
 
 import useInView from '@/hooks/useInView';
 import { motion } from 'framer-motion';
-import { fadeInDelays100 } from '@/lib/utillities/animations';
+import { fadeInDelays100 } from '@/core/utillities/animations';
 import { SectionTitle } from '../core/Typography';
 
 export default function VisualStoryteller() {

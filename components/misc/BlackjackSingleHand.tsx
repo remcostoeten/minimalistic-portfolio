@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import blackjackData from '@/lib/config/blackjack.json';
+import blackjackData from '@/core/config/blackjack.json';
 import { toast } from 'sonner'
 
 function getStrategy(playerHand, dealerCard) {

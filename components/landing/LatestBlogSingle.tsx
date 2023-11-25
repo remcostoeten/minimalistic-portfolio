@@ -4,8 +4,8 @@ import { SectionTitle } from '../core/Typography'
 import Link from 'next/link'
 import Image from 'next/image'
 import ShowcaseLabel from '../core/Labels'
-import { blogPosts } from '@/lib/config/BlogPosts'
-import { fadeInDelays100 } from '@/lib/utillities/animations'
+import { blogPosts } from '@/core/config/BlogPosts'
+import { fadeInDelays100 } from '@/core/utillities/animations'
 import { motion } from 'framer-motion'
 
 export default function LatestBlogSingle() {

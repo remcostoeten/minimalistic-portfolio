@@ -1,4 +1,4 @@
-import { SiteConfig } from '@/lib/types/types';
+import { SiteConfig } from '@/core/types/types';
 
 export const projectsData = [
     {
@@ -23,7 +23,6 @@ export const projectsData = [
         imageUrl: undefined,
     },
 ] as const;
-
 
 export const siteConfig: SiteConfig = {
     name: 'remcostoeten',

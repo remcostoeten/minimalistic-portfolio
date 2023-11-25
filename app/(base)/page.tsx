@@ -31,7 +31,7 @@ export default function page() {
           <LatestBlogSingle />
         </Suspense>
       </div>
-      <Project />
+      <Project title={'aaaaa'} description={'bbbbb'} tags={[]} imageUrl={''} />
     </>
   )
 }

@@ -22,16 +22,6 @@
 @import './components/blog/single-preview.scss';
 @import './components/cursor.scss';
 
-.shine-wrap {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0%;
-  bottom: auto;
-  left: 0%;
-  right: auto;
-}
-
 :root {
   --theme: rgba(253, 186, 114, 0.8509803922);
   --darmtheme: rgba(231, 160, 84, 0.851);

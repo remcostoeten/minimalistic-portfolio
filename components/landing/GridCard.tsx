@@ -8,7 +8,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { personalData } from "@/config/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
-import { StringSpace } from "@/lib/utillities/utils";
+import { StringSpace } from "@/core/utillities/utils";
 export default function GridCard() {
   const shortDescription = (
     <>

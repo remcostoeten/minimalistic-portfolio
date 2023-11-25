@@ -2,14 +2,14 @@
 import Cursor from '@/components/Cursor';
 import HeaderBar from '@/components/core/HeaderBar';
 import { TooltipProvider } from '@/components/ui/tooltip';
-import ThemeContextProvider from '@/lib/context/ThemeContext';
+import ThemeContextProvider from '@/core/context/ThemeContext';
 import '@/styles/styles.scss';
 import { Analytics } from '@vercel/analytics/react';
 import { Toaster, toast } from 'sonner';
 import { __DEV__ } from '@apollo/client/utilities/globals';
 import { Inter, Libre_Baskerville } from 'next/font/google';
 import { siteConfig } from '@/config/data';
-import ActiveSectionContextProvider from '@/lib/utillities/SectionObserver';
+import ActiveSectionContextProvider from '@/core/utillities/SectionObserver';
 export const metadata = {
   title: {
     default: siteConfig.name,
