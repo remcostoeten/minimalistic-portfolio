@@ -2,6 +2,7 @@
 import React, { useRef } from 'react'
 import { SectionTitle } from '../core/Typography'
 import Link from 'next/link'
+import Link from 'next/link'
 import Image from 'next/image'
 import ShowcaseLabel from '../core/Labels'
 import { blogPosts } from '@/core/config/BlogPosts'
