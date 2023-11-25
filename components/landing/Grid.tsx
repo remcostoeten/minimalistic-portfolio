@@ -60,25 +60,24 @@ export default function Grid() {
                         </motion.div>
                     </div>
                 </div>
-                <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[6] }} className="flex flex-col items-stretch w-[67%] max-md:w-full">
+                <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[6] }} className="flex flex-col items-stretch w-fit max-md:w-full">
                     <div className="flex gap-l grow flex-col  max-md:max-w-full">
                         <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[7] }} className="self-stretch max-md:max-w-full">
                             <section className="flex max-md:flex-col max-md:items-stretch gap-l">
                                 <div className="flex flex-col items-stretch max-md:w-full">
-                                    <div className="p-default
+                                    <div className="purcasche p-default
                                     border grid--card dark:grid--card dark:border-dark  flex items-center justify-center sm:w-[270px] max-w-full grow flex-col rounded-16">
                                         <Tooltip>
                                             <TooltipContent>I have no idea what to put here. UI is hard man</TooltipContent>
                                             <TooltipTrigger>
                                                 <Paragraph>
                                                     You can purcashe this spot for only €100,- per month.
-
                                                 </Paragraph>
                                             </TooltipTrigger>
                                         </Tooltip>
                                     </div>
                                 </div>
-                                <div className="flex flex-col items-stretch max-md:w-full w-screen">
+                                <div className="flex flex-col items-stretch max-md:w-full">
                                     <div className="body-dark-accent flex sm:h-[250px] flex-col rounded-16  max-md:max-w-full w-full">
                                         <Suspense fallback={<Spinner size="small" />}>
                                             <GridCard />

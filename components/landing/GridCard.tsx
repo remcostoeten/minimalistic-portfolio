@@ -21,9 +21,9 @@ export default function GridCard() {
         </TooltipContent>
       </Tooltip>
       , currently building{StringSpace()}
-      <Link className="underline" href='https://gitlab.com/pleio/frontend'>open source</Link>
+      <Link className="underline" target='_blank' href='https://gitlab.com/pleio/frontend'>open source</Link>
       {StringSpace()}software at{StringSpace()}
-      <Link className="underline" href='https://gitlab.com/pleio'>Pleio</Link>.
+      <Link className="underline" target='_blank' href='https://gitlab.com/pleio'>Pleio</Link>.
       Primarily using Typescript and NextJS. Done some scripting in Lua and Python, with a strong interest in oCaml, Go and dev-ops.
     </>
   );
@@ -35,7 +35,7 @@ export default function GridCard() {
       </div>
       <div className="flex items-start justify-start flex-col gap-2 pl-20 pr-4">
         <GridCardTitle fontSize="text-2xl">{personalData.name}</GridCardTitle>
-        <Paragraph fontSize="text-sm">{shortDescription}</Paragraph>
+        <Paragraph color='black' fontSize="text-[20px]">{shortDescription}</Paragraph>
       </div>
     </div>
   );

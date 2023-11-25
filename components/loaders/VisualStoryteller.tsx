@@ -51,6 +51,9 @@ export default function VisualStoryteller() {
 
           return (
             <motion.section
+              initial={{ opacity: 0, y: 20, x: 15 }}
+              animate={{ opacity: .5, y: 0, x: 0 }}
+              transition={{ duration: .6, delay: 1 }}
               ref={ref}
               style={{
                 scale: scaleProgess,
@@ -117,7 +120,7 @@ export default function VisualStoryteller() {
             </motion.section>
           );
         })}
-      </div>
+      </div >
       <motion.span className="mx-10" initial={{ opacity: 0, y: -120, x: 15 }}
         transition={{
           duration: .4,
