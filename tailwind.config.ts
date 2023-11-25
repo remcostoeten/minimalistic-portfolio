@@ -2,6 +2,7 @@ const { nextui } = require("@nextui-org/react");
 
 module.exports = {
   darkMode: "class",
+  purge: ['./pages/**/*.{js,jsx,ts,tsx}', './components/**/*.{js,jsx,ts,tsx}'],
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',

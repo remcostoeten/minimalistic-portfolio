@@ -10,7 +10,6 @@ const Dropdown: React.FC = () => {
     { url: '/blackjack', text: 'Blackjack' },
     { url: '/todo', text: 'Todo' },
     { url: '/graphql', text: 'GraphQL' },
-    { url: '/spinners', text: 'Spinners' },
   ];
 
   const handleButtonClick = () => {
@@ -30,7 +29,7 @@ const Dropdown: React.FC = () => {
         className="text-[#a3a3a3] w-max text-[18px] geistOldfont-weight-500   inline mr-24">Miscellaneous {isOpen ? '▲' : '▼'}</p>
 
       <div
-        className={`dropdown absolute text-[#a3a3a3] text-sm bg-[#e5e5e5] shadow top-[50px] pt-4 pb-4 rounded-2xl block cursor-pointer w-48 transform ${isOpen ? 'scale-100 opacity-100 ' : ' scale-0 opacity-0'
+        className={`z-[9999999999] dropdown absolute text-[#a3a3a3] text-sm bg-[#e5e5e5] shadow top-[50px] pt-4 pb-4 rounded-2xl block cursor-pointer w-48 transform ${isOpen ? 'scale-100 opacity-100 ' : ' scale-0 opacity-0'
           } transition-all ease duration-300`}
       >
         {dropdownItems.map((item) => (

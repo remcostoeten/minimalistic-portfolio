@@ -1,7 +1,5 @@
 'use client';
 import { phoneNumber } from '@/config/data';
-import { fadeInDelays100 } from '@/lib/utillities/animations';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React, { useEffect } from 'react';
 import Dropdown from './Dropdown';
@@ -10,17 +8,14 @@ import { SubTitle } from './Typography';
 import SwappingWords from '../effects/SwappingWords';
 import Contact from '../landing/Contact';
 import Framer from '../effects/Framer';
-import { toast } from 'sonner'
 
 export default function HeaderBar() {
     const whatsappUrl = `https://wa.me/${phoneNumber}`;
 
     return (
         <>
-            <nav className="navbar"
-            >  <span className="wave absolute -right-10 -top-2" style={{ fontSize: '50px' }}>
-                    👋
-                </span>
+            <nav className="navbar mt-10"
+            >
                 <div className="style-1" aria-label="Nav">
                     <div className="style-2" data-framer-name="Logo & Links">
                         <div className="style-3" data-framer-name="Logo">
@@ -34,7 +29,7 @@ export default function HeaderBar() {
                                                 href="/"
                                                 data-framer-name="Large"
                                             >
-                                                <div className="!bg-[#E5E5E5] style-8">
+                                                <div className="!bg-[#E5E5E5] hover:bg-black transit style-8">
                                                     <div className="style-10" >
                                                         <Logo />
                                                     </div>

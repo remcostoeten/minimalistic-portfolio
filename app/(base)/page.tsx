@@ -8,6 +8,7 @@ import { seoKeywords } from '@/config/keywords';
 const LatestBlogSingle = lazy(() => import("@/components/landing/LatestBlogSingle"));
 const VisualStoryteller = lazy(() => import("@/components/loaders/VisualStoryteller"));
 import Spinner from '@/components/loaders/Spinners';
+import Project from '@/components/misc/ProjectAnim';
 
 export default function page() {
   return (
@@ -30,6 +31,7 @@ export default function page() {
           <LatestBlogSingle />
         </Suspense>
       </div>
+      <Project />
     </>
   )
 }

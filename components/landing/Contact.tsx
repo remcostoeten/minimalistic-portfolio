@@ -14,7 +14,7 @@ export default function Contact() {
                             className="style-70"
                             data-framer-component-type="RichTextContainer"
                         >
-                            <p className="">Let's Talk</p>
+                            <p className="">Contact</p>
                         </div>
                         <div className="style-72">
                             <div className="style-73">

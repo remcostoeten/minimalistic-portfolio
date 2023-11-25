@@ -5,9 +5,7 @@
  */
 
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import Icon from "../icons/icons";
 import { personalData } from "@/config/data/personal-data";
-
 import Image from "next/image";
 import Link from "next/link";
 import { StringSpace } from "@/lib/utillities/utils";
@@ -32,7 +30,7 @@ export default function GridCard() {
   return (
     <div className="about-card flex flex-col gap-4">
       <div className="bg-[#26211D] rounded-full absolute top-6 left-4 w-[72px] h-[72px]">
-        <Icon src="bitmoji" alt="Remco Stoeten Bitmoji" />
+        <Image src="/bitcompress.png" alt="Remco Stoeten Bitmoji" width={72} height={72} />
       </div>
       <div className="flex items-start justify-start flex-col gap-2 pl-20 pr-4">
         <h1>{personalData.name}</h1>
