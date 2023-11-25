@@ -50,7 +50,7 @@ export const Socials = [
   {
     name: 'Github',
     icon: '/github.svg',
-    url: 'https://githgub.com/remcostoeten',
+    url: 'https://github.com/remcostoeten',
   },
   {
     name: 'Gitlab',

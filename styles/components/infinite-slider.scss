@@ -108,14 +108,14 @@
   }
 
   .slide-track {
-    animation: infiniteScroll 170s linear infinite;
+    animation: infiniteScroll 200s linear infinite;
     display: flex;
     width: calc(250px * 14);
 
   }
 
   .slider-track-reverse {
-    animation: infiniteScrollReverse 170s linear infinite;
+    animation: infiniteScrollReverse 200s linear infinite;
   }
 
   @keyframes infiniteScroll {
