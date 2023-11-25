@@ -1,14 +1,22 @@
 'use client';
-import React from 'react'
+import React, { useRef } from 'react'
 import { SectionTitle } from '../core/Typography'
 import Link from 'next/link'
 import Image from 'next/image'
 import ShowcaseLabel from '../core/Labels'
 import { blogPosts } from '@/core/config/BlogPosts'
 import { fadeInDelays100 } from '@/core/utillities/animations'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
 export default function LatestBlogSingle() {
+    const ref = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["0 1", "1.33 1"],
+    });
+    const scaleProgess = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+    const opacityProgess = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+
     return (
         <>
             <div className='flex gap-4 flex-col'>
@@ -19,8 +27,11 @@ export default function LatestBlogSingle() {
                 <div className='blog-preview  '>
                     {blogPosts.map((post, index) => (
                         <motion.div
-                            initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[8] + index * 0.1 }}
-                            key={index}
+                            ref={ref}
+                            style={{
+                                scale: scaleProgess,
+                                opacity: opacityProgess,
+                            }}
                             className={`sm:w-1/3 flex p-[14px] gap-[24px] flex-col blog-card bg-[#151515] rounded-[16px] overflow-hidden shadow-lg ${post.highlighted ? 'highlighted' : ''}`}>
                             <div className="geist flex gap-1 justify-between items-center text-sm">
                                 <motion.span initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[13] }} className='flex gap-2'>

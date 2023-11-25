@@ -1,14 +1,14 @@
 
 
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import ShowcaseLabel from '../core/Labels';
 import { ProjectData } from '@/config/data/ProjectData';
 import { Link, Button } from "@nextui-org/react";
 
 import useInView from '@/hooks/useInView';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { fadeInDelays100 } from '@/core/utillities/animations';
 import { SectionTitle } from '../core/Typography';
 
@@ -25,7 +25,13 @@ export default function VisualStoryteller() {
   };
 
   const displayedProjects = isExpanded || !isMobile ? ProjectData : ProjectData.slice(0, 1);
-
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["0 1", "0.33 1"],
+  });
+  const scaleProgess = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const opacityProgess = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
   return (
     <>
       <SectionTitle>
@@ -56,11 +62,16 @@ export default function VisualStoryteller() {
               initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[10] + index }}
             >
               <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0 relative">
-                <div
+                <motion.div
+                  ref={ref}
+                  style={{
+                    scale: scaleProgess,
+                    opacity: opacityProgess,
+                  }}
                   className="circle flex items-center justify-center align-middle w-10 h-10 rounded-full z-10 bg-[#e8e8e8] absolute -left-[22px] -top-0 max-md:hidden"
                 >
                   {data.icon && <Image src={data.icon as string} width={30} height={30} alt="Html To JSX converter" />}
-                </div>
+                </motion.div>
                 <div
                   className="hidden sm:flex flex-col items-stretch w-[2px] !h-[79%] top-[90px] bg-[#323333] absolute left-0 max-md:w-full max-md:ml-0 hover:bg-"
                 />

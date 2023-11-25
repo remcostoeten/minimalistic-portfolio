@@ -5,10 +5,9 @@ import Grid from "@/components/landing/Grid";
 import { Suspense, lazy } from 'react';
 import { seoKeywords } from '@/config/keywords';
 
-const LatestBlogSingle = lazy(() => import("@/components/landing/LatestBlogSingle"));
+const BlogPreviews = lazy(() => import("@/components/landing/BlogPreviews"));
 const VisualStoryteller = lazy(() => import("@/components/loaders/VisualStoryteller"));
 import Spinner from '@/components/loaders/Spinners';
-import Project from '@/components/misc/ProjectAnim';
 
 export default function page() {
   return (
@@ -28,10 +27,9 @@ export default function page() {
       </Suspense>
       <div id="articles">
         <Suspense fallback={<div><Spinner size='medium' /></div>}>
-          <LatestBlogSingle />
+          <BlogPreviews />
         </Suspense>
       </div>
-      <Project title={'aaaaa'} description={'bbbbb'} tags={[]} imageUrl={''} />
     </>
   )
 }
