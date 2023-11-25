@@ -1,7 +1,7 @@
 'use client';
 import Logo from '@/components/core/Logo';
 import Navigation from '@/components/core/Navigation';
-import { PageTitle, SubTitle } from '@/components/core/Typography';
+import { SubTitle } from '@/components/core/Typography';
 import Sprinkle from '@/components/effects/Sprinkle';
 import SwappingWords from '@/components/effects/SwappingWords';
 import { motion } from 'framer-motion';
@@ -33,6 +33,7 @@ const menuItemAnimation = {
         ease: "easeOut"
     },
 };
+
 const menuContainerAnimation = {
     hidden: { opacity: 0 },
     show: {

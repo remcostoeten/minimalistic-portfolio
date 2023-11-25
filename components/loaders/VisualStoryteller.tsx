@@ -8,13 +8,20 @@ import { ProjectData } from '@/config/data/ProjectData';
 import { Link, Button } from "@nextui-org/react";
 
 import useInView from '@/hooks/useInView';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { fadeInDelays100 } from '@/core/utillities/animations';
 import { SectionTitle } from '../core/Typography';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function VisualStoryteller() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["0 1", "1.33 1"],
+  });
+  const scaleProgess = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const opacityProgess = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
+  const transformXprogress = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   useEffect(() => {
     setIsMobile(window.innerWidth <= 768);
@@ -25,22 +32,11 @@ export default function VisualStoryteller() {
   };
 
   const displayedProjects = isExpanded || !isMobile ? ProjectData : ProjectData.slice(0, 1);
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["0 1", "0.33 1"],
-  });
-  const scaleProgess = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-  const opacityProgess = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+
   return (
     <>
       <SectionTitle>
-        <motion.span
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[12] }}>
-          Things I made
-        </motion.span>
+        Things I made
       </SectionTitle>
       <div style={{
         maxHeight: isExpanded ? (window.innerWidth <= 768 ? '650px' : '2250px') : '1000px',
@@ -56,22 +52,20 @@ export default function VisualStoryteller() {
           return (
             <motion.section
               ref={ref}
+              style={{
+                scale: scaleProgess,
+                opacity: opacityProgess,
+              }}
               id="projects"
               key={index}
               className="w-[650px] sm:pt-10 max-w-full sm:ml-5 mb-8 self-start"
-              initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[10] + index }}
             >
               <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0 relative">
-                <motion.div
-                  ref={ref}
-                  style={{
-                    scale: scaleProgess,
-                    opacity: opacityProgess,
-                  }}
+                <div
                   className="circle flex items-center justify-center align-middle w-10 h-10 rounded-full z-10 bg-[#e8e8e8] absolute -left-[22px] -top-0 max-md:hidden"
                 >
                   {data.icon && <Image src={data.icon as string} width={30} height={30} alt="Html To JSX converter" />}
-                </motion.div>
+                </div>
                 <div
                   className="hidden sm:flex flex-col items-stretch w-[2px] !h-[79%] top-[90px] bg-[#323333] absolute left-0 max-md:w-full max-md:ml-0 hover:bg-"
                 />
@@ -93,34 +87,23 @@ export default function VisualStoryteller() {
                     <div
                       className="shadow-sm bg-zinc-300 flex sm:w-[600px] w-full h-[300px] flex-col rounded-lg self-start max-md:max-w-full"
                     />
-                    <motion.div
+                    <div
                       className="flex w-fulls sm:w-[296px] max-w-full items-start gap-2.5 mt-2 self-start max-md:justify-center"
-                      initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[11] + index }}
                     >
                       <div className="flex gap-2 overflow-x-no-scrollbar">
                         {data.labels.map((label, index) => (
-                          <motion.div
+                          <div
                             key={index}
-                            variants={{
-                              hidden: { y: 20, opacity: 0, scale: 0.9 },
-                              show: { y: 0, opacity: 1, scale: 1 }
-                            }}
-                            transition={{
-                              staggerChildren: .3,
-                              type: "spring",
-
-                            }}
                           >
                             <ShowcaseLabel>{label}</ShowcaseLabel>
-                          </motion.div>
+                          </div>
                         ))}
                       </div>
-                    </motion.div>
+                    </div>
                     <Button
                       href={data.url}
                       as={Link}
                       color="secondary"
-                      // showAnchorIcon
                       variant="ghost"
                       target='_blank'
                       className='text-[#fff] border-[#282828]'

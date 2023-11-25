@@ -33,7 +33,7 @@ export default function LatestBlogSingle() {
                                 opacity: opacityProgess,
                             }}
                             className={`sm:w-1/3 flex p-[14px] gap-[24px] flex-col blog-card bg-[#151515] rounded-[16px] overflow-hidden shadow-lg ${post.highlighted ? 'highlighted' : ''}`}>
-                            <div className="geist flex gap-1 justify-between items-center text-sm">
+                            <div className="geist flex gap-1 justify-between items-center text-sm single">
                                 <motion.span initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[13] }} className='flex gap-2'>
                                     {Array.isArray(post.label) ? post.label.map((label, index) => (
                                         <ShowcaseLabel key={index}>{label}</ShowcaseLabel>

@@ -1,7 +1,7 @@
 'use client';
 import { Socials } from "@/core/config/experience";
 import { ChildProps } from "@/core/types/types";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { Paragraph, SectionTitle } from "../core/Typography";
 import Icon from "../icons/icons";
@@ -9,7 +9,7 @@ import { fadeInDelays100 } from "@/core/utillities/animations";
 import Link from "next/link";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import Spinner from "../loaders/Spinners";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useRef } from "react";
 
 const InfiniteLogoSlider = lazy(() => import('../effects/InfiniteLogoSlider'));
 const ExperienceItems = lazy(() => import('./ExperienceItems'));
@@ -23,12 +23,25 @@ const GridItem = ({ children }: ChildProps) => (
 );
 
 export default function Grid() {
+    const ref = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["0 1", "1.33 1"],
+    });
+    const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]) as any;
+    const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]) as any;
     return (
         <>
             <SectionTitle>
                 <motion.span initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[2], delay: fadeInDelays100[3] }}>Who dis?</motion.span>
             </SectionTitle>
-            <section className="flex mt-[60px] mb-[60px]  max-md:flex-col gap-l max-md:items-stretch custom-height">
+            <section
+                ref={ref}
+                style={{
+                    scale: scaleProgress,
+                    opacity: opacityProgress,
+                }}
+                className="flex mt-[60px] mb-[60px]  max-md:flex-col gap-l max-md:items-stretch custom-height">
                 <div className="flex flex-col items-stretch max-md:w-full">
                     <div className="flex grow flex-col gap-m">
                         <Suspense fallback={<Spinner size="small" />}>

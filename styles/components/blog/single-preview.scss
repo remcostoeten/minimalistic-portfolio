@@ -121,3 +121,7 @@
 .blog-card:hover {
     box-shadow: 0 0 4px rgba(204, 85, 0, 0.1), 0 0 1px rgba(204, 85, 0, 0.1);
 }
+
+.single {
+    &:hover {}
+}
