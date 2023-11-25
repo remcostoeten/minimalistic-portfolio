@@ -29,7 +29,6 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "eslint-config-next": "latest",
-    "eslint-config-next": "latest",
     "firebase": "^10.6.0",
     "framer-motion": "^10.16.4",
     "geist": "^1.1.0",
