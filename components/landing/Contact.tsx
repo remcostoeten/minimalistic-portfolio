@@ -3,23 +3,6 @@ import React, { useState } from 'react'
 import { Drawer } from 'vaul'
 
 export default function Contact() {
-    const [form, setForm] = useState({ user_name: '', user_email: '', message: '' });
-
-    const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form, 'YOUR_USER_ID')
-            .then((result) => {
-                console.log(result.text);
-            }, (error) => {
-                console.log(error.text);
-            });
-    };
-
     return (
         <>
             <Drawer.Root shouldScaleBackground>

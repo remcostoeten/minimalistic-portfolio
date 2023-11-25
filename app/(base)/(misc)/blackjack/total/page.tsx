@@ -1,7 +1,6 @@
 'use client'
 import { Card } from '@nextui-org/react';
 import { useState } from 'react';
-import prisma from '@/prisma/prisma';
 
 const Casino = () => {
   const [totalDebt, setTotalDebt] = useState<number>(0);

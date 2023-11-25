@@ -1,4 +1,16 @@
-
+import React from "react";
+import {
+  Html,
+  Body,
+  Head,
+  Heading,
+  Hr,
+  Container,
+  Preview,
+  Section,
+  Text,
+} from "@react-email/components";
+import { Tailwind } from "@react-email/tailwind";
 
 type ContactFormEmailProps = {
   message: string;
@@ -12,7 +24,7 @@ export default function ContactFormEmail({
   return (
     <Html>
       <Head />
-      <Preview>New message from remcostoeten.com</Preview>
+      <Preview>New message from your portfolio site</Preview>
       <Tailwind>
         <Body className="bg-gray-100 text-black">
           <Container>

@@ -10,7 +10,7 @@ import { personalData } from "@/config/data/personal-data";
 
 import Image from "next/image";
 import Link from "next/link";
-import { StringSpace } from "@/lib/utils";
+import { StringSpace } from "@/lib/utillities/utils";
 export default function GridCard() {
   const shortDescription = (
     <>
