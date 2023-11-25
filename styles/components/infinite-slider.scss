@@ -108,14 +108,14 @@
   }
 
   .slide-track {
-    animation: infiniteScroll 60s linear infinite;
+    animation: infiniteScroll 170s linear infinite;
     display: flex;
     width: calc(250px * 14);
 
   }
 
   .slider-track-reverse {
-    animation: infiniteScrollReverse 120s linear infinite;
+    animation: infiniteScrollReverse 170s linear infinite;
   }
 
   @keyframes infiniteScroll {
@@ -124,17 +124,17 @@
     }
 
     100% {
-      transform: translateX(calc(-250px * 7));
+      transform: translateX(calc(-250px * 30));
     }
   }
 
   @keyframes infiniteScrollReverse {
     0% {
-      transform: translateX(-2400px);
+      transform: translateX(-3400px);
     }
 
     100% {
-      transform: translateX(calc(250px * 7));
+      transform: translateX(calc(250px * 30));
     }
   }
 

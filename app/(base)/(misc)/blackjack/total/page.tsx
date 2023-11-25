@@ -22,7 +22,7 @@ const Casino = () => {
   const sessionDifference = totalSessionDeposited - totalSessionWithdrawn;
 
   return (
-    <Card className="container mx-auto mt-8 text-white geistOldp-10">
+    <Card className="container mx-auto mt-8 text-white p-10">
       <h1 className="text-3xl font-bold mb-4">Casino Statistics</h1>
 
       <div className="grid grid-cols-4 gap-4">

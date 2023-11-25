@@ -77,7 +77,7 @@ const Casino = () => {
 
     // Render the component
     return (
-        <Card className="container mx-auto mt-8 geistOldp-10">
+        <Card className="container mx-auto mt-8 p-10">
             <h1 className="text-4xl text-[#eee] font-semibold mb-4">Casino Statistics</h1>
             <p>Total Debt: {totalDebt} €</p>
             <p>Session Difference: {sessionDifference} €</p>

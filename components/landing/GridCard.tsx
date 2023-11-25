@@ -9,6 +9,7 @@ import { personalData } from "@/config/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
 import { StringSpace } from "@/core/utillities/utils";
+import { GridCardTitle, Paragraph } from "../core/Typography";
 export default function GridCard() {
   const shortDescription = (
     <>
@@ -33,8 +34,8 @@ export default function GridCard() {
         <Image src="/bitcompress.png" alt="Remco Stoeten Bitmoji" width={72} height={72} />
       </div>
       <div className="flex items-start justify-start flex-col gap-2 pl-20 pr-4">
-        <h1>{personalData.name}</h1>
-        <p className="text-[17px] font-[500]">{shortDescription}</p>
+        <GridCardTitle>{personalData.name}</GridCardTitle>
+        <Paragraph>{shortDescription}</Paragraph>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import { Socials } from "@/core/config/experience";
 import { ChildProps } from "@/core/types/types";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { SectionTitle } from "../core/Typography";
+import { Paragraph, SectionTitle } from "../core/Typography";
 import Icon from "../icons/icons";
 import { fadeInDelays100 } from "@/core/utillities/animations";
 import Link from "next/link";
@@ -57,18 +57,20 @@ export default function Grid() {
                                         <Tooltip>
                                             <TooltipContent>I have no idea what to put here. UI is hard man</TooltipContent>
                                             <TooltipTrigger>
-                                                <p className="geistOldp-4 perspective flex items-center justify-center text-center text-[#a3a3a3]  ">
+                                                <Paragraph>
                                                     You can purcashe this spot for only €100,- per month.
-                                                </p>
+
+                                                </Paragraph>
                                             </TooltipTrigger>
                                         </Tooltip>
                                     </div>
                                 </div>
                                 <div className="flex flex-col items-stretch max-md:w-full w-screen">
-                                    <div className="body-dark-accent flex sm:h-[250px] flex-col rounded-16  max-md:max-w-full w-full overflow-hidden">
+                                    <div className="body-dark-accent flex sm:h-[250px] flex-col rounded-16  max-md:max-w-full w-full">
                                         <Suspense fallback={<Spinner size="small" />}>
                                             <GridCard />
-                                        </Suspense>                                    </div>
+                                        </Suspense>
+                                    </div>
                                 </div>
                             </section>
                         </motion.div>
