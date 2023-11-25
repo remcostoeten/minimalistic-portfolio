@@ -1,4 +1,4 @@
-import { links } from "@/lib/data/menulinks";
+import { links } from "@/lib/config/menulinks";
 
 export type ChildProps = {
   children: React.ReactNode;

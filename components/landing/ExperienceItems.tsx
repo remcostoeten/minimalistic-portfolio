@@ -1,6 +1,6 @@
 'use client';
-import { GridIn, fadeScaleUp, smoothFadeUp } from "@/lib/animations";
-import { WorkExperience } from "@/lib/experience";
+import { GridIn, fadeScaleUp, smoothFadeUp } from "@/lib/utillities/animations";
+import { WorkExperience } from "@/lib/config/experience";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 

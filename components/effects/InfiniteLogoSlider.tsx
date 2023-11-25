@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { TechnologyIcons } from '@/lib/experience';
+import { TechnologyIcons } from '@/lib/config/experience';
 import Link from 'next/link';
 
 export default function InfiniteLogoSlider() {

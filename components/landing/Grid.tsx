@@ -1,5 +1,5 @@
 'use client';
-import { Socials } from "@/lib/experience";
+import { Socials } from "@/lib/config/experience";
 import { ChildProps } from "@/lib/types/types";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -8,8 +8,9 @@ import InfiniteLogoSlider from "../effects/InfiniteLogoSlider";
 import Icon from "../icons/icons";
 import ExperienceItems from "./ExperienceItems";
 import GridCard from "./GridCard";
-import { fadeInDelays100 } from "@/lib/animations";
+import { fadeInDelays100 } from "@/lib/utillities/animations";
 import Link from "next/link";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 const GridItem = ({ children }: ChildProps) => (
     <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[4] }} className="grid--card perspective dark:grid--card dark:border-dark dark:text-white flex h-[161px] flex-col grow shrink-0 basis-auto flex-1 rounded-16 justify-center items-center gap-y-4">
@@ -44,11 +45,15 @@ export default function Grid() {
                             <section className="flex max-md:flex-col max-md:items-stretch gap-l">
                                 <div className="flex flex-col items-stretch max-md:w-full">
                                     <div className="p-default
-
                                     border grid--card dark:grid--card dark:border-dark  flex items-center justify-center sm:w-[270px] max-w-full grow flex-col rounded-16">
-                                        <p className="geistOldp-4 perspective flex items-center justify-center text-center text-[#a3a3a3]  ">
-                                            You can purcashe this spot for only €100,- per month.
-                                        </p>
+                                        <Tooltip>
+                                            <TooltipContent>I have no idea what to put here. UI is hard man</TooltipContent>
+                                            <TooltipTrigger>
+                                                <p className="geistOldp-4 perspective flex items-center justify-center text-center text-[#a3a3a3]  ">
+                                                    You can purcashe this spot for only €100,- per month.
+                                                </p>
+                                            </TooltipTrigger>
+                                        </Tooltip>
                                     </div>
                                 </div>
                                 <div className="flex flex-col items-stretch max-md:w-full w-screen">

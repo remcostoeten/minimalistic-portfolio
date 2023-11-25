@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import { Drawer } from 'vaul'
 
 export default function Contact() {
