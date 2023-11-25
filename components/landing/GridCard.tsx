@@ -34,8 +34,8 @@ export default function GridCard() {
         <Image src="/bitcompress.png" alt="Remco Stoeten Bitmoji" width={72} height={72} />
       </div>
       <div className="flex items-start justify-start flex-col gap-2 pl-20 pr-4">
-        <GridCardTitle>{personalData.name}</GridCardTitle>
-        <Paragraph>{shortDescription}</Paragraph>
+        <GridCardTitle fontSize="text-2xl">{personalData.name}</GridCardTitle>
+        <Paragraph fontSize="text-sm">{shortDescription}</Paragraph>
       </div>
     </div>
   );

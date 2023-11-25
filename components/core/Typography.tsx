@@ -22,18 +22,18 @@ const Typography = ({ as: Component = 'div', className, children, isGeist }: Typ
     }, children)
 );
 
-export const SectionTitle = (props: TypographyProps) => (
-    <Typography as="h2" className="libre text-[44px] sm:text-center section-title no-underline break-words antialiased text-[#a3a3a3]" {...props} />
+export const SectionTitle = ({ color = 'text-[#a3a3a3]', fontSize = 'text-[44px]', ...props }: TypographyProps & { color?: string, fontSize?: string }) => (
+    <Typography as="h2" className={`libre ${fontSize} sm:text-center section-title no-underline break-words antialiased ${color}`} {...props} />
 );
 
-export const SubTitle = (props: TypographyProps) => (
-    <Typography as="h2" className="libre text-lg font-light text-gray-100 block box-border -ml-[10px] leading-6 m-0 p-0 text-left no-underline break-words antialiased" {...props} />
+export const SubTitle = ({ color = 'text-gray-100', fontSize = 'text-lg', ...props }: TypographyProps & { color?: string, fontSize?: string }) => (
+    <Typography as="h2" className={`libre ${fontSize} font-light ${color} block box-border -ml-[10px] leading-6 m-0 p-0 text-left no-underline break-words antialiased`} {...props} />
 );
 
-export const GridCardTitle = (props: TypographyProps) => (
-    <Typography as="h2" className="font-bold text-black text-4xl leading-9 text-center m-0 p-0 box-border antialiased" {...props} />
+export const GridCardTitle = ({ color = 'text-black', fontSize = 'text-4xl', ...props }: TypographyProps & { color?: string, fontSize?: string }) => (
+    <Typography as="h2" className={`font-bold ${color} ${fontSize} leading-9 text-center m-0 p-0 box-border antialiased`} {...props} />
 );
 
-export const Paragraph = ({ children, size = 17, variant = 'light' }: TypographyProps) => (
-    <Typography as="p" className={`text-[${size}px] font-normal ${variant === 'dark' ? 'text-black' : 'text-white'} font-medium leading-6 m-0 p-0`} children={children} />
+export const Paragraph = ({ color = 'text-white', fontSize = 'text-[17px]', ...props }: TypographyProps & { color?: string, fontSize?: string }) => (
+    <Typography as="p" className={`${fontSize} font-normal ${color === 'dark' ? 'text-black' : color} font-medium leading-6 m-0 p-0`} {...props} />
 );
