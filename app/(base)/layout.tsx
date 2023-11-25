@@ -71,6 +71,7 @@ const inter = Inter({
   weight: ['400', '700'],
 });
 export default function RootLayout({
+
   children,
 }: {
   children: React.ReactNode;
