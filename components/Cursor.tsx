@@ -1,5 +1,3 @@
-
-'use client'
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import PinkCursor from '@/components/core/CursorIcon';

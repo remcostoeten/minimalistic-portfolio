@@ -1,15 +1,14 @@
 'use client';
 import { Socials } from "@/core/config/experience";
 import { ChildProps } from "@/core/types/types";
+import { fadeInDelays100 } from "@/core/utillities/animations";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { Paragraph, SectionTitle } from "../core/Typography";
-import Icon from "../icons/icons";
-import { fadeInDelays100 } from "@/core/utillities/animations";
 import Link from "next/link";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
-import Spinner from "../loaders/Spinners";
 import { Suspense, lazy, useRef } from "react";
+import { Paragraph, SectionTitle } from "../core/Typography";
+import Spinner from "../loaders/Spinners";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 const InfiniteLogoSlider = lazy(() => import('../effects/InfiniteLogoSlider'));
 const ExperienceItems = lazy(() => import('./ExperienceItems'));
@@ -62,7 +61,6 @@ export default function Grid() {
                 </div>
                 <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[6] }} className="flex flex-col items-stretch w-fit max-md:w-full">
                     <div className="flex gap-l grow flex-col  max-md:max-w-full">
-                        <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[7] }} className="self-stretch max-md:max-w-full">
                         <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[7] }} className="self-stretch max-md:max-w-full">
                             <section className="flex max-md:flex-col max-md:items-stretch gap-l">
                                 <div className="flex flex-col items-stretch max-md:w-full">

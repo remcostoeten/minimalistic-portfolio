@@ -1,13 +1,5 @@
 
 'use client';
-import { ApolloProvider } from '@apollo/client';
-
-import client from '@/lib/(graphql)/ApolloClient';
-
-import { loadDevMessages } from '@apollo/client/dev';
-import { loadErrorMessages } from '@apollo/client/dev';
-import { __DEV__ } from '@apollo/client/utilities/globals';
-
 // export const metadata = {
 //   title: {
 //     default: siteConfig.name,
@@ -60,26 +52,6 @@ import { __DEV__ } from '@apollo/client/utilities/globals';
 //   ],
 // };
 
-export default function RootLayout({
-  children,
-}: {
-
-  children: React.ReactNode;
-}) {
-
-  if (__DEV__) {
-    loadDevMessages();
-    loadErrorMessages();
-  }
-
-  return (
-    <ApolloProvider client={client}>
-      {children}
-    </ApolloProvider>
-  );
-}
-
-'use client';
 import { ApolloProvider } from '@apollo/client';
 
 import client from '@/core/(graphql)/ApolloClient';

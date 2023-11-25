@@ -2,7 +2,6 @@
 import React, { useRef } from 'react'
 import { SectionTitle } from '../core/Typography'
 import Link from 'next/link'
-import Link from 'next/link'
 import Image from 'next/image'
 import ShowcaseLabel from '../core/Labels'
 import { blogPosts } from '@/core/config/BlogPosts'
@@ -22,7 +21,6 @@ export default function LatestBlogSingle() {
         <>
             <div className='flex gap-4 flex-col'>
                 <SectionTitle><motion.span
-
                     initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[12] }}
                 >Some articles</motion.span> </SectionTitle>
                 <div className='blog-preview  '>
