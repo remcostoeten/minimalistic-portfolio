@@ -8,10 +8,10 @@ $red: #ff0000;
         background-color: rgb(8, 1, 15);
     }
 
-    25% {
-        background-color: #111111;
+    // 25% {
+    //     background-color: #111111;
 
-    }
+    // }
 
     100% {
         background-color: #111111;
@@ -869,4 +869,74 @@ canvas {
     scale: 0;
     animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
     animation: wave-animation 2.3s infinite, scaleIn 1s 1750ms forwards;
+}
+
+span[class^="dot-"] {
+    opacity: 0;
+}
+
+.dot-one {
+    animation: dot-one 2s infinite linear
+}
+
+.dot-two {
+    animation: dot-two 2s infinite linear
+}
+
+.dot-three {
+    animation: dot-three 2s infinite linear
+}
+
+@keyframes dot-one {
+    0% {
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes dot-two {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes dot-three {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

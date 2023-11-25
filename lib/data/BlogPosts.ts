@@ -1,5 +1,4 @@
 export const blogPosts = [
-
     {
 
         label: ["Framer motion", "Hooks"],

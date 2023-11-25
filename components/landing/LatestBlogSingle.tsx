@@ -1,10 +1,10 @@
 'use client';
 import React from 'react'
 import { SectionTitle } from '../core/Typography'
+import Link from 'next/link'
 import Image from 'next/image'
 import ShowcaseLabel from '../core/Labels'
 import { blogPosts } from '@/lib/data/BlogPosts'
-import Link from 'next/link'
 import { fadeInDelays100 } from '@/lib/animations'
 import { motion } from 'framer-motion'
 
@@ -92,7 +92,7 @@ export default function LatestBlogSingle() {
                         </motion.div>
                     ))}
                 </div>
-            </div >
+            </div>
         </>
     )
 }

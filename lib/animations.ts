@@ -52,7 +52,7 @@ export const fadeScaleUp = {
 export const smoothFadeUp = {
   initial: {
     opacity: 0,
-    y: 50,
+    y: 5,
   },
   animate: {
     opacity: 1,
@@ -60,7 +60,8 @@ export const smoothFadeUp = {
     transition: {
       duration: 0.5,
       type: "spring",
-      stiffness: 55,
+      delay: 0.5,
+      stiffness: 5,
     },
   },
 };
