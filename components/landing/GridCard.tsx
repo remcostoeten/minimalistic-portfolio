@@ -15,7 +15,7 @@ export default function GridCard() {
     <>
       I'm a recovering ex-Magento developer
       <Tooltip>
-        <TooltipTrigger><span className='tooltip-border'>Overcome PHP</span></TooltipTrigger>
+        <TooltipTrigger><span className='pl-1 tooltip-border'>overcome PHP</span></TooltipTrigger>
         <TooltipContent>
           <p className="lowercase text-black">Those 5 years of Magento were hard, but I survived ❤️</p>
         </TooltipContent>

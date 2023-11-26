@@ -1,9 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup, updateProfile } from 'firebase/auth';
-import { collection, getFirestore, getDocs } from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
-import { addDoc, doc, updateDoc } from 'firebase/firestore';
-import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
 const firebaseConfig = {
@@ -22,21 +20,33 @@ const storage = getStorage(app);
 const googleAuthProvider = new GoogleAuthProvider();
 const db = getFirestore();
 
-const signInWithProvider = (providerName: 'google' | 'github') => {
+const signInWithProvider = (providerName: 'google' | 'github', router) => {
     const provider = providerName === 'google' ? new GoogleAuthProvider() : new GithubAuthProvider();
-
     signInWithPopup(auth, provider)
         .then((userCredential) => {
             const user = userCredential.user;
             console.log(`User ${user.displayName} logged in with ${providerName}.`);
-
             toast.success(`Welcome ${user.displayName}!`);
+            router.push('/dashboard');
         })
         .catch((error) => {
             console.error(error);
-            toast.warning('something went wrong')
+            toast.warning('something went wrong');
         });
 };
+
+
+export default signInWithProvider;
+
+const signOut = async () => {
+    try {
+        await auth.signOut();
+        toast.success('Signed out successfully');
+    } catch (e) {
+        console.error(e);
+        toast.warning('something went wrong');
+    }
+}
 
 const signUp = async (name: string, email: string, password: string) => {
     let result = null;
@@ -56,4 +66,4 @@ const signUp = async (name: string, email: string, password: string) => {
 };
 
 
-export { auth, firestore, storage, googleAuthProvider, db, signInWithProvider, signUp };
+export { auth, db, firestore, googleAuthProvider, signOut, signUp, storage };
