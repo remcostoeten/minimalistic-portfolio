@@ -1,8 +1,6 @@
-
 import { Navigation } from "@/core/types/types"
 import DashboardNavigation from "@/components/layout/navbar"
-import DashboardNav from "@/components/layout/DashboardNav"
-
+import { DashboardNav } from "@/components/layout/DashboardNav"
 
 const dashboardLinks: Navigation = {
     data: [
@@ -12,8 +10,8 @@ const dashboardLinks: Navigation = {
             icon: "dashboard",
         },
         {
-            title: "Activities",
-            href: "/dashboard/activities",
+            title: "Todo",
+            href: "/dashboard/todo",
             icon: "activity",
         },
         {
@@ -23,7 +21,6 @@ const dashboardLinks: Navigation = {
         },
     ],
 }
-
 
 interface DashboardLayoutProps {
     children: React.ReactNode
