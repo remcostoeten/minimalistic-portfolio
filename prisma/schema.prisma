@@ -36,3 +36,13 @@ model CasinoSession {
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
 }
+
+model Todo {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  title     String
+  category  String
+  done      Boolean   @default(false)
+  date      DateTime?
+}
