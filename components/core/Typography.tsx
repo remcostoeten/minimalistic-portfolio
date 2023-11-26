@@ -35,5 +35,5 @@ export const GridCardTitle = ({ color = 'text-black', fontSize = 'text-4xl', ...
 );
 
 export const Paragraph = ({ color = 'text-white', fontSize = 'text-[17px]', ...props }: TypographyProps & { color?: string, fontSize?: string }) => (
-    <Typography as="p" className={`${fontSize} font-normal ${color === 'dark' ? 'text-black' : color} font-medium leading-6 m-0 p-0`} {...props} />
+    <Typography as="p" className={`${fontSize} font-normal ${color === 'dark' ? 'text-black' : color} font-medium text-black leading-6 m-0 p-0`} {...props} />
 );

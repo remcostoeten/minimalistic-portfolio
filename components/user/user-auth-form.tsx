@@ -5,7 +5,8 @@ import { buttonVariants } from "@/components/ui/button"
 
 import { Icons } from "@/components/icons"
 import { cn } from "@/core/utillities/utils"
-import { signInWithProvider } from "@/core/(database)/firebase"
+import { useRouter } from "next/navigation"
+import signInWithProvider from "@/core/(database)/firebase"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> { }
 
@@ -13,6 +14,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
   const [isGoogleLoading, setIsGoogleLoading] = React.useState<boolean>(false)
   const [isGithubLoading, setIsGithubLoading] = React.useState<boolean>(false)
+  const router = useRouter();
 
   return (
     <div className={cn("grid gap-2", className)} {...props}>
@@ -22,7 +24,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         onClick={() => {
           setIsGoogleLoading(true)
           setIsLoading(true)
-          signInWithProvider('google');
+          signInWithProvider('google', router);
         }}
         disabled={isGoogleLoading || isLoading}
       >
@@ -39,7 +41,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         onClick={() => {
           setIsGithubLoading(true)
           setIsLoading(true)
-          signInWithProvider('github');
+          signInWithProvider('github', router);
         }}
         disabled={isGithubLoading || isLoading}
       >

@@ -1,3 +1,4 @@
+import { IconKeys } from "@/components/icons";
 import { links } from "../config/menulinks";
 
 export type ChildProps = {
@@ -6,6 +7,28 @@ export type ChildProps = {
     className?: string;
     size?: 'large' | 'medium' | 'small';
 };
+
+
+export type NavItem = {
+    title: string
+    disabled?: boolean
+    external?: boolean
+    icon?: IconKeys
+} & (
+        | {
+            href: string
+            items?: never
+        }
+        | {
+            href?: string
+            items: any[]
+        }
+    )
+
+export type Navigation = {
+    data: NavItem[]
+}
+
 
 export type SectionName = (typeof links)[number]["name"];
 
