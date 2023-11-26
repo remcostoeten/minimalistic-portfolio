@@ -18,13 +18,15 @@ export default function UserAvatar() {
         return () => unsubscribe();
     }, []);
 
-    if (loading) {
-        return (
-            <div className="animate-pulse relative bg-transparent h-[90px] w-[90px]">
-                <div className="absolute animate-pulse rounded-full bg-gray-200 h-[70px] w-[70px]"></div>
-            </div>
+    if (user) {
+        if (loading) {
+            return (
+                <div className="animate-pulse relative bg-transparent h-[90px] w-[90px]">
+                    <div className="absolute animate-pulse rounded-full bg-gray-200 h-[70px] w-[70px]"></div>
+                </div>
 
-        );
+            );
+        }
     }
 
     return (
