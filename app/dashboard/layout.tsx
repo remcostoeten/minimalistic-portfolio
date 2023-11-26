@@ -1,9 +1,15 @@
+'use client'
 import { Navigation } from "@/core/types/types"
 import DashboardNavigation from "@/components/layout/navbar"
 import { DashboardNav } from "@/components/layout/DashboardNav"
 
 const dashboardLinks: Navigation = {
     data: [
+        {
+            title: "Home",
+            href: "/",
+            icon: "home",
+        },
         {
             title: "Dashboard",
             href: "/dashboard",
@@ -18,6 +24,17 @@ const dashboardLinks: Navigation = {
             title: "Settings",
             href: "/dashboard/settings",
             icon: "settings",
+            onClick: () => {
+                console.log("Settings")
+            }
+
+        },
+        {
+            title: "Log out",
+            icon: "logout",
+            onClick: () => {
+                console.log("Log out")
+            }
         },
     ],
 }
