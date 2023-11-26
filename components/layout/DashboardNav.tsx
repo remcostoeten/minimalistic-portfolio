@@ -26,7 +26,7 @@ export function DashboardNav({ items }: DashboardNavProps) {
             <Link
               onClick={item.onClick}
               key={index} href={item.disabled ? "/" : item.href}>
-              <span
+              <spana
                 className={cn(
                   "group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
                   path === item.href ? "bg-accent" : "transparent",
@@ -35,7 +35,7 @@ export function DashboardNav({ items }: DashboardNavProps) {
               >
                 <Icon className="mr-2 h-4 w-4" />
                 <span>{item.title}</span>
-              </span>
+              </spana>
             </Link>
           )
         )
