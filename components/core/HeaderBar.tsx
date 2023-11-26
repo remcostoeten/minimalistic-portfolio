@@ -9,6 +9,7 @@ import SwappingWords from '../effects/SwappingWords';
 import Contact from '../landing/Contact';
 import Framer from '../effects/Framer';
 import { toast } from 'sonner'
+import SignInBtn from '../landing/LoginBtn';
 
 export default function HeaderBar() {
     const whatsappUrl = `https://wa.me/${phoneNumber}`;
@@ -221,7 +222,7 @@ export default function HeaderBar() {
                         <div className=" style-66" data-framer-name="Buttons">
                             <div className="style-67 ">
                                 <div className="style-68 " tabIndex={0}>
-                                    <Contact />
+                                    <SignInBtn />
                                 </div>
                             </div>
                         </div>

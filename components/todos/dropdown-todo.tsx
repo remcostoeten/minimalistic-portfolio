@@ -1,4 +1,3 @@
-import { deleteTodoAction } from "@/app/_action"
 import { Button, buttonVariants } from "@/components/ui/button"
 import {
     DropdownMenu,
@@ -6,6 +5,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { deleteTodoAction } from "@/core/actions/TodoActions"
 import { Fragment } from "react"
 
 export function DropdownTodo({ id }: { id: number }) {

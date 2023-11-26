@@ -3,8 +3,8 @@
 import { Todo } from "@prisma/client"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useTransition } from "react"
-import { updateTodoStatusAction } from "@/app/_action"
 import { DropdownTodo } from "./dropdown-todo"
+import { updateTodoStatusAction } from "@/core/actions/TodoActions"
 
 type TodoProps = {
   todo: Todo & { category: string }
