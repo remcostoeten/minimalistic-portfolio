@@ -23,25 +23,28 @@ export default function DashboardNavigation() {
   }
 
   return (
-    <header className="flex justify-between items-center">
-      <div className="flex gap-6">
-        {navLinks.map((item, index) => {
-          return (
-            item.href && (
-              <Link
-                className="hover:underline"
-                key={index}
-                href={item.href}
-              >
-                {item.title}
-              </Link>
-            )
-          );
-        })}
-      </div>
-      <Suspense fallback={<Spinner size="small" />}>
-        <UserAvatar />
-      </Suspense>
+    <header className="flex justify-between items-center w-screen p-4 ">
+
+      <div className="flex justify-between items-center w-[100%] contained">
+        <div className="flex gap-6 contained">
+          {navLinks.map((item, index) => {
+            return (
+              item.href && (
+                <Link
+                  className="hover:underline"
+                  key={index}
+                  href={item.href}
+                >
+                  {item.title}
+                </Link>
+              )
+            );
+          })}
+        </div>
+        <Suspense fallback={<>Loading...</>}>
+          <UserAvatar />
+        </Suspense>
+      </div >
     </header >
   );
 }

@@ -16,7 +16,7 @@ export default function LatestBlogSingle() {
     });
     const scaleProgess = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
     const opacityProgess = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
-
+    const transformXprogress = useTransform(scrollYProgress, [0, 1], [0, 100]);
     return (
         <>
             <div className='flex gap-4 flex-col'>
@@ -29,6 +29,7 @@ export default function LatestBlogSingle() {
                             ref={ref}
                             style={{
                                 scale: scaleProgess,
+                                transform: `translateX(${transformXprogress}%)`,
                                 opacity: opacityProgess,
                             }}
                             className={`sm:w-1/3 flex p-[14px] gap-[24px] flex-col blog-card bg-[#151515] rounded-[16px] overflow-hidden shadow-lg ${post.highlighted ? 'highlighted' : ''}`}>

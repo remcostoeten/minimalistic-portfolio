@@ -88,14 +88,15 @@ export default function VisualStoryteller() {
                       ))}
                     </p>
                     <div
-                      className="shadow-sm bg-zinc-300 flex sm:w-[600px] w-full h-[300px] flex-col rounded-lg self-start max-md:max-w-full"
-                    />
+                      className="shadow-sm bg-zinc-300 flex sm:w-[600px] w-full h-[300px] flex-col rounded-lg self-start max-md:max-w-full overflow-hidden">
+                      {data.image && <Image className='object-cover' src={data.image as string} width={600} height={600} alt={data.description} />}
+                    </div>
                     <div
-                      className="flex w-fulls sm:w-[296px] max-w-full items-start gap-2.5 mt-2 self-start max-md:justify-center"
+                      className="flex w-fulls sm:w-[296px] max-w-full items-start gap-2.5 mt-2 self-start max-md:justify-center mb-4"
                     >
-                      <div className="flex gap-2 overflow-x-no-scrollbar">
+                      <div className="flex gap-2 overflow-x-no-scrollbar flex-wrap sm:flex-nowrap">
                         {data.labels.map((label, index) => (
-                          <div
+                          <div className='w-auto'
                             key={index}
                           >
                             <ShowcaseLabel>{label}</ShowcaseLabel>
