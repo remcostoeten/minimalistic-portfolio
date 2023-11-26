@@ -1,6 +1,5 @@
 
 import { Navigation } from "@/core/types/types"
-import { auth, getUserData } from "@/core/(database)/firebase"
 import DashboardNavigation from "@/components/layout/navbar"
 
 

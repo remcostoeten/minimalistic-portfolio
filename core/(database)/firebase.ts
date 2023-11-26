@@ -1,10 +1,7 @@
-import { getCurrentUser } from '@/lib/session';
 import { initializeApp } from 'firebase/app';
 import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup, updateProfile } from 'firebase/auth';
-import { collection, getFirestore, getDocs } from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
-import { addDoc, doc, updateDoc } from 'firebase/firestore';
-import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
 const firebaseConfig = {
@@ -22,8 +19,6 @@ const firestore = getFirestore(app);
 const storage = getStorage(app);
 const googleAuthProvider = new GoogleAuthProvider();
 const db = getFirestore();
-
-
 
 const signInWithProvider = (providerName: 'google' | 'github', router) => {
     const provider = providerName === 'google' ? new GoogleAuthProvider() : new GithubAuthProvider();
@@ -46,8 +41,10 @@ export default signInWithProvider;
 const signOut = async () => {
     try {
         await auth.signOut();
+        toast.success('Signed out successfully');
     } catch (e) {
         console.error(e);
+        toast.warning('something went wrong');
     }
 }
 
@@ -68,14 +65,5 @@ const signUp = async (name: string, email: string, password: string) => {
     return { result, error };
 };
 
-export function getUserData(user: { name: any; image: any; email: any; }) {
-    return {
-        name: user?.name,
-        image: user?.image,
-        email: user?.email,
-    };
-}
 
-
-
-export { auth, firestore, storage, googleAuthProvider, db, signUp, signOut };
+export { auth, db, firestore, googleAuthProvider, signOut, signUp, storage };

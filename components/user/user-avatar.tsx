@@ -18,9 +18,7 @@ export default function UserAvatar() {
 
     return (
         <>
-
             {user && (
-
                 <DropdownMenu>
                     <DropdownMenuTrigger>
                         <Image className='rounded-full scale-75' src={user.photoURL} alt={user.displayName} width={90} height={90} />
@@ -29,7 +27,7 @@ export default function UserAvatar() {
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>Profile</DropdownMenuItem>
-                        <DropdownMenuItem><span onClick={signOut}>Sign out</span></DropdownMenuItem>
+                        <DropdownMenuItem><span>Sign out</span></DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             )}
