@@ -1,8 +1,10 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup, updateProfile } from 'firebase/auth';
 import { collection, getFirestore, getDocs } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 import { addDoc, doc, updateDoc } from 'firebase/firestore';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 const firebaseConfig = {
     apiKey: "AIzaSyCabh0AJrarpPaYX4WGowZeor3YQ9809mw",
@@ -13,7 +15,6 @@ const firebaseConfig = {
     appId: "1:413639141078:web:c2ee1dd283d1ac3b1bcb77"
 };
 
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const firestore = getFirestore(app);
@@ -21,4 +22,38 @@ const storage = getStorage(app);
 const googleAuthProvider = new GoogleAuthProvider();
 const db = getFirestore();
 
-export { auth, firestore, storage, googleAuthProvider, db };
+const signInWithProvider = (providerName: 'google' | 'github') => {
+    const provider = providerName === 'google' ? new GoogleAuthProvider() : new GithubAuthProvider();
+
+    signInWithPopup(auth, provider)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            console.log(`User ${user.displayName} logged in with ${providerName}.`);
+
+            toast.success(`Welcome ${user.displayName}!`);
+        })
+        .catch((error) => {
+            console.error(error);
+            toast.warning('something went wrong')
+        });
+};
+
+const signUp = async (name: string, email: string, password: string) => {
+    let result = null;
+    let error = null;
+    try {
+        result = await createUserWithEmailAndPassword(auth, email, password);
+        if (result?.user) {
+            await updateProfile(result.user, {
+                displayName: name,
+            });
+        }
+    } catch (e) {
+        error = e;
+    }
+
+    return { result, error };
+};
+
+
+export { auth, firestore, storage, googleAuthProvider, db, signInWithProvider, signUp };

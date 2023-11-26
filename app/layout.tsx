@@ -11,6 +11,7 @@ import { __DEV__ } from '@apollo/client/utilities/globals';
 import { Inter, Libre_Baskerville } from 'next/font/google';
 import { siteConfig } from '@/config/data';
 import ActiveSectionContextProvider from '@/core/utillities/SectionObserver';
+import NextTopLoader from "nextjs-toploader"
 export const metadata = {
   title: {
     default: siteConfig.name,
@@ -83,12 +84,12 @@ export default function RootLayout({
       <ActiveSectionContextProvider>
         <html className={`${inter.className} dark text-foreground bg-background`} lang="en">
           <body className='dark-background pb-20 min-h-screen flex'>
+            <NextTopLoader color="#fb8817" height={3.5} showSpinner={false} />
             <TooltipProvider>
               <Cursor />
               <span className='absolute top-0 right-0 bg-gradient-to-r from-green-400 to-[##0E0E0E]'></span>
               <main className="mx-auto pt-8 px-6">
                 <div className="contained">
-                  <HeaderBar />
                   {children}
                 </div>
               </main>

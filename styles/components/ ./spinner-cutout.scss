@@ -9,7 +9,7 @@
     border: 3px solid white;
     border-radius: 50%;
 
-    animation: spin 7s ease-in-out;
+    animation: spinn 7s ease-in-out;
     animation-iteration-count: infinite;
     transition-duration: 0.1s;
 }
@@ -22,7 +22,7 @@
     scale: 2.5;
 }
 
-@keyframes spin {
+@keyframes spinn {
     0% {
         transform: rotate(0deg);
         border-bottom: solid 3px transparent;

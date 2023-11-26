@@ -8,6 +8,7 @@ import { seoKeywords } from '@/config/keywords';
 const BlogPreviews = lazy(() => import("@/components/landing/BlogPreviews"));
 const VisualStoryteller = lazy(() => import("@/components/loaders/VisualStoryteller"));
 import Spinner from '@/components/loaders/Spinners';
+import HeaderBar from '@/components/core/HeaderBar';
 
 export default function page() {
   return (
@@ -18,6 +19,9 @@ export default function page() {
         <meta name="keywords" content={seoKeywords.join(', ')} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+
+      <HeaderBar />
+
       <div className="contained h-[20px]"></div >
       <Suspense fallback={<div><Spinner size='large' /></div>}>
         <div id="about"><Grid /></div>
