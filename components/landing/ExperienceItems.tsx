@@ -43,11 +43,11 @@ export default function ExperienceItems() {
           }}
         >
           <div className="flex w-full flex-grow flex-row max-md:max-w-full items-baseline justify-start gap-12">
-            <time className="experience-title text-16" style={{ whiteSpace: "nowrap" }}>
+            <time className="libre experience-title text-16" style={{ whiteSpace: "nowrap" }}>
               <span className="font-[600]">{work.date}</span>
             </time>
             <div className="sub-title text-16 leading-25" style={{ whiteSpace: "nowrap" }}>
-              <span className="font-[600]">{work.company}</span> <br /> {work.title} <br />
+              <span className="libre font-[600]">{work.company}</span> <br /> {work.title} <br />
             </div>
           </div>
           {work.highlight && (

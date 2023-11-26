@@ -2,6 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup, updateProfile } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
+import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
 const firebaseConfig = {
@@ -38,10 +39,12 @@ const signInWithProvider = (providerName: 'google' | 'github', router) => {
 
 export default signInWithProvider;
 
-const signOut = async () => {
+const signOut = () => {
+    const router = useRouter();
     try {
-        await auth.signOut();
+         auth.signOut();
         toast.success('Signed out successfully');
+        router.push('/dashboard');
     } catch (e) {
         console.error(e);
         toast.warning('something went wrong');

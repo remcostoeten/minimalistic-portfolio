@@ -22,18 +22,19 @@ export default function page() {
 
       <HeaderBar />
 
-      <div className="contained h-[20px]"></div >
-      <Suspense fallback={<div><Spinner size='large' /></div>}>
-        <div id="about"><Grid /></div>
-        <div id="work">
-          <VisualStoryteller />
-        </div>
-      </Suspense>
-      <div id="articles">
-        <Suspense fallback={<div><Spinner size='medium' /></div>}>
-          <BlogPreviews />
+      <div className="contained mx-auto">
+        <Suspense fallback={<div><Spinner size='large' /></div>}>
+          <div id="about"><Grid /></div>
+          <div id="work">
+            <VisualStoryteller />
+          </div>
         </Suspense>
-      </div>
+        <div id="articles">
+          <Suspense fallback={<div><Spinner size='medium' /></div>}>
+            <BlogPreviews />
+          </Suspense>
+        </div>
+      </div >
     </>
   )
 }

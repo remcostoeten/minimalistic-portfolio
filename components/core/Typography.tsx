@@ -7,6 +7,7 @@ type TypographyProps = {
     children: React.ReactNode;
     size?: 16 | 17 | 18 | 19 | 20;
     variant?: 'light' | 'dark';
+    className?: string;
 };
 
 const motionProps = {
@@ -30,8 +31,8 @@ export const SubTitle = ({ color = 'text-gray-100', fontSize = 'text-lg', ...pro
     <Typography as="h2" className={`libre ${fontSize} font-light ${color} block box-border -ml-[10px] leading-6 m-0 p-0 text-left no-underline break-words antialiased`} {...props} />
 );
 
-export const GridCardTitle = ({ color = 'text-black', fontSize = 'text-4xl', ...props }: TypographyProps & { color?: string, fontSize?: string }) => (
-    <Typography as="h2" className={`font-bold ${color} ${fontSize} leading-9 text-center m-0 p-0 box-border antialiased`} {...props} />
+export const GridCardTitle = ({ color = 'text-black', fontSize = 'text-4xl', className, ...props }: TypographyProps & { color?: string, fontSize?: string }) => (
+    <Typography as="h2" className={`font-bold ${color} ${fontSize} leading-9 text-center m-0 p-0 box-border antialiased ${className}`} {...props} />
 );
 
 export const Paragraph = ({ color = 'text-white', fontSize = 'text-[17px]', ...props }: TypographyProps & { color?: string, fontSize?: string }) => (

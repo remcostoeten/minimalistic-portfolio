@@ -83,16 +83,13 @@ export default function RootLayout({
     <ThemeContextProvider>
       <ActiveSectionContextProvider>
         <html className={`${inter.className} dark text-foreground bg-background`} lang="en">
-          <body className='dark-background pb-20 min-h-screen flex'>
-            <NextTopLoader color="#fb8817" height={3.5} showSpinner={false} />
+          <body className='dark-background pb-20 min-h-screen  mx-auto flex justify-center'>
+            <NextTopLoader initialPosition={.4} color="#fb8817" height={3.5} showSpinner={false} />
             <TooltipProvider>
               <Cursor />
-              <span className='absolute top-0 right-0 bg-gradient-to-r from-green-400 to-[##0E0E0E]'></span>
-              <main className="mx-auto pt-8 px-6">
-                <div className="contained">
-                  {children}
-                </div>
-              </main>
+              <div className='flex flex-col'>
+                <span className='absolute top-0 right-0 bg-gradient-to-r from-green-400 to-[##0E0E0E]'></span>
+                {children}</div>
               <Toaster invert />
               <Analytics />
             </TooltipProvider>
