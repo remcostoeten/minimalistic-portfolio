@@ -73,9 +73,9 @@ export default function HeaderBar() {
                                     <a
                                         className="style-17"
                                         data-styles-preset="stylesPresetLink"
-                                        href="#work"
+                                        href="dashboard"
                                     >
-                                        Works
+                                        Dashboard
                                     </a>
                                 </p>
                             </div>
