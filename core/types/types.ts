@@ -12,11 +12,12 @@ export type ChildProps = {
 export type NavItem = {
     title: string
     disabled?: boolean
+    onClick?: () => void
     external?: boolean
     icon?: IconKeys
 } & (
         | {
-            href: string
+            href?: string
             items?: never
         }
         | {

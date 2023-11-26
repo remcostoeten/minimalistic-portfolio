@@ -16,6 +16,8 @@ import {
   AiOutlineClose,
   AiFillGoogleCircle,
   AiFillGithub,
+  AiFillHome,
+  AiOutlineLogout
 } from "react-icons/ai"
 import { MdDeleteForever, MdOutlineLogout } from "react-icons/md"
 import { BiHistory, BiCalendar } from "react-icons/bi"
@@ -39,6 +41,8 @@ const icons = {
   dashboard: RxDashboard,
   activity: BsActivity,
   settings: LuSettings,
+  home: AiFillHome,
+  logout: AiOutlineLogout,
 
   // Mode Toggle
   moon: BsMoonStars,

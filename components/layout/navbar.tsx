@@ -27,7 +27,7 @@ export default function DashboardNavigation() {
 
       <div className="flex justify-between items-center w-[100%] contained">
         <div className="flex gap-6 contained">
-          {navLinks.map((item, index) => {
+          {/* {navLinks.map((item, index) => {
             return (
               item.href && (
                 <Link
@@ -39,7 +39,7 @@ export default function DashboardNavigation() {
                 </Link>
               )
             );
-          })}
+          })} */}
         </div>
         <Suspense fallback={<>Loading...</>}>
           <UserAvatar />
