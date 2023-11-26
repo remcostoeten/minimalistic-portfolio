@@ -27,9 +27,9 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         disabled={isGoogleLoading || isLoading}
       >
         {isGoogleLoading ? (
-          <Icons.spinner className="mx-2 h-4 w-4 animate-spin" />
+          <Icons.spinner className="mx-4 h-4 w-4 animate-spin" />
         ) : (
-          <Icons.google className="mx-2 h-4 w-4" />
+          <Icons.google className="mx-4 h-4 w-4" />
         )}{" "}
         Continue with Google
       </button>
