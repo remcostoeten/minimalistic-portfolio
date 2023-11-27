@@ -1,19 +1,19 @@
 'use client'
+import { auth } from '@/core/(database)/firebase';
 import Link from 'next/link'
 import React, { useState } from 'react'
 
 
 export default function SignInBtn() {
+    const isLoggedIn = auth.currentUser;
 
     return (
         <>
             <button
                 className="style-69 text-black !bg-[#E5E5E5]"
             >
-                <Link href="signin"
-                    className="style-70"
-                >
-                    <p className="">Login</p>
+                <Link href="signin" className="style-70">
+                    <p>{isLoggedIn ? 'Logout' : 'Login'}</p>
                 </Link>
                 <div className="style-72">
                     <div className="style-73">

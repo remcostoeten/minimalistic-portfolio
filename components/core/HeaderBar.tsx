@@ -10,9 +10,12 @@ import Contact from '../landing/Contact';
 import Framer from '../effects/Framer';
 import { toast } from 'sonner'
 import SignInBtn from '../landing/LoginBtn';
+import { auth } from '@/core/(database)/firebase';
 
 export default function HeaderBar() {
     const whatsappUrl = `https://wa.me/${phoneNumber}`;
+
+    const isLoggedIn = auth.currentUser;
 
     useEffect(() => {
         setTimeout(() => {

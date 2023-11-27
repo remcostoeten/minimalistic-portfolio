@@ -120,6 +120,7 @@ module.exports = {
   },
   plugins: [
     require("tailwindcss-animate"),
+    require("daisyui"),
     nextui({
       prefix: "nextui",
       addCommonColors: false,
@@ -135,7 +136,6 @@ module.exports = {
           layout: {},
           colors: {},
         },
-        // ... custom themes
       },
     }),
   ],
