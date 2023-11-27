@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { buttonVariants } from "@/components/ui/button"
-
 import { Icons } from "@/components/icons"
 import { cn } from "@/core/utillities/utils"
 import { useRouter } from "next/navigation"
@@ -12,23 +11,24 @@ interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
-  const [isGoogleLoading, setIsGoogleLoading] = React.useState<boolean>(false)
-  const [isGithubLoading, setIsGithubLoading] = React.useState<boolean>(false)
+  const [provider, setProvider] = React.useState<"google" | "github" | null>(null)
   const router = useRouter();
+
+  const handleSignIn = React.useCallback((provider: "google" | "github") => {
+    setIsLoading(true);
+    setProvider(provider);
+    signInWithProvider(provider, router);
+  }, [router]);
 
   return (
     <div className={cn("grid gap-2", className)} {...props}>
       <button
         type="button"
         className={cn(buttonVariants({ variant: "outline" }))}
-        onClick={() => {
-          setIsGoogleLoading(true)
-          setIsLoading(true)
-          signInWithProvider('google', router);
-        }}
-        disabled={isGoogleLoading || isLoading}
+        onClick={() => handleSignIn('google')}
+        disabled={isLoading}
       >
-        {isGoogleLoading ? (
+        {isLoading && provider === 'google' ? (
           <Icons.spinner className="mx-4 h-4 w-4 animate-spin" />
         ) : (
           <Icons.google className="mx-4 h-4 w-4" />
@@ -38,14 +38,10 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       <button
         type="button"
         className={cn(buttonVariants({ variant: "outline" }))}
-        onClick={() => {
-          setIsGithubLoading(true)
-          setIsLoading(true)
-          signInWithProvider('github', router);
-        }}
-        disabled={isGithubLoading || isLoading}
+        onClick={() => handleSignIn('github')}
+        disabled={isLoading}
       >
-        {isGithubLoading ? (
+        {isLoading && provider === 'github' ? (
           <Icons.spinner className="mx-2 h-4 w-4 animate-spin" />
         ) : (
           <Icons.github className="mx-2 h-4 w-4" />
@@ -55,4 +51,3 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     </div>
   )
 }
-
