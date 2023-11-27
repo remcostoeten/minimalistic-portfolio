@@ -1,4 +1,4 @@
-'use client';
+
 
 import Head from 'next/head'
 import Grid from "@/components/landing/Grid";
@@ -17,7 +17,6 @@ export default function page() {
         <title>Remco Stoeten - remcostoeten.com</title>
         <meta name="description" content="Remco Stoeten - remcostoeten.com - Front-end developer" />
         <meta name="keywords" content={seoKeywords.join(', ')} />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
       <HeaderBar />

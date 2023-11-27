@@ -13,18 +13,18 @@ import { GridCardTitle, Paragraph } from "../core/Typography";
 export default function GridCard() {
   const shortDescription = (
     <>
-      I'm a recovering
-      <Tooltip>
+      'm a recovering    <Tooltip>
         <TooltipTrigger><span className='pl-1 tooltip-border'> ex-Magento developer</span></TooltipTrigger>
         <TooltipContent>
           <p className="lowercase text-black">Those 5 years of Magento were hard, but I survived ❤️</p>
         </TooltipContent>
       </Tooltip>
-      and urrently building{StringSpace()}
+
+      and currently building {StringSpace()}
       <Link className="underline" target='_blank' href='https://gitlab.com/pleio/frontend'>open source</Link>
       {StringSpace()}software at{StringSpace()}
-      <Link className="underline" target='_blank' href='https://gitlab.com/pleio'>Pleio</Link>. Doing Typescript, NextJS, have done little Python & Lua and want to learn Go, oCaml 🐪 & devops.
-
+      <Link className="underline" target='_blank' href='https://gitlab.com/pleio'>Pleio</Link>.
+      I'm working with TypeScript and Next.js, have done a little Python and Lua, and want to learn Go, OCaml 🐪, and DevOps.
     </>
   );
 

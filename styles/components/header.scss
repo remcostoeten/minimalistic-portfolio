@@ -1,7 +1,7 @@
 $fade-10: 500ms;
 $fade-50: 1s;
-$fade-100: 2s;
-$fadeInDuration : 1s;
+$fade-100: 1500ms;
+$fadeInDuration : 500ms;
 $header-height: 80px;
 
 .navbar {
@@ -57,7 +57,8 @@ $header-height: 80px;
 
 .navbar {
     transition: 250ms ease all;
-    padding: 0 20px;;
+    padding: 0 20px;
+    ;
 
     .wave,
     swap {
