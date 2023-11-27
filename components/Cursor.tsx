@@ -67,10 +67,12 @@ export default function Cursor() {
           position: 'absolute',
           pointerEvents: 'none',
           top: 0,
+          opacity: 0,
           left: 0,
           background: 'none'
         }}>
         <PinkCursor />
+
       </div>
     </div>
   );

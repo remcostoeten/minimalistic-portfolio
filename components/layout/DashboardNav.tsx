@@ -17,6 +17,8 @@ export function DashboardNav({ items }: DashboardNavProps) {
     return null
   }
 
+
+
   return (
     <nav className="grid items-start gap-2">
       {items.map((item, index) => {
@@ -27,13 +29,13 @@ export function DashboardNav({ items }: DashboardNavProps) {
               onClick={item.onClick}
               key={index} href={item.disabled ? "/" : item.href}>
               <span className={cn(
-                "group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
-                path === item.href ? "bg-accent" : "transparent",
+                "group  flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent transition-all",
+                path === item.href ? "active-menu bg-accent text-[#fb8817] hover:bg-accent/40" : "transparent",
                 item.disabled && "cursor-not-allowed opacity-80"
               )}
               >
                 <Icon className="mr-2 h-4 w-4" />
-                <span>{item.title}</span>
+                <span className="!text-white">{item.title}</span>
               </span>
             </Link>
           )

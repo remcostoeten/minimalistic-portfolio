@@ -18,15 +18,10 @@ export default function UserAvatar() {
         return () => unsubscribe();
     }, []);
 
-    if (user) {
-        if (loading) {
-            return (
-                <div className="animate-pulse relative bg-transparent h-[90px] w-[90px]">
-                    <div className="absolute animate-pulse rounded-full bg-gray-200 h-[70px] w-[70px]"></div>
-                </div>
-
-            );
-        }
+    if (loading) {
+        return (
+            <div className="skeleton w-20 scale-75 h-20 rounded-full shrink-0"></div>
+        );
     }
 
     return (
@@ -34,7 +29,10 @@ export default function UserAvatar() {
             {user && (
                 <DropdownMenu>
                     <DropdownMenuTrigger>
-                        <Image className='rounded-full scale-75' src={user.photoURL} alt={user.displayName} width={90} height={90} />
+                        <div className="avatar">
+                            <div className="w-20 rounded">
+                                <Image className='rounded-full scale-75' src={user.photoURL} alt={user.displayName} width={90} height={90} />
+                            </div></div>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>

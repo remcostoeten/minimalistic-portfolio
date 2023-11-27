@@ -4,6 +4,7 @@ import UserAvatar from "../user/user-avatar";
 import { auth } from "@/core/(database)/firebase";
 import Spinner from "../loaders/Spinners";
 import { Suspense } from "react";
+import LogoIconAnimated from "../effects/RemcoLogoAnimated";
 
 const navLinks = [
   {
@@ -24,26 +25,16 @@ export default function DashboardNavigation() {
 
   return (
     <header className="flex justify-between items-center w-screen p-4 ">
+      <div className="contained flex justify-between items-center ml-20">
+        <LogoIconAnimated />
+        <div className="flex justify-between items-center w-screen">
+          <div className="flex gap-6 contained">
 
-      <div className="flex justify-between items-center w-[100%] contained">
-        <div className="flex gap-6 contained">
-          {/* {navLinks.map((item, index) => {
-            return (
-              item.href && (
-                <Link
-                  className="hover:underline"
-                  key={index}
-                  href={item.href}
-                >
-                  {item.title}
-                </Link>
-              )
-            );
-          })} */}
+          </div>
+          <Suspense fallback={<>Loading...</>}>
+            <UserAvatar />
+          </Suspense>
         </div>
-        <Suspense fallback={<>Loading...</>}>
-          <UserAvatar />
-        </Suspense>
       </div >
     </header >
   );

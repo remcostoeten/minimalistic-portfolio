@@ -127,10 +127,15 @@
 //     );
 // }
 
+import { auth } from '@/core/(database)/firebase';
+import Link from 'next/link';
 import React from 'react'
 
 export default function page() {
+    const user = auth.currentUser;
     return (
-        <div>page</div>
+        <div>
+            <h1 className='text-slate-200'>You are not  <s className='text-xs'>the father</s> {user ? 'Actually, logged in.' : '... logged in. Please login '}<Link className='underline' href='/signin'>here</Link></h1>
+        </div>
     )
 }

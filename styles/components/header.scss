@@ -4,6 +4,16 @@ $fade-100: 1500ms;
 $fadeInDuration : 500ms;
 $header-height: 80px;
 
+.active-header {
+    &:hover {
+        transition: 125ms cubic-bezier(0.19, 1, 0.22, 1) all;
+        transform: scale(1.1);
+
+        svg {}
+    }
+}
+
+
 .navbar {
     transition: 250ms ease all;
     margin-bottom: 70px;
