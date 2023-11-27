@@ -54,7 +54,7 @@
 
 import { ApolloProvider } from '@apollo/client';
 
-import client from '@/core/(graphql)/ApolloClient';
+import client from '@/core/(graphql)/(prev)_/ApolloClient';
 
 import { loadDevMessages } from '@apollo/client/dev';
 import { loadErrorMessages } from '@apollo/client/dev';

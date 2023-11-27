@@ -16,7 +16,7 @@ export default function InfiniteLogoSlider() {
     }, []);
 
     const renderSlider = (icons, indexModifier = 0) => (
-        <ul className={`slide-track gap-l ${indexModifier ? 'slider-track-reverse' : ''}`}>
+        <ul className={`slide-track  gap-l ${indexModifier ? 'slider-track-reverse' : ''}`}>
             {icons.map((icon, index) => (
                 <li
                     key={index}

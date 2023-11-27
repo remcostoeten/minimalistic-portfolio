@@ -1,17 +1,17 @@
 
 
 import Cursor from '@/components/Cursor';
-import HeaderBar from '@/components/core/HeaderBar';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import { siteConfig } from '@/config/data';
 import ThemeContextProvider from '@/core/context/ThemeContext';
+import ActiveSectionContextProvider from '@/core/utillities/SectionObserver';
 import '@/styles/styles.scss';
 import { Analytics } from '@vercel/analytics/react';
-import { Toaster, toast } from 'sonner';
-import { __DEV__ } from '@apollo/client/utilities/globals';
 import { Inter, Libre_Baskerville } from 'next/font/google';
-import { siteConfig } from '@/config/data';
-import ActiveSectionContextProvider from '@/core/utillities/SectionObserver';
-import NextTopLoader from "nextjs-toploader"
+import NextTopLoader from "nextjs-toploader";
+import { Toaster } from 'sonner';
+import { ApolloWrapper } from './ssr/ApolloWrapper';
+
 export const metadata = {
   title: {
     default: siteConfig.name,
@@ -80,22 +80,24 @@ export default function RootLayout({
 }) {
 
   return (
-    <ThemeContextProvider>
-      <ActiveSectionContextProvider>
-        <html className={`${!inter.className} dark text-foreground bg-background`} lang="en">
-          <body className='dark-background pb-20 min-h-screen  mx-auto flex justify-center'>
-            <NextTopLoader initialPosition={.4} color="#fb8817" height={3.5} showSpinner={false} />
-            <TooltipProvider>
-              <Cursor />
-              <div className='flex flex-col'>
-                <span className='absolute top-0 right-0 bg-gradient-to-r from-green-400 to-[##0E0E0E]'></span>
-                {children}</div>
-              <Toaster invert />
-              <Analytics />
-            </TooltipProvider>
-          </body>
-        </html>
-      </ActiveSectionContextProvider>
-    </ThemeContextProvider>
-  );
+    <ApolloWrapper>
+      <ThemeContextProvider>
+        <ActiveSectionContextProvider>
+          <html className={`${!inter.className} dark text-foreground bg-background`} lang="en">
+            <body className='dark- dark text-foreground bg- pb-20 min-h-screen  mx-auto flex justify-center'>
+              <NextTopLoader initialPosition={.4} color="#fb8817" height={3.5} showSpinner={false} />
+              <TooltipProvider>
+                <Cursor />
+                <div className='flex flex-col'>
+                  <span className='absolute top-0 right-0 bg-gradient-to-r from-green-400 to-[##0E0E0E]'></span>
+                  {children}</div>
+                <Toaster invert />
+                <Analytics />
+              </TooltipProvider>
+            </body>
+          </html>
+        </ActiveSectionContextProvider>
+      </ThemeContextProvider>
+    </ApolloWrapper>
+  )
 }

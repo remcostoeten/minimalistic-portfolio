@@ -12,11 +12,11 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 const InfiniteLogoSlider = lazy(() => import('../effects/InfiniteLogoSlider'));
 const ExperienceItems = lazy(() => import('./ExperienceItems'));
-const GridCard = lazy(() => import('./GridCard') );
+const GridCard = lazy(() => import('./GridCard'));
 
 
 const GridItem = ({ children }: ChildProps) => (
-    <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[4] }} className="grid--card perspective dark:grid--card dark:border-dark dark:text-white flex h-[161px] flex-col grow shrink-0 basis-auto flex-1 rounded-16 justify-center items-center gap-y-4">
+    <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[4] }} className="highlighted grid--card perspective dark:grid--card dark:border-dark dark:text-white flex h-[161px] flex-col grow shrink-0 basis-auto flex-1 rounded-16 justify-center items-center gap-y-4">
         {children}
     </motion.div>
 );
@@ -44,7 +44,7 @@ export default function Grid() {
                 <div className="flex flex-col items-stretch  sm:w-8/12">
                     <div className="flex grow flex-col gap-m">
                         <Suspense fallback={<Spinner size="small" />}>
-                            <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[2], delay: fadeInDelays100[4] }} className="grid--card dark:grid--card dark:border-dark gap-s self-stretch w-full justify-center items-center flex flex-col p-3.5 rounded-16">
+                            <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[2], delay: fadeInDelays100[4] }} className="highlighted grid--card dark:grid--card dark:border-dark gap-s self-stretch w-full justify-center items-center flex flex-col p-3.5 rounded-16">
                                 <ExperienceItems />
                             </motion.div>
                         </Suspense>
@@ -64,7 +64,7 @@ export default function Grid() {
                         <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[7] }} className="self-stretch sm:w-10/12">
                             <section className="flex max-md:flex-col max-md:items-stretch gap-l">
                                 <div className="hidden sm:flex flex-col items-stretch w-full ">
-                                    <div className="purcasche p-default
+                                    <div className="purcasche p-default highlighted
                                     border grid--card dark:grid--card dark:border-dark  flex items-center justify-center sm:w-[270px]  grow flex-col rounded-16">
                                         <Tooltip>
                                             <TooltipContent>I have no idea what to put here. UI is hard man</TooltipContent>

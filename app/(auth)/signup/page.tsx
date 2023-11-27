@@ -17,7 +17,7 @@ export default function Signup() {
     <main className="container flex h-screen w-screen flex-col items-center justify-center">
       <Link
         href="/"
-        className='hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'>
+        className='absolute top-10 left-10 hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'>
         <>
           <Icons.back className="mr-2 h-4 w-4" />
           Back
@@ -25,7 +25,7 @@ export default function Signup() {
       </Link>
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col space-y-2 text-center">
-          <h1 className="text-2xl font-semibold tracking-tight">
+          <h1 className="inter text-2xl font-semibold tracking-tight">
             Create an account
           </h1>
           <p className="text-sm text-muted-foreground">

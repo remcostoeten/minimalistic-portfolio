@@ -1,6 +1,6 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
 import PinkCursor from '@/components/core/CursorIcon';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Cursor() {
   const trailer = useRef<HTMLDivElement>(null);
