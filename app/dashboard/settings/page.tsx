@@ -102,13 +102,11 @@ export default function Component() {
                         <div className="w-full px-3">
                             <Label
                                 className="block uppercase tracking-wide text-gray-700 dark:text-gray-300 text-xs font-bold mb-2"
-                                htmlFor="role"
                             >
                                 Role
                             </Label>
                             <Select
-                                className="block appearance-none w-full bg-gray-200 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white dark:focus:bg-gray-800 focus:border-gray-500"
-                                id="role"
+                                // className="block appearance-none w-full bg-gray-200 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white dark:focus:bg-gray-800 focus:border-gray-500"
                                 required
                             >
                                 <SelectTrigger>
