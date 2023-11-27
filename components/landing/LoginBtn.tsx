@@ -3,7 +3,6 @@ import { auth } from '@/core/(database)/firebase';
 import Link from 'next/link'
 import React, { useState } from 'react'
 
-
 export default function SignInBtn() {
     const isLoggedIn = auth.currentUser;
 

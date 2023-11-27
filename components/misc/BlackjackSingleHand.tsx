@@ -31,7 +31,6 @@ const SingleHand = () => {
             document.body.classList.remove('blackjack');
         };
 
-        toast.success('Work in progress.!');
     }, []);
 
     useEffect(() => {
