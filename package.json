@@ -70,6 +70,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
+    "daisyui": "latest",
     "node-sass": "^9.0.0",
     "postcss": "^8.4.31",
     "tailwindcss": "^3",
