@@ -82,7 +82,7 @@ export default function RootLayout({
   return (
     <ThemeContextProvider>
       <ActiveSectionContextProvider>
-        <html className={`${inter.className} dark text-foreground bg-background`} lang="en">
+        <html className={`${!inter.className} dark text-foreground bg-background`} lang="en">
           <body className='dark-background pb-20 min-h-screen  mx-auto flex justify-center'>
             <NextTopLoader initialPosition={.4} color="#fb8817" height={3.5} showSpinner={false} />
             <TooltipProvider>
