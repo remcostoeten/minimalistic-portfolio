@@ -10,27 +10,33 @@ import { auth } from "@/core/(database)/firebase"
 interface DashboardCardsProps {
   data: {
     streak: {
-      currentStreak: number;
-      longestStreak: number;
-    };
-    totalLogs: number;
-    mostLoggedActivity: string | undefined;
-  };
-  searchParams: SearchParams;
+      currentStreak: number
+      longestStreak: number
+    }
+    totalLogs: number
+    mostLoggedActivity: string | undefined
+  }
+  searchParams: SearchParams
 }
 
 function displayDateRange(searchParams: SearchParams) {
-  const { from, to } = searchParams;
   return (
     <>
-      {from && to
-        ? `${formatDate(new Date(from).toISOString())} - ${formatDate(new Date(to).toISOString())}`
+      {searchParams.from && searchParams.to
+        ? `${formatDate(
+          new Date(searchParams.from).toISOString()
+        )} - ${formatDate(new Date(searchParams.to).toISOString())}`
         : "Last year"}
     </>
-  );
+  )
 }
+
+
+
+
 export function DashboardCards({ data, searchParams }: DashboardCardsProps) {
-  const { loading, error, data: githubData, refetch } = useQuery(GET_TOTAL_REPOSITORIES_AND_COMMITS, {
+
+  const { loading, error, data: githubData } = useQuery(GET_TOTAL_REPOSITORIES_AND_COMMITS, {
     variables: { login: 'remcostoeten' },
   });
 
@@ -52,58 +58,12 @@ export function DashboardCards({ data, searchParams }: DashboardCardsProps) {
 
   const mostUsedLanguages = Object.entries(languageCounts)
     .sort((a, b) => b[1] - a[1])
-    .slice(0, 10);
-
-  const totalRepositories = githubData?.user.repositories?.totalCount || 0;
-
-  const totalBranches = (githubData?.user.repositories?.nodes || []).reduce((total, repo) => {
-    const branchCount = repo.refs?.totalCount || 0;
-    return total + branchCount;
-  }, 0);
-
-  // Find the repository with the most commits
-  const mostActiveRepo = githubData.user.repositories.nodes.reduce((maxRepo, repo) => {
-    const repoCommits = repo.defaultBranchRef?.target.history.totalCount || 0;
-
-    if (repoCommits > (maxRepo?.defaultBranchRef?.target.history.totalCount || 0)) {
-      return repo;
-    } else {
-      return maxRepo;
-    }
-  }, null);
-
-  // Log relevant information for debugging
-  console.log("All Repositories:", githubData.user.repositories.nodes);
-  console.log("Most Active Repository:", mostActiveRepo);
-
+    .slice(0, 10)
+    .map(([language]) => language)
+    .join(', ');
 
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Most Active Repository</CardTitle>
-          <Icons.github className="h-4 w-4 text-muted-foreground" />
-        </CardHeader>
-        <CardContent>
-          <div className="text-2xl font-bold">{mostActiveRepo?.name || 'N/A'}</div>
-          <p className="text-xs text-muted-foreground">
-            {`Commits: ${mostActiveRepo?.defaultBranchRef?.target.history.totalCount || 0}`}
-          </p>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Branches created</CardTitle>
-          <Icons.github className="h-4 w-4 text-muted-foreground" />
-        </CardHeader>
-        <CardContent>
-          <div className="text-2xl font-bold">{totalBranches}</div>
-          <p className="text-xs text-muted-foreground">
-            {displayDateRange(searchParams)}
-          </p>
-        </CardContent>
-      </Card>
-
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Most Used Languages</CardTitle>

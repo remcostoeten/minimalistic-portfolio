@@ -92,7 +92,8 @@ export default function DashboardCards({ data, searchParams }) {
     }
 
     const dashboardData = dummyData;
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <p><div className="skeleton w-32 h-32"></div>
+        ...</p>;
     if (error) return <p>Error :(</p>;
 
     return (
