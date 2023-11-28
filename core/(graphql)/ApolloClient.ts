@@ -1,14 +1,11 @@
-import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
-import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
+import { ApolloClient, InMemoryCache, NormalizedCacheObject } from '@apollo/client';
 
-export const { getClient } = registerApolloClient(() => {
-    return new ApolloClient({
-        cache: new InMemoryCache(),
-        link: new HttpLink({
-            uri: "http://localhost:3000/api/graphql",
-            // you can disable result caching here if you want to
-            // (this does not work if you are rendering your page with `export const dynamic = "force-static"`)
-            // fetchOptions: { cache: "no-store" },
-        }),
-    });
+const clienttt: ApolloClient<NormalizedCacheObject> = new ApolloClient({
+    uri: 'https://api.github.com/graphql',
+    cache: new InMemoryCache(),
+    headers: {
+        authorization: "Bearer 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",
+    },
 });
+
+export default clienttt;

@@ -9,6 +9,7 @@ const BlogPreviews = lazy(() => import("@/components/landing/BlogPreviews"));
 const VisualStoryteller = lazy(() => import("@/components/loaders/VisualStoryteller"));
 import Spinner from '@/components/loaders/Spinners';
 import HeaderBar from '@/components/core/HeaderBar';
+import Getcommits from '@/components/(database)/graphql/Getcommits';
 
 export default function page() {
   return (
@@ -20,7 +21,7 @@ export default function page() {
       </Head>
 
       <HeaderBar />
-
+      <Getcommits />
       <div className="contained mx-auto">
         <Suspense fallback={<div><Spinner size='large' /></div>}>
           <div id="about"><Grid /></div>
