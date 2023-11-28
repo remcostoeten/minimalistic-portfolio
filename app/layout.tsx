@@ -10,9 +10,10 @@ import { Analytics } from '@vercel/analytics/react';
 import { Inter, Libre_Baskerville } from 'next/font/google';
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from 'sonner';
-import { ApolloWrapper } from './ssr/ApolloWrapper';
 import clienttt from '@/core/(graphql)/ApolloClient';
 import { ApolloProvider } from '@apollo/client';
+import { __DEV__ } from '@apollo/client/utilities/globals';
+import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev';
 
 // export const metadata = {
 //   title: {
@@ -80,7 +81,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
+  if (__DEV__) {
+    loadDevMessages();
+    loadErrorMessages();
+  }
   return (
     <ApolloProvider client={clienttt}>
       <ThemeContextProvider>

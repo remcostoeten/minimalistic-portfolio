@@ -4,7 +4,7 @@ const clienttt: ApolloClient<NormalizedCacheObject> = new ApolloClient({
     uri: 'https://api.github.com/graphql',
     cache: new InMemoryCache(),
     headers: {
-        authorization: "Bearer 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",
+        authorization: "Bearer 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",
     },
 });
 

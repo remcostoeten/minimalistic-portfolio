@@ -1,7 +1,9 @@
 'use client'
-import { Navigation } from "@/core/types/types"
-import DashboardNavigation from "@/components/layout/navbar"
-import { DashboardNav } from "@/components/layout/DashboardNav"
+import { DashboardNav } from "@/components/layout/DashboardNav";
+import DashboardNavigation from "@/components/layout/navbar";
+import clienttt from '@/core/(graphql)/ApolloClient';
+import { Navigation } from "@/core/types/types";
+import { ApolloProvider } from '@apollo/client';
 
 const dashboardLinks: Navigation = {
     data: [
@@ -57,4 +59,5 @@ export default function DashboardLayout({
             </div>
         </div>
     )
+
 }
