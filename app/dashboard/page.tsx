@@ -1,12 +1,12 @@
 'use client';
-import { useQuery } from "@apollo/client";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Icons } from "@/components/icons";
 import { GET_TOTAL_REPOSITORIES_AND_COMMITS } from "@/components/(database)/graphql/queries/GetTotalReposQuery";
-import { auth } from "@/core/(database)/firebase";
 import { DashboardHeader } from "@/components/dashboard/dashboard-header";
-import { Shell } from "@/components/layout/shell";
 import { DateRangePicker } from "@/components/date-range-picker";
+import { Icons } from "@/components/icons";
+import { Shell } from "@/components/layout/shell";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { auth } from "@/core/(database)/firebase";
+import { useQuery } from "@apollo/client";
 
 const dummyData = {
     logs: [],
@@ -28,6 +28,7 @@ export function useGithubData(login: string) {
 
     if (loading || error) {
         return { loading, error };
+        console.log(error)
     }
 
     const totalCommits = githubData.user.repositories.nodes.reduce((total, repo) => {
@@ -92,8 +93,16 @@ export default function DashboardCards({ data, searchParams }) {
     }
 
     const dashboardData = dummyData;
-    if (loading) return <p><div className="skeleton w-32 h-32"></div>
-        ...</p>;
+    if (loading) return (
+
+        <>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                <div className='skeleton w-full h-32' />
+                <div className='skeleton w-full h-32' />
+                <div className='skeleton w-full h-32' />
+                <div className='skeleton w-full h-32' /></div>
+        </>
+    )
     if (error) return <p>Error :(</p>;
 
     return (
