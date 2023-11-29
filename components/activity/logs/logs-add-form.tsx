@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import { useRouter } from "next/navigation"
 
@@ -8,7 +6,6 @@ import { format } from "date-fns"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
-import { cn } from "@/core/utilities/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
 import { AlertDialogCancel } from "@/components/ui/alert-dialog"
@@ -26,8 +23,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { toast } from "@/components/ui/use-toast"
+import { toast } from "sonner"
 import { Icons } from "@/components/icons"
+import { cn } from "@nextui-org/react"
 
 interface LogsAddFormProps {
   activityId: string
@@ -72,15 +70,9 @@ export function LogsAddForm({ activityId, setShowLogAlert }: LogsAddFormProps) {
     })
 
     if (!response?.ok) {
-      toast({
-        title: "Something went wrong.",
-        description: "Your activity was not logged. Please try again.",
-        variant: "destructive",
-      })
+      toast.success("Something went wrong. Please try again.")
     } else {
-      toast({
-        description: "Your activity has been logged successfully.",
-      })
+      toast.error("Your log has been added successfully.")
     }
 
     setIsLoading(false)

@@ -37,14 +37,14 @@ export const getErrorMessage = (error: unknown): string => {
 };
 
 export function formatDate(input: string | number): string {
-  const date = new Date(input)
+  const date = new Date(input);
+
   return Intl.DateTimeFormat("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
-  }).format(date)
+  }).format(date);
 }
-
 
 export function dateRangeParams(searchParams: { from: string; to: string }) {
   if (
