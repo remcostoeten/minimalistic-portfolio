@@ -7,6 +7,7 @@ import { Shell } from "@/components/layout/shell";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { auth } from "@/core/(database)/firebase";
 import { useQuery } from "@apollo/client";
+import { Icon } from "@radix-ui/react-select";
 
 const dummyData = {
     logs: [],
@@ -68,8 +69,7 @@ export function useGithubData(login: string) {
     return { loading, error, totalCommits, mostUsedLanguages, totalRepositories, totalBranches, mostActiveRepo };
 }
 
-// Card Component
-function InfoCard({ title, icon: Icon, value, subtext }) {
+const InfoCard = ({ title, icon, value, subtext }) => {
     return (
         <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -84,7 +84,6 @@ function InfoCard({ title, icon: Icon, value, subtext }) {
     );
 }
 
-// Main Component
 export default function DashboardCards({ data, searchParams }) {
     const { loading, error, totalCommits, mostUsedLanguages, totalRepositories, totalBranches, mostActiveRepo, secondMostActiveRepo } = useGithubData('remcostoeten');
     const user = auth.currentUser;
