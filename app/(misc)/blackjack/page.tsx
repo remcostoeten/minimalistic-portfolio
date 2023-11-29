@@ -86,7 +86,7 @@ const Page = () => {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-      <span className='absolute top-1 right-1 text-xs text-white/10'><Link href='transactions'> Transactions</Link></span>
+      <span className='underline'><Link href='transactions'> Transactions</Link></span>
       {decision && (
         <div className={`shadow animated-decision inset-0 absolute z-10 pointer-events-none flex items-center justify-center ${decision.toLowerCase()}`}>
           {decision}
