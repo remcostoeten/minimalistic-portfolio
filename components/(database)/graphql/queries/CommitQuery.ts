@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 
 export const GET_REPOS_AND_LATEST_COMMIT = gql`
 query GetRepositoriesAndLanguages($login: String!) {
@@ -29,3 +29,25 @@ query GetRepositoriesAndLanguages($login: String!) {
 }
 `;
 
+
+export const GET_COMMITS = gql`
+query GetCommits($login: String!) {
+  user(login: $login) {
+    repositories(first: 100) {
+      nodes {
+        defaultBranchRef {
+          target {
+            ... on Commit {
+              history(first: 100) {
+                nodes {
+                  committedDate
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`;

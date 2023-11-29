@@ -1,6 +1,8 @@
 'use client';
 import { GET_TOTAL_REPOSITORIES_AND_COMMITS } from "@/components/(database)/graphql/queries/GetTotalReposQuery";
+import { CommitsGraph } from "@/components/dashboard/CommitsGraph";
 import { DashboardHeader } from "@/components/dashboard/dashboard-header";
+import IntroWrapper from "@/components/dashboard/shell/IntroWrapper.";
 import { DateRangePicker } from "@/components/date-range-picker";
 import { Icons } from "@/components/icons";
 import { Shell } from "@/components/layout/shell";
@@ -8,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { auth } from "@/core/(database)/firebase";
 import { useQuery } from "@apollo/client";
 import { Icon } from "@radix-ui/react-select";
+import { Suspense } from "react";
 
 const dummyData = {
     logs: [],
@@ -20,12 +23,10 @@ const dummyData = {
 }
 
 export function useGithubData(login: string) {
-
-
-
     const { loading, error, data: githubData, refetch } = useQuery(GET_TOTAL_REPOSITORIES_AND_COMMITS, {
         variables: { login },
     });
+    const commitsLabels = githubData?.user.commitsLabels || [];
 
     if (loading || error) {
         return { loading, error };
@@ -66,7 +67,7 @@ export function useGithubData(login: string) {
         }
     }, null);
 
-    return { loading, error, totalCommits, mostUsedLanguages, totalRepositories, totalBranches, mostActiveRepo };
+    return { loading, error, totalCommits, mostUsedLanguages, totalRepositories, totalBranches, mostActiveRepo, commitsLabels };
 }
 
 const InfoCard = ({ title, icon, value, subtext }) => {
@@ -85,7 +86,7 @@ const InfoCard = ({ title, icon, value, subtext }) => {
 }
 
 export default function DashboardCards({ data, searchParams }) {
-    const { loading, error, totalCommits, mostUsedLanguages, totalRepositories, totalBranches, mostActiveRepo, secondMostActiveRepo } = useGithubData('remcostoeten');
+    const { loading, error, totalCommits, mostUsedLanguages, totalRepositories, totalBranches, mostActiveRepo, secondMostActiveRepo, commitsLabels } = useGithubData('remcostoeten');
     const user = auth.currentUser;
     const displayName = () => {
         return user?.displayName
@@ -93,7 +94,6 @@ export default function DashboardCards({ data, searchParams }) {
 
     const dashboardData = dummyData;
     if (loading) return (
-
         <>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                 <div className='skeleton w-full h-32' />
@@ -101,22 +101,31 @@ export default function DashboardCards({ data, searchParams }) {
                 <div className='skeleton w-full h-32' />
                 <div className='skeleton w-full h-32' /></div>
         </>
+
     )
     if (error) return <p>Error :(</p>;
+    const labels = ['2022-01-01', '2022-01-02', '2022-01-03', '2022-01-04'];
+    const secondData = [5, 15, 25, 35]; // Number of issues opened each day
 
     return (
 
-        <Shell>
-            <DashboardHeader heading={`So ${displayName()}'s....`} text="here are your  2023 Github metrics 💡🎯.">                <DateRangePicker />
-            </DashboardHeader>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                <InfoCard title="Most Active Repository" icon={Icons.github} value={mostActiveRepo?.name || 'N/A'} subtext={`Commits: ${mostActiveRepo?.defaultBranchRef?.target.history.totalCount || 0}`} />
-                <InfoCard title="Second Most Active Repository" icon={Icons.github} value={secondMostActiveRepo?.name || 'N/A'} subtext={`Commits: ${secondMostActiveRepo?.defaultBranchRef?.target.history.totalCount || 0}`} />
-                <InfoCard title="Total Commits" icon={Icons.github} value={totalCommits} subtext="All time" />
-                <InfoCard title="Most Used Languages" icon={Icons.github} value={mostUsedLanguages.join(', ')} subtext="All time" />
-                <InfoCard title="Total Repositories" icon={Icons.github} value={totalRepositories} subtext="All time" />
-                <InfoCard title="Total Branches" icon={Icons.github} value={totalBranches} subtext="All time" />
-            </div>
+<Shell>
+    <IntroWrapper  subtitle="3" title="Metrics"/>
+    <DashboardHeader heading={`So ${displayName()}'s....`} text="here are your 2023 Github metrics 💡🎯.">
+        <DateRangePicker />
+    </DashboardHeader>                                
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                    <CommitsGraph labels={commitsLabels} data={totalRepositories} secondData={[]} isLoading={false} />
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <CommitsGraph labels={labels} data={data} secondData={secondData} isLoading={false} />
+                    </Suspense>
+                    <InfoCard title="Most Active Repository" icon={Icons.github} value={mostActiveRepo?.name || 'N/A'} subtext={`Commits: ${mostActiveRepo?.defaultBranchRef?.target.history.totalCount || 0}`} />
+                    <InfoCard title="Second Most Active Repository" icon={Icons.github} value={secondMostActiveRepo?.name || 'N/A'} subtext={`Commits: ${secondMostActiveRepo?.defaultBranchRef?.target.history.totalCount || 0}`} />
+                    <InfoCard title="Total Commits" icon={Icons.github} value={totalCommits} subtext="All time" />
+                    <InfoCard title="Most Used Languages" icon={Icons.github} value={mostUsedLanguages.join(', ')} subtext="All time" />
+                    <InfoCard title="Total Repositories" icon={Icons.github} value={totalRepositories} subtext="All time" />
+                    <InfoCard title="Total Branches" icon={Icons.github} value={totalBranches} subtext="All time" />
+                </div>
         </Shell>
     );
 }

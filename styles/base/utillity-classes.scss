@@ -132,7 +132,10 @@ text-theme-light {
 
 .highlighted {
     transition: 0.5s;
-    border: 1px solid $highlighted;
+
+    &:not(:nth-child(1)):not(:nth-child(3)) {
+        border: 1px solid $highlighted;
+    }
 
     &:hover {
         box-shadow: rgba(50, 50, 93, 0.25) 50px 150px 100px -20px, rgba(155, 163, 92, 0.3) 0px 30px 60px -30px, rgba(90, 103, 17, 0.35) 0px -2px 6px 0px inset;
