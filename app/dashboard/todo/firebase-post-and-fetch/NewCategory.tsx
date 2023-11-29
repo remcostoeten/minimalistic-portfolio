@@ -1,9 +1,9 @@
 'use client'
-import React, { useState } from "react"
-import { addDoc, collection } from "firebase/firestore"
-import { toast } from 'sonner';
 import { db } from "@/core/(database)/firebase";
-export function NewCategory() 1{
+import { addDoc, collection } from "firebase/firestore";
+import React, { useState } from "react";
+import { toast } from 'sonner';
+export function NewCategory() {
     const [categoryName, setCategoryName] = useState("")
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
