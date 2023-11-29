@@ -23,6 +23,11 @@ const dashboardLinks: Navigation = {
             icon: "activity",
         },
         {
+            title: "Firebase",
+            href: "/dashboard/todo/firebase-post-and-fetch",
+            icon: "database",
+        },
+        {
             title: "Settings",
             href: "/dashboard/settings",
             icon: "settings",
