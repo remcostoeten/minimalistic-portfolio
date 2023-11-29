@@ -10,6 +10,7 @@ import { StringSpace } from "@/core/utillities/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { GridCardTitle, Paragraph } from "../core/Typography";
+
 export default function GridCard() {
   const shortDescription = (
     <>

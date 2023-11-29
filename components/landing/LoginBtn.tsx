@@ -2,15 +2,14 @@
 import { auth } from '@/core/(database)/firebase';
 import Link from 'next/link'
 import React, { useState } from 'react'
+import { Button } from '../ui/button';
 
 export default function SignInBtn() {
     const isLoggedIn = auth.currentUser;
 
     return (
         <>
-            <button
-                className="style-69 text-black !bg-[#E5E5E5]"
-            >
+            <Button variant='outline'>
                 <Link href="signin" className="style-70">
                     <p>{isLoggedIn ? 'Logout' : 'Login'}</p>
                 </Link>
@@ -35,7 +34,7 @@ export default function SignInBtn() {
                         </svg>
                     </div>
                 </div>
-            </button >
+            </Button >
         </>
     )
 }
