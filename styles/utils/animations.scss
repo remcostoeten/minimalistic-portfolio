@@ -1,3 +1,69 @@
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: scale(1, 1.5);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#blob {
+    background-color: white;
+    height: 34vmax;
+    aspect-ratio: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: linear-gradient(to right, aquamarine, mediumpurple);
+    animation: rotate 20s infinite, BlobFadeIn 5s forwards ease-in-out;
+    opacity: 0;
+
+}
+
+.blob {
+    transition: all 0.5s ease-in-out;
+    animation: BlobFadeIn 1s forwards ease-in-out;
+
+}
+
+@keyframes BlobFadeIn {
+
+    from {
+        opacity:
+            0;
+
+    }
+}
+
+#blur {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    backdrop-filter: blur(12vmax);
+}
+
+@keyframes blob-animation {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
 $white: #fff;
 $black: #000;
 $green: #00ff00;
