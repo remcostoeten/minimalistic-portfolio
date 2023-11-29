@@ -66,8 +66,6 @@ export default function Grid() {
                 onMouseLeave={handleMouseLeave}
                 ref={ref}
             >
-
-
                 <div className="flex sm:mt-[60px] mt-4 mb-[60px] sm:flex-row flex-col-reverse gap-l max-md:items-stretch custom-height">
                     <div className="flex z-10 flex-col items-stretch sm:w-8/12">
                         <div className="flex grow flex-col gap-m">
@@ -153,7 +151,7 @@ export default function Grid() {
                                     duration: fadeInDelays100[6],
                                     delay: fadeInDelays100[10],
                                 }}
-                                className="p-[32px] flex justify-center grid--card dark:grid--card infinite-slider dark:border-dark w gap-[40px] flex-col rounded-16 overflow-hidden grid--card sm:w-10/12 h-full items-center"
+                                className="highlighted p-[32px] flex justify-center grid--card dark:grid--card infinite-slider dark:border-dark w gap-[40px] flex-col rounded-16 overflow-hidden grid--card sm:w-10/12 h-full items-center"
                             >
                                 <h4 className="regular-font text-2xl experience-title libre">My stack</h4>
                                 <Suspense fallback={<Spinner size="small" />}>

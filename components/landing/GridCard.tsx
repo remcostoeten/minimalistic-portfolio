@@ -34,7 +34,7 @@ export default function GridCard() {
   );
 
   return (
-    <div className="about-card flex flex-col gap-4">
+    <div className="highlighted about-card flex flex-col gap-4">
       <div className="bg-[#26211D] hidden sm:block rounded-full absolute top-6 left-4 w-[72px] h-[72px]">
         <Image src="/bitcompress.png" alt="Remco Stoeten Bitmoji" width={72} height={72} />
       </div>

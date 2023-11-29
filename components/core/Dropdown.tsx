@@ -9,6 +9,7 @@ const Dropdown: React.FC = () => {
   const dropdownItems = [
     { url: '/blackjack', text: 'Blackjack', submenus: ['Use Client', 'Submenu 2', 'Submenu 3'] },
     { url: 'transactions', text: 'Transactions' },
+    { url: 'ssr', text: 'sSR' },
   ];
 
   const handleButtonClick = () => {
