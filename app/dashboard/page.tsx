@@ -11,6 +11,8 @@ import { auth } from "@/core/(database)/firebase";
 import { useQuery } from "@apollo/client";
 import { Icon } from "@radix-ui/react-select";
 import { Suspense } from "react";
+import Image from "next/image";
+
 
 const dummyData = {
     logs: [],
@@ -86,7 +88,7 @@ const InfoCard = ({ title, icon, value, subtext }) => {
 }
 
 export default function DashboardCards({ data, searchParams }) {
-    const { loading, error, totalCommits, mostUsedLanguages, totalRepositories, totalBranches, mostActiveRepo, secondMostActiveRepo, commitsLabels } = useGithubData('remcostoeten');
+    const { loading, error, totalCommits, mostUsedLanguages, totalRepositories, totalBranches, mostActiveRepo, commitsLabels } = useGithubData('remcostoeten');
     const user = auth.currentUser;
     const displayName = () => {
         return user?.displayName
@@ -109,23 +111,24 @@ export default function DashboardCards({ data, searchParams }) {
 
     return (
 
-<Shell>
-    <IntroWrapper  subtitle="3" title="Metrics"/>
-    <DashboardHeader heading={`So ${displayName()}'s....`} text="here are your 2023 Github metrics 💡🎯.">
-        <DateRangePicker />
-    </DashboardHeader>                                
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                    <CommitsGraph labels={commitsLabels} data={totalRepositories} secondData={[]} isLoading={false} />
-                    <Suspense fallback={<div>Loading...</div>}>
-                        <CommitsGraph labels={labels} data={data} secondData={secondData} isLoading={false} />
-                    </Suspense>
-                    <InfoCard title="Most Active Repository" icon={Icons.github} value={mostActiveRepo?.name || 'N/A'} subtext={`Commits: ${mostActiveRepo?.defaultBranchRef?.target.history.totalCount || 0}`} />
-                    <InfoCard title="Second Most Active Repository" icon={Icons.github} value={secondMostActiveRepo?.name || 'N/A'} subtext={`Commits: ${secondMostActiveRepo?.defaultBranchRef?.target.history.totalCount || 0}`} />
-                    <InfoCard title="Total Commits" icon={Icons.github} value={totalCommits} subtext="All time" />
-                    <InfoCard title="Most Used Languages" icon={Icons.github} value={mostUsedLanguages.join(', ')} subtext="All time" />
-                    <InfoCard title="Total Repositories" icon={Icons.github} value={totalRepositories} subtext="All time" />
-                    <InfoCard title="Total Branches" icon={Icons.github} value={totalBranches} subtext="All time" />
-                </div>
+        <Shell>
+            <IntroWrapper subtitle="3" title="Metrics" />
+
+            <DashboardHeader heading={`So ${displayName()}'s....`} text="here are your 2023 Github metrics 💡🎯.">
+                <DateRangePicker />
+            </DashboardHeader>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                <img src='https://dribbble.com/shots/20709368-datadock-web-design-visuals-app' fit alt='d' />
+                <CommitsGraph labels={commitsLabels} data={totalRepositories} secondData={[]} isLoading={false} />
+                <Suspense fallback={<div>Loading...</div>}>
+                    <CommitsGraph labels={labels} data={data} secondData={secondData} isLoading={false} />
+                </Suspense>
+                <InfoCard title="Most Active Repository" icon={Icons.github} value={mostActiveRepo?.name || 'N/A'} subtext={`Commits: ${mostActiveRepo?.defaultBranchRef?.target.history.totalCount || 0}`} />
+                <InfoCard title="Total Commits" icon={Icons.github} value={totalCommits} subtext="All time" />
+                <InfoCard title="Most Used Languages" icon={Icons.github} value={mostUsedLanguages.join(', ')} subtext="All time" />
+                <InfoCard title="Total Repositories" icon={Icons.github} value={totalRepositories} subtext="All time" />
+                <InfoCard title="Total Branches" icon={Icons.github} value={totalBranches} subtext="All time" />
+            </div>
         </Shell>
     );
 }

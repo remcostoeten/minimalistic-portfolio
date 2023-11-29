@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -22,7 +20,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { toast } from "@/components/ui/use-toast"
+import { toast } from 'sonner'
 import { Icons } from "@/components/icons"
 import { LogsAddForm } from "./logs/logs-add-form"
 
@@ -32,15 +30,9 @@ async function deleteActivity(activityId: string) {
   })
 
   if (!response?.ok) {
-    toast({
-      title: "Something went wrong.",
-      description: "Your activity was not deleted. Please try again.",
-      variant: "destructive",
-    })
+    toast.success("Your activity has been deleted successfully.")
   } else {
-    toast({
-      description: "Your activity has been deleted successfully.",
-    })
+    toast.error("Something went wrong. Please try again.")
   }
 
   return true

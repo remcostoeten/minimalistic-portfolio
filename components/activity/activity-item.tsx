@@ -22,31 +22,31 @@ export function ActivityItem({ activity }: ActivityItemProps) {
           <div
             className="h-4 w-4 rounded-full shadow shadow-black dark:shadow-white"
             data-testid="color-code"
-            style={{ backgroundColor: `${activity.colorCode}` }}
+            style={{ backgroundColor: `${activity?.colorCode}` }}
           ></div>
           <div>
             <Link
-              href={`/dashboard/activities/${activity.id}`}
+              href={`/dashboard/activities/${activity?.id}`}
               className="font-semibold hover:underline"
             >
-              {activity.name}
+              {activity?.name}
             </Link>
             <div>
               <p className="text-sm text-muted-foreground">
-                {formatDate(activity.createdAt?.toDateString())}
+                {formatDate(activity?.createdAt?.toDateString())}
               </p>
             </div>
           </div>
         </div>
-        {activity.description ? (
+        {activity?.description ? (
           <div className="text-sm text-muted-foreground">s
-            {activity.description}
+            {activity?.description}
           </div>
         ) : null}
       </div>
       <ActivityOperations
         activity={{
-          id: activity.id,
+          id: activity?.id,
         }}
       />
     </div>
