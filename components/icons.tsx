@@ -17,6 +17,7 @@ import {
   AiFillGoogleCircle,
   AiFillGithub,
   AiFillHome,
+  AiFillDatabase,
   AiOutlineLogout
 } from "react-icons/ai"
 import { MdDeleteForever, MdOutlineLogout } from "react-icons/md"
@@ -43,6 +44,7 @@ const icons = {
   settings: LuSettings,
   home: AiFillHome,
   logout: AiOutlineLogout,
+  database: AiFillDatabase,
 
   // Mode Toggle
   moon: BsMoonStars,

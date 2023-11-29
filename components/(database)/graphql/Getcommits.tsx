@@ -10,7 +10,7 @@ export default function Getcommits() {
         variables: { login: "remcostoeten" },
     });
 
-    if (loading) return <p className="text-center">Loading...</p>;
+    if (loading) return <p className="text-center">Loadingsss</p>;
     if (error) return <p>Error :(</p>;
 
     return (

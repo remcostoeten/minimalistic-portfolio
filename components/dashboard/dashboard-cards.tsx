@@ -40,7 +40,7 @@ export function DashboardCards({ data, searchParams }: DashboardCardsProps) {
     variables: { login: 'remcostoeten' },
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p>aaas...</p>;
   if (error) return <p>Error :(</p>;
 
   const totalCommits = githubData.user.repositories.nodes.reduce((total, repo) => {
