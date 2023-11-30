@@ -14,7 +14,7 @@ import { GridCardTitle, Paragraph } from "../core/Typography";
 export default function GridCard() {
   const shortDescription = (
     <>
-      I'm a recovering
+      I am a recovering
       <Tooltip>
         <TooltipTrigger>
           <span className='pl-1 tooltip-border'>
@@ -43,7 +43,7 @@ export default function GridCard() {
         <GridCardTitle
           className=""
           fontSize="text-2xl">{personalData.name}</GridCardTitle>
-        <Paragraph color='black' fontSize="text-[20px]">{shortDescription}</Paragraph>
+        <Paragraph color='black' fontSize="text-[17px]">{shortDescription}</Paragraph>
       </div>
     </div>
   );

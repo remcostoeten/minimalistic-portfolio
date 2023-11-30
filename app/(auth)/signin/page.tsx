@@ -1,19 +1,19 @@
 'use client';
 import { auth } from "@/core/(database)/firebase";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import React, { Suspense, useEffect } from 'react';
 
 import Logo from "@/components/core/Logo";
 import { Icons } from "@/components/icons";
 import { UserAuthForm } from "@/components/user/user-auth-form";
+import { EmailPasswordForm } from "@/components/user/EmailPasswordForm";
+import { useRouter } from "next/navigation";
 
 export default function Signin() {
   const router = useRouter();
-
   useEffect(() => {
     if (auth.currentUser) {
-      window.location.href = '/dashboard';
+      router.push("/dashboard");
     }
   }, []);
   return (
@@ -25,12 +25,13 @@ export default function Signin() {
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col space-y-2 text-center items-center">
           <Logo />
-          <p className="inter text-2xl font-semibold tracking-tight">Sign in</p>
+          <p className="inter text-2xl font-semibold tracking-tight">Welcome back</p>
           <p className="text-sm text-muted-foreground">
-            Sign in to your account
+            Enter your email to sign in to your account
           </p>
         </div>
         <Suspense fallback={<div className='flex gap-2'><div className="skeleton h-8 w-full"></div></div>}>
+          <EmailPasswordForm />
           <UserAuthForm />
         </Suspense>
         <p className="px-8 text-center text-sm text-muted-foreground">

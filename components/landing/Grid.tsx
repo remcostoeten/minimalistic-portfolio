@@ -30,6 +30,7 @@ export default function Grid() {
         const boundingRect = ref.current?.getBoundingClientRect();
         setMousePosition({
             x: event.clientX - (boundingRect?.left || 0),
+
             y: event.clientY - (boundingRect?.top || 0)
         });
     };
@@ -160,7 +161,7 @@ export default function Grid() {
                             position: "relative",
                             scale: scaleProgress,
                             opacity: opacityProgress,
-                            animation: "blob-animation 5s infinite", // Add an animation
+                            animation: "blob-animation 20s infinite linear",
                         }}
                     >
                         <div className="blur blob"
@@ -173,7 +174,7 @@ export default function Grid() {
                                 zIndex: 2,
                                 opacity: .1,
                                 borderRadius: "50%",
-                                background: "radial-gradient(circle, rgba(0,200,200,0.8) 0%, rgba(0,0,0,0.6) 100%)", // Darker and more subtle color
+                                background: "radial-gradient(circle, rgba(0,200,200,0.8) 0%, rgba(0,0,0,0.6) 100%)",
                                 pointerEvents: "none",
                                 filter: "blur(50px)",
                             }}
