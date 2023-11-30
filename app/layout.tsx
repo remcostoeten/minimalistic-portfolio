@@ -1,22 +1,20 @@
+
 'use client'
 
 import Cursor from '@/components/Cursor';
-import HeaderBar from '@/components/core/HeaderBar';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import GraphqlConnection from '@/core/(graphql)/ApolloClient';
+import clienttt from '@/core/(graphql)/ApolloClient';
 import ThemeContextProvider from '@/core/context/ThemeContext';
-import '@/styles/styles.scss';
-import { Analytics } from '@vercel/analytics/react';
-import { Toaster, toast } from 'sonner';
-import { __DEV__ } from '@apollo/client/utilities/globals';
-import { Inter, Libre_Baskerville } from 'next/font/google';
-import { siteConfig } from '@/config/data';
 import ActiveSectionContextProvider from '@/core/utillities/SectionObserver';
-import NextTopLoader from "nextjs-toploader"
+import '@/styles/styles.scss';
 import { ApolloProvider } from '@apollo/client';
 import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev';
-import clienttt from '@/core/(graphql)/ApolloClient';
-
-
+import { __DEV__ } from '@apollo/client/utilities/globals';
+import { Analytics } from '@vercel/analytics/react';
+import { Inter, Libre_Baskerville } from 'next/font/google';
+import NextTopLoader from "nextjs-toploader";
+import { Toaster } from 'sonner';
 
 const serif = Libre_Baskerville({
   subsets: ['latin'],
@@ -37,7 +35,7 @@ export default function RootLayout({
     loadErrorMessages();
   }
   return (
-    <ApolloProvider client={clienttt}>
+    <ApolloProvider client={GraphqlConnection}>
       <ThemeContextProvider>
         <ActiveSectionContextProvider>
           <html className={`${inter.className} dark text-foreground bg-background`} lang="en">
