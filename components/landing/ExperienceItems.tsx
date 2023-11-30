@@ -50,13 +50,7 @@ export default function ExperienceItems() {
               <span className="libre font-[600]">{work.company}</span> <br /> {work.title} <br />
             </div>
           </div>
-          {work.highlight && (
-            <motion.div
-              className="h-1 bg-theme mt-2"
-              variants={highlightVariants}
-              transition={{ duration: 0.3, repeat: Infinity, repeatType: "reverse" }}
-            />
-          )}
+
         </motion.div>
       ))}
     </motion.div>

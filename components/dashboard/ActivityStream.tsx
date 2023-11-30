@@ -1,91 +1,152 @@
-import React from 'react'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectValue } from "../ui/select";
+import { SelectTriggerNoBg } from "../ui/selectnobg";
 
-export default function
-  () {
+export default function ActivityStream() {
+  type ActivityStreamProps = {
+    date: string;
+    author: string;
+  }
+
+  const DateAuthorText = ({ date, author }: ActivityStreamProps) => {
+    return (
+      <p className="text-[12px]  text-[#989898] ml-[32px]">{date} - {author}</p>
+    )
+  }
+
+  const activities = [
+    {
+      title: '147 files were uploaded to Basic bucket',
+      date: 'January 6, 2023',
+      author: 'Leonard Lauren',
+      icon: IconDownload,
+    },
+    {
+      title: '2 users were added to manage Basic bucket',
+      date: 'February 05, 2023',
+      author: 'Leonard Lauren',
+      icon: IconUpload,
+    },
+    {
+      title: '1 folder was added to Basic bucket',
+      date: 'March 12, 2023',
+      author: 'Jerome Bell',
+      icon: IconEdit,
+    },
+  ];
+
+
   return (
-
-
-    <div className="w-[300px] h-full">
-      <div className="flex justify-between items-center p-4 border-b border-gray-700">
-        < h2 className="text-lg font-semibold text-white flex items-center" >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-6 w-6 text-gray-400 mr-2"
-          >
-            <circle cx="12.1" cy="12.1" r="1"></circle>
-          </svg>
+    <div className=" h-full bg-[#101010] shadow-lg">
+      <div className="flex justify-between items-center p-4 border-b border-[#262626]">
+        <span className="text-lg font-semibold text-white flex items-start">
           Recent Actions
-        </ >
-      </div >
-      <ul className="divide-y divide-gray-700">
-        <li className="p-4">
-          <h3 className="text-sm font-medium text-gray-300 flex items-center mb-1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              className="h-6 w-6 text-gray-400 mr-2"
-            >
-              <circle cx="12.1" cy="12.1" r="1"></circle>
-            </svg>ownload className="h-6 w-6 text-gray-400 mr-2" />
-            147 files were uploaded to Basic bucket
-          </h3>
-          <p className="text-xs text-gray-500 ml-[32px]">January 16, 2023 - by Leonard Lauren</p>
-        </li>
-        <li className="p-4">
-          <h3 className="text-sm font-medium text-gray-300 flex items-center mb-1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-6 w-6 text-gray-400 mr-2"
-            >
-              <circle cx="12.1" cy="12.1" r="1"></circle>
-            </svg>        2 users were added to manage Basic bucket
-          </h3>
-          <p className="text-xs text-gray-500 ml-[32px]">February 05, 2023 - by Leonard Lauren</p>
-        </li>
-        <li className="p-4">
-          <h3 className="text-sm font-medium text-gray-300 flex items-center mb-1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              stroke-Linejoin="round"
-              className="h-6 w-6 text-gray-400 mr-2"
-            >
-              <circle cx="12.1" cy="12.1" r="1"></circle>
-            </svg>        1 folder was added to Basic bucket
-          </h3>
-          <p className="text-xs text-gray-500 ml-[32px]">March 12, 2023 - by Jerome Bell</p>
-        </li>
+        </span>
+
+        <Select>
+          <SelectTriggerNoBg className="w-[180px]">
+            <SelectValue placeholder="..." />
+          </SelectTriggerNoBg>
+          <SelectContent>
+            <SelectGroup>
+              <SelectItem value="Some">Some</SelectItem>
+              <SelectItem value="options">options</SelectItem>
+              <SelectItem value="blueberry">blueberry</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      </div>
+      <ul className="divide-y divide-[#262626]">
+        {activities.map((activity, index) => (
+          <li key={index} className="p-4">
+            <span className="text-sm font-medium text-white flex items-start mb-1">
+              <activity.icon className="h-6 w-6 text-white mr-2" />
+              {activity.title}
+            </span>
+            <DateAuthorText date={activity.date} author={activity.author} />
+          </li>
+        ))}
       </ul>
-    </div >
+    </div>
   )
 }
 
+function IconDotsvertical(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12.1" cy="12.1" r="1" />
+    </svg>
+  )
+}
+
+function IconEdit(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M4 13.5V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2h-5.5" />
+      <polyline points="14 2 14 8 20 8" />
+      <path d="M10.42 12.61a2.1 2.1 0 1 1 2.97 2.97L7.95 21 4 22l.99-3.95 5.43-5.44Z" />
+    </svg>
+  )
+}
+
+function IconUpload(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="17 8 12 3 7 8" />
+      <line x1="12" x2="12" y1="3" y2="15" />
+    </svg>
+  )
+}
+function IconDownload(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="7 10 12 15 17 10" />
+      <line x1="12" x2="12" y1="15" y2="3" />
+    </svg>
+  )
+}
