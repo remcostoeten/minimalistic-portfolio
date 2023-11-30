@@ -11,10 +11,12 @@ export default function InfiniteLogoSlider() {
     const [randomizedIconsReverse, setRandomizedIconsReverse] = useState<{ name: string; icon: string; description: string; tooltip: string; url: string }[] | null>(null);
 
     useEffect(() => {
-        setRandomizedIcons([...TechnologyIcons].sort(() => Math.random() - 0.5));
-        setRandomizedIconsReverse([...TechnologyIcons].sort(() => 0.5 - Math.random()));
+        const icons = [...TechnologyIcons].sort(() => Math.random() - 0.5);
+        setRandomizedIcons(icons.concat(icons));
+        const iconsReverse = [...TechnologyIcons].sort(() => 0.5 - Math.random());
+        setRandomizedIconsReverse(iconsReverse.concat(iconsReverse));
     }, []);
-
+    
     const renderSlider = (icons, indexModifier = 0) => (
         <ul className={`slide-track  gap-l ${indexModifier ? 'slider-track-reverse' : ''}`}>
             {icons.map((icon, index) => (

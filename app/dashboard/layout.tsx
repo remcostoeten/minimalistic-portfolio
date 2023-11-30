@@ -63,7 +63,7 @@ export default function DashboardLayout({
                     <DashboardNav items={dashboardLinks.data} />
                 </aside>
                 <main className="flex w-full flex-1 flex-col">{children}</main>
-                <aside className="hidden w-[200px] flex-col md:flex">
+                <aside className="hidden w-[300px] flex-col md:flex">
                     <ActivityStream />
                 </aside>
             </div>

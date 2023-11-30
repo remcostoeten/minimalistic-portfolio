@@ -9,7 +9,7 @@ export default function SignInBtn() {
 
     return (
         <>
-            <Button variant='outline'>
+            <Button className='bg-white !text-black hover:bg-white/90' variant='secondary'>
                 <Link href="signin" className="style-70">
                     <p>{isLoggedIn ? 'Logout' : 'Login'}</p>
                 </Link>

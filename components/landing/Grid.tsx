@@ -16,7 +16,7 @@ const GridCard = lazy(() => import('./GridCard'));
 
 
 const GridItem = ({ children }: ChildProps) => (
-    <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[4] }} className="highlighted grid--card perspective dark:grid--card dark:border-dark dark:text-white flex h-[161px] flex-col grow shrink-0 basis-auto flex-1 rounded-16 justify-center items-center gap-y-4">
+    <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[4] }} className=" grid--card perspective dark:grid--card dark:border-dark dark:text-white flex h-[161px] flex-col grow shrink-0 basis-auto flex-1 rounded-16 justify-center items-center gap-y-4">
         {children}
     </motion.div>
 );
@@ -33,16 +33,7 @@ export default function Grid() {
             y: event.clientY - (boundingRect?.top || 0)
         });
     };
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setBlobPosition(prevPosition => ({
-                x: prevPosition.x + (mousePosition.x - prevPosition.x) * 0.1,
-                y: prevPosition.y + (mousePosition.y - prevPosition.y) * 0.1,
-            }));
-        }, 10);
 
-        return () => clearInterval(timer);
-    }, [mousePosition]);
     const handleMouseEnter = () => {
         setIsHovering(true);
     };
@@ -77,7 +68,7 @@ export default function Grid() {
                                         duration: fadeInDelays100[2],
                                         delay: fadeInDelays100[4],
                                     }}
-                                    className="highlighted grid--card dark:grid--card dark:border-dark gap-s self-stretch w-full justify-center items-center flex flex-col p-3.5 rounded-16"
+                                    className=" grid--card dark:grid--card dark:border-dark gap-s self-stretch w-full justify-center items-center flex flex-col p-3.5 rounded-16"
                                 >
                                     <ExperienceItems />
                                 </motion.div>
@@ -124,7 +115,7 @@ export default function Grid() {
                             >
                                 <section className="flex max-md:flex-col max-md:items-stretch gap-l">
                                     <div className="hidden sm:flex flex-col items-stretch w-full ">
-                                        <div className="purcasche p-default highlighted border grid--card dark:grid--card dark:border-dark flex items-center justify-center sm:w-[270px] grow flex-col rounded-16">
+                                        <div className="purcasche p-default  border grid--card dark:grid--card dark:border-dark flex items-center justify-center sm:w-[270px] grow flex-col rounded-16">
                                             <Tooltip>
                                                 <TooltipContent>I have no idea what to put here. UI is hard, man</TooltipContent>
                                                 <TooltipTrigger>
@@ -151,7 +142,7 @@ export default function Grid() {
                                     duration: fadeInDelays100[6],
                                     delay: fadeInDelays100[10],
                                 }}
-                                className="highlighted p-[32px] flex justify-center grid--card dark:grid--card infinite-slider dark:border-dark w gap-[40px] flex-col rounded-16 overflow-hidden grid--card sm:w-10/12 h-full items-center"
+                                className=" p-[32px] flex justify-center grid--card dark:grid--card infinite-slider dark:border-dark w gap-[40px] flex-col rounded-16 overflow-hidden grid--card sm:w-10/12 h-full items-center"
                             >
                                 <h4 className="regular-font text-2xl experience-title libre">My stack</h4>
                                 <Suspense fallback={<Spinner size="small" />}>
