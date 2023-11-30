@@ -36,7 +36,7 @@ export function EmailPasswordForm() {
   };
 
   return (
-    <form onSubmit={handleSignIn}>
+    <form className="flex flex-col gap-2 " onSubmit={handleSignIn}>
       <Input
         type="email"
         value={email}
@@ -51,7 +51,7 @@ export function EmailPasswordForm() {
         placeholder="Password"
         required
       />
-      <Button type="submit" disabled={isLoading}>
+      <Button className="bg-white text-black" variant='solid' type="submit" disabled={isLoading}>
         {isLoading ? <LoadingSpinner /> : "Sign in"}
       </Button>
     </form>

@@ -1,23 +1,34 @@
 'use client';
 import { auth } from "@/core/(database)/firebase";
 import Link from "next/link";
-import React, { Suspense, useEffect } from 'react';
-
+import React, { Suspense, useEffect, useState } from 'react';
 import Logo from "@/components/core/Logo";
 import { Icons } from "@/components/icons";
-import { UserAuthForm } from "@/components/user/user-auth-form";
 import { EmailPasswordForm } from "@/components/user/EmailPasswordForm";
 import { useRouter } from "next/navigation";
+import RegisterForm from "@/components/user/RegisterForm";
+import UserAuthForm from "@/components/user/user-auth-form";
 
 export default function Signin() {
+  const [isMounted, setIsMounted] = useState(false);
   const router = useRouter();
+
   useEffect(() => {
-    if (auth.currentUser) {
-      router.push("/dashboard");
-    }
+    setIsMounted(true);
   }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      router.push('/dashboard');
+    }
+  });
+
   return (
-    <main className="container flex h-screen w-screen flex-col items-center justify-center">
+    <main className="flex h-screen w-screen flex-col items-center justify-center">
       <Link href='/' className='absolute top-10 left-10 hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'>
         <Icons.back className="mr-2 h-4 w-4" />
         Back
@@ -31,6 +42,8 @@ export default function Signin() {
           </p>
         </div>
         <Suspense fallback={<div className='flex gap-2'><div className="skeleton h-8 w-full"></div></div>}>
+          <RegisterForm />
+
           <EmailPasswordForm />
           <UserAuthForm />
         </Suspense>
