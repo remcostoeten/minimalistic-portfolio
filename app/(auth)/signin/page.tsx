@@ -6,7 +6,6 @@ import Logo from "@/components/core/Logo";
 import { Icons } from "@/components/icons";
 import { EmailPasswordForm } from "@/components/user/EmailPasswordForm";
 import { useRouter } from "next/navigation";
-import RegisterForm from "@/components/user/RegisterForm";
 import UserAuthForm from "@/components/user/user-auth-form";
 
 export default function Signin() {
@@ -42,8 +41,6 @@ export default function Signin() {
           </p>
         </div>
         <Suspense fallback={<div className='flex gap-2'><div className="skeleton h-8 w-full"></div></div>}>
-          <RegisterForm />
-
           <EmailPasswordForm />
           <UserAuthForm />
         </Suspense>

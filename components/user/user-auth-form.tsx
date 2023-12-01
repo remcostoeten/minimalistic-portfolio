@@ -30,7 +30,7 @@ export default function UserAuthForm() {
     <div className='flex flex-col gap-2 items-center justify-center'>
       <button
         type="button"
-        className={cn(buttonVariants({ variant: "outline" }))}
+        className={cn(buttonVariants({ variant: "outline" }), 'w-full')}
         onClick={() => handleSignIn('google')}
         disabled={isLoading}
         aria-busy={isLoading}
@@ -44,8 +44,7 @@ export default function UserAuthForm() {
       </button>
       <button
         type="button"
-        className={cn(buttonVariants({ variant: "outline" }))}
-        onClick={() => handleSignIn('github')}
+        className={cn(buttonVariants({ variant: "outline" }), 'w-full')} onClick={() => handleSignIn('github')}
         disabled={isLoading}
         aria-busy={isLoading}
       >
