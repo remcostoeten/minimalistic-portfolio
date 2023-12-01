@@ -17,7 +17,7 @@ const motionProps = {
 };
 
 const Typography = ({ as: Component = 'div', className, children, isGeist }: TypographyProps & { as?: keyof JSX.IntrinsicElements, className: string }) => (
-    React.createElement(motion[Component], {
+    React.createElement(m[Component], {
         ...motionProps,
         className: clsx(className, { 'geist': isGeist })
     }, children)

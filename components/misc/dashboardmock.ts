@@ -1,4 +1,3 @@
-import { DateRange } from 'react-day-picker';
 
 type ActivityEntry = {
     name: string

@@ -2,7 +2,7 @@
 import { Socials } from "@/core/config/experience";
 import { ChildProps } from "@/core/types/types";
 import { fadeInDelays100 } from "@/core/utillities/animations";
-import { LazyMotion, domAnimation, useScroll } from "framer-motion";
+import { LazyMotion, domAnimation, m, useScroll } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense, lazy, useRef } from "react";

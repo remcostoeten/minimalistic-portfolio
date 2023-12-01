@@ -13,10 +13,10 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
 import { Button, ButtonProps } from "@/components/ui/button"
-import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
+import { toast } from "sonner"
 
-interface ActivityAddButtonProps extends ButtonProps {}
+interface ActivityAddButtonProps extends ButtonProps { }
 
 export function ActivityAddButton({
   className,
@@ -45,16 +45,8 @@ export function ActivityAddButton({
       setIsLoading(false)
       setShowAddAlert(false)
 
-      return toast({
-        title: "Something went wrong.",
-        description: "Your activity was not created. Please try again.",
-        variant: "destructive",
-      })
+      return toast.error("Something went wrong!",)
     }
-
-    toast({
-      description: "A new activity has been created successfully.",
-    })
 
     const activity = await response.json()
 
