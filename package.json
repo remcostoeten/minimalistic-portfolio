@@ -57,6 +57,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-day-picker": "^8.9.1",
     "react-dom": "latest",
+    "react-firebase-hooks": "^5.1.1",
     "react-hook-form": "^7.48.2",
     "react-icons": "^4.12.0",
     "react-intersection-observer": "^9.5.3",

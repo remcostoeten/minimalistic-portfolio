@@ -11,10 +11,6 @@ export default function SignInBtn() {
     return (
         <>
             <Button className='bg-white !text-black hover:bg-white/90' variant='secondary'>
-                <Link href="signtest" className="style-70">
-                    dwdw
-
-                </Link>
                 <Link href="signin" className="style-70">
                     <p>{isLoggedIn ? 'Logout' : 'Login'}</p>
                 </Link>

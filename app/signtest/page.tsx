@@ -25,12 +25,10 @@ const LoginForm = () => {
             </label>
             <input
               type="email"
-              maxLength="256"
               name="Email-2"
               data-name="Email 2"
               placeholder="youremail@example.com"
               data-ms-member="email"
-              required=""
               className="h-12 text-white bg-opacity-03 border-none rounded-md mb-0 pt-3 pl-4 text-base font-light transition duration-200 ease-in-out shadow-sm w-full focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
             />
           </div>
@@ -44,7 +42,6 @@ const LoginForm = () => {
             <input
               type="password"
               data-show="true"
-              maxLength="256"
               name="Password-2"
               data-name="Password 2"
               placeholder=""
