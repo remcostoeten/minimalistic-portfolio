@@ -30,6 +30,7 @@ export default function RegisterForm() {
     try {
       const { user } = await createUserWithEmailAndPassword(
         auth,
+        signUpForm.name,
         signUpForm.email,
         signUpForm.password
       );
@@ -70,9 +71,9 @@ export default function RegisterForm() {
         className="border p-2"
       />
       <Input
-        name="confirmPassword"
-        placeholder="Confirm Password"
-        type="password"
+        name="name"
+        placeholder="Name"
+        type="name"
         onChange={onChange}
         required
         className="border p-2"

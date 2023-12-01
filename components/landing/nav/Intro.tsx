@@ -4,7 +4,7 @@ import Navigation from '@/components/core/Navigation';
 import { SubTitle } from '@/components/core/Typography';
 import Sprinkle from '@/components/effects/Sprinkle';
 import SwappingWords from '@/components/effects/SwappingWords';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -48,10 +48,10 @@ const menuContainerAnimation = {
 const Intro = () => {
     return (
         <div className='pt-[40px] contained flex flex-col gap-[64px]'>
-            <motion.div variants={reveal} initial="hidden" animate="show" className=" flex justify-between  flex-col gap-2 text-center ">
-                <motion.div variants={menuItemAnimation} className="flex flex-row justify-between items-center gap-4">
-                    <motion.div variants={menuItemAnimation} className="flex flex-col gap-4">
-                        <motion.span variants={menuItemAnimation} className="flex flex-col gap-1">
+            <m.div variants={reveal} initial="hidden" animate="show" className=" flex justify-between  flex-col gap-2 text-center ">
+                <m.div variants={menuItemAnimation} className="flex flex-row justify-between items-center gap-4">
+                    <m.div variants={menuItemAnimation} className="flex flex-col gap-4">
+                        <m.span variants={menuItemAnimation} className="flex flex-col gap-1">
                             <div className='flex gap-1 items-center relative'>
                                 <Link href='/' className='absolute -left-10 -bottom-2'>
                                     <Logo /></Link>
@@ -67,9 +67,9 @@ const Intro = () => {
                                     ]}
                                     interval={4000} />
                             </SubTitle>
-                        </motion.span>
-                    </motion.div>
-                    <motion.div initial={{ opacity: 0, y: -25 }}
+                        </m.span>
+                    </m.div>
+                    <m.div initial={{ opacity: 0, y: -25 }}
                         transition={{
                             duration: .4,
                             delay: 1,
@@ -82,10 +82,10 @@ const Intro = () => {
                         </span>
                         <Image src="/remco.jpeg"
                             width={90} height={90} alt="Avatar Remco Stoeten" className="rounded-full" />
-                    </motion.div>
-                </motion.div>
-            </motion.div>
-            <motion.div className='w-[600px]' initial={{ opacity: 0, y: -25 }}
+                    </m.div>
+                </m.div>
+            </m.div>
+            <m.div className='w-[600px]' initial={{ opacity: 0, y: -25 }}
                 transition={{
                     duration: .4,
                     delay: 1,
@@ -93,7 +93,7 @@ const Intro = () => {
                 }}
                 animate={{ opacity: 1, y: 0 }}>
 
-            </motion.div >
+            </m.div >
         </div >
     );
 };
