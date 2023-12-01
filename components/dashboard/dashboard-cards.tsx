@@ -1,4 +1,3 @@
-import { SearchParams } from "@/types"
 import { formatDate } from "@/core/utillities/utils"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -6,6 +5,12 @@ import { Icons } from "@/components/icons"
 import { GET_TOTAL_REPOSITORIES, GET_TOTAL_REPOSITORIES_AND_COMMITS } from "../(database)/graphql/queries/GetTotalReposQuery"
 import { useQuery } from "@apollo/client"
 import { auth } from "@/core/(database)/firebase"
+
+
+type SearchParams = {
+  from?: string
+  to?: string
+}
 
 interface DashboardCardsProps {
   data: {
@@ -57,9 +62,9 @@ export function DashboardCards({ data, searchParams }: DashboardCardsProps) {
   }, {});
 
   const mostUsedLanguages = Object.entries(languageCounts)
-    .sort((a, b) => b[1] - a[1])
+    .sort((a, b) => (b[1] as number) - (a[1] as number))
     .slice(0, 10)
-    .map(([language]) => language)
+    .map(([language]: [string, number]): string => language)
     .join(', ');
 
   return (

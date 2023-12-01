@@ -3,9 +3,9 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { NavItem } from "@/types"
-import { cn } from "@/core/utilities/utils"
 import { Icons } from "@/components/icons"
+import { NavItem } from "@/core/types/types"
+import { cn } from "@/core/utillities/utils"
 
 interface DashboardNavProps {
   items: NavItem[]
@@ -16,6 +16,13 @@ export function DashboardNav({ items }: DashboardNavProps) {
 
   if (!items?.length) {
     return null
+  }
+
+  type NavItem = {
+    title: string
+    icon: keyof typeof Icons
+    href: string
+    disabled?: boolean
   }
 
   return (

@@ -1,4 +1,5 @@
 'use client'
+import { Input } from "@/components/ui/input";
 import { db } from "@/core/(database)/firebase";
 import { addDoc, collection } from "firebase/firestore";
 import React, { useState } from "react";

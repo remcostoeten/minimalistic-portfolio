@@ -7,7 +7,7 @@ import React, { Suspense, useEffect, useState } from 'react';
 
 import RegisterForm from "@/components/user/RegisterForm";
 import { pageTransition } from "@/core/utillities/animations";
-import { LazyMotion, domAnimation, motion } from "framer-motion";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 export default function Signin() {

@@ -9,7 +9,8 @@ import { formatDate } from "@/core/utillities/utils"
 
 import { LogsDeleteDialog } from "../activity/logs/logs-delete-dialog"
 import { Card } from "@/components/ui/card"
-import { toast } from "@/components/ui/use-toast"
+import { toast } from "sonner"
+import { BsTropicalStorm } from "react-icons/bs"
 
 interface Value {
   id: string
@@ -36,17 +37,9 @@ async function deleteActivity(activityId: string, logsId: string) {
   })
 
   if (!response?.ok) {
-    toast({
-      title: "Something went wrong.",
-      description: "Your activity was not deleted. Please try again.",
-      variant: "destructive",
-    })
+    toast.success("Something went wrong!")
   } else {
-    toast({
-      title: "Item has been deleted.",
-      description: "Your activity has been deleted successfully.",
-      variant: "default",
-    })
+    toast.success("Log deleted!")
   }
 
   return true

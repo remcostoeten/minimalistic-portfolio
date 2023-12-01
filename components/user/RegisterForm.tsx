@@ -2,7 +2,7 @@
 import { auth, firestore } from '@/core/(database)/firebase';
 import { User, createUserWithEmailAndPassword } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { toast } from 'sonner';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
@@ -30,7 +30,6 @@ export default function RegisterForm() {
     try {
       const { user } = await createUserWithEmailAndPassword(
         auth,
-        signUpForm.name,
         signUpForm.email,
         signUpForm.password
       );
@@ -86,9 +85,9 @@ export default function RegisterForm() {
       <Button variant='outline'
         type="submit"
         className="mt-2 mb-2 w-full h-9 text-white"
-        disabled={setIsLoading}
+        disabled={isLoading}
       >
-        {setIsLoading ? "Loading..." : "Sign Up"}
+        {isLoading ? "Loading..." : "Sign Up"}
       </Button>
       <div className="flex justify-center text-sm">
         <p className="mr-1">Already a redditor?</p>

@@ -6,11 +6,14 @@ import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Activity } from "@prisma/client"
 import { useForm } from "react-hook-form"
-import { HexColorPicker } from "react-colorful"
 import * as z from "zod"
 
-import { cn } from "@/core/utilities/utils"
-import { activityPatchSchema } from "@/lib/validations/activity"
+export const activityPatchSchema = z.object({
+  name: z.string().min(3).max(32),
+  description: z.string().max(128).optional(),
+  colorCode: z.string(),
+})
+
 import { buttonVariants } from "@/components/ui/button"
 import {
   Card,
@@ -21,10 +24,9 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
+import { cn } from "@nextui-org/react"
 
 interface ActivityEditFormProps extends React.HTMLAttributes<HTMLFormElement> {
   activity: Pick<Activity, "id" | "name" | "description" | "colorCode">
@@ -69,19 +71,6 @@ export function ActivityEditForm({
     })
 
     setIsSaving(false)
-
-    if (!response?.ok) {
-      return toast({
-        title: "Something went wrong.",
-        description: "Your activity was not updated. Please try again.",
-        variant: "destructive",
-      })
-    }
-
-    toast({
-      description: "Your activity has been updated.",
-    })
-
     router.back()
     router.refresh()
   }
@@ -114,7 +103,7 @@ export function ActivityEditForm({
           </div>
           <div className="grid gap-3">
             <Label htmlFor="description">Description</Label>
-            <Textarea
+            <textarea
               id="description"
               className="w-full lg:w-[400px]"
               {...register("description")}
@@ -127,7 +116,7 @@ export function ActivityEditForm({
           </div>
           <div className="grid gap-3">
             <Label>Color</Label>
-            <HexColorPicker color={color} onChange={setColor} />
+            {/* <HexColorPicker color={color} onChange={setColor} /> */}
           </div>
         </CardContent>
         <CardFooter>

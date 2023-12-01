@@ -112,7 +112,7 @@ import { __DEV__ } from '@apollo/client/utilities/globals';
 //   ],
 // };
 
-export default function RootLayout({
+export default function ApolloWrapper({
   children,
 }: {
 

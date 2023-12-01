@@ -1,8 +1,13 @@
-import { SearchParams } from "@/types"
 import { formatDate } from "@/core/utillities/utils"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
+
+type SearchParams = {
+  from?: string
+  to?: string
+}
+
 
 interface StatsCardsProps {
   data: {

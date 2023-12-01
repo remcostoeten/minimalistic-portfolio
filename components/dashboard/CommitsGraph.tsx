@@ -50,20 +50,18 @@ export const CommitsGraph: React.FC<CommitsGraphProps> = ({ labels, data, isLoad
 
     return (
         <Bar
-            type="bar"
             data={chartData}
             options={{
                 responsive: true,
                 plugins: {
                     legend: {
-                        position: 'top',
+                        // Add legend options here
                     },
                     title: {
-                        display: true,
-                        text: 'Chart.js Bar Chart'
+                        // Add title options here
                     }
                 }
             }}
         />
-    );
-};
+    )
+}
