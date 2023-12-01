@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { Suspense, useEffect, useState } from 'react';
 import Logo from "@/components/core/Logo";
 import { Icons } from "@/components/icons";
+
 import { useRouter } from "next/navigation";
 import RegisterForm from "@/components/user/RegisterForm";
 

@@ -9,9 +9,9 @@ export default function authLayout({ children }) {
   const pathname = usePathname();
 
   return (
-    <body className=' pb-20 min-h-screen flex'>
+    <div className=' pb-20 min-h-screen flex'>
       {children}
-    </body>
+    </div>
   )
 }
 

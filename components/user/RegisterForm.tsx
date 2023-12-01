@@ -1,50 +1,48 @@
 'use client';
 import { auth, firestore } from '@/core/(database)/firebase';
-import { User } from 'firebase/auth';
+import { User, createUserWithEmailAndPassword } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { toast } from 'sonner';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
+import React from 'react';
 
 export default function RegisterForm() {
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [signUpForm, setSignUpForm] = useState({
+    name: '',
     email: '',
     password: '',
-    confirmPassword: '',
   });
 
   const [error, setError] = useState('');
-
-  const [
-    createUserWithEmailAndPasswordHook,
-    userCredentials,
-    loading,
-    createUserError,
-  ] = useCreateUserWithEmailAndPassword(auth);
-
-  // Firebase logic
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (error) setError('');
-
-    const { password, confirmPassword, email } = signUpForm;
-    if (password !== confirmPassword) {
-      setError('Passwords do not match');
-      return;
-    }
-
-    createUserWithEmailAndPasswordHook(email, password);
-  };
-  const createUserDocument = async (user: User) => {
+  const createUserDocument = async (user: User, name: string) => {
     await addDoc(
       collection(firestore, 'users'),
-      JSON.parse(JSON.stringify(user))
+      { ...JSON.parse(JSON.stringify(user)), displayName: name }
     );
   };
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const { user } = await createUserWithEmailAndPassword(
+        auth,
+        signUpForm.email,
+        signUpForm.password
+      );
+
+      if (user) {
+        await createUserDocument(user, signUpForm.name);
+      }
+
+      toast.success('Account created successfully!');
+    } catch (error) {
+      setError(error.message);
+    }
+  }
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSignUpForm((prev) => ({
@@ -53,21 +51,8 @@ export default function RegisterForm() {
     }));
   };
 
-  useEffect(() => {
-    if (userCredentials) {
-      createUserDocument(userCredentials.user);
-      toast.success('Account created successfully!');
-    }
-  }, [userCredentials]);
-
-  useEffect(() => {
-    if (createUserError) {
-      toast.error('An error occurred during sign up.');
-    }
-  }, [createUserError]);
-
   return (
-    <form onSubmit={onSubmit} className="flex flex-col space-y-2">
+    <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
       <Input
         name="email"
         placeholder="Email"
@@ -100,9 +85,9 @@ export default function RegisterForm() {
       <Button variant='outline'
         type="submit"
         className="mt-2 mb-2 w-full h-9 text-white"
-        disabled={loading}
+        disabled={setIsLoading}
       >
-        {loading ? "Loading..." : "Sign Up"}
+        {setIsLoading ? "Loading..." : "Sign Up"}
       </Button>
       <div className="flex justify-center text-sm">
         <p className="mr-1">Already a redditor?</p>

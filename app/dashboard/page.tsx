@@ -18,30 +18,40 @@ type DashboardCardsProps = {
     searchParams: any;
 };
 
-type DashboardData = {
+type InfoCardProps = {
+    title: string;
+    icon?: any;
+    value: string | JSX.Element;
+    subtext: string;
     loading: boolean;
-    error?: any;
-    totalCommits: number;
-    mostUsedLanguages: string[];
-    totalRepositories: number;
-    totalBranches: number;
-    mostActiveRepo?: {
-        name: string;
-        defaultBranchRef?: {
-            target: {
-                history: {
-                    totalCount: number;
-                };
-            };
-        };
-    };
-    commitsLabels: any;
 };
 
-export function useGithubData(login: string) {
-    const { loading, error, data: githubData, refetch } = useQuery(GET_TOTAL_REPOSITORIES_AND_COMMITS, {
-        variables: { login },
-    });
+const InfoCard: React.FC<InfoCardProps> = ({ title, icon: Icon, value, subtext, loading }) => {
+    return (
+        <Card>
+            <CardHeader>
+                <div className="flex items-center gap-2">
+                    <div className="text-xl font-bold">{title}</div>
+                </div>
+            </CardHeader>
+            <CardContent>
+                {loading ? (
+                    <CardSkeleton />
+                ) : (
+                    <>
+                        <div className="text-2xl font-bold">{value || <CardSkeleton />}</div>
+                        <p className="text-xs text-muted-foreground">{subtext}</p>
+                    </>
+                )}
+            </CardContent>
+        </Card>
+    );
+};
+
+export default function DashboardCards({ data, searchParams }: DashboardCardsProps) {
+    // const { loading, error, totalCommits, mostUsedLanguages, totalRepositories, totalBranches, mostActiveRepo, commitsLabels } = data;
+    const user = auth.currentUser;
+    const { loading, error, data: githubData, refetch } = useQuery(GET_TOTAL_REPOSITORIES_AND_COMMITS, {});
     const commitsLabels = githubData?.user.commitsLabels || [];
 
     if (loading) return <CardSkeleton loading={loading} />;
@@ -83,44 +93,7 @@ export function useGithubData(login: string) {
         }
     }, null);
 
-    return { loading, error, totalCommits, mostUsedLanguages, totalRepositories, totalBranches, mostActiveRepo, commitsLabels };
-}
-
-type InfoCardProps = {
-    title: string;
-    icon?: any;
-    value: string | JSX.Element;
-    subtext: string;
-    loading: boolean;
-};
-
-const InfoCard: React.FC<InfoCardProps> = ({ title, icon: Icon, value, subtext, loading }) => {
-    return (
-        <Card>
-            <CardHeader>
-                <div className="flex items-center gap-2">
-                    <div className="text-xl font-bold">{title}</div>
-                </div>
-            </CardHeader>
-            <CardContent>
-                {loading ? (
-                    <CardSkeleton />
-                ) : (
-                    <>
-                        <div className="text-2xl font-bold">{value || <CardSkeleton />}</div>
-                        <p className="text-xs text-muted-foreground">{subtext}</p>
-                    </>
-                )}
-            </CardContent>
-        </Card>
-    );
-};
-
-export default function DashboardCards({ data, searchParams }: DashboardCardsProps) {
-    const { loading, error, totalCommits, mostUsedLanguages, totalRepositories, totalBranches, mostActiveRepo, commitsLabels } = data;
-    const user = auth.currentUser;
-
-    if (error) return <p>Error :( </p>;
+    // if (error) return <p>Error :( </p>;
 
     const labels = ['2022-01-01', '2022-01-02', '2022-01-03', '2022-01-04'];
     const secondData = [5, 15, 25, 35];
