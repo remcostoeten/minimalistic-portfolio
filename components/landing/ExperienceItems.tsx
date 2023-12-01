@@ -1,7 +1,7 @@
 'use client';
 import { GridIn, fadeScaleUp, smoothFadeUp } from "@/core/utillities/animations";
 import { WorkExperience } from "@/core/config/experience";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
 export default function ExperienceItems() {
@@ -26,14 +26,14 @@ export default function ExperienceItems() {
   };
 
   return (
-    <motion.div
+    <m.div
       className="grid gap-4 overflow-hidden highlighted !border-0"
       variants={GridIn}
       initial="initial"
       animate={show ? "animate" : "initial"}
     >
       {WorkExperience.map((work, index) => (
-        <motion.div
+        <m.div
           key={index}
           className={`self-stretch  highligted  grid--card dark:grid--card dark:border-dark  flex w-full flex-col grid--card-inner  border p-card-inner card-inner rounded-card-inner ${work.highlight ? "highlighted" : ""
             }`}
@@ -51,8 +51,8 @@ export default function ExperienceItems() {
             </div>
           </div>
 
-        </motion.div>
+        </m.div>
       ))}
-    </motion.div>
+    </m.div>
   );
 }

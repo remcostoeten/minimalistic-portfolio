@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const Cta = ({ children }: ChildProps) => {
     return (
@@ -37,7 +37,7 @@ const GhostButton = ({ children, onClick, className, size }: ChildProps) => {
     }
 
     return (
-        <motion.button
+        <m.button
             onClick={onClick}
             className={`ghostbtn font-normal border-solid bg-body-dark rounded-lg flex flex-row items-center gap-3 w-auto relative box-border antialiased p-2q ${className} ${buttonStyle}`}
             initial={{ opacity: 0, height: 0 }}
@@ -53,7 +53,7 @@ const GhostButton = ({ children, onClick, className, size }: ChildProps) => {
                     {children}
                 </p>
             </div>
-        </motion.button>
+        </m.button>
     );
 };
 const glowButton = ({ children }: ChildProps) => {

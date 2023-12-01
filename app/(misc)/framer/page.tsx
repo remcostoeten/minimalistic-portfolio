@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const AnimationDemo: React.FC = () => {
   const [boxes, setBoxes] = useState<Array<{ stiffness: number; xValue: number }>>([
@@ -86,35 +86,35 @@ const AnimationDemo: React.FC = () => {
         </div>
       </div>
       <div className="box- mt-8">
-        <motion.div
+        <m.div
           className=""
           variants={Variants}
           initial="initial"
           animate="animate"
         >
           {[1, 2, 3].map((key) => (
-            <motion.div
+            <m.div
               key={key}
               className="item cursor-pointer"
               variants={itemVariants}
               onClick={() => handleExampleClick(key)}
             >
-              <motion.div className="circle bg-blue-500" variants={circleVariants} />
-              <motion.div className="text text-white" variants={textVariants}>
+              <m.div className="circle bg-blue-500" variants={circleVariants} />
+              <m.div className="text text-white" variants={textVariants}>
                 Example {key}
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
         {[1].map((key) => (
           <div key={key} className="box-">
-            <motion.div
+            <m.div
               className="box bg-green-500"
               // @ts-ignore
               variants={boxVariants(boxes[key - 1].stiffness, boxes[key - 1].xValue)}
               initial="initial"
               animate={selectedExample === null || selectedExample === key ? 'animate' : 'initial'}
-            ></motion.div>
+            ></m.div>
             <div className="slider-">
               <label htmlFor={`stiffness-slider-${key}`}>Stiffness {key}:</label>
               <input

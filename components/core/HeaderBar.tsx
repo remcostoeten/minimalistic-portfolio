@@ -45,7 +45,6 @@ export default function HeaderBar() {
     return (
         <>
             <nav className={`header-bar navbar mt-10 ${isSticky ? 'sticky' : ''}`}>
-
                 <div className="style-1" aria-label="Nav">
                     <div className="style-2" data-framer-name="Logo & Links">
                         <div className="style-3" data-framer-name="Logo">

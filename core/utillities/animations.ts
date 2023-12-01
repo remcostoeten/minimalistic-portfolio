@@ -2,8 +2,6 @@ import { Variants } from 'framer-motion';
 
 export const fadeInDelays100 = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, , 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2];
 
-
-
 export const GridIn = {
   initial: {
     opacity: 0,
@@ -136,4 +134,10 @@ export const scaleVariant = {
       duration: 0.5,
     },
   },
+};
+
+export const pageTransition = {
+  hidden: { scale: .9, opacity: 0, y: '-20px' },
+  show: { opacity: 1, scale: 1, y: '0', transition: { duration: 1, ease: [0.6, -0.05, 0.01, 0.99] } },
+  exit: { scale: 0.1, opacity: 0, y: '-20px', transition: { duration: 1, ease: [0.9, -0.95, 0.01, 0.99] } },
 };
