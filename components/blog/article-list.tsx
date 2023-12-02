@@ -31,7 +31,7 @@ export default function ArticleList() {
                         className="group"
                         key={index}
                     >
-                        <Link
+                        <Link target="_blank"
                             className="flex px-2 py-4 justify-between items-center text-[#d6d3d1] hover:text-white border-[#57534e] hover:border-white group-hover:translate-x-1 transition-transform transition-colors ease-bezier"
                             href={article.anchor}
                         >
