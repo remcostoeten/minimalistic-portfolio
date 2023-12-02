@@ -91,7 +91,7 @@ export default function Grid() {
                                         <div className="hidden sm:flex flex-col items-stretch w-full ">
                                             <div className="purcasche p-default  border grid--card dark:grid--card dark:border-dark flex items-center justify-center sm:w-[270px] grow flex-col rounded-16">
                                                 <Tooltip>
-                                                    <TooltipContent>I have no idea what to put here. UI is hard, man</TooltipContent>
+                                                    <TooltipContent><span className="!text-black">I have no idea what to put here. UI is hard, man</span></TooltipContent>
                                                     <TooltipTrigger>
                                                         <Paragraph>You can purcashe this spot for only €100,- per month.</Paragraph>
                                                     </TooltipTrigger>
