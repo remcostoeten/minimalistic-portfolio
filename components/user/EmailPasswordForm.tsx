@@ -11,7 +11,7 @@ const LoadingSpinner = () => (
   <Spinner variant="mini" />
 );
 
-export function EmailPasswordForm() {
+export default function EmailPasswordForm() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");

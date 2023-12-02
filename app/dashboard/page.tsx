@@ -2,7 +2,6 @@
 import { GET_TOTAL_REPOSITORIES_AND_COMMITS } from "@/components/(database)/graphql/queries/GetTotalReposQuery";
 import { CommitsGraph } from "@/components/dashboard/CommitsGraph";
 import { DashboardHeader } from "@/components/dashboard/dashboard-header";
-import IntroWrapper from "@/components/dashboard/shell/IntroWrapper.";
 import { DateRangePicker } from "@/components/date-range-picker";
 import { Icons } from "@/components/icons";
 import { Shell } from "@/components/layout/shell";
@@ -12,6 +11,7 @@ import { useQuery } from "@apollo/client";
 import { Icon } from "@radix-ui/react-select";
 import { Suspense } from "react";
 import Image from "next/image";
+import IntroWrapper from "@/components/dashboard/shell/IntroWrapper.";
 
 
 const dummyData = {
@@ -24,7 +24,7 @@ const dummyData = {
     dailyAverage: 0,
 }
 
-export function useGithubData(login: string) {
+function useGithubData(login: string) {
     const { loading, error, data: githubData, refetch } = useQuery(GET_TOTAL_REPOSITORIES_AND_COMMITS, {
         variables: { login },
     });
@@ -72,7 +72,16 @@ export function useGithubData(login: string) {
     return { loading, error, totalCommits, mostUsedLanguages, totalRepositories, totalBranches, mostActiveRepo, commitsLabels };
 }
 
-const InfoCard = ({ title, icon, value, subtext }) => {
+type CardProps = {
+    title: string;
+    icon: any;
+    value?: string;
+    subtext?: string;
+    isLoading?: boolean;
+};
+
+
+const InfoCard = ({ title, icon, value, subtext, isLoading }: CardProps) => {
     return (
         <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -80,40 +89,39 @@ const InfoCard = ({ title, icon, value, subtext }) => {
                 <Icon className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-                <div className="text-2xl font-bold">{value}</div>
-                <p className="text-xs text-muted-foreground">{subtext}</p>
+                <div className={`fade-in ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+                    {value !== undefined ? (
+                        <>
+                            <div className="text-2xl font-bold">{value}</div>
+                            <p className="text-xs text-muted-foreground">{subtext}</p>
+                        </>
+                    ) : (
+                        <div className="flex flex-col gap-2">
+                            <div className="skeleton h-4 w-full"></div>
+                            <div className="skeleton h-4 w-full"></div>
+                        </div>
+                    )}
+                </div>
             </CardContent>
         </Card>
     );
-}
-
+};
 export default function DashboardCards({ data, searchParams }) {
+
     const { loading, error, totalCommits, mostUsedLanguages, totalRepositories, totalBranches, mostActiveRepo, commitsLabels } = useGithubData('remcostoeten');
     const user = auth.currentUser;
     const displayName = () => {
         return user?.displayName
     }
 
-    const dashboardData = dummyData;
-    if (loading) return (
-        <>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                <div className='skeleton w-full h-32' />
-                <div className='skeleton w-full h-32' />
-                <div className='skeleton w-full h-32' />
-                <div className='skeleton w-full h-32' /></div>
-        </>
 
-    )
     if (error) return <p>Error :(</p>;
     const labels = ['2022-01-01', '2022-01-02', '2022-01-03', '2022-01-04'];
     const secondData = [5, 15, 25, 35]; // Number of issues opened each day
 
     return (
-
         <Shell>
             <IntroWrapper subtitle="3" title="Metrics" />
-
             <DashboardHeader heading={`So ${displayName()}'s....`} text="here are your 2023 Github metrics 💡🎯.">
                 <DateRangePicker />
             </DashboardHeader>
@@ -125,7 +133,7 @@ export default function DashboardCards({ data, searchParams }) {
                 </Suspense>
                 <InfoCard title="Most Active Repository" icon={Icons.github} value={mostActiveRepo?.name || 'N/A'} subtext={`Commits: ${mostActiveRepo?.defaultBranchRef?.target.history.totalCount || 0}`} />
                 <InfoCard title="Total Commits" icon={Icons.github} value={totalCommits} subtext="All time" />
-                <InfoCard title="Most Used Languages" icon={Icons.github} value={mostUsedLanguages.join(', ')} subtext="All time" />
+                <InfoCard title="Most Used Languages" icon={Icons.github} value={mostUsedLanguages?.join(', ')} subtext="All time" />
                 <InfoCard title="Total Repositories" icon={Icons.github} value={totalRepositories} subtext="All time" />
                 <InfoCard title="Total Branches" icon={Icons.github} value={totalBranches} subtext="All time" />
             </div>

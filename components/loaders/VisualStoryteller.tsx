@@ -21,7 +21,6 @@ export default function VisualStoryteller() {
   });
   const scaleProgess = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
   const opacityProgess = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
-  const transformXprogress = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   useEffect(() => {
     setIsMobile(window.innerWidth <= 768);

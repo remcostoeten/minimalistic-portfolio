@@ -9,6 +9,7 @@ const BlogPreviews = lazy(() => import("@/components/landing/BlogPreviews"));
 const VisualStoryteller = lazy(() => import("@/components/loaders/VisualStoryteller"));
 import Spinner from '@/components/loaders/Spinners';
 import HeaderBar from '@/components/core/HeaderBar';
+import ArticleList from '@/components/blog/article-list';
 
 export default function page() {
   return (
@@ -31,6 +32,7 @@ export default function page() {
         <div id="articles">
           <Suspense fallback={<div><Spinner size='medium' /></div>}>
             <BlogPreviews />
+            <ArticleList />
           </Suspense>
         </div>
       </div >
