@@ -1,8 +1,10 @@
+'use client'
 import React from 'react';
 import ActivityStream from "@/components/dashboard/ActivityStream";
 import { DashboardNav } from "@/components/layout/DashboardNav";
 import DashboardNavigation from "@/components/layout/navbar";
 import { Navigation } from "@/core/types/types";
+import useAuthRedirect from '@/hooks/useAuthRoutes';
 
 
 const dashboardLinks: Navigation = {
@@ -53,7 +55,7 @@ interface DashboardLayoutProps {
 export default function DashboardLayout({
     children,
 }: DashboardLayoutProps) {
-    useRequireAuth(false, '/signin');
+    useAuthRedirect(false, '/signin');
 
     return (
         <div className="flex min-h-screen flex-col space-y-6">

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { auth } from "@/core/(database)/firebase";
 
 export default function useAuthRedirect(redirectIfAuthed = false, redirectUrl = '/') {
@@ -18,3 +18,4 @@ export default function useAuthRedirect(redirectIfAuthed = false, redirectUrl = 
 
         return () => unsubscribe();
     }, [router, redirectIfAuthed, redirectUrl]);
+}
