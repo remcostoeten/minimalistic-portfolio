@@ -29,10 +29,8 @@ export default function Grid() {
 
     return (
         <>
-            <LazyMotion feature
-core/config/.dependabot/config.yamls={domAnimation}>
-                <section
-                >
+            <LazyMotion feature={domAnimation}>
+                <section>
                     <div className="flex sm:mt-[60px] mt-4 mb-[60px] sm:flex-row flex-col-reverse gap-l max-md:items-stretch custom-height">
                         <div className="flex z-10 flex-col items-stretch sm:w-8/12">
                             <div className="flex grow flex-col gap-m">
