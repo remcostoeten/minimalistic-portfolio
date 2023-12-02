@@ -12,7 +12,7 @@ export default function DashboardNavigation() {
 
   return (
     <header className="flex justify-between items-center w-screen p-4 ">
-      <div className="contained flex justify-between items-center ml-20">
+      <div className="contained mx-auto flex justify-between items-center ml-20">
         <LogoIconAnimated />
         <div className="flex justify-between items-center w-screen">
           <div className="flex gap-6 contained">

@@ -36,7 +36,7 @@ export default function RootLayout({
     loadErrorMessages();
   }
   return (
-    <ApolloProvider client={GraphqlConnection}>
+    <ApolloProvider client={clienttt}>
       <ThemeContextProvider>
         <ActiveSectionContextProvider>
           <AnimatePresence mode='wait'>
