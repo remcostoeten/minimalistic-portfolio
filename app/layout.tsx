@@ -45,7 +45,12 @@ export default function RootLayout({
                 <NextTopLoader color="#fb8817" height={3.5} showSpinner={false} />
                 <TooltipProvider>
                   <Cursor />
-                  {children}
+                  <span className='absolute top-0 right-0 bg-gradient-to-r from-green-400 to-[##0E0E0E]'></span>
+                  <main className="mx-auto pt-8 px-6">
+                    <div className="contained">
+                      {children}
+                    </div>
+                  </main>
                   <Toaster invert />
                   <Analytics />
                 </TooltipProvider>
