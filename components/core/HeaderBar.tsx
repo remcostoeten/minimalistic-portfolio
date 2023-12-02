@@ -10,12 +10,21 @@ import { auth } from '@/core/(database)/firebase';
 import { Warning } from '@mui/icons-material';
 import { Button } from '@ui/button';
 
+const NavItem = ({ href, label }) => (
+    <li>
+        <Link href={href}>
+            <a className="text-lg font-medium hover:underline">{label}</a>
+        </Link>
+    </li>
+);
+
 export default function HeaderBar() {
     const whatsappUrl = `https://wa.me/${phoneNumber}`;
     const [isSticky, setIsSticky] = useState(false);
 
     const checkScroll = () => {
         setIsSticky(window.scrollY > 50);
+        console.log(window.scrollY)
     };
 
     useEffect(() => {
@@ -47,21 +56,9 @@ export default function HeaderBar() {
                         <span className="ml-2 text-xl font-semibold">Divjesschuiver</span>
                     </Link >
                     <ul className="flex gap-4 items-center">
-                        <li>
-                            <Link href="/dashboard">
-                                <Link className="text-lg font-medium hover:underline" href={''}>Dashboard</Link >
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#articles">
-                                <Link className="text-lg font-medium hover:underline" href={''}>Articles</Link >
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="#about">
-                                <Link className="text-lg font-medium hover:underline" href={''}>About</Link >
-                            </Link>
-                        </li>
+                        <NavItem href="/dashboard" label="Dashboard" />
+                        <NavItem href="#articles" label="Articles" />
+                        <NavItem href="#about" label="About" />
                         <li>
                             <Dropdown />
                         </li>
@@ -71,12 +68,12 @@ export default function HeaderBar() {
                             <span onClick={() => auth.signOut()}>Log out</span>
                         ) : (
                             <Link href='/signin'>
-                                Log in
+                                <a>Log in</a>
                             </Link>
                         )}
                     </Button>
                 </div>
-            </nav >
+            </nav>
         </>
-    )
+    );
 }
