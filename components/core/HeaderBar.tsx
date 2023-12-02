@@ -1,3 +1,4 @@
+
 'use client';
 import { phoneNumber } from '@/config/data';
 import Link from 'next/link';
@@ -7,7 +8,7 @@ import Logo from './Logo';
 import { toast } from 'sonner';
 import { auth } from '@/core/(database)/firebase';
 import { Warning } from '@mui/icons-material';
-import { Button } from '@nextui-org/react';
+import { Button } from '@ui/button';
 
 export default function HeaderBar() {
     const whatsappUrl = `https://wa.me/${phoneNumber}`;
@@ -15,6 +16,7 @@ export default function HeaderBar() {
 
     const checkScroll = () => {
         setIsSticky(window.scrollY > 50);
+        console.log(window.scrollY)
     };
 
     useEffect(() => {
@@ -36,7 +38,6 @@ export default function HeaderBar() {
             });
         }, 5000);
     }, [])
-
 
     return (
         <>
@@ -66,7 +67,7 @@ export default function HeaderBar() {
                             <Dropdown />
                         </li>
                     </ul>
-                    <Button variant='light' className="">
+                    <Button variant='white'>
                         {isLoggedIn ? (
                             <span onClick={() => auth.signOut()}>Log out</span>
                         ) : (

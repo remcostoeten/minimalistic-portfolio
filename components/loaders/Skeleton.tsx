@@ -1,3 +1,13 @@
+interface SkeletonBarProps {
+    width?: string;
+    height?: string;
+    additionalClasses?: string;
+}
+
+export const SkeletonBar: React.FC<SkeletonBarProps> = ({ width = 'full', height = '32', additionalClasses = '' }) => {
+    return <div className={`skeleton w-${width} h-${height} ${additionalClasses}`} />
+}
+
 const TableSkeleton = () => {
     return (
         <table className="min-w-full divide-y divide-gray-700 shadow-md text-white bg-gray-800">
