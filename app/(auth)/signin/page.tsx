@@ -1,19 +1,26 @@
-
 'use client';
+import { auth } from "@/core/(database)/firebase";
+import Link from "next/link";
+import React, { Suspense, useEffect, useState } from 'react';
 import Logo from "@/components/core/Logo";
 import { Icons } from "@/components/icons";
-import EmailPasswordForm from "@/components/user/EmailPasswordForm";
-import UserAuthForm from "@/components/user/user-auth-form";
-import { auth } from "@/core/(database)/firebase";
-import { pageTransition } from "@/core/utillities/animations";
-import { LazyMotion, domAnimation, m } from "framer-motion";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Suspense, useState } from 'react';
+import UserAuthForm from "@/components/user/user-auth-form";
+import { LazyMotion, domAnimation, m } from "framer-motion";
+import { pageTransition } from "@/core/utillities/animations";
+import EmailPasswordForm from "@/components/user/EmailPasswordForm";
 
 export default function Signin() {
   const [isMounted, setIsMounted] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   auth.onAuthStateChanged((user) => {
     if (user) {
@@ -54,4 +61,5 @@ export default function Signin() {
       </m.main>
     </LazyMotion>);
 }
+
 

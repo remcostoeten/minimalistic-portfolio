@@ -19,23 +19,11 @@ export default function page() {
         <meta name="description" content="Remco Stoeten - remcostoeten.com - Front-end developer" />
         <meta name="keywords" content={seoKeywords.join(', ')} />
       </Head>
-
       <HeaderBar />
-
-      <div className="contained mx-auto">
-        <Suspense fallback={<div><Spinner size='large' /></div>}>
-          <div id="about"><Grid /></div>
-          <div id="work">
-            <VisualStoryteller />
-          </div>
-        </Suspense>
-        <div id="articles">
-          <Suspense fallback={<div><Spinner size='medium' /></div>}>
-            <BlogPreviews />
-            <ArticleList />
-          </Suspense>
-        </div>
-      </div >
+      <Grid />
+      <VisualStoryteller />
+      <BlogPreviews />
+      <ArticleList />
     </>
   )
 }
