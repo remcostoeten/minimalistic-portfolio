@@ -1,4 +1,7 @@
 $fade-10: 500ms;
+$fade-20: 600ms;
+$fade-30: 700ms;
+$fade-40: 800ms;
 $fade-50: 1s;
 $fade-100: 1500ms;
 $fadeInDuration : 500ms;
@@ -22,7 +25,7 @@ $header-height: 80px;
     align-items: center;
     justify-content: center;
     transform: translate(-50px, 0px);
-    animation: FadeIn $fadeInDuration $fade-100 cubic-bezier(0.265, 0.32, 0.075, 1) forwards;
+    animation: FadeIn $fadeInDuration $fade-30 cubic-bezier(0.265, 0.32, 0.075, 1) forwards;
     background-color: rgb(13, 13, 13);
     border-radius: 20px;
     height: $header-height;
@@ -33,9 +36,10 @@ $header-height: 80px;
 
     @keyframes FadeIn {
         0% {
-            transform: translate(100px, 15px);
+            transform: translate(10px, 15px);
             opacity: 0;
             scale: .9;
+            transform: rotateY('55')
         }
 
         100% {

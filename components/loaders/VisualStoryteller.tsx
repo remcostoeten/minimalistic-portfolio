@@ -78,7 +78,7 @@ export default function VisualStoryteller() {
                     <h4 className="text-gray-200 text-lg font-medium regular-font">
                       {data.title}
                     </h4>
-                    <p className="text-gray-400 text-md self-start max-md:max-w-full">
+                    <p className="text-gray-400 text-md self-start max-md:max-w-full pb-2">
                       {data.description.split('\n').map((line, i) => (
                         <React.Fragment key={i}>
                           {line}

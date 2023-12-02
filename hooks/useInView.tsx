@@ -13,13 +13,11 @@ function useInView(options: Options): [Ref<any>, boolean] {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setIsVisible(true);
-        console.log("Element is in view!");
         if (options.freezeOnceVisible) {
           observer.unobserve(entry.target);
         }
       } else {
         setIsVisible(false);
-        console.log("Element is out of view!");
       }
     }, options);
 

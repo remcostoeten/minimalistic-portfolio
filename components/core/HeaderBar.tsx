@@ -16,7 +16,6 @@ export default function HeaderBar() {
 
     const checkScroll = () => {
         setIsSticky(window.scrollY > 50);
-        console.log(window.scrollY)
     };
 
     useEffect(() => {

@@ -21,7 +21,7 @@ export default function page() {
 
             <HeaderBar />
 
-            <div className="contained mx-auto">
+            <div className="contained mx-auto h-[400vh]">
                 <Suspense fallback={<div><Spinner size='large' /></div>}>
                     <div id="about"><Grid /></div>
                     <div id="work">
