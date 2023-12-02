@@ -9,7 +9,6 @@ import LogoIconAnimated from "../effects/RemcoLogoAnimated";
 
 
 export default function DashboardNavigation() {
-
   return (
     <header className="flex justify-between items-center w-screen p-4 ">
       <div className="contained mx-auto flex justify-between items-center ml-20">
