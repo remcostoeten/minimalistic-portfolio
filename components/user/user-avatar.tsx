@@ -6,7 +6,7 @@ import { auth, signOut } from '@/core/(database)/firebase';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '../ui/dropdown-menu';
 
 export default function UserAvatar() {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState<any>();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -24,6 +24,14 @@ export default function UserAvatar() {
         );
     }
 
+    const currentUser = getAuth().currentUser;
+
+    if (!currentUser) {
+        return null;
+    }
+
+    const photoURL = currentUser?.photoURL || '';
+
     return (
         <>
             {user && (
@@ -31,8 +39,9 @@ export default function UserAvatar() {
                     <DropdownMenuTrigger>
                         <div className="avatar">
                             <div className="w-20 rounded">
-                                <Image className='rounded-full scale-75' src={user.photoURL} alt={user.displayName} width={90} height={90} />
-                            </div></div>
+                                <Image className='rounded-full scale-75' src={photoURL} alt={currentUser.displayName} width={90} height={90} />
+                            </div>
+                        </div>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -43,5 +52,6 @@ export default function UserAvatar() {
                 </DropdownMenu>
             )}
         </>
-    )
+    );
 }
+
