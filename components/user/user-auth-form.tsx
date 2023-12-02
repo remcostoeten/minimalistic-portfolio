@@ -1,3 +1,4 @@
+'use client';
 import { Icons } from "@/components/icons";
 import { buttonVariants } from "@/components/ui/button";
 import signInWithProvider from "@/core/(database)/firebase";

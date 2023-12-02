@@ -1,11 +1,9 @@
-'use client'
-import { ActivityItem } from "@/components/activity/activity-item";
+import React from 'react';
 import ActivityStream from "@/components/dashboard/ActivityStream";
 import { DashboardNav } from "@/components/layout/DashboardNav";
 import DashboardNavigation from "@/components/layout/navbar";
-import clienttt from '@/core/(graphql)/ApolloClient';
 import { Navigation } from "@/core/types/types";
-import { ApolloProvider } from '@apollo/client';
+
 
 const dashboardLinks: Navigation = {
     data: [
@@ -55,6 +53,8 @@ interface DashboardLayoutProps {
 export default function DashboardLayout({
     children,
 }: DashboardLayoutProps) {
+    useRequireAuth(false, '/signin');
+
     return (
         <div className="flex min-h-screen flex-col space-y-6">
             <DashboardNavigation />

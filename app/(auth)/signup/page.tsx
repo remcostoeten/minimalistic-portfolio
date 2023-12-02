@@ -53,13 +53,13 @@ export default function Signin() {
           </Suspense>
           <p className="px-8 text-center text-sm text-muted-foreground">
             Already have an account?{" "}
-            <Link href='/signin' className="hover:text-brand underline underline-offset-4">
-              Sign in
+            <Link href='/signin' className="hover:text-brand underline  text-white font-bold cursor-pointe underline-offset-4">
+              Log In
             </Link>
           </p>
         </div>
-      </m.main>
-    </LazyMotion>
+      </m.main >
+    </LazyMotion >
   );
 }
 

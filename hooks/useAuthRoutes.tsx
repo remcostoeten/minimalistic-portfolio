@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { auth } from "@/core/(database)/firebase";
 
-export function useAuthRedirect(redirectIfAuthed = false, redirectUrl = '/') {
+export default function useAuthRedirect(redirectIfAuthed = false, redirectUrl = '/') {
     const router = useRouter();
 
     useEffect(() => {
