@@ -78,7 +78,9 @@ export default function HeaderBar() {
                             </Link>
                         </li>
                         <li>
-                            <Dropdown />
+                            <Link href="#blackjack">
+                                <span className="text-lg font-medium hover:underline" >Blackjack</span >
+                            </Link>
                         </li>
                     </ul>
                     <Button variant='white'>
