@@ -30,8 +30,9 @@ const contactLinks = [
         text: "WhatsApp",
     },
 ];
+import React from 'react'
 
-const ContactComponent = () => {
+export default function footer() {
     return (
         <div className="b mx-auto">
             <h2 className="text-3xl font-bold mt-20 mb-10">Contact</h2>
@@ -72,3 +73,6 @@ const ContactComponent = () => {
 };
 
 export default ContactComponent;
+        <div>footer</div>
+    )
+}

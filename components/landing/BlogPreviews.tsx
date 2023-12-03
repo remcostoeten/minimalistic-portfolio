@@ -41,21 +41,12 @@ export default function LatestBlogSingle() {
 
     return (
         <>
-            <motion.div
 
-                ref={ref}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 0, y: 0 }}
-                transition={{ duration: fadeInDelays100[15], delay: fadeInDelays100[12] }}
-                style={{
-                    scale: scaleProgess,
-                    transform: `translateX(${transformXprogress}%)`,
-                    opacity: opacityProgess,
-                }}
-                className='flex gap-4 flex-col'>
-                <SectionTitle>
-                    Somesomesomething
-                </SectionTitle>
+            <div className='flex gap-4 flex-col'>
+                <SectionTitle><motion.span
+                    initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[12] }}
+                >Some blogs & snippets</motion.span> </SectionTitle>
+
                 <div className='blog-preview'>
                     {blogPosts.map((post, index) => (
                         <motion.div
