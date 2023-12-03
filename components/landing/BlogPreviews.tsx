@@ -147,7 +147,7 @@ export default function LatestBlogSingle() {
                         </Link>
                     </Button>
                 </div>
-            </motion.div >
+            </div >
         </>
     )
 }
