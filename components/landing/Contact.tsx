@@ -17,7 +17,7 @@ export default function Contact() {
                             <p className="">Contact</p>
                         </div>
                         <div className="style-72">
-                            <div className="style-73">
+     1                         <div className="style-73">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 256 256"

@@ -6,7 +6,6 @@ import Image from 'next/image';
 import ShowcaseLabel from '../core/Labels';
 import { ProjectData } from '@/config/data/ProjectData';
 import { Link, Button } from "@nextui-org/react";
-
 import useInView from '@/hooks/useInView';
 import { SectionTitle } from '../core/Typography';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -35,8 +34,13 @@ export default function VisualStoryteller() {
   return (
     <>
       <SectionTitle>
-        Things I made
-      </SectionTitle>
+        <motion.span
+          initial={{ opacity: 0, y: 20, x: 15 }}
+          animate={{ opacity: .5, y: 0, x: 0 }}
+          transition={{ duration: .6, delay: 1 }}>
+          Things I made
+        </motion.span>
+      </SectionTitle >
       <div style={{
         maxHeight: isExpanded ? (window.innerWidth <= 768 ? '650px' : '2250px') : '1000px',
         overflow: 'hidden',
