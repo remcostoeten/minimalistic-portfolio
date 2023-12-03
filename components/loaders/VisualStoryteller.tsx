@@ -132,9 +132,12 @@ export default function VisualStoryteller() {
             View Less
           </Button>
         ) : (
-          <><div className='fade absolute'></div><Button variant='ghost' onClick={handleReadMoreClick} className="block sm:flex mt-10 fade-in">
-            View more
-          </Button></>
+          <>
+            <div className='fade absolute'>
+            </div>
+            <Button variant='ghost' onClick={handleReadMoreClick} className="block sm:flex mt-10 fade-in">
+              View more
+            </Button></>
         )}
       </motion.span >
     </>

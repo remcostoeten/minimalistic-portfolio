@@ -2,7 +2,8 @@
 
 import { m } from "framer-motion";
 import useInView from "@/hooks/useInView";
-import Link from "next/link";
+import { ArrowRightToLine } from "lucide-react";
+import { Link, Button } from "@nextui-org/react";
 
 export default function ArticleList() {
     const [ref, inView] = useInView({ threshold: 0.1 });
@@ -42,11 +43,11 @@ export default function ArticleList() {
                     </m.li>
                 ))}
             </ul>
-            <Link href='https://snippets.remcostoeten.com/' target="_blank"
-                className="inline-flex items-center justify-center rounded-xl text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-14 px-6 py-2 w-max text-[#d6d3d1] hover:text-white border-[#57534e] hover:border-white transition-colors ease-bezier inline-flex w-full p-40 mt-4"
+            <Button variant='ghost' className="block sm:flex mt-10 fade-in" as={Link}
+                href="https://snippets.remcostoeten.com" target="_blank" aria-label="click here to see more snippets"
             >
-                Read more on my snippets page
-            </Link>
+                More snippets <ArrowRightToLine />
+            </Button>
         </div>
     );
 }

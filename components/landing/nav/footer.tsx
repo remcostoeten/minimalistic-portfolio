@@ -1,5 +1,4 @@
 import Icon from '@/components/icons/icons';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { EmailOutlined, LinkedIn, WhatshotSharp } from '@mui/icons-material';
 import { Github } from 'lucide-react';
@@ -7,6 +6,7 @@ import React from 'react';
 import Link from 'next/link'; // Make sure to import the appropriate Link component
 import { Textarea } from '@nextui-org/react';
 import { BsWhatsapp } from 'react-icons/bs';
+import { Button } from "@nextui-org/react";
 
 const contactLinks = [
     {
@@ -41,6 +41,7 @@ const ContactComponent = () => {
                         key={index}
                         className="group flex-1 p-4 border border-[#57534e] hover:border-gray-500 transition-all"
                         href={link.href}
+                        target='_blank'
                     >
                         <div className="text-gray-400 group-hover:translate-y-[-5px] transition-transform">
                             {link.icon}
@@ -59,7 +60,9 @@ const ContactComponent = () => {
                         placeholder="Sooo... u tell me."
                     />
                 </div>
-                <Button>Send</Button>
+                <Button className='mt-8' variant='ghost'>
+                    Send
+                </Button>
             </form>
             <div className="text-center text-gray-500 mt-16">
                 <p>© 2023 - remcostoeten</p>
