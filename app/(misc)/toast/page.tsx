@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { toast } from 'remcostoeten';
+import { toast } from 'sonner';
 
 const ToastTestPage = () => {
     const [message, setMessage] = useState('');

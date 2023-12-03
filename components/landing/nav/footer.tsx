@@ -4,17 +4,37 @@ import { motion } from "framer-motion";
 import { FaPaperPlane } from "react-icons/fa";
 import { useSectionInView } from "@/hooks/inView";
 import { sendEmail } from "@/core/email/SendEmail";
-import { toast } from 'remcostoeten';
-import { experimental_useFormStatus as useFormStatus } from 'react-dom'
+import { toast } from 'sonner';
+import { useFormStatus } from 'react-dom'
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
+import { EmailOutlined, LinkedIn } from "@mui/icons-material";
+import { Github } from "lucide-react";
+import { BsWhatsapp } from "react-icons/bs";
+import { useState } from "react";
+
 export default function Contact() {
     const { ref } = useSectionInView("Contact");
-    const { pending } = useFormStatus();
+    const [isSending, setIsSending] = useState(false);
 
+    const handleFormSubmit = async (formData) => {
+        setIsSending(true);
+        const { data, error } = await sendEmail(formData);
+
+        if (error) {
+            toast.error(error);
+            setIsSending(false);
+            return;
+        }
+
+        toast.success("Email sent successfully!");
+        setIsSending(false);
+    };
     return (
         <motion.section
             id="contact"
             ref={ref}
-            className="mb-20 sm:mb-28 w-[min(100%,38rem)] text-center"
+            className="mb-20 sm:mb-28 max-w-6.12"
             initial={{
                 opacity: 0,
             }}
@@ -28,17 +48,24 @@ export default function Contact() {
                 once: true,
             }}
         >
-
-            <p className="text-gray-700 -mt-6 dark:text-white/80">
-                Please contact me directly at{" "}
-                <a className="underline" href="mailto:example@gmail.com">
-                    example@gmail.com
-                </a>{" "}
-                or through this form.
-            </p>
+            <h2 className="text-3xl font-bold mt-20 mb-10">Contact</h2>
+            <div className="flex flex-wrap gap-8 mb-16">
+                {contactLinks.map((link, index) => (
+                    <Link
+                        key={index}
+                        className="group flex-1 p-4 border border-[#57534e] hover:border-gray-500 transition-all"
+                        href={link.href}
+                    >
+                        <div className="text-gray-400 group-hover:translate-y-[-5px] transition-transform">
+                            {link.icon}
+                        </div>
+                        <span className="mt-2 block text-sm">{link.text}</span>
+                    </Link>
+                ))}
+            </div>
 
             <form
-                className="mt-10 flex flex-col dark:text-black"
+                className="mt-10 flex gap-2 flex-col dark:text-black"
                 action={async (formData) => {
                     const { data, error } = await sendEmail(formData);
 
@@ -50,8 +77,8 @@ export default function Contact() {
                     toast.success("Email sent successfully!");
                 }}
             >
-                <input
-                    className="h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+                <Input
+                    className="h-14 px-4 rounded-lg bg-none borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none !bg-zinc-950 "
                     name="senderEmail"
                     type="email"
                     required
@@ -59,7 +86,7 @@ export default function Contact() {
                     placeholder="Your email"
                 />
                 <textarea
-                    className="h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+                    className="min-h-[200px] flex h-10 w-full rounded-md border px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-800 dark:bg-zinc-950 dark:ring-offset-zinc-950 dark:placeholder:text-zinc-400 dark:focus-visible:ring-zinc-300 bg-transparent border-gray-700e"
                     name="message"
                     placeholder="Your message"
                     required
@@ -68,9 +95,9 @@ export default function Contact() {
                 <button
                     type="submit"
                     className="group flex items-center justify-center gap-2 h-[3rem] w-[8rem] bg-gray-900 text-white rounded-full outline-none transition-all focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 dark:bg-white dark:bg-opacity-10 disabled:scale-100 disabled:bg-opacity-65"
-                    disabled={pending}
+                    disabled={isSending}
                 >
-                    {pending ? (
+                    {isSending ? (
                         <div className="h-5 w-5 animate-spin rounded-full border-b-2 border-white"></div>
                     ) : (
                         <>
@@ -98,28 +125,28 @@ export default function Contact() {
 // import { useFormStatus } from 'react-dom';
 // import { useForm } from 'react-hook-form';
 
-// const contactLinks = [
-//     {
-//         href: "mailto:remcosteoten@hotmail.com",
-//         icon: <EmailOutlined />,
-//         text: "remcosteoten@hotmail.com",
-//     },
-//     {
-//         href: "https://www.linkedin.com/in/remcostoeten",
-//         icon: <LinkedIn />,
-//         text: "/in/remcostoeten",
-//     },
-//     {
-//         href: "https://github.com/remcostoeten",
-//         icon: <Github />,
-//         text: "@remcostoeten",
-//     },
-//     {
-//         href: "https://wa.me/3636590707",
-//         icon: <BsWhatsapp />,
-//         text: "WhatsApp",
-//     },
-// ];
+const contactLinks = [
+    {
+        href: "mailto:remcosteoten@hotmail.com",
+        icon: <EmailOutlined />,
+        text: "remcosteoten@hotmail.com",
+    },
+    {
+        href: "https://www.linkedin.com/in/remcostoeten",
+        icon: <LinkedIn />,
+        text: "/in/remcostoeten",
+    },
+    {
+        href: "https://github.com/remcostoeten",
+        icon: <Github />,
+        text: "@remcostoeten",
+    },
+    {
+        href: "https://wa.me/3636590707",
+        icon: <BsWhatsapp />,
+        text: "WhatsApp",
+    },
+];
 
 // export type FormData = {
 //     name: string;

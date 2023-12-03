@@ -1,4 +1,3 @@
-import { m } from 'framer-motion';
 import React from 'react';
 import clsx from 'clsx';
 
@@ -10,15 +9,8 @@ type TypographyProps = {
     className?: string;
 };
 
-const motionProps = {
-    initial: { opacity: 0, y: 25 },
-    transition: { duration: .4, delay: .6 },
-    animate: { opacity: 1, y: 0 }
-};
-
 const Typography = ({ as: Component = 'div', className, children, isGeist }: TypographyProps & { as?: keyof JSX.IntrinsicElements, className: string }) => (
-    React.createElement(m[Component], {
-        ...motionProps,
+    React.createElement(Component, {
         className: clsx(className, { 'geist': isGeist })
     }, children)
 );
