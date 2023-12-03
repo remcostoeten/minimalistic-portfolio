@@ -1,3 +1,4 @@
+
 'use client';
 import Logo from '@/components/core/Logo';
 import Navigation from '@/components/core/Navigation';
@@ -23,6 +24,7 @@ const reveal = {
 
 const menuItemAnimation = {
     hidden: { opacity: 0, y: 35, x: 15 },
+    
     show: { opacity: 1, y: 0, x: 0 },
     transition: {
         staggerChildren: 0.3,

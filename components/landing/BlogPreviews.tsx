@@ -17,16 +17,45 @@ export default function LatestBlogSingle() {
     const scaleProgess = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
     const opacityProgess = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
     const transformXprogress = useTransform(scrollYProgress, [0, 1], [0, 100]);
+    const articles = [
+        { title: "Environment variables in NextJS", anchor: "https://snippets.remcostoeten.com/Components-nextjs-react/env" },
+        { title: "UseMouseHover hook in NextJS", anchor: "https://snippets.remcostoeten.com/Components-nextjs-react/hover-hook" },
+        { title: "My ZSH config", anchor: "https://snippets.remcostoeten.com/Linux/zshrc-config" },
+        { title: "Fix git upstream prior to pushing", anchor: "https://snippets.remcostoeten.com/Miscellaneous/git-upstream" },
+        { title: "Protect routes with password in NextJS", anchor: "https://snippets.remcostoeten.com/Components-nextjs-react/password-protected-route" },
+    ];
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
+    const childVariants = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                duration: 0.5
+            }
+        }
+    };
+
     return (
         <>
             <div className='flex gap-4 flex-col'>
                 <SectionTitle><motion.span
                     initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[12] }}
                 >Somesomesomething</motion.span> </SectionTitle>
-                <div className='blog-preview  '>
+                <div className='blog-preview'>
                     {blogPosts.map((post, index) => (
                         <motion.div
                             ref={ref}
+                            transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[15] }}
                             style={{
                                 scale: scaleProgess,
                                 transform: `translateX(${transformXprogress}%)`,
@@ -104,6 +133,61 @@ export default function LatestBlogSingle() {
                     ))}
                 </div>
             </div>
+            <motion.div className="mt-10"
+                variants={containerVariants}
+                initial="hidden"
+                animate="show"
+            >
+                <ul>
+                    {articles.map((article, index) => (
+                        <motion.li
+                            ref={ref}
+                            style={{
+                                scale: scaleProgess,
+                                transform: `translateX(${transformXprogress}%)`,
+                                opacity: opacityProgess,
+                            }}
+                            className="group"
+                            key={index}
+                            variants={childVariants}
+                        >
+                            <Link target="_blank"
+                                className="flex px-2 py-4 justify-between items-center text-[#d6d3d1] hover:text-white border-[#57534e] hover:border-white group-hover:translate-x-1 transition-transform transition-colors ease-bezier"
+                                href={article.anchor}
+                            >
+                                <span>{article.title}</span>
+                                <IconAngleupright className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </Link>
+                            <hr className="border-[#57534e] hover:border-white transition-colors ease-bezier" />
+                        </motion.li>
+                    ))}
+                </ul>
+                <Link href='https://snippets.remcostoeten.com/' target="_blank"
+                    className="inline-flex items-center justify-center rounded-xl text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-14 px-6 py-2 w-max text-[#d6d3d1] hover:text-white border-[#57534e] hover:border-white transition-colors ease-bezier w-full p-40 mt-4"
+                >
+                    Read more on my snippets page
+                </Link>
+            </motion.div >
         </>
     )
+}
+
+function IconAngleupright(props) {
+    return (
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <path d="M7 7h10v10" />
+            <path d="M7 17 17 7" />
+        </svg>
+    );
 }

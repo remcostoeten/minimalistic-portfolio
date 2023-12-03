@@ -10,6 +10,8 @@ const VisualStoryteller = lazy(() => import("@/components/loaders/VisualStorytel
 import Spinner from '@/components/loaders/Spinners';
 import HeaderBar from '@/components/core/HeaderBar';
 import ArticleList from '@/components/blog/article-list';
+import Contact from '@/components/landing/Contact';
+import ContactComponent from '@/components/landing/nav/footer';
 
 export default function page() {
   return (
@@ -23,7 +25,7 @@ export default function page() {
       <Grid />
       <VisualStoryteller />
       <BlogPreviews />
-      <ArticleList />
+      <ContactComponent />
     </>
   )
 }

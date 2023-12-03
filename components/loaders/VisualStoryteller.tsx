@@ -56,7 +56,6 @@ export default function VisualStoryteller() {
               ref={ref}
               style={{
                 scale: scaleProgess,
-                opacity: opacityProgess,
               }}
               id="projects"
               key={index}
