@@ -43,20 +43,16 @@ export default function Signin() {
           <div className="flex flex-col space-y-2 text-center items-center">
             <Logo />
             <p className="inter text-2xl font-semibold tracking-tight">Welcome back</p>
-            <div className="text-sm text-muted-foreground">
-              Enter your email to sign in
-            </div>
-            <p className="px-8 text-center text-sm text-muted-foreground">
-              Don't have an account?{" "}
-              <Link href='/signup' className="hover:text-brand underline underline-offset-4">
-                Sign up
-              </Link>
+            <p className="text-sm text-muted-foreground">
+              Enter your email to sign in to your account
             </p>
           </div>
-        </div>
-      </m.main>
-    </LazyMotion>
-  );
+          <Suspense fallback={<div className='flex gap-2'><div className="skeleton h-8 w-full"></div></div>}>
+            <EmailPasswordForm />
+            <UserAuthForm />
+          </Suspense>
+          <p className="px-8 text-center text-sm text-muted-foreground">
+            Don't have an account?{" "}
             <Link href='/signup' className="hover:text-brand underline underline-offset-4">
               Sign up
             </Link>
