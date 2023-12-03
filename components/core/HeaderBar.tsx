@@ -9,6 +9,8 @@ import { toast } from 'sonner';
 import { auth } from '@/core/(database)/firebase';
 import { Warning } from '@mui/icons-material';
 import { Button } from '@ui/button';
+import SwappingWords from '../effects/SwappingWords';
+import { SubTitle } from './Typography';
 
 export default function HeaderBar() {
     const whatsappUrl = `https://wa.me/${phoneNumber}`;
@@ -42,24 +44,37 @@ export default function HeaderBar() {
         <>
             <nav className={`header-bar navbar mt-10 ${isSticky ? 'sticky' : ''}`}>
                 <div className="flex justify-between items-center p-5 w-full">
-                    <Link href='' className="flex items-center list-none">
+
+                    <Link href='/' className="gap-4 flex items-center list-none">
+
+
                         <Logo />
-                        <span className="ml-2 text-xl font-semibold">Divjesschuiver</span>
+
+                        <SubTitle isGeist>
+                            <SwappingWords
+                                words={[
+                                    'Remco Stoeten',
+                                    'A simple divjesschuiver 🚀',
+                                    'Recovering magento dev 🏆',
+                                    'Master of unfinished projects 🎯'
+                                ]}
+                            />
+                        </SubTitle>
                     </Link >
                     <ul className="flex gap-4 items-center">
                         <li>
                             <Link href="/dashboard">
-                                <Link className="text-lg font-medium hover:underline" href={''}>Dashboard</Link >
+                                <span className="text-lg font-medium hover:underline" >Dashboard</span >
                             </Link>
                         </li>
                         <li>
                             <Link href="#articles">
-                                <Link className="text-lg font-medium hover:underline" href={''}>Articles</Link >
+                                <span className="text-lg font-medium hover:underline" >Articles</span >
                             </Link>
                         </li>
                         <li>
                             <Link href="#about">
-                                <Link className="text-lg font-medium hover:underline" href={''}>About</Link >
+                                <span className="text-lg font-medium hover:underline" >About</span >
                             </Link>
                         </li>
                         <li>
