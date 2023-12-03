@@ -141,7 +141,6 @@ export default function LatestBlogSingle() {
                 <ul>
                     {articles.map((article, index) => (
                         <motion.li
-                            ref={ref}
                             style={{
                                 scale: scaleProgess,
                                 transform: `translateX(${transformXprogress}%)`,
