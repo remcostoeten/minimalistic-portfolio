@@ -44,7 +44,10 @@ export default function HeaderBar() {
         <>
             <nav className={`header-bar navbar mt-10 ${isSticky ? 'sticky' : ''}`}>
                 <div className="flex justify-between items-center p-5 w-full">
-                    <Link href='' className="flex gap-4 items-center list-none">
+
+                    <Link href='/' className="flex items-center list-none">
+
+
                         <Logo />
 
                         <SubTitle isGeist>
