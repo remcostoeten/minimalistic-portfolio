@@ -50,7 +50,7 @@ export default function LatestBlogSingle() {
             <div className='flex gap-4 flex-col'>
                 <SectionTitle><motion.span
                     initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[12] }}
-                >Somesomesomething</motion.span> </SectionTitle>
+                >Some blogs & snippets</motion.span> </SectionTitle>
                 <div className='blog-preview'>
                     {blogPosts.map((post, index) => (
                         <motion.div
