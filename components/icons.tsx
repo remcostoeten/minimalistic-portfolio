@@ -26,7 +26,6 @@ import { FaUserAlt, FaSort } from "react-icons/fa"
 import { ImSpinner8, ImStatsBars } from "react-icons/im"
 import { RxDashboard, RxMixerHorizontal } from "react-icons/rx"
 import { LuSettings } from "react-icons/lu"
-
 export type IconKeys = keyof typeof icons
 
 type IconsType = {

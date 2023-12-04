@@ -1,5 +1,8 @@
+import { useQuery } from "@apollo/client";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectValue } from "../ui/select";
 import { SelectTriggerNoBg } from "../ui/selectnobg";
+import { GET_COMMITS } from "../(database)/graphql/queries/CommitQuery";
+import Spinner from "../loaders/Spinners";
 
 export default function ActivityStream() {
   type ActivityStreamProps = {
@@ -12,27 +15,44 @@ export default function ActivityStream() {
       <p className="text-[12px]  text-[#989898] ml-[32px]">{date} - {author}</p>
     )
   }
+  const { loading, error, data } = useQuery(GET_COMMITS, {
+    variables: { login: "remcostoeten" },
+  });
 
-  const activities = [
-    {
-      title: '147 files were uploaded to Basic bucket',
-      date: 'January 6, 2023',
-      author: 'Leonard Lauren',
-      icon: IconDownload,
-    },
-    {
-      title: '2 users were added to manage Basic bucket',
-      date: 'February 05, 2023',
-      author: 'Leonard Lauren',
-      icon: IconUpload,
-    },
-    {
-      title: '1 folder was added to Basic bucket',
-      date: 'March 12, 2023',
-      author: 'Jerome Bell',
-      icon: IconEdit,
-    },
-  ];
+  if (loading) return <Spinner />;
+  if (error) return `Error! ${error.message}`;
+
+  console.log(data);
+  if (!data?.user?.repositories?.nodes[0]?.defaultBranchRef) {
+    return 'No data available';
+  }
+
+  const activities = data.user.repositories.nodes[0].defaultBranchRef.target.history.nodes.map((node: any) => ({
+    title: node.messageHeadline,
+    date: new Date(node.committedDate).toLocaleDateString(),
+    author: node.author.user.name,
+    icon: IconEdit, // replace with appropriate icon
+  }));
+  // const activities = [
+  //   {
+  //     title: '147 files were uploaded to Basic bucket',
+  //     date: 'January 6, 2023',
+  //     author: 'Leonard Lauren',
+  //     icon: IconDownload,
+  //   },
+  //   {
+  //     title: '2 users were added to manage Basic bucket',
+  //     date: 'February 05, 2023',
+  //     author: 'Leonard Lauren',
+  //     icon: IconUpload,
+  //   },
+  //   {
+  //     title: '1 folder was added to Basic bucket',
+  //     date: 'March 12, 2023',
+  //     author: 'Jerome Bell',
+  //     icon: IconEdit,
+  //   },
+  // ];
 
 
   return (

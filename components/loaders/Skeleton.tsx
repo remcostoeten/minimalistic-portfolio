@@ -1,12 +1,15 @@
-interface SkeletonBarProps {
-    width?: string;
-    height?: string;
+type SkeletonBarProps = {
+    width?: string | number;
+    height?: string | number;
     additionalClasses?: string;
-}
+};
 
 export const SkeletonBar: React.FC<SkeletonBarProps> = ({ width = 'full', height = '32', additionalClasses = '' }) => {
-    return <div className={`skeleton w-${width} h-${height} ${additionalClasses}`} />
-}
+    const widthClass = typeof width === 'number' ? `w-${width}px` : `w-${width}`;
+    const heightClass = typeof height === 'number' ? `h-${height}px` : `h-${height}`;
+
+    return <div className={`skeleton ${widthClass} ${heightClass} ${additionalClasses}`} />;
+};
 
 const TableSkeleton = () => {
     return (

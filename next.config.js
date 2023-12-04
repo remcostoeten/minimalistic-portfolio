@@ -4,7 +4,7 @@ const nextConfig = {
     serverActions: true,
   },
   images: {
-    domains: ['lh3.googleusercontent.com', 'avatars.githubusercontent.com', 'cdn.dribbble.com'],
+    domains: ['lh3.googleusercontent.com', 'avatars.githubusercontent.com', 'cdn.dribbble.com', 'dribbble.com'],
   },
 };
 
