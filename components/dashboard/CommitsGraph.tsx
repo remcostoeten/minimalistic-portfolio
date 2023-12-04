@@ -5,34 +5,20 @@ import Chart from 'chart.js/auto';
 Chart.register(CategoryScale, BarController, LinearScale, TimeScale, PointElement, LineElement, Tooltip, Legend);
 
 interface CommitsGraphProps {
-    labels: string[];
-    data: number[];
-    secondData?: number[]; // Add a second data set for comparison
-    isLoading: boolean; // Add a loading state
+    githubData: any; // Replace 'any' with the actual type of your githubData
+    isLoading: boolean;
 }
+export const CommitsGraph: React.FC<CommitsGraphProps> = ({ githubData, isLoading }) => {
+    const labels = githubData?.commitsLabels || [];
+    const data = githubData?.user.repositories.nodes.map(repo => repo.defaultBranchRef?.target.history.totalCount || 0) || [];
 
-export const CommitsGraph: React.FC<CommitsGraphProps> = ({ labels, data, isLoading }) => {
     const chartData = {
         labels: labels,
         datasets: [{
-            label: '# of Votes',
+            label: '# of Commits',
             data: data,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
             borderWidth: 1
         }]
     };
@@ -40,10 +26,10 @@ export const CommitsGraph: React.FC<CommitsGraphProps> = ({ labels, data, isLoad
     if (isLoading) {
         return (
             <div className="flex flex-col gap-4 w-52">
-                <div className="skeleton h-32 w-full"></div>
-                <div className="skeleton h-4 w-28"></div>
-                <div className="skeleton h-4 w-full"></div>
-                <div className="skeleton h-4 w-full"></div>
+                <div className="skeleton h-32 w-full bg-gray-800"></div>
+                <div className="skeleton h-4 w-28 bg-gray-800"></div>
+                <div className="skeleton h-4 w-full bg-gray-800"></div>
+                <div className="skeleton h-4 w-full bg-gray-800"></div>
             </div>
         );
     }
@@ -55,13 +41,27 @@ export const CommitsGraph: React.FC<CommitsGraphProps> = ({ labels, data, isLoad
                 responsive: true,
                 plugins: {
                     legend: {
-                        // Add legend options here
+                        labels: {
+                            color: 'rgba(255, 255, 255, 0.87)'
+                        }
                     },
                     title: {
-                        // Add title options here
+                        color: 'rgba(255, 255, 255, 0.87)'
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 0.87)'
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 0.87)'
+                        }
                     }
                 }
             }}
         />
-    )
+    );
 }

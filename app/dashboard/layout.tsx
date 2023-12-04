@@ -29,6 +29,12 @@ const dashboardLinks: Navigation = {
             href: "/dashboard/todo/firebase-post-and-fetch",
             icon: "database",
         },
+
+        {
+            title: "Repository mutation",
+            href: "/dashboard/repo-mutation",
+            icon: "database",
+        },
         {
             title: "Settings",
             href: "/dashboard/settings",

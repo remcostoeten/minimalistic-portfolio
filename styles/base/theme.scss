@@ -1,4 +1,4 @@
-$contained: 80vw    ;
+$contained: 80vw;
 
 body,
 html {
@@ -8,7 +8,12 @@ html {
 }
 
 .contained {
-    max-width: $contained;
+    max-width: 60vw;;
+
+    @media (max-width: 16800px) {
+        max-width: $contained;
+    }
+
     margin: 0 auto;
 
     @media (max-width: 1280px) {

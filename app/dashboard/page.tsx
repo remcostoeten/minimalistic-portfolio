@@ -1,3 +1,4 @@
+
 'use client';
 import { GET_TOTAL_REPOSITORIES_AND_COMMITS } from '@/components/(database)/graphql/queries/GetTotalReposQuery';
 import { CommitsGraph } from '@/components/dashboard/CommitsGraph';
@@ -79,7 +80,9 @@ export default function Page(): JSX.Element {
     const secondData = [5, 15, 25, 35];
     const { loading, error, totalCommits, mostUsedLanguages, totalRepositories, totalBranches, mostActiveRepo, commitsLabels } = useGithubData('remcostoeten');
 
-    const DataCard: React.FC<DashboardProps> = ({ title, icon, value, subtext, loading }) => {
+    const DataCard: React.FC<DashboardProps> = ({ title, icon, value, subtext }) => {
+        const isLoading = value === null;
+
         return (
             <Card>
                 <CardHeader>
@@ -88,11 +91,11 @@ export default function Page(): JSX.Element {
                     </div>
                 </CardHeader>
                 <CardContent>
-                    {loading ? (
+                    {isLoading ? (
                         <SkeletonBar width='100%' />
                     ) : (
                         <>
-                            <div className="text-2xl font-bold">{value || <SkeletonBar />}</div>
+                            <div className="text-2xl font-bold">{value}</div>
                             <p className="text-xs text-muted-foreground">{subtext}</p>
                         </>
                     )}
@@ -100,8 +103,6 @@ export default function Page(): JSX.Element {
             </Card>
         );
     };
-
-    if (loading) return <SkeletonBar /> as JSX.Element;
 
     if (error) {
         return (
@@ -117,24 +118,44 @@ export default function Page(): JSX.Element {
     return (
         <>
             <Shell>
-                <IntroWrapper subtitle="3" title="Metrics" />
+                <IntroWrapper subtitle="2023" title="Metrics" ><p>Here goes some random paragraph text to fill the space with conent i also dont kno.</p></IntroWrapper>
                 <DashboardHeader heading={`So ${user?.displayName}'s....`} text="here are your 2023 Github metrics 💡🎯.">
                     <DateRangePicker />
                 </DashboardHeader>
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                    <img src='https://dribbble.com/shots/20709368-datadock-web-design-visuals-app' width={600} height={600} alt='d' />
-                    <CommitsGraph labels={commitsLabels} data={totalRepositories} secondData={[]} isLoading={false} />
-                    <Suspense fallback={<CardSkeleton />}>
-                        <CommitsGraph labels={labels} data={data} secondData={secondData} isLoading={false} />
-                    </Suspense>
+                {/* <img src='/dash1552.png' width={600} height={600} alt='d' /> */}
+                <div className="grid gap-4 grid-cols-">
                     <DataCard
                         title="Most Active Repository"
                         icon={Icons.github}
-                        value={mostActiveRepo?.name || <CardSkeleton />}
+                        value={mostActiveRepo?.name || <SkeletonBar />}
                         subtext={`Commits: ${Number(mostActiveRepo?.defaultBranchRef?.target.history.totalCount) || 0}`} loading={loading}
                     />
+                    <DataCard
+                        title="Total Commits"
+                        icon={Icons.github}
+                        value={totalCommits || <SkeletonBar />}
+                        subtext="" loading={loading}
+                    />
+                    <DataCard
+                        title="Total Repositories"
+                        icon={Icons.github}
+                        value={totalRepositories || <SkeletonBar />}
+                        subtext="" loading={loading}
+                    />
+                    <DataCard
+                        title="Total Branches"
+                        icon={Icons.github}
+                        value={totalBranches || <SkeletonBar />}
+                        subtext="" loading={loading}
+                    />
+                    <DataCard
+                        title="Most Used Languages"
+                        icon={Icons.github}
+                        value={mostUsedLanguages?.map(([language, count]) => `${language}: ${count}`).join(', ') || <SkeletonBar />}
+                        subtext="" loading={loading}
+                    />
                 </div>
-            </Shell>
+            </Shell >
         </>
     );
 }

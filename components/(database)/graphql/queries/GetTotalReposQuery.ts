@@ -57,12 +57,3 @@ export const GET_REPOSITORIES_AND_LANGUAGES = gql`
   }
 `;
 
-export const GET_TOTAL_BRANCH_COUNT = gql`
-  query GetTotalBranchCount($owner: String!, $name: String!) {
-    repository(owner: $owner, name: $name) {
-      refs(refPrefix: "refs/heads/") {
-        totalCount
-      }
-    }
-  }
-`;
