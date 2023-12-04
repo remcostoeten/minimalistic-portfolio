@@ -43,7 +43,7 @@ export default function HeaderBar() {
     return (
         <>
             <nav className={`header-bar navbar mt-10 ${isSticky ? 'sticky' : ''}`}>
-                <div className="flex justify-between items-center p-5 w-full">
+                <div className="flex justify-between items-center py-5  w-full">
 
                     <Link href='/' className="gap-4 flex items-center list-none">
 

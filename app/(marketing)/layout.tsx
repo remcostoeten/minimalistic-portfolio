@@ -46,7 +46,7 @@ export default function RootLayout({
                 <TooltipProvider>
                   <Cursor />
                   <span className='absolute top-0 right-0 bg-gradient-to-r from-green-400 to-[##0E0E0E]'></span>
-                  <main className="mx-auto pt-8 px-6">
+                  <main className="mx-auto pt-8 sm:px-0 px-6">
                     <div className="contained">
                       {children}
                     </div>
