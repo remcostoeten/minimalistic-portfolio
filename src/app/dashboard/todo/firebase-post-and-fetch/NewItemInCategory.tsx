@@ -56,15 +56,20 @@ export function NewItemInCategory() {
 
   return (
     <form className="flex gap-2 flex-col" onSubmit={handleSubmit}>
-      {/* @ts-ignore */}
-      <select>
-        {categories.map(category => (
-          <option key={category.id} value={category.id}>
-            {category.name}
-          </option>
-        ))}
-      </select>
-
+      <Select>
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder="Select a category" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="d">Select a category</SelectItem>
+          {categories.map(category => (
+            <SelectItem key={category.id} value={category.id}>
+              {category.name}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+      <Input value={itemName} onChange={e => setItemName(e.target.value)} placeholder="Item Name" />
       <Input
         type="number" value={itemPrice ?? ''} onChange={e => setItemPrice(e.target.valueAsNumber || null)} placeholder="Price" />
       <Input

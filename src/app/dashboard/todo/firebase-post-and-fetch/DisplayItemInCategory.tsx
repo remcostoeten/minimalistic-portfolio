@@ -1,98 +1,120 @@
 'use client';
-import React, { useState, useEffect } from "react";
-import { onSnapshot, doc, updateDoc, deleteDoc, collection } from "firebase/firestore";
-import { toast } from "sonner";
-import { Input } from "@/components/ui/input";
-import { db } from "@/core/(database)/firebase";
-import { Button } from "@/components/ui/button";
+import { useEffect, useState } from 'react';
+import { collection, deleteDoc, doc, onSnapshot, query, where } from 'firebase/firestore';
+import { db } from '@/core/(database)/firebase';
+import { SkeletonBar } from '@/components/loaders/Skeleton';
+import { toast } from 'sonner';
+import { useEditData } from '@/hooks/useEditData';
+import { DeleteForeverOutlined } from '@mui/icons-material';
+import { Edit3 } from 'lucide-react';
+import { ImCheckmark } from 'react-icons/im';
+import { Select, SelectItem, SelectTrigger, SelectValue, SelectContent } from '@/components/ui/select';
 
-type Category = {
-  id: string;
-  price?: string;
-  url?: string;
-}
-
-export function ItemsInCategory() {
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [editingCategoryId, setEditingCategoryId] = useState<string | null>(null);
+export default function DisplayItemInCategory() {
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [editingItem, setEditingItem] = useState(null);
+  const [newName, setNewName] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const { updateData } = useEditData('items');
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(collection(db, "items"), (snapshot) => {
-      const fetchedCategories: Category[] = [];
-      snapshot.forEach((doc) => {
-        const category = doc.data() as Category;
-        category.id = doc.id;
-        fetchedCategories.push(category);
+    let q = query(collection(db, 'items'));
+    if (selectedCategory !== 'all') {
+      q = query(collection(db, 'items'), where('category', '==', selectedCategory));
+    }
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const items = [];
+      querySnapshot.forEach((doc) => {
+        items.push({ id: doc.id, ...doc.data() });
       });
-      setCategories(fetchedCategories);
+      setItems(items);
+      setLoading(false);
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [selectedCategory]);
 
-  const handleDelete = async (categoryId: string) => {
+  const handleDelete = async (id: string) => {
     try {
-      await deleteDoc(doc(db, "items", categoryId));
-      toast.success("Category deleted successfully.");
+      await deleteDoc(doc(db, "items", id));
+      toast.success('Item deleted successfully.');
     } catch (error) {
       toast.error("Something went wrong.");
       console.error(error);
     }
   };
 
-  return (
-    <div className=" flex flex-col gap-2">
-      {categories.map(category => (
-        <div key={category.id}>
-          <span>{category.price}</span>
-          <span>{category.url}</span>
-          <div className="flex gap-2 mt-1">
-            <Button onClick={() => setEditingCategoryId(category.id)} >Edit</Button>
-            <Button onClick={() => handleDelete(category.id)}>Delete</Button>
-          </div></div>
-      ))}
-      {editingCategoryId && (
-        <EditCategory
-          categoryId={editingCategoryId}
-          onClose={() => setEditingCategoryId(null)}
-        />
-      )}
-    </div>
-  );
-}
-
-interface EditCategoryProps {
-  categoryId?: string;
-  onClose?: () => void;
-}
-
-export default function EditCategory({ categoryId, onClose }: EditCategoryProps) {
-  const [categoryName, setCategoryName] = useState<string>("");
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      await updateDoc(doc(db, "items", categoryId), {
-        name: categoryName,
-      });
-      toast.success("Category updated successfully.");
-      onClose();
-    } catch (error) {
-      toast.error("Something went wrong.");
-      console.error(error);
+  const handleEdit = async (id: string) => {
+    if (editingItem === id) {
+      try {
+        await updateData(id, { name: newName });
+        toast.success('Item updated successfully.');
+        setEditingItem(null);
+      } catch (error) {
+        toast.error("Something went wrong.");
+        console.error(error);
+      }
+    } else {
+      setEditingItem(id);
     }
-  };
+  }
+
 
   return (
-    <form className='flex flex-col gap-2' onSubmit={handleSubmit}>
-      <Input
-        value={categoryName}
-        onChange={e => setCategoryName(e.target.value)}
-        placeholder="Category Name"
-      />
-      <Button variant="ghost" type="submit" className="px-4 py-2 rounded-md bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300">
-        Update
-      </Button>
-    </form>
+    <div className="flex items-center justify-center min-h-[450px]">
+      <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
+        <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
+          <div>
+            <label>Category: </label>
+            <Select value={selectedCategory} onValueChange={(value) => setSelectedCategory(value)}>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Select category" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All</SelectItem>
+                <SelectItem value="category1">Category 1</SelectItem>
+                <SelectItem value="category2">Category 2</SelectItem>
+                {/* Add more options as needed */}
+              </SelectContent>
+            </Select>
+          </div>
+          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead className="text-xs text-gray-700 uppercase border ">
+              <tr>
+                <th scope="col" className="py-3 px-6">Name</th>
+                <th scope="col" className="py-3 px-6">Price</th>
+                <th scope="col" className="py-3 px-6">Actions</th>
+              </tr>
+            </thead>
+            <tbody className="border divide-y  ">
+              {(loading ? Array.from({ length: 15 }) : items).map((item, index) => (
+                <tr key={loading ? index : item.id}>
+                  <td className='py-3 px-6'>
+                    {loading ? <SkeletonBar height={4} /> : (editingItem === item.id ?
+                      <input type="text" value={newName} onChange={(e) => setNewName(e.target.value)} /> :
+                      item.name)}
+                  </td>
+                  <td className='py-3 px-6'>{loading ? <SkeletonBar height={2} /> : item.price}</td>
+                  <td className="py-3 px-6">
+                    {!loading && (
+                      <>
+                        <div className='flex items-center gap-2'>
+                          <span className='p-4' onClick={() => handleDelete(item.id)}><DeleteForeverOutlined /></span>
+                          <div className="w-px h-4 bg-gray-400/50"></div>
+                          <span className='p-4' onClick={() => handleEdit(item.id)}>
+                            {editingItem === item.id ? <ImCheckmark /> : <Edit3 />}
+                          </span>
+                        </div>
+                      </>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div >
+      </div >
+    </div >
   );
 }

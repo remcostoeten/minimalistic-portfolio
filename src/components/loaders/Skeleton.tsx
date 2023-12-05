@@ -5,8 +5,8 @@ type SkeletonBarProps = {
 };
 
 export const SkeletonBar: React.FC<SkeletonBarProps> = ({ width = 'full', height = '32', additionalClasses = '' }) => {
-    const widthClass = typeof width === 'number' ? `w-${width}px` : `w-${width}`;
-    const heightClass = typeof height === 'number' ? `h-${height}px` : `h-${height}`;
+    const widthClass = typeof width === 'number' ? `w-${width}` : `w-${width}`;
+    const heightClass = typeof height === 'number' ? `h-${height}` : `h-${height}`;
 
     return <div className={`skeleton ${widthClass} ${heightClass} ${additionalClasses}`} />;
 };

@@ -12,7 +12,6 @@ import { SkeletonBar } from '@/components/loaders/Skeleton';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { auth } from '@/core/(database)/firebase';
 import { useQuery } from '@apollo/client';
-import { ActivityEditForm } from 'activity-edit-form';
 import React, { Suspense } from 'react';
 
 type DashboardProps = {
@@ -119,7 +118,6 @@ export default function Page(): JSX.Element {
     return (
         <>
             <Shell>
-                <ActivityEditForm activity={undefined} />
                 <IntroWrapper subtitle="2023" title="Metrics" ><p>Here goes some random paragraph text to fill the space with conent i also dont kno.</p></IntroWrapper>
                 <DashboardHeader heading={`So ${user?.displayName}'s....`} text="here are your 2023 Github metrics 💡🎯.">
                     <DateRangePicker />
