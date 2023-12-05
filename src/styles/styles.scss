@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @import './variables/colors.scss';
 @import './base/theme.scss';
 @import './base/utillity-classes.scss';
@@ -20,20 +19,7 @@
 @import './components/showcase.scss';
 @import './components/cursor.scss';
 @import './components/blog/single-preview.scss';
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
+@import './components/html-to-jsx.scss';
 
 @layer base {
   :root {
@@ -108,51 +94,4 @@
   syntax: '<percentage>';
   initial-value: 0%;
   inherits: true;
-}
-
-
-
-.boxx {
-  border: 3px solid #000;
-  border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
-  animation: borderRotate var(--d) ease-in-out 2s forwards;
-}
-
-
-
-@keyframes borderRotate {
-  100% {
-    --angle: 420deg;
-  }
-}
-
-@keyframes borderRadial {
-  20% {
-    --gradX: 100%;
-    --gradY: 50%;
-  }
-
-  40% {
-    --gradX: 100%;
-    --gradY: 100%;
-  }
-
-  60% {
-    --gradX: 50%;
-    --gradY: 100%;
-  }
-
-  80% {
-    --gradX: 0%;
-    --gradY: 50%;
-  }
-
-  99% {
-    --gradX: 50%;
-    --gradY: 0%;
-  }
-
-  100% {
-    opacity: 0;
-  }
 }
