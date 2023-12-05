@@ -1,9 +1,9 @@
 'use client'
 
 import React, { useState } from "react";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
+import { Input } from "@c/ui/input";
+import { Button } from "@c/ui/button";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@c/ui/tooltip";
 
 function BettingTable() {
   const [bet1, setBet1] = useState(0);
