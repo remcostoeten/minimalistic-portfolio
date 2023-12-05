@@ -1,4 +1,4 @@
-import prisma from '@/prisma/prisma';
+import prisma from '@@/prisma/prisma';
 import { toast } from 'sonner'
 
 export async function getTodos() {

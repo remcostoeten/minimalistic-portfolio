@@ -28,22 +28,25 @@
     ],
     "paths": {
       "contentlayer/generated": [
-        "./.contentlayer/generated"
+        "./src/.contentlayer/generated"
       ],
       "@/*": [
+        "./src/*"
+      ],
+      "@@/*": [
         "./*"
       ],
       "@c/*": [
-        "./components/*"
+        "./src/components/*"
       ],
       "@ui/*": [
-        "./components/ui/*"
+        "./src/components/ui/*"
       ],
       "@s/*": [
-        "./styles/*"
+        "./src/styles/*"
       ],
       "@sm/*": [
-        "./styles/module/*"
+        "./src/styles/module/*"
       ]
     },
     "strictNullChecks": false, // Enable strict null checks.
