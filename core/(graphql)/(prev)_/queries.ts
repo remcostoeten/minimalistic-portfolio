@@ -15,17 +15,24 @@ export const GET_REPOSITORIES = gql`
   }
 `;
 
-export const GET_COMMITS = gql`
-  query GetCommits($owner: String!, $name: String!) {
-    repository(owner: $owner, name: $name) {
-      ref(qualifiedName: "master") {
-        target {
-          ... on Commit {
-            history(first: 100) {
-              edges {
-                node {
-                  messageHeadline
-                  oid
+const GET_COMMITS = gql`
+  query GetCommits($login: String!) {
+    user(login: $login) {
+      repositories(first: 50, orderBy: {field: CREATED_AT, direction: DESC}) {
+        nodes {
+          defaultBranchRef {
+            target {
+              ... on Commit {
+                history(first: 50) {
+                  nodes {
+                    messageHeadline
+                    committedDate
+                    author {
+                      user {
+                        name
+                      }
+                    }
+                  }
                 }
               }
             }

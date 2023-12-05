@@ -7,8 +7,10 @@ html {
     scroll-behavior: smooth;
 }
 
-.contained {
-    max-width: 60vw;;
+.contained,
+.home-container {
+    max-width: 60vw;
+    ;
 
     @media (max-width: 16800px) {
         max-width: $contained;
