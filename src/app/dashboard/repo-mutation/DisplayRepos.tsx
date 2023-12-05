@@ -1,7 +1,6 @@
 import { SkeletonBar } from "@/components/loaders/Skeleton";
 import { useQuery } from "@apollo/client";
 import { gql } from "@apollo/client/core";
-import { toast } from "sonner";
 
 const GET_REPOSITORIES = gql`
   query GetRepositories($login: String!) {
@@ -18,8 +17,6 @@ const GET_REPOSITORIES = gql`
   }
 `;
 
-
-import { useMutation } from "@apollo/client";
 import { Button } from "@/components/ui/button";
 import { Trash2Icon } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -28,19 +25,6 @@ function RepositoriesList({ login }) {
   const { loading, error, data } = useQuery(GET_REPOSITORIES, {
     variables: { login },
   });
-
-  const [deleteRepository] = useMutation(DELETE_REPOSITORY);
-
-  const handleDeleteRepository = async (id) => {
-    try {
-      const result = await deleteRepository({ variables: { id } });
-      console.log(result);
-      toast.success('Repository deleted 🎉');
-    } catch (error) {
-      console.error('Mutation error:', error);
-      toast.error('Error deleting repository');
-    }
-  }
 
   if (loading) return <SkeletonBar />;
   if (error) return `Error! ${error.message}`;
@@ -61,7 +45,7 @@ function RepositoriesList({ login }) {
                 <DialogTitle>Are you sure absolutely sure?</DialogTitle>
                 <DialogDescription>
                   This action cannot be undone. This will permanently delete this repository from Github.
-                  <Button onClick={() => handleDeleteRepository(repo.id)} variant="ghost" >Yes, delete</Button>
+                  <Button onClick={() => (repo.id)} variant="ghost" >Yes, delete</Button>
                 </DialogDescription>
               </DialogHeader>
             </DialogContent>

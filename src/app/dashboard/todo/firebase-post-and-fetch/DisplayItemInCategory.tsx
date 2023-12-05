@@ -47,8 +47,8 @@ export function ItemsInCategory() {
           <span>{category.price}</span>
           <span>{category.url}</span>
           <div className="flex gap-2 mt-1">
-            <Button text='Edit' onClick={() => setEditingCategoryId(category.id)} />
-            <Button text='Delete' onClick={() => handleDelete(category.id)} />
+            <Button onClick={() => setEditingCategoryId(category.id)} >Edit</Button>
+            <Button onClick={() => handleDelete(category.id)}>Delete</Button>
           </div></div>
       ))}
       {editingCategoryId && (
