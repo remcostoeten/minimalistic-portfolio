@@ -1,9 +1,7 @@
 
 'use client';
 import { GET_TOTAL_REPOSITORIES_AND_COMMITS } from '@/components/(database)/graphql/queries/GetTotalReposQuery';
-import { CommitsGraph } from '@/components/dashboard/CommitsGraph';
 import { DashboardHeader } from '@/components/dashboard/dashboard-header';
-import CardSkeleton from '@/components/dashboard/shell/CardSkeleton';
 import IntroWrapper from '@/components/dashboard/shell/IntroWrapper.';
 import { DateRangePicker } from '@/components/date-range-picker';
 import { Icons } from '@/components/icons';
@@ -12,7 +10,7 @@ import { SkeletonBar } from '@/components/loaders/Skeleton';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { auth } from '@/core/(database)/firebase';
 import { useQuery } from '@apollo/client';
-import React, { Suspense } from 'react';
+import React from 'react';
 
 type DashboardProps = {
     data?: any;
@@ -80,9 +78,7 @@ export default function Page(): JSX.Element {
     const secondData = [5, 15, 25, 35];
     const { loading, error, totalCommits, mostUsedLanguages, totalRepositories, totalBranches, mostActiveRepo, commitsLabels } = useGithubData('remcostoeten');
 
-    const DataCard: React.FC<DashboardProps> = ({ title, icon, value, subtext }) => {
-        const isLoading = value === null;
-
+    const DataCard: React.FC<DashboardProps> = ({ title, icon, value, subtext, loading }) => {
         return (
             <Card>
                 <CardHeader>
@@ -91,14 +87,14 @@ export default function Page(): JSX.Element {
                     </div>
                 </CardHeader>
                 <CardContent>
-                    {isLoading ? (
-                        <SkeletonBar width='100%' />
-                    ) : (
-                        <>
-                            <div className="text-2xl font-bold">{value}</div>
-                            <p className="text-xs text-muted-foreground">{subtext}</p>
-                        </>
-                    )}
+                    <div className='flex flex-col gap-2'>
+                        <div className="text-2xl font-bold">
+                            {loading ? <SkeletonBar height={4} width='100%' /> : value}
+                        </div>
+                        <p className="text-xs text-muted-foreground">
+                            {loading ? <SkeletonBar height={4} width='100%' /> : subtext}
+                        </p>
+                    </div>
                 </CardContent>
             </Card>
         );
@@ -127,7 +123,6 @@ export default function Page(): JSX.Element {
                     <DataCard
                         title="Most Active Repository"
                         icon={Icons.github}
-                        value={mostActiveRepo?.name || <SkeletonBar />}
                         subtext={`Commits: ${Number(mostActiveRepo?.defaultBranchRef?.target.history.totalCount) || 0}`} loading={loading}
                     />
                     <DataCard

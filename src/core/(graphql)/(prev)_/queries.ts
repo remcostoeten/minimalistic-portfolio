@@ -42,3 +42,11 @@ const GET_COMMITS = gql`
     }
   }
 `;
+
+export const USER_COMMITS = gql`
+query GetGithubData {
+  githubData(username: String!, repo: String!) {
+    week
+    total
+  }
+`;

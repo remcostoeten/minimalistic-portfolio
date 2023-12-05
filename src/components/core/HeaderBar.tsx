@@ -78,7 +78,7 @@ export default function HeaderBar() {
                             </Link>
                         </li>
                         <li>
-                            <Link href="#blackjack">
+                            <Link href="/blackjack">
                                 <span className="text-lg font-medium hover:underline" >Blackjack</span >
                             </Link>
                         </li>

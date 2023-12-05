@@ -8,16 +8,7 @@ import { toast } from 'sonner'
 import SingleHand from '@/components/misc/BlackjackSingleHand';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Link from 'next/link';
-import BettingTable from '@/components/tables/BetTable';
-// Function to get the strategy based on player's hand and dealer's card
-function getStrategy(playerHand, dealerCard) {
-  const strategy = blackjackData.strategy[playerHand];
-  if (strategy) {
-    return strategy[dealerCard];
-  } else {
-    throw new Error(`No strategy found for player's hand: ${playerHand}`);
-  }
-}
+import BettingTable from '@/components/misc/tables/BetTable';
 
 const Page = () => {
   const [playerCard1, setPlayerCard1] = useState('');

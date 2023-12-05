@@ -1,14 +1,17 @@
 import { useQuery } from "@apollo/client";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectValue } from "../ui/select";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectValue } from "../ui/select";
 import { SelectTriggerNoBg } from "../ui/selectnobg";
 import { GET_COMMITS } from "../(database)/graphql/queries/CommitQuery";
 import Spinner from "../loaders/Spinners";
+import { JSX, SVGProps } from "react";
+import Getcommits from "../(database)/graphql/Getcommits";
 
 export default function ActivityStream() {
   type ActivityStreamProps = {
     date: string;
     author: string;
   }
+
 
   const DateAuthorText = ({ date, author }: ActivityStreamProps) => {
     return (
@@ -19,16 +22,18 @@ export default function ActivityStream() {
     variables: { login: "remcostoeten" },
   });
 
-  if (loading) return <Spinner />;
+  if (!loading) return <Spinner />;
   if (error) return `Error! ${error.message}`;
 
   if (!data?.user?.repositories?.nodes) {
     return 'No data available';
   }
 
+  if (loading) return <Spinner />;
+  if (error) return `Error! ${error.message}`;
 
   let activities = [];
-  data.user.repositories.nodes.forEach((repo) => {
+  data.user.repositories.nodes.forEach((repo: { defaultBranchRef: { target: { history: { nodes: any; }; }; }; }) => {
     if (repo.defaultBranchRef) {
       const commits = repo.defaultBranchRef.target.history.nodes;
       commits.forEach((commit) => {
@@ -41,6 +46,11 @@ export default function ActivityStream() {
       });
     }
   });
+
+  // Optionally, you can sort activities by date here if needed
+  activities.slice(50).sort((a, b) => (new Date(b.date) as any).getTime() - (new Date(a.date) as any).getTime());
+
+
   //   const CommitsList: React.FC<{ owner: string; repoName: string }> = ({ owner, repoName }) => {
   //     const { loading, error, data } = useQuery(GET_COMMITS, {
   //         variables: { owner, name: repoName },
@@ -89,13 +99,14 @@ export default function ActivityStream() {
   // ];
 
 
+
   return (
     <div className=" h-full bg-[#101010] shadow-lg">
       <div className="flex justify-between items-center p-4 border-b border-[#262626]">
         <span className="text-lg font-semibold text-white flex items-start">
           Recent Actions
         </span>
-
+        <Getcommits />
         <Select>
           <SelectTriggerNoBg className="w-[180px]">
             <SelectValue placeholder="..." />
@@ -124,7 +135,7 @@ export default function ActivityStream() {
   )
 }
 
-function IconDotsvertical(props) {
+function IconDotsvertical(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
