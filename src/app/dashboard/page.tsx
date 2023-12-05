@@ -119,7 +119,7 @@ export default function Page(): JSX.Element {
     return (
         <>
             <Shell>
-                <ActivityEditForm />
+                <ActivityEditForm activity={undefined} />
                 <IntroWrapper subtitle="2023" title="Metrics" ><p>Here goes some random paragraph text to fill the space with conent i also dont kno.</p></IntroWrapper>
                 <DashboardHeader heading={`So ${user?.displayName}'s....`} text="here are your 2023 Github metrics 💡🎯.">
                     <DateRangePicker />
