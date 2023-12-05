@@ -154,7 +154,7 @@ export default function Page(): JSX.Element {
                         value={mostUsedLanguages?.map(([language, count]) => `${language}: ${count}`).join(', ') || <SkeletonBar />}
                         subtext="" loading={loading}
                     />
-                </div>
+                </div>https://gitlab.com/pleio/beheer/-/issues/13231
             </Shell >
         </>
     );

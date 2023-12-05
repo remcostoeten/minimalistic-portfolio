@@ -22,17 +22,30 @@ export default function ActivityStream() {
   if (loading) return <Spinner />;
   if (error) return `Error! ${error.message}`;
 
-  console.log(data);
-  if (!data?.user?.repositories?.nodes[0]?.defaultBranchRef) {
+  if (!data?.user?.repositories?.nodes) {
     return 'No data available';
   }
 
-  const activities = data.user.repositories.nodes[0].defaultBranchRef.target.history.nodes.map((node: any) => ({
-    title: node.messageHeadline,
-    date: new Date(node.committedDate).toLocaleDateString(),
-    author: node.author.user.name,
-    icon: IconEdit, // replace with appropriate icon
-  }));
+
+  let activities = [];
+  data.user.repositories.nodes.forEach((repo) => {
+    if (repo.defaultBranchRef) {
+      const commits = repo.defaultBranchRef.target.history.nodes;
+      commits.forEach((commit) => {
+        activities.push({
+          title: commit.messageHeadline,
+          date: new Date(commit.committedDate).toLocaleDateString(),
+          author: commit?.author?.user.name,
+          icon: IconEdit,
+        });
+      });
+    }
+  });
+
+  console.log(activities[0]?.title);
+
+  activities = activities.slice(0, 50);
+
   // const activities = [
   //   {
   //     title: '147 files were uploaded to Basic bucket',
