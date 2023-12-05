@@ -7,10 +7,13 @@ html {
     scroll-behavior: smooth;
 }
 
-.contained,
 .home-container {
+    max-width: 1280px;
+}
+
+.contained {
+
     max-width: 60vw;
-    ;
 
     @media (max-width: 16800px) {
         max-width: $contained;
@@ -18,10 +21,10 @@ html {
 
     margin: 0 auto;
 
-    @media (max-width: 1280px) {
-        max-width: 90vw;
-        padding: 0 20px;
-    }
+    // @media (max-width: 1280px) {
+    //     max-width: 90vw;
+    //     padding: 0 20px;
+    // }
 
     @media (max-width: 768px) {
         padding: 0 12px 0 0;
