@@ -4,7 +4,6 @@ import { onSnapshot, doc, updateDoc, deleteDoc, collection } from "firebase/fire
 import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
 import { db } from "@/core/(database)/firebase";
-import { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from "@/components/Form";
 import { Button } from "@/components/ui/button";
 
 type Category = {

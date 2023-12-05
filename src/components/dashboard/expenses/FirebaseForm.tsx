@@ -13,7 +13,7 @@ type Field = {
 }
 
 type FormProps = {
-    fields: Field[];
+    fields: Field[] | any[];
     collectionName: string;
 }
 

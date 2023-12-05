@@ -1,3 +1,11 @@
+import { FirebaseForm } from "./FirebaseForm";
+
+type Field = {
+    name?: string;
+    type?: string;
+    placeholder?: string;
+    options?: { id: string, name: string }[];
+}
 
 export function CreateExpense() {
     const fields: Field[] = [
@@ -6,7 +14,7 @@ export function CreateExpense() {
         { name: 'category', type: 'select', options: [{ id: 'categories', name: 'Categories' }] },
     ]
 
-    return <GenericForm fields={fields} collectionName="expenses" />
+    return <FirebaseForm fields={fields} collectionName="expenses" />
 }
 
 export function CreateIncome() {
@@ -15,5 +23,5 @@ export function CreateIncome() {
         { name: 'source', type: 'text', placeholder: 'Source' },
     ]
 
-    return <GenericForm fields={fields} collectionName="income" />
+    return <FirebaseForm fields={fields} collectionName="income" />
 }

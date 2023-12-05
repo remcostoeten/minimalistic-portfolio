@@ -1,18 +1,28 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { collection, deleteDoc, doc, onSnapshot, query } from 'firebase/firestore';
+import { collection, deleteDoc, doc, onSnapshot, query, where } from 'firebase/firestore';
 import { db } from '@/core/(database)/firebase';
 import { SkeletonBar } from '@/components/loaders/Skeleton';
 import { toast } from 'sonner';
+import { useEditData } from '@/hooks/useEditData';
+import { DeleteForeverOutlined } from '@mui/icons-material';
+import { Edit3 } from 'lucide-react';
+import { ImCheckmark } from 'react-icons/im';
+import { Select, SelectItem, SelectTrigger, SelectValue, SelectContent } from '@/components/ui/select';
 
 export default function DisplayItemInCategory() {
-
-  // Define a state to hold the items
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [editingItem, setEditingItem] = useState(null);
+  const [newName, setNewName] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const { updateData } = useEditData('items');
 
   useEffect(() => {
-    const q = query(collection(db, 'items'));
+    let q = query(collection(db, 'items'));
+    if (selectedCategory !== 'all') {
+      q = query(collection(db, 'items'), where('category', '==', selectedCategory));
+    }
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const items = [];
       querySnapshot.forEach((doc) => {
@@ -23,7 +33,7 @@ export default function DisplayItemInCategory() {
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [selectedCategory]);
 
   const handleDelete = async (id: string) => {
     try {
@@ -35,58 +45,76 @@ export default function DisplayItemInCategory() {
     }
   };
 
+  const handleEdit = async (id: string) => {
+    if (editingItem === id) {
+      try {
+        await updateData(id, { name: newName });
+        toast.success('Item updated successfully.');
+        setEditingItem(null);
+      } catch (error) {
+        toast.error("Something went wrong.");
+        console.error(error);
+      }
+    } else {
+      setEditingItem(id);
+    }
+  }
+
+
   return (
     <div className="flex items-center justify-center min-h-[450px]">
       <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
         <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
+          <div>
+            <label>Category: </label>
+            <Select value={selectedCategory} onValueChange={(value) => setSelectedCategory(value)}>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Select category" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All</SelectItem>
+                <SelectItem value="category1">Category 1</SelectItem>
+                <SelectItem value="category2">Category 2</SelectItem>
+                {/* Add more options as needed */}
+              </SelectContent>
+            </Select>
+          </div>
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <thead className="text-xs text-gray-700 uppercase border ">
               <tr>
                 <th scope="col" className="py-3 px-6">Name</th>
                 <th scope="col" className="py-3 px-6">Price</th>
                 <th scope="col" className="py-3 px-6">Actions</th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-              {(loading ? Array.from({ length: 5 }) : items).map((item, index) => (
+            <tbody className="border divide-y  ">
+              {(loading ? Array.from({ length: 15 }) : items).map((item, index) => (
                 <tr key={loading ? index : item.id}>
-                  <td className='py-3 px-6'>{loading ? <SkeletonBar height={4} /> : item.name}</td>
+                  <td className='py-3 px-6'>
+                    {loading ? <SkeletonBar height={4} /> : (editingItem === item.id ?
+                      <input type="text" value={newName} onChange={(e) => setNewName(e.target.value)} /> :
+                      item.name)}
+                  </td>
                   <td className='py-3 px-6'>{loading ? <SkeletonBar height={2} /> : item.price}</td>
                   <td className="py-3 px-6">
-                    {!loading && <button onClick={() => handleDelete(item.id)}>Delete</button>}
+                    {!loading && (
+                      <>
+                        <div className='flex items-center gap-2'>
+                          <span className='p-4' onClick={() => handleDelete(item.id)}><DeleteForeverOutlined /></span>
+                          <div className="w-px h-4 bg-gray-400/50"></div>
+                          <span className='p-4' onClick={() => handleEdit(item.id)}>
+                            {editingItem === item.id ? <ImCheckmark /> : <Edit3 />}
+                          </span>
+                        </div>
+                      </>
+                    )}
                   </td>
                 </tr>
               ))}
             </tbody>
-            {/* <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-              {loading && (
-                <tr>
-                  <td className='py-3 px-6'>
-                    <SkeletonBar height={4} />
-                  </td>
-                  <td className='py-3 px-6'>
-                    <SkeletonBar height={4} />
-                  </td>
-                  <td className='py-3 px-6'>
-                    <SkeletonBar height={4} />
-                  </td>
-                </tr>
-              ) : <>
-
-              {items.map((item) => (
-                <tr key={item.id}>
-                  <td className='py-3 px-6'>{loading ? <SkeletonBar height={4} /> : item.name}</td>
-                  <td className='py-3 px-6'>{loading ? <SkeletonBar height={2} /> : item.price}</td>
-                  <td className="py-3 px-6">
-                    {!loading && <button onClick={() => handleDelete(item.id)}>Delete</button>}
-                  </td>
-                </tr>
-              ))}
-              </>
-            </tbody> */}
           </table>
-        </div>
-      </div>
-    </div>
+        </div >
+      </div >
+    </div >
   );
 }
