@@ -69,7 +69,7 @@ export function NewItemInCategory() {
           ))}
         </SelectContent>
       </Select>
-
+      <Input value={itemName} onChange={e => setItemName(e.target.value)} placeholder="Item Name" />
       <Input
         type="number" value={itemPrice ?? ''} onChange={e => setItemPrice(e.target.valueAsNumber || null)} placeholder="Price" />
       <Input

@@ -25,9 +25,9 @@ export function NewCategory({ className }: { className?: string }) {
     }
 
     return (
-        <form className={className} onSubmit={handleSubmit}>
+        <form className='flex gap-4 flex-col' onSubmit={handleSubmit}>
             <Input value={categoryName} onChange={e => setCategoryName(e.target.value)} placeholder="Category Name" />
-            <Button variant="ghost" type="submit">Add Category</Button>
+            <button type="submit" className='btn btn-primary'>Add category</button>
         </form >
     )
 }
