@@ -1,39 +1,39 @@
 'use client';
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { onSnapshot, doc, updateDoc, deleteDoc, collection } from "firebase/firestore";
 import { toast } from "sonner";
-import { Input } from "@/components/ui/input";
 import { db } from "@/core/(database)/firebase";
-import { Button } from "@/components/ui/button";
+import { useCategories } from "@/hooks/useCategories";
 
-type Category = {
+type Item = {
   id: string;
-  price?: string;
-  url?: string;
+  name: string;
+  category: string;
 }
 
-export function ItemsInCategory() {
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [editingCategoryId, setEditingCategoryId] = useState<string | null>(null);
+export function ItemsInCategory({ className }: { className?: string }) {
+  const [items, setItems] = useState<Item[]>([]);
+  const [editingItemId, setEditingItemId] = useState<string | null>(null);
+  const categories = useCategories();
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "items"), (snapshot) => {
-      const fetchedCategories: Category[] = [];
+      const fetchedItems: Item[] = [];
       snapshot.forEach((doc) => {
-        const category = doc.data() as Category;
-        category.id = doc.id;
-        fetchedCategories.push(category);
+        const item = doc.data() as Item;
+        item.id = doc.id;
+        fetchedItems.push(item);
       });
-      setCategories(fetchedCategories);
+      setItems(fetchedItems);
     });
 
     return () => unsubscribe();
   }, []);
 
-  const handleDelete = async (categoryId: string) => {
+  const handleDelete = async (itemId: string) => {
     try {
-      await deleteDoc(doc(db, "items", categoryId));
-      toast.success("Category deleted successfully.");
+      await deleteDoc(doc(db, "items", itemId));
+      toast.success("Item deleted successfully.");
     } catch (error) {
       toast.error("Something went wrong.");
       console.error(error);
@@ -41,58 +41,72 @@ export function ItemsInCategory() {
   };
 
   return (
-    <div className=" flex flex-col gap-2">
-      {categories.map(category => (
-        <div key={category.id}>
-          <span>{category.price}</span>
-          <span>{category.url}</span>
-          <div className="flex gap-2 mt-1">
-            <Button onClick={() => setEditingCategoryId(category.id)} >Edit</Button>
-            <Button onClick={() => handleDelete(category.id)}>Delete</Button>
-          </div></div>
+    <div className={className}>
+      {items.map(item => (
+        <div key={item.id}>
+          <span>{item.name}</span>
+          <span>{categories.find(category => category.id === item.category)?.name}</span>
+          <button onClick={() => setEditingItemId(item.id)}>Edit</button>
+          <button onClick={() => handleDelete(item.id)}>Delete</button>
+        </div>
       ))}
-      {editingCategoryId && (
-        <EditCategory
-          categoryId={editingCategoryId}
-          onClose={() => setEditingCategoryId(null)}
+      {editingItemId && (
+        <EditItem
+          itemId={editingItemId}
+          onClose={() => setEditingItemId(null)}
         />
       )}
     </div>
   );
-}
 
-interface EditCategoryProps {
-  categoryId?: string;
-  onClose?: () => void;
-}
 
-export default function EditCategory({ categoryId, onClose }: EditCategoryProps) {
-  const [categoryName, setCategoryName] = useState<string>("");
+  interface EditItemProps {
+    itemId: string;
+    onClose: () => void;
+  }
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      await updateDoc(doc(db, "items", categoryId), {
-        name: categoryName,
-      });
-      toast.success("Category updated successfully.");
-      onClose();
-    } catch (error) {
-      toast.error("Something went wrong.");
-      console.error(error);
-    }
-  };
 
-  return (
-    <form className='flex flex-col gap-2' onSubmit={handleSubmit}>
-      <Input
-        value={categoryName}
-        onChange={e => setCategoryName(e.target.value)}
-        placeholder="Category Name"
-      />
-      <Button variant="ghost" type="submit" className="px-4 py-2 rounded-md bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300">
-        Update
-      </Button>
-    </form>
-  );
+  function EditItem({ itemId, onClose }: EditItemProps) {
+    const [itemName, setItemName] = useState<string>("");
+    const [selectedCategory, setSelectedCategory] = useState<string>("");
+    const categories = useCategories();
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      try {
+        await updateDoc(doc(db, "items", itemId), {
+          name: itemName,
+          category: selectedCategory,
+        });
+        toast.success("Item updated successfully.");
+        onClose();
+      } catch (error) {
+        toast.error("Something went wrong.");
+        console.error(error);
+      }
+    };
+
+    return (
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={itemName}
+          onChange={(e) => setItemName(e.target.value)}
+          placeholder="Item name"
+        />
+        <select
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+        >
+          <option value="">Select a category</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
+        <button type="submit">Update Item</button>
+      </form>
+    );
+  }
 }

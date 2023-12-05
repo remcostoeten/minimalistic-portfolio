@@ -1,10 +1,11 @@
 'use client'
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { db } from "@/core/(database)/firebase";
 import { addDoc, collection } from "firebase/firestore";
 import React, { useState } from "react";
 import { toast } from 'sonner';
-export function NewCategory() {
+export function NewCategory({ className }: { className?: string }) {
     const [categoryName, setCategoryName] = useState("")
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -24,9 +25,9 @@ export function NewCategory() {
     }
 
     return (
-        <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
+        <form className={className} onSubmit={handleSubmit}>
             <Input value={categoryName} onChange={e => setCategoryName(e.target.value)} placeholder="Category Name" />
-            <button type="submit" className='btn btn-primary'>Add Category</button>
-        </form>
+            <Button variant="ghost" type="submit">Add Category</Button>
+        </form >
     )
 }

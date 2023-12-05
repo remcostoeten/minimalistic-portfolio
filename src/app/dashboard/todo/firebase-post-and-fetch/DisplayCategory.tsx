@@ -4,6 +4,8 @@ import { onSnapshot, doc, updateDoc, deleteDoc, collection } from "firebase/fire
 import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
 import { db } from "@/core/(database)/firebase";
+import { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from "@/components/Form";
+import { Button } from "@/components/ui/button";
 
 type Category = {
   id: string;
@@ -44,8 +46,8 @@ export function CategoriesList() {
         <div key={category.id}>
           <span>{category.name}</span>
           <div className="flex gap-2 mt-1">
-            <Button text='Edit' onClick={() => setEditingCategoryId(category.id)} />
-            <Button text='Delete' onClick={() => handleDelete(category.id)} />
+            <Button variant="secondary" onClick={() => setEditingCategoryId(category.id)} >Edit</Button>
+            <Button variant="ghost" onClick={() => handleDelete(category.id)} >Delete</Button>
           </div></div>
       ))}
       {editingCategoryId && (
@@ -87,27 +89,14 @@ export default function EditCategory({ categoryId, onClose }: EditCategoryProps)
         onChange={e => setCategoryName(e.target.value)}
         placeholder="Category Name"
       />
-      <button type="submit" className="px-4 py-2 rounded-md bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300">
-        Update
-      </button>
+      <div className="flex gap-2">
+        <button type="submit" className="px-4 py-2 rounded-md bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300">
+          Update
+        </button>
+        <button type="button" className="px-4 py-2 rounded-md bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300" onClick={onClose}>
+          Cancel
+        </button>
+      </div>
     </form>
-  );
-}
-
-interface RoundedButtonProps {
-  text: string;
-  onClick: () => void;
-  type?: "button" | "submit" | "reset";
-}
-
-export function Button({ text, onClick, type = "button" }: RoundedButtonProps) {
-  return (
-    <button
-      type={type}
-      className="px-4 py-2 rounded-md bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300"
-      onClick={onClick}
-    >
-      {text}
-    </button>
   );
 }
