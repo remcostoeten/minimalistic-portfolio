@@ -12,12 +12,3 @@ export const CREATE_REPOSITORY = gql`
     }
   }
 `;
-
-export const DELETE_REPOSITORY = gql`
-  mutation DeleteRepository($id: ID!) {
-    deleteRepository(input: { id: $id }) {
-      clientMutationId
-    }
-  }
-`;
-

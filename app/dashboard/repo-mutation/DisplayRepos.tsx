@@ -18,13 +18,6 @@ const GET_REPOSITORIES = gql`
   }
 `;
 
-const DELETE_REPOSITORY = gql`
-  mutation DeleteRepository($id: ID!) {
-    deleteRepository(input: { repositoryId: $id }) {
-      clientMutationId
-    }
-  }
-`;
 
 import { useMutation } from "@apollo/client";
 import { Button } from "@/components/ui/button";

@@ -41,7 +41,28 @@ export default function ActivityStream() {
       });
     }
   });
+  //   const CommitsList: React.FC<{ owner: string; repoName: string }> = ({ owner, repoName }) => {
+  //     const { loading, error, data } = useQuery(GET_COMMITS, {
+  //         variables: { owner, name: repoName },
+  //     });
 
+  //     if (loading) return <p>Loading commits...</p>;
+  //     if (error) return <p>Error fetching commits</p>;
+
+  //     if (!data || !data.repository || !data.repository.ref || !data.repository.ref.target || !data.repository.ref.target.history) {
+  //         return <p>No commit data available</p>;
+  //     }
+
+  //     const commits: Commit[] = data.repository.ref.target.history.edges;
+
+  //     return (
+  //         <ul>
+  //             {commits.map((commit: Commit) => (
+  //                 <li key={commit.node.oid}>{commit.node.messageHeadline}</li>
+  //             ))}
+  //         </ul>
+  //     );
+  // };
   console.log(activities[0]?.title);
 
   activities = activities.slice(0, 50);

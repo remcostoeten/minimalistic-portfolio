@@ -1,12 +1,12 @@
 import { NewCategory } from "./NewCategory";
 import { NewItemInCategory } from "./NewItemInCategory";
 import { CategoriesList } from "./DisplayCategory";
+import { ItemsInCategory } from "./DisplayItemInCategory";
 
 export default function Page() {
     return (
         <>
             <div className="bg-black px-8 py-12 rounded-sm drop-shadow-sm w-screen ">
-                <div className="container">
                 <h1>Add New Category</h1>
                 <NewCategory />
 
@@ -14,8 +14,8 @@ export default function Page() {
                 <NewItemInCategory />
 
                 <h1>Display Categories and Items</h1>
-                <CategoriesList /></div>
+                <ItemsInCategory />
             </div>
-        </>
-    );
+        </> // end of return
+    )
 }
