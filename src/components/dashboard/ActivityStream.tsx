@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SelectContent, SelectGroup, SelectItem } from '../ui/select';
 import { Select, SelectTriggerNoBg, SelectValue } from '../ui/selectnobg';
+import { BsActivity } from 'react-icons/bs';
 
 const ActivityStream: React.FC = () => {
   const [commits, setCommits] = useState([]);
@@ -9,7 +10,7 @@ const ActivityStream: React.FC = () => {
     const fetchCommits = async () => {
       try {
         const response = await fetch(
-          'https://api.github.com/repos/remcostoeten/remcostoeten/commits?per_page=20'
+          'https://api.github.com/repos/remcostoeten/minimalistic-portfolio/commits?per_page=20'
         );
         const data = await response.json();
         console.log(data)
@@ -37,7 +38,7 @@ const ActivityStream: React.FC = () => {
 
 
   return (
-    <div className=" h-full bg-[#101010] shadow-lg">
+    <div className="h-full">
       <div className="flex justify-between items-center p-4 border-b border-[#262626]">
         <span className="text-lg font-semibold text-white flex items-start">
           Recent Actions
@@ -58,13 +59,21 @@ const ActivityStream: React.FC = () => {
       </div>
       <ul className="divide-y divide-[#262626]">
         {commits.map((commit: any, index: number) => (
-          <li key={index}>
-            {commit.sha}: {commit.commit.message}
+          <li key={index} className='py-4'>
+            <div className='flex items-center gap-2'>
+              <BsActivity className='h-6 w-6  commit-icon text-white' />
+              <span className='text-left flex flex-col gap-1'>
+                {commit.commit.message.length > 45 ? `${commit.commit.message.slice(0, 45)}...` : commit.commit.message}
+                <p className='text-xs text-muted-foreground'>
+                  {new Date(commit.commit.author.date).toLocaleDateString()} - {commit.commit.author.name}
+                </p>      </span>
+            </div>
+
           </li>
         ))}
       </ul>
     </div>
-  );
+  )
 };
 
 export default ActivityStream;
