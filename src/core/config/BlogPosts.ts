@@ -1,3 +1,4 @@
+
 export const blogPosts = [
     {
         label: ["Prisma", "PostgreSQL"],
