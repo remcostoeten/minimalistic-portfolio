@@ -49,7 +49,7 @@ export default function UserAvatar() {
                 <div className="flex gap-2">
                     <div className='flex flex-col gap-0.5 justify-center'>
                         <div className="text-base font-bold text-right">
-                            {loading ? <SkeletonBar height={4} width='100%' /> : displayName}
+                        {loading ? <SkeletonBar height={4} width='100%' /> : displayName}
                         </div>
                         <p className="text-xs text-muted-foreground text-right">
                             {loading ? <SkeletonBar height={4} width='100%' /> : subTitle}

@@ -47,9 +47,7 @@ export default function RootLayout({
                   <Cursor />
                   <span className='absolute top-0 right-0 bg-gradient-to-r from-green-400 to-[##0E0E0E]'></span>
                   <main className="mx-auto pt-8 sm:px-0 px-6">
-                    <div className="home-container contained">
-                      {children}
-                    </div>
+                    {children}
                   </main>
                   <Toaster invert />
                   <Analytics />

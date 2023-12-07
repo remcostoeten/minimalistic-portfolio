@@ -80,6 +80,7 @@ export default function Page(): JSX.Element {
 
     const DataCard: React.FC<DashboardProps> = ({ title, icon, value, subtext, loading }) => {
         return (
+            
             <Card>
                 <CardHeader>
                     <div className="flex items-center gap-2">

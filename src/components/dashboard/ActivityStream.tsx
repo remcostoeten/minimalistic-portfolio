@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { SelectContent, SelectGroup, SelectItem } from '../ui/select';
 import { Select, SelectTriggerNoBg, SelectValue } from '../ui/selectnobg';
 import { BsActivity } from 'react-icons/bs';
+import { SkeletonBar } from '../loaders/Skeleton';
 
 const ActivityStream: React.FC = () => {
   const [commits, setCommits] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchCommits = async () => {
       try {
@@ -13,8 +14,8 @@ const ActivityStream: React.FC = () => {
           'https://api.github.com/repos/remcostoeten/minimalistic-portfolio/commits?per_page=20'
         );
         const data = await response.json();
-        console.log(data)
         setCommits(data);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching commits:', error);
       }
@@ -23,27 +24,15 @@ const ActivityStream: React.FC = () => {
     fetchCommits();
   }, []);
 
-  const countCommitsByDate = () => {
-    const counts = {};
 
-    commits.forEach((commit: any) => {
-      const date = new Date(commit.commit.author.date).toISOString().split('T')[0];
-      counts[date] = (counts[date] || 0) + 1;
-    });
-
-    return counts;
-  };
-
-  const commitCounts = countCommitsByDate();
 
 
   return (
     <div className="h-full">
       <div className="flex justify-between items-center p-4 border-b border-[#262626]">
-        <span className="text-lg font-semibold text-white flex items-start">
+        <span className="text-lg font-semibold text-muted-foreground flex items-start">
           Recent Actions
         </span>
-
         <Select>
           <SelectTriggerNoBg className="w-[180px]">
             <SelectValue placeholder="..." />
@@ -60,19 +49,42 @@ const ActivityStream: React.FC = () => {
       <ul className="divide-y divide-[#262626]">
         {commits.map((commit: any, index: number) => (
           <li key={index} className='py-4'>
-            <div className='flex items-center gap-2'>
-              <BsActivity className='h-6 w-6  commit-icon text-white' />
+            <div className='flex items-center'>
               <span className='text-left flex flex-col gap-1'>
                 {commit.commit.message.length > 45 ? `${commit.commit.message.slice(0, 45)}...` : commit.commit.message}
-                <p className='text-xs text-muted-foreground'>
-                  {new Date(commit.commit.author.date).toLocaleDateString()} - {commit.commit.author.name}
-                </p>      </span>
+                {loading ?
+                  Array.from({ length: 20 }, (_, index) => (
+                    <div key={index} className='flex items-center'>
+                      <SkeletonBar height={4} width='45%' />
+                      <span> - </span>
+                      <SkeletonBar height={4} width='45%' />
+                    </div>
+                  ))
+                  :
+                  commits.map((commit: any, index: number) => (
+                    <li key={index} className='py-4'>
+                      <div className='flex items-center gap-2'>
+                        <BsActivity className='h-6 w-6  commit-icon text-white' />
+                        <span className='text-left flex flex-col gap-1'>
+                          <span className='text-left flex flex-col gap-1' style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                            {commit.commit.message}
+                          </span>
+                          <div className='flex items-center flex-wrap-reverse text-[14px] gap-2 text-muted-foreground'>
+                            {new Date(commit.commit.author.date).toLocaleDateString()}
+                            <span> - </span>
+                            {commit.commit.author.name}
+                          </div>
+                        </span>
+                      </div>
+                    </li>
+                  ))
+                }
+              </span>
             </div>
-
-          </li>
+          </li >
         ))}
-      </ul>
-    </div>
+      </ul >
+    </div >
   )
 };
 

@@ -44,6 +44,7 @@ const icons = {
   home: AiFillHome,
   logout: AiOutlineLogout,
   database: AiFillDatabase,
+  account: FaUserAlt,
 
   // Mode Toggle
   moon: BsMoonStars,
