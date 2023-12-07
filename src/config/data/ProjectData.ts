@@ -23,4 +23,4 @@ export const ProjectData = [
         icon: '/icons/kanban.svg',
         image: '/project-3.webp'
     }
-];
+]

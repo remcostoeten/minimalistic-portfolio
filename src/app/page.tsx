@@ -21,11 +21,13 @@ export default function page() {
         <meta name="description" content="Remco Stoeten - remcostoeten.com - Front-end developer" />
         <meta name="keywords" content={seoKeywords.join(', ')} />
       </Head>
-      <HeaderBar />
-      <Grid />
-      <VisualStoryteller />
-      <BlogPreviews />
-      <ContactComponent />
+      <div className='home-container'>
+        <HeaderBar />
+        <Grid />
+        <VisualStoryteller />
+        <BlogPreviews />
+        <ContactComponent />
+      </div>
     </>
   )
 }

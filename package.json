@@ -43,6 +43,7 @@
     "@tanstack/react-table": "^8.10.7",
     "@types/nodemailer": "^6.4.14",
     "@vercel/analytics": "^1.1.1",
+    "axios": "^1.6.2",
     "bezier-easing": "^2.1.0",
     "chart.js": "^4.4.0",
     "class-variance-authority": "^0.7.0",
