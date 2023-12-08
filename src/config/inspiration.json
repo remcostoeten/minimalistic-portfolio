@@ -1,4 +1,10 @@
 [
+    {
+        "localprojects": {
+            "title": "Dashboard w kanban, kalender.",
+            "name": "project syncfusion local"
+        }
+    },
     "inspiration"{
         "title": "Framer motion mouse tracker",
         "description": "some nice easing examples",
