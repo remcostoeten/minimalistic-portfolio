@@ -11,6 +11,10 @@ export const SkeletonBar: React.FC<SkeletonBarProps> = ({ width = 'full', height
     return <div className={`skeleton ${widthClass} ${heightClass} ${additionalClasses}`} />;
 };
 
+export const TextSkeleton = ({ width = 'full', height = '32' }) => {
+    return <div className={`skeleton w-${width} h-${height}`}></div>
+}
+
 const TableSkeleton = () => {
     return (
         <table className="min-w-full divide-y divide-gray-700 shadow-md text-white bg-gray-800">
