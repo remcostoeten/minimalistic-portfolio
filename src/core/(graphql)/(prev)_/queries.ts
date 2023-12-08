@@ -43,10 +43,44 @@ const GET_COMMITS = gql`
   }
 `;
 
-export const USER_COMMITS = gql`
-query GetGithubData {
-  githubData(username: String!, repo: String!) {
-    week
-    total
-  }
+export const GET_USER_DETAILS = gql`
+    query GetUserDetails($login: String!) {
+        user(login: $login) {
+            id
+            createdAt
+            type
+            followers {
+                totalCount
+            }
+            repositories {
+                totalCount
+            }
+            url
+        }
+    }
+`;
+
+export const GET_USER_REPOSITORIES = gql`
+    query GetUserRepositories($login: String!, $first: Int!) {
+        user(login: $login) {
+            repositories(first: $first) {
+                nodes {
+                    id
+                    name
+                    createdAt
+                    description
+                    owner {
+                        login
+                    }
+                    stargazerCount
+                    forks {
+                        totalCount
+                    }
+                    issues {
+                        totalCount
+                    }
+                }
+            }
+        }
+    }
 `;

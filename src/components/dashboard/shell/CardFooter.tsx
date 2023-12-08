@@ -1,25 +1,24 @@
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 type CardFooterProps = {
     href?: string;
     button?: string;
+
 }
 
 export default function CardFooter({ href, button }: CardFooterProps) {
     return (
-        <footer className="bg-[#1a1a1a] p-4 flex justify-between rounded-b">
+        <footer className="bg-[#1a1a1a] border-dash border-t p-4 flex justify-between rounded-b">
             <div className="flex items-center space-x-6">
                 <a className="flex items-center space-x-2 text-white" href="#">
                     <GitCommitIcon className="h-5 w-5" />
-                    <span>Bucket settings</span>
-                </a>
-                <a className="flex items-center space-x-2 text-white" href="#">
-                    <ImageIcon className="h-5 w-5" />
-                    <span>Lifecycle settings</span>
+                    <span>Repository settings</span>
                 </a>
             </div>
+
             <div className="flex space-x-2">
-                <Link href={href} className="bg-transparent border border-white text-white rounded-full">Some text</Link>
+                <Link href={href}> <Button className="border bg-transparent border-white text-white flex items-center space-x-2">{button}</Button></Link>
             </div>
         </footer >
     )

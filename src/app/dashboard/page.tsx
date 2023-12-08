@@ -109,23 +109,23 @@ export default function Page(): JSX.Element {
     const DataCard: React.FC<DashboardProps> = ({ title, icon, value, subtext, loading }) => {
         return (
             <>
-            <CardShell /><Card>
-                <CardHeader>
-                    <div className="flex items-center gap-2">
-                        <div className="text-xl font-bold">{title}</div>
-                    </div>
-                </CardHeader>
-                <CardContent>
-                    <div className='flex flex-col gap-2'>
-                        <div className="text-2xl font-bold">
-                            {loading ? <SkeletonBar height={4} width='100%' /> : value}
+                <Card>
+                    <CardHeader>
+                        <div className="flex items-center gap-2">
+                            <div className="text-xl font-bold">{title}</div>
                         </div>
-                        <p className="text-xs text-muted-foreground">
-                            {loading ? <SkeletonBar height={4} width='100%' /> : subtext}
-                        </p>
-                    </div>
-                </CardContent>
-            </Card></>
+                    </CardHeader>
+                    <CardContent>
+                        <div className='flex flex-col gap-2'>
+                            <div className="text-2xl font-bold">
+                                {loading ? <SkeletonBar height={4} width='100%' /> : value}
+                            </div>
+                            <div className="text-xs text-muted-foreground">
+                                {loading ? <SkeletonBar height={4} width='100%' /> : subtext}
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card></>
         );
     };
 
@@ -143,6 +143,7 @@ export default function Page(): JSX.Element {
     return (
         <>
             <Shell>
+                <CardShell />
                 <IntroWrapper subtitle="2023" title="Metrics" ><p>Here goes some random paragraph text to fill the space with conent i also dont kno.</p></IntroWrapper>
                 <DisplayUser />
                 {/* <img src='/dash1552.png' width={600} height={600} alt='d' /> */}
