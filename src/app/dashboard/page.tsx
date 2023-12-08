@@ -7,7 +7,7 @@ import IntroWrapper from '@/components/dashboard/shell/IntroWrapper.';
 import { DateRangePicker } from '@/components/date-range-picker';
 import { Icons } from '@/components/icons';
 import { Shell } from '@/components/layout/shell';
-import { SkeletonBar } from '@/components/loaders/Skeleton';
+import SkeletonBar from '@/components/loaders/Skeleton';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { auth } from '@/core/(database)/firebase';
 import { useQuery } from '@apollo/client';
