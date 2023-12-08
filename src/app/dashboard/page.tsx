@@ -2,15 +2,16 @@
 'use client';
 import { GET_TOTAL_REPOSITORIES_AND_COMMITS } from '@/components/(database)/graphql/queries/GetTotalReposQuery';
 import { DashboardHeader } from '@/components/dashboard/dashboard-header';
+import CardShell from '@/components/dashboard/shell/CardShell';
 import IntroWrapper from '@/components/dashboard/shell/IntroWrapper.';
 import { DateRangePicker } from '@/components/date-range-picker';
 import { Icons } from '@/components/icons';
 import { Shell } from '@/components/layout/shell';
-import { SkeletonBar } from '@/components/loaders/Skeleton';
+import { SkeletonBar, TextSkeleton } from '@/components/loaders/Skeleton';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { auth } from '@/core/(database)/firebase';
 import { useQuery } from '@apollo/client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 type DashboardProps = {
     data?: any;
@@ -22,6 +23,35 @@ type DashboardProps = {
     value?: string | JSX.Element;
     loading?: boolean;
 };
+
+const DisplayUser = () => {
+    const [loadingUser, setLoadingUser] = useState(true);
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            setUser(user);
+            setLoadingUser(false);
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+    return (
+        <DashboardHeader
+            heading={
+                <>
+                    Hi{' '}
+                    {loadingUser ? <div className='skeleton w-40 h-4' /> : user?.displayName}
+                    {"'s...."}
+                </>
+            }
+            text="here are your 2023 Github metrics 💡🎯."
+        >
+            <DateRangePicker />
+        </DashboardHeader>
+    )
+}
 
 function useGithubData(login: string) {
     const { loading, error, data: githubData, refetch } = useQuery(GET_TOTAL_REPOSITORIES_AND_COMMITS, {
@@ -73,15 +103,13 @@ function useGithubData(login: string) {
 
 export default function Page(): JSX.Element {
     const user = auth.currentUser;
-    const labels = ['2022-01-01', '2022-01-02', '2022-01-03', '2022-01-04'];
-    const data = [10, 20, 30, 40];
-    const secondData = [5, 15, 25, 35];
+
     const { loading, error, totalCommits, mostUsedLanguages, totalRepositories, totalBranches, mostActiveRepo, commitsLabels } = useGithubData('remcostoeten');
 
     const DataCard: React.FC<DashboardProps> = ({ title, icon, value, subtext, loading }) => {
         return (
-            
-            <Card>
+            <>
+            <CardShell /><Card>
                 <CardHeader>
                     <div className="flex items-center gap-2">
                         <div className="text-xl font-bold">{title}</div>
@@ -97,7 +125,7 @@ export default function Page(): JSX.Element {
                         </p>
                     </div>
                 </CardContent>
-            </Card>
+            </Card></>
         );
     };
 
@@ -116,9 +144,7 @@ export default function Page(): JSX.Element {
         <>
             <Shell>
                 <IntroWrapper subtitle="2023" title="Metrics" ><p>Here goes some random paragraph text to fill the space with conent i also dont kno.</p></IntroWrapper>
-                <DashboardHeader heading={`So ${user?.displayName}'s....`} text="here are your 2023 Github metrics 💡🎯.">
-                    <DateRangePicker />
-                </DashboardHeader>
+                <DisplayUser />
                 {/* <img src='/dash1552.png' width={600} height={600} alt='d' /> */}
                 <div className="grid gap-4 grid-cols-">
                     <DataCard
@@ -150,7 +176,7 @@ export default function Page(): JSX.Element {
                         value={mostUsedLanguages?.map(([language, count]) => `${language}: ${count}`).join(', ') || <SkeletonBar />}
                         subtext="" loading={loading}
                     />
-                </div>https://gitlab.com/pleio/beheer/-/issues/13231
+                </div>
             </Shell >
         </>
     );
