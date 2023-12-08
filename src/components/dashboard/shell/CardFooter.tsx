@@ -18,7 +18,7 @@ export default function CardFooter({ href, button }: CardFooterProps) {
             </div>
 
             <div className="flex space-x-2">
-                <Link href={href}> <Button className="border bg-transparent border-white text-white flex items-center space-x-2">{button}</Button></Link>
+                <Link target="_blank" href={href}> <Button className="border bg-transparent border-white text-white flex items-center space-x-2">{button}</Button></Link>
             </div>
         </footer >
     )
