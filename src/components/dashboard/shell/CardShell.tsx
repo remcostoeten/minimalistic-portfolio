@@ -24,7 +24,15 @@ export default function CardShell() {
         <CardShellSkeleton />
     );
 
-    const repositories = loading ? [] : data.user.repositories.nodes;
+
+    const repositories = loading ? [] : [...data.user.repositories.nodes];
+
+    repositories.sort((a, b) => {
+        const commitsA = a.ref?.target?.history?.totalCount || 0;
+        const commitsB = b.ref?.target?.history?.totalCount || 0;
+
+        return commitsB - commitsA;
+    });
 
     return (
         <>
@@ -62,10 +70,16 @@ export default function CardShell() {
                                     <CardBody
                                         loading={loading}
                                         created={formattedDate}
-                                        bucketId={repository.id}
-                                        type="Repository"
-                                        users={repository.stargazerCount}
-                                        endpoint={`https://github.com/${repository.owner.login}/${repository.name}`}
+                                        name={repository.name}
+                                        description={repository.description}
+                                        stargazers_count={repository.stargazers_count}
+                                        forks_count={repository.forks_count}
+                                        open_issues_count={repository.open_issues_count}
+                                        language={repository.language}
+                                        updated_at={repository.updated_at}
+                                        created_at={repository.created_at}
+                                        clone_url={repository.clone_url}
+                                        homepage={repository.homepage}
                                     />
                                 </motion.div>
                             )}
@@ -76,6 +90,8 @@ export default function CardShell() {
             })}
         </>
     );
+
+    // ...
 }
 
 const CardShellSkeleton = () => {

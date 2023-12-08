@@ -115,14 +115,31 @@ export default function Page(): JSX.Element {
         ) as JSX.Element;
     }
 
+    const getUserName = () => {
+        if (user?.displayName) {
+            return user?.displayName;
+        } else if (user?.email) {
+            return user?.email.split('@')[0];
+        } else {
+            return null;
+        }
+    }
+
+    console.log(user);
+    const userName = getUserName();
     return (
         <>
             <Shell>
-                <IntroWrapper subtitle="2023" title="Metrics" ><p>Here goes some random paragraph text to fill the space with conent i also dont kno.</p></IntroWrapper>
-                <DashboardHeader heading={`So ${user?.displayName}'s....`} text="here are your 2023 Github metrics 💡🎯.">
-                    <DateRangePicker />
+                <DashboardHeader
+                    heading={
+                        userName
+                            ? `So ${userName}....`
+                            : <div style={{ display: 'flex', alignItems: 'center' }}>So <SkeletonBar additionalClasses='w-[200px] ml-2' height={4} /></div>
+                    }
+                    text="here are your 2023 Github metrics 💡🎯."
+                >
                 </DashboardHeader>
-                {/* <img src='/dash1552.png' width={600} height={600} alt='d' /> */}
+                <DateRangePicker />
                 <div className="grid gap-4 grid-cols-">
                     <DataCard
                         title="Most Active Repository"
