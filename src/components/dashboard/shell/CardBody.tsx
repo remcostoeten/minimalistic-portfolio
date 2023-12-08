@@ -1,5 +1,7 @@
 import { CardContent, Card } from "@/components/ui/card"
 
+import React from 'react';
+
 type ComponentProps = {
     created?: string;
     bucketId?: string;
@@ -10,6 +12,7 @@ type ComponentProps = {
     currentFiles?: number;
     currentSize?: string;
     fileLifecycle?: string;
+    loading?: boolean;
 }
 
 export default function CardBody({
@@ -21,7 +24,8 @@ export default function CardBody({
     encryption = "Enabled",
     currentFiles = 1372,
     currentSize = "29.48 gigabytes",
-    fileLifecycle = "Keep all versions"
+    fileLifecycle = "Keep all versions",
+    loading = true,
 }: ComponentProps) {
     return (
         <div className="bg-[#1a1a1a] text-white">
@@ -29,39 +33,39 @@ export default function CardBody({
                 <div className="grid grid-cols-3 gap-4 p-4">
                     <div>
                         <div className="font-bold">Created:</div>
-                        <div>{created}</div>
+                        <div>{loading ? <div className="skeleton h-8 w-12" /> : created}</div>
                     </div>
                     <div>
                         <div className="font-bold">Bucket ID:</div>
-                        <div>{bucketId}</div>
+                        <div>{loading ? <div className="skeleton h-8 w-12" /> : bucketId}</div>
                     </div>
                     <div>
                         <div className="font-bold">Type:</div>
-                        <div>{type}</div>
+                        <div>{loading ? <div className="skeleton h-8 w-12" /> : type}</div>
                     </div>
                     <div>
                         <div className="font-bold">Users:</div>
-                        <div>{users}</div>
+                        <div>{loading ? <div className="skeleton h-8 w-12" /> : users}</div>
                     </div>
                     <div>
                         <div className="font-bold">Endpoint:</div>
-                        <div>{endpoint}</div>
+                        <div>{loading ? <div className="skeleton h-8 w-12" /> : endpoint}</div>
                     </div>
                     <div>
                         <div className="font-bold">Encryption:</div>
-                        <div>{encryption}</div>
+                        <div>{loading ? <div className="skeleton h-8 w-full" /> : encryption}</div>
                     </div>
                     <div>
                         <div className="font-bold">Current files:</div>
-                        <div>{currentFiles}</div>
+                        <div>{loading ? <div className="skeleton h-8 w-full" /> : currentFiles}</div>
                     </div>
                     <div>
                         <div className="font-bold">Current size:</div>
-                        <div>{currentSize}</div>
+                        <div>{loading ? <div className="skeleton h-8 w-full" /> : currentSize}</div>
                     </div>
                     <div>
                         <div className="font-bold">File lifecycle:</div>
-                        <div>{fileLifecycle}</div>
+                        <div>{loading ? <div className="skeleton h-8 w-full" /> : fileLifecycle}</div>
                     </div>
                 </div>
             </div>

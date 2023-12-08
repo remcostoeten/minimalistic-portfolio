@@ -2,6 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
+.skeleton-body {
+  margin: 16px;
+}
+
+.skeleton-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.skeleton-label {
+  background-color: #ddd;
+  height: 16px;
+  width: 80px;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.skeleton-value {
+  background-color: #ddd;
+  height: 16px;
+  width: 200px;
+  border-radius: 4px;
+}
+
+/* Footer skeleton styles */
+.skeleton-footer {
+  margin-top: 16px;
+}
+
+.skeleton-footer-btn {
+  background-color: #ddd;
+  height: 40px;
+  width: 120px;
+  border-radius: 4px;
+  margin-right: 16px;
+}
+
+.skeleton-footer-link {
+  background-color: #ddd;
+  height: 16px;
+  width: 120px;
+  border-radius: 4px;
+}
+
 @import './variables/colors.scss';
 @import './base/theme.scss';
 @import './base/utillity-classes.scss';

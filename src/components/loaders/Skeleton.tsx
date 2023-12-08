@@ -17,7 +17,7 @@ export const TextSkeleton = ({ width = 'full', height = '32' }) => {
 
 const TableSkeleton = () => {
     return (
-        <table className="min-w-full divide-y divide-gray-700 shadow-md text-white bg-gray-800">
+        <table className="min-w-full divide-y divide-gray-500 shadow-md text-white bg-gray-600">
             <thead className="bg-gray-700">
                 <tr>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Round</th>
