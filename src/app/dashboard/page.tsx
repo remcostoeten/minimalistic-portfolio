@@ -103,7 +103,6 @@ export default function Page(): JSX.Element {
             </>
         );
     };
-
     if (error) {
         return (
             <DataCard
