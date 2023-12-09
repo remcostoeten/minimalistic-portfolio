@@ -5,6 +5,7 @@ import DashboardNav from "@/components/layout/DashboardNav";
 import DashboardNavigation from "@/components/layout/navbar";
 import { Navigation } from "@/core/types/types";
 import useAuthRedirect from '@/hooks/useAuthRoutes';
+import { UsernameProvider } from '@/core/context/useUsernameContext';
 
 const dashboardLinks: Navigation = {
     data: [
@@ -63,17 +64,19 @@ export default function DashboardLayout({
     useAuthRedirect(false, '/signin');
 
     return (
-        <div className="flex min-h-screen flex-col space-y-6">
-            <DashboardNavigation />
-            <div className="w-screen px-8 grid flex-1 gap-12 md:grid-cols-[200px_2fr_350px]">
-                <aside className="hidden w-[200px] flex-col md:flex">
-                    <DashboardNav items={dashboardLinks.data} />
-                </aside>
-                <main className="flex w-full flex-1 flex-col">{children}</main>
-                <aside className="hidden w-[350px] flex-col md:flex">
-                    <ActivityStream />
-                </aside>
+        <UsernameProvider>
+            <div className="flex min-h-screen flex-col space-y-6">
+                <DashboardNavigation />
+                <div className="w-screen px-8 grid flex-1 gap-12 md:grid-cols-[200px_2fr_350px]">
+                    <aside className="hidden w-[200px] flex-col md:flex">
+                        <DashboardNav items={dashboardLinks.data} />
+                    </aside>
+                    <main className="flex w-full flex-1 flex-col">{children}</main>
+                    <aside className="hidden w-[350px] flex-col md:flex">
+                        <ActivityStream />
+                    </aside>
+                </div>
             </div>
-        </div>
+        </UsernameProvider>
     )
 }

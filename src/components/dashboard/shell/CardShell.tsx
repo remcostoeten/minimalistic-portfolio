@@ -4,27 +4,46 @@ import { AnimatePresence, motion } from 'framer-motion';
 import CardBody from "./CardBody";
 import CardHeader from "./CardHeader";
 import CardFooter from "./CardFooter";
-import { useQuery } from "@apollo/client";
+import { ApolloError, useQuery } from "@apollo/client";
 import { GET_USER_REPOSITORIES } from "@/core/(graphql)/(prev)_/queries";
 import SkeletonBar from "@/components/loaders/Skeleton";
 import { Input } from '@/components/ui/input';
 
-export default function CardShell() {
+type CardShellProps = {
+    error: ApolloError | undefined;
+};
+
+export default function CardShell({ error }: CardShellProps) {
     const [visibleCard, setVisibleCard] = useState([]);
-    const [username, setUsername] = useState('remcostoeten');
-    const { loading, error, data } = useQuery(GET_USER_REPOSITORIES, {
-        variables: { login: username, first: 5 },
+    const [query, setQuery] = useState('remcostoeten');
+    const [username, setUsername] = useUsername();
+    const [inputValue, setInputValue] = useState('');
+    const [userNotFound, setUserNotFound] = useState(false);
+
+    const { loading, data, refetch } = useQuery(GET_USER_REPOSITORIES, {
+        variables: { login: query, first: 5 },
         onCompleted: (data) => {
             setVisibleCard(data.user.repositories.nodes.map(node => node.id));
+            setUserNotFound(false);
+        },
+        onError: (error) => {
+            if (error.message.includes('Could not resolve to a User')) {
+                setUserNotFound(true);
+            }
         }
     });
 
-    if (error) return <p>Error: {error.message}</p>;
+    const handleSubmit = async (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+        setUsername(inputValue);
+        await refetch({ login: inputValue, first: 5 });
+    };
 
-    if (loading) return (
-        <CardShellSkeleton />
-    );
+    if (error) {
+        return <p>Error: {error.message}</p>;
+    }
 
+    if (loading) return <CardShellSkeleton />;
 
     const repositories = loading ? [] : [...data.user.repositories.nodes];
 
@@ -34,6 +53,8 @@ export default function CardShell() {
 
         return commitsB - commitsA;
     });
+
+    const user = data.user;
 
     return (
         <>
@@ -92,8 +113,6 @@ export default function CardShell() {
             })}
         </>
     );
-
-    // ...
 }
 
 const CardShellSkeleton = () => {
