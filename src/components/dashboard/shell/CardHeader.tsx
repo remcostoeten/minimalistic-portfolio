@@ -1,27 +1,37 @@
+'use client';
+import { useState } from 'react';
 import { Button } from "@/components/ui/button"
 
 type CardHeaderProps = {
     title?: string;
     button?: string;
+    toggleCardbody?: any;
 }
 
-export default function CardHeader({ title, button }: CardHeaderProps) {
+export default function CardHeader({ title, button, toggleCardbody }: CardHeaderProps) {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleToggle = () => {
+        setIsOpen(!isOpen);
+        toggleCardbody();
+    };
+
     return (
-        <div className="bg-[#1A1A1A] border-b border-[#212121] rounded-t flex justify-between items-center p-4">
+        <div className="bg-dash border-b border-dash rounded-t flex justify-between items-center p-4">
             <div className="flex items-center space-x-4">
                 <CodeIcon className="text-white h-6 w-6" />
                 <h1 className="text-white font-semibold">{title}</h1>
-                <Button className="bg-transparent border border-white text-white rounded-full">{button}</Button>
+                <button className="inline-flex items-center justify-center rounded-3xl text-xs font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground hover:bg-primary/90 h-8 px-2 py-2 border border-white  bg-transparent text-white">{button}</button>
             </div>
             <div className="flex items-center space-x-4">
                 <div className="bg-orange-500 rounded-full h-3 w-3" />
-                <ChevronUpIcon className="text-white h-6 w-6" />
+                <ChevronUpIcon onClick={handleToggle} className={`text-white h-6 w-6 transform ${isOpen ? 'rotate-180' : ''}`} />
             </div>
         </div>
     )
 }
 
-
+// ... rest of the code
 function CodeIcon(props) {
     return (
         <svg

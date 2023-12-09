@@ -7,11 +7,11 @@ import IntroWrapper from '@/components/dashboard/shell/IntroWrapper.';
 import { DateRangePicker } from '@/components/date-range-picker';
 import { Icons } from '@/components/icons';
 import { Shell } from '@/components/layout/shell';
-import { SkeletonBar, TextSkeleton } from '@/components/loaders/Skeleton';
+import SkeletonBar from '@/components/loaders/Skeleton';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { auth } from '@/core/(database)/firebase';
 import { useQuery } from '@apollo/client';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 type DashboardProps = {
     data?: any;
@@ -23,35 +23,6 @@ type DashboardProps = {
     value?: string | JSX.Element;
     loading?: boolean;
 };
-
-const DisplayUser = () => {
-    const [loadingUser, setLoadingUser] = useState(true);
-    const [user, setUser] = useState(null);
-
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged(user => {
-            setUser(user);
-            setLoadingUser(false);
-        });
-
-        return () => unsubscribe();
-    }, []);
-
-    return (
-        <DashboardHeader
-            heading={
-                <>
-                    Hi{' '}
-                    {loadingUser ? <div className='skeleton w-40 h-4' /> : user?.displayName}
-                    {"'s...."}
-                </>
-            }
-            text="here are your 2023 Github metrics 💡🎯."
-        >
-            <DateRangePicker />
-        </DashboardHeader>
-    )
-}
 
 function useGithubData(login: string) {
     const { loading, error, data: githubData, refetch } = useQuery(GET_TOTAL_REPOSITORIES_AND_COMMITS, {
@@ -103,29 +74,33 @@ function useGithubData(login: string) {
 
 export default function Page(): JSX.Element {
     const user = auth.currentUser;
-
+    const labels = ['2022-01-01', '2022-01-02', '2022-01-03', '2022-01-04'];
+    const data = [10, 20, 30, 40];
+    const secondData = [5, 15, 25, 35];
     const { loading, error, totalCommits, mostUsedLanguages, totalRepositories, totalBranches, mostActiveRepo, commitsLabels } = useGithubData('remcostoeten');
 
     const DataCard: React.FC<DashboardProps> = ({ title, icon, value, subtext, loading }) => {
         return (
-            <>
-            <CardShell /><Card>
-                <CardHeader>
-                    <div className="flex items-center gap-2">
-                        <div className="text-xl font-bold">{title}</div>
-                    </div>
-                </CardHeader>
-                <CardContent>
-                    <div className='flex flex-col gap-2'>
-                        <div className="text-2xl font-bold">
-                            {loading ? <SkeletonBar height={4} width='100%' /> : value}
+            <><CardShell />
+
+                <Card>
+                    <CardHeader>
+                        <div className="flex items-center gap-2">
+                            <div className="text-xl font-bold">{title}</div>
                         </div>
-                        <p className="text-xs text-muted-foreground">
-                            {loading ? <SkeletonBar height={4} width='100%' /> : subtext}
-                        </p>
-                    </div>
-                </CardContent>
-            </Card></>
+                    </CardHeader>
+                    <CardContent>
+                        <div className='flex flex-col gap-2'>
+                            <div className="text-2xl font-bold">
+                                {loading ? <SkeletonBar height={4} width='100%' /> : value}
+                            </div>
+                            <p className="text-xs text-muted-foreground">
+                                {loading ? <SkeletonBar height={4} width='100%' /> : subtext}
+                            </p>
+                        </div>
+                    </CardContent>
+                </Card>
+            </>
         );
     };
 
@@ -140,12 +115,31 @@ export default function Page(): JSX.Element {
         ) as JSX.Element;
     }
 
+    const getUserName = () => {
+        if (user?.displayName) {
+            return user?.displayName;
+        } else if (user?.email) {
+            return user?.email.split('@')[0];
+        } else {
+            return null;
+        }
+    }
+
+    console.log(user);
+    const userName = getUserName();
     return (
         <>
             <Shell>
-                <IntroWrapper subtitle="2023" title="Metrics" ><p>Here goes some random paragraph text to fill the space with conent i also dont kno.</p></IntroWrapper>
-                <DisplayUser />
-                {/* <img src='/dash1552.png' width={600} height={600} alt='d' /> */}
+                <DashboardHeader
+                    heading={
+                        userName
+                            ? `So ${userName}....`
+                            : <div style={{ display: 'flex', alignItems: 'center' }}>So <SkeletonBar additionalClasses='w-[200px] ml-2' height={4} /></div>
+                    }
+                    text="here are your 2023 Github metrics 💡🎯."
+                >
+                </DashboardHeader>
+                <DateRangePicker />
                 <div className="grid gap-4 grid-cols-">
                     <DataCard
                         title="Most Active Repository"
@@ -176,7 +170,7 @@ export default function Page(): JSX.Element {
                         value={mostUsedLanguages?.map(([language, count]) => `${language}: ${count}`).join(', ') || <SkeletonBar />}
                         subtext="" loading={loading}
                     />
-                </div>
+                </div>https://gitlab.com/pleio/beheer/-/issues/13231
             </Shell >
         </>
     );

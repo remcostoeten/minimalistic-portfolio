@@ -124,8 +124,8 @@ module.exports = {
     nextui({
       prefix: "nextui",
       addCommonColors: false,
-      defaultTheme: "light",
-      defaultExtendTheme: "light",
+      defaultTheme: "dark",
+      defaultExtendTheme: "dark",
       layout: {},
       themes: {
         light: {

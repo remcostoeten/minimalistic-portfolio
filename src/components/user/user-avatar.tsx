@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { auth, signOut } from '@/core/(database)/firebase';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '../ui/dropdown-menu';
-import { SkeletonBar } from '../loaders/Skeleton';
+import SkeletonBar from '../loaders/Skeleton';
 
 export default function UserAvatar() {
     const [user, setUser] = useState<any>();
@@ -49,7 +49,7 @@ export default function UserAvatar() {
                 <div className="flex gap-2">
                     <div className='flex flex-col gap-0.5 justify-center'>
                         <div className="text-base font-bold text-right">
-                        {loading ? <SkeletonBar height={4} width='100%' /> : displayName}
+                            {loading ? <SkeletonBar height={4} width='100%' /> : displayName}
                         </div>
                         <p className="text-xs text-muted-foreground text-right">
                             {loading ? <SkeletonBar height={4} width='100%' /> : subTitle}
