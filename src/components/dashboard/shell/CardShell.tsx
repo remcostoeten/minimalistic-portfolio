@@ -8,6 +8,8 @@ import { ApolloError, useQuery } from "@apollo/client";
 import { GET_USER_REPOSITORIES } from "@/core/(graphql)/(prev)_/queries";
 import SkeletonBar from "@/components/loaders/Skeleton";
 import { Input } from '@/components/ui/input';
+import { SearchIcon } from 'lucide-react';
+import { useUsername } from '@/hooks/useUsername';
 
 type CardShellProps = {
     error: ApolloError | undefined;
@@ -55,24 +57,27 @@ export default function CardShell({ error }: CardShellProps) {
     });
 
     const user = data.user;
-
     return (
         <>
-            <Input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <form className="relative text-gray-600 w-full" onSubmit={handleSubmit}>
+                <input type="search" name="serch" placeholder="Search" className="bg-transparent border border-dash h-10 px-5 pr-10 rounded-full text-sm focus:outline-none w-full" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+                <button type="submit" className="absolute right-0 top-0 mt-3 mr-4">
+                    <SearchIcon />
+                </button>
+            </form>
             {repositories.map((repository) => {
                 let formattedDate = 'Invalid date';
 
                 if (typeof repository.createdAt === 'string') {
                     const date = new Date(repository.createdAt);
                     if (!isNaN(date.getTime())) {
-                        formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+                        formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
                     }
                 }
 
                 return (
                     <div key={repository.id}>
                         <CardHeader
-                            button="Some button"
                             title={repository.name}
                             toggleCardbody={() => {
                                 if (visibleCard.includes(repository.id)) {
@@ -95,20 +100,18 @@ export default function CardShell({ error }: CardShellProps) {
                                         created={formattedDate}
                                         name={repository.name}
                                         description={repository.description}
-                                        stargazers_count={repository.stargazers_count}
-                                        forks_count={repository.forks_count}
-                                        open_issues_count={repository.open_issues_count}
-                                        language={repository.language}
-                                        updated_at={repository.updated_at}
-                                        created_at={repository.created_at}
-                                        clone_url={repository.clone_url}
-                                        homepage={repository.homepage}
+                                        open_issues_count={repository.issues.totalCount}
+                                        language={repository.languages.nodes.map(lang => lang.name).join(', ')} updated_at={repository.updatedAt}
+                                        created_at={formattedDate}
+                                        clone_url={repository.url}
+                                        homepage={repository.homepageUrl}
                                     />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                                </motion.div >
+                            )
+                            }
+                        </AnimatePresence >
                         <CardFooter button="view repository" href={`https://github.com/${repository.owner.login}/${repository.name}`} />
-                    </div>
+                    </div >
                 );
             })}
         </>

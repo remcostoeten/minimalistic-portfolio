@@ -1,17 +1,12 @@
-'use client';
-import { createContext, useState } from 'react';
+import { createContext, useContext, ReactNode } from 'react';
 
-type UsernameContextType = {
-    username: string;
-    setUsername: (username: string) => void;
-};
+// Create a context for the username
+const UsernameContext = createContext('');
 
-export const UsernameContext = createContext<UsernameContextType | undefined>(undefined);
-export function UsernameProvider({ children }) {
-    const [username, setUsername] = useState('');
-
+// Create a provider component for the UsernameContext
+export const UsernameProvider: React.FC = ({ children }: { children?: ReactNode }) => {
     return (
-        <UsernameContext.Provider value={{ username, setUsername }}>
+        <UsernameContext.Provider value={''}>
             {children}
         </UsernameContext.Provider>
     );
