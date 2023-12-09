@@ -68,6 +68,30 @@ export const CardShellSkeleton = () => {
     );
 };
 
-
+export const ActivityStreamSkeleton = () => {
+    return (
+        <>
+            <li className='py-4'>
+                <div className='flex items-center'>
+                    <span className='text-left flex flex-col gap-1 w-full'>
+                        <div className='flex items-start gap-2'>
+                            <SkeletonBar dark height={6} width={6} />
+                            <span className='text-left flex flex-col gap-1'>
+                                <span className='text-left flex flex-col gap-1 w-4/5' style={{ WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                                    <SkeletonBar dark height={4} additionalClasses='!w-[200px]' />
+                                    <SkeletonBar dark height={4} additionalClasses='!w-[200px]' />
+                                </span>
+                                <div className='flex items-center flex-wrap-reverse text-[14px] gap-2 text-muted-foreground'>
+                                    <span> - </span>
+                                    <SkeletonBar dark height={4} width={16} />
+                                </div>
+                            </span>
+                        </div>
+                    </span>
+                </div >
+            </li >
+        </>
+    )
+}
 
 export default React.memo(SkeletonBar);

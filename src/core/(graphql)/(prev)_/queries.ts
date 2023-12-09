@@ -80,7 +80,7 @@ query GetUserRepositories($login: String!, $first: Int!) {
         issues(states: OPEN) {
           totalCount
         }
-        languages(first: 1, orderBy: {field: SIZE, direction: DESC}) {
+        languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
           nodes {
             name
           }
