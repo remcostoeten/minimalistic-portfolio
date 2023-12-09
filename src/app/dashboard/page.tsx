@@ -3,24 +3,15 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useQuery } from "@apollo/client";
 import { GET_USER_REPOSITORIES } from "@/core/(graphql)/(prev)_/queries";
-import SkeletonBar from "@/components/loaders/Skeleton";
-import { Input } from '@/components/ui/input';
-import Image from 'next/image';
-import { useUsername } from '@/core/context/useUsernameContext';
 import { SearchIcon } from 'lucide-react';
 import CardFooter from '@/components/dashboard/shell/CardFooter';
 import CardBody from '@/components/dashboard/shell/CardBody';
 import CardHeader from '@/components/dashboard/shell/CardHeader';
-
-type CardShellProps = {
-    error: any
-}
-
-type SearchFormProps = {
-    handleSubmit: (e: { preventDefault: () => void; }) => void;
-    inputValue: string;
-    setInputValue: (value: string) => void;
-}
+import { CardShellSkeleton } from '@/components/loaders/Skeleton';
+import { DashboardHeader } from '@/components/dashboard/dashboard-header';
+import { auth } from '@/core/(database)/firebase';
+import SkeletonBar from '@/components/loaders/Skeleton';
+import { SearchFormProps } from '@/core/types/types';
 
 const SearchForm: React.FC<SearchFormProps> = ({ handleSubmit, inputValue, setInputValue }) => {
     return (
@@ -46,6 +37,7 @@ export default function CardShell() {
     const [inputValue, setInputValue] = useState('');
     const [userNotFound, setUserNotFound] = useState(false);
     const [username, setUsername] = useState('');
+    const user = auth.currentUser;
     const { loading, error, data, refetch } = useQuery(GET_USER_REPOSITORIES, {
         variables: { login: query, first: 5 },
         onCompleted: (data) => {
@@ -101,8 +93,29 @@ export default function CardShell() {
         repositories.filter((repo) => (repo.ref?.target?.history?.totalCount || 0) === commits)
     ).flat();
 
+    const getUserName = () => {
+        if (user?.displayName) {
+            return user?.displayName;
+        } else if (user?.email) {
+            return user?.email.split('@')[0];
+        } else {
+            return null;
+        }
+    }
+
+    const userName = getUserName();
+
     return (
         <>
+            <DashboardHeader
+                heading={
+                    userName
+                        ? `So ${userName}....`
+                        : <div style={{ display: 'flex', alignItems: 'center' }}>So <SkeletonBar additionalClasses='w-[200px] ml-2' height={4} /></div>
+                }
+                text="here are your 2023 Github metrics 💡🎯."
+            >
+            </DashboardHeader>
             <SearchForm handleSubmit={handleSubmit} inputValue={inputValue} setInputValue={setInputValue} />
             {sortedRepositories.map((repository) => {
                 let formattedDate = 'Invalid date';
@@ -156,56 +169,3 @@ export default function CardShell() {
         </>
     );
 }
-
-const CardShellSkeleton = () => {
-    return (
-        <div>
-            <div className="bg-dash border-b border-dash gap-2 ounded-t flex  items-center p-4">
-                <SkeletonBar dark width={40} height={4} />
-                <SkeletonBar dark width={20} height={8} />
-                <SkeletonBar dark width={20} height={8} />
-            </div>
-            <div className="bg-[#1a1a1a] text-white">
-                <div>
-                    <div className="grid grid-cols-3 gap-4 p-4">
-                        <div>
-                            <SkeletonBar dark width={40} height={4} />
-                        </div>
-                        <div>
-                            <SkeletonBar dark width={40} height={4} />
-                        </div>
-                        <div>
-                            <SkeletonBar dark width={40} height={4} />
-                        </div>
-                        <div>
-                            <SkeletonBar dark width={40} height={4} />
-                        </div>
-                        <div>
-                            <SkeletonBar dark width={40} height={4} />
-                        </div>
-                        <div>
-                            <SkeletonBar dark width={40} height={4} />
-                        </div>
-                        <div>
-                            <SkeletonBar dark width={40} height={4} />
-                        </div>
-                        <div>
-                            <SkeletonBar dark width={40} height={4} />
-                        </div>
-                        <div>
-                            <SkeletonBar dark width={40} height={4} />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <footer className="bg-[#1a1a1a] border-dash border-t p-4 flex justify-between rounded-b skeleton-footer">
-                <div className="flex items-center space-x-6">
-                    <SkeletonBar dark width={20} height={8} />
-                </div>
-                <div className="flex space-x-2">
-                    <SkeletonBar dark width={20} height={8} />
-                </div>
-            </footer>
-        </div>
-    );
-};
