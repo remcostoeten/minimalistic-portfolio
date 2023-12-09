@@ -5,7 +5,7 @@ import Chart from 'chart.js/auto';
 Chart.register(CategoryScale, BarController, LinearScale, TimeScale, PointElement, LineElement, Tooltip, Legend);
 
 interface CommitsGraphProps {
-    githubData: any; // Replace 'any' with the actual type of your githubData
+    githubData: any;
     isLoading: boolean;
 }
 export const CommitsGraph: React.FC<CommitsGraphProps> = ({ githubData, isLoading }) => {

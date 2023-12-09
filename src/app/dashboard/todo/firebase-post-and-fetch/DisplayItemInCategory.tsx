@@ -2,14 +2,13 @@
 import { useEffect, useState } from 'react';
 import { collection, deleteDoc, doc, onSnapshot, query, where } from 'firebase/firestore';
 import { db } from '@/core/(database)/firebase';
-import { SkeletonBar } from '@/components/loaders/Skeleton';
 import { toast } from 'sonner';
 import { useEditData } from '@/hooks/useEditData';
 import { DeleteForeverOutlined } from '@mui/icons-material';
 import { Edit3 } from 'lucide-react';
 import { ImCheckmark } from 'react-icons/im';
 import { Select, SelectItem, SelectTrigger, SelectValue, SelectContent } from '@/components/ui/select';
-
+import SkeletonBar from '@/components/loaders/Skeleton';
 export default function DisplayItemInCategory() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -75,7 +74,6 @@ export default function DisplayItemInCategory() {
                 <SelectItem value="all">All</SelectItem>
                 <SelectItem value="category1">Category 1</SelectItem>
                 <SelectItem value="category2">Category 2</SelectItem>
-                {/* Add more options as needed */}
               </SelectContent>
             </Select>
           </div>

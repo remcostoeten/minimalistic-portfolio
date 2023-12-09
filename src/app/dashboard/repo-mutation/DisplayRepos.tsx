@@ -1,4 +1,4 @@
-import { SkeletonBar } from "@/components/loaders/Skeleton";
+import SkeletonBar from "@/components/loaders/Skeleton";
 import { useQuery } from "@apollo/client";
 import { gql } from "@apollo/client/core";
 

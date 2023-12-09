@@ -7,12 +7,13 @@ import CardFooter from "./CardFooter";
 import { useQuery } from "@apollo/client";
 import { GET_USER_REPOSITORIES } from "@/core/(graphql)/(prev)_/queries";
 import SkeletonBar from "@/components/loaders/Skeleton";
+import { Input } from '@/components/ui/input';
 
 export default function CardShell() {
     const [visibleCard, setVisibleCard] = useState([]);
-
+    const [username, setUsername] = useState('remcostoeten');
     const { loading, error, data } = useQuery(GET_USER_REPOSITORIES, {
-        variables: { login: 'remcostoeten', first: 5 },
+        variables: { login: username, first: 5 },
         onCompleted: (data) => {
             setVisibleCard(data.user.repositories.nodes.map(node => node.id));
         }
@@ -36,6 +37,7 @@ export default function CardShell() {
 
     return (
         <>
+            <Input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
             {repositories.map((repository) => {
                 let formattedDate = 'Invalid date';
 

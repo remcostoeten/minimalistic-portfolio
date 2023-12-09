@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SelectContent, SelectGroup, SelectItem } from '../ui/select';
 import { Select, SelectTriggerNoBg, SelectValue } from '../ui/selectnobg';
 import { BsActivity, BsSignMergeLeft } from 'react-icons/bs';
-import { SkeletonBar } from '../loaders/Skeleton';
+import SkeletonBar from '../loaders/Skeleton';
 
 const ActivityStream: React.FC = () => {
   const [commits, setCommits] = useState([]);
