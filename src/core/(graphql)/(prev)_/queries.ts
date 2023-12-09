@@ -15,6 +15,26 @@ export const GET_REPOSITORIES = gql`
   }
 `;
 
+export const TOTAL_COMMITS = gql`
+  query TotalCommits($login: String!) {
+    user(login: $login) {
+      repositories(first: 50, orderBy: {field: CREATED_AT, direction: DESC}) {
+        nodes {
+          defaultBranchRef {
+            target {
+              ... on Commit {
+                history {
+                  totalCount
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 const GET_COMMITS = gql`
   query GetCommits($login: String!) {
     user(login: $login) {
@@ -107,4 +127,45 @@ query GetUserRepositories($login: String!, $first: Int!) {
     }
   }
 }
+`;
+
+export const GET_GITHUB_CONTRIBUTION_STATS = gql`
+  query GetGitHubContributionStats($username: String!) {
+    user(login: $username) {
+      repositories(first: 100) {
+        nodes {
+          name
+          defaultBranchRef {
+            target {
+              ... on Commit {
+                history(first: 0) {
+                  totalCount
+                }
+              }
+            }
+          }
+          refs(refPrefix: "refs/heads/") {
+            totalCount
+          }
+          languages(first: 10) {
+            nodes {
+              name
+            }
+          }
+        }
+        totalCount
+      }
+      contributionsCollection {
+        contributionCalendar {
+          totalContributions
+          weeks {
+            contributionDays {
+              contributionCount
+              date
+            }
+          }
+        }
+      }
+    }
+  }
 `;

@@ -7,6 +7,7 @@ import { Navigation } from "@/core/types/types";
 import useAuthRedirect from '@/hooks/useAuthRoutes';
 import { UsernameProvider } from '@/core/context/UsernameContextProvider';
 
+
 const dashboardLinks: Navigation = {
     data: [
         {
@@ -18,6 +19,11 @@ const dashboardLinks: Navigation = {
             title: "Dashboard",
             href: "/dashboard",
             icon: "dashboard",
+        },
+        {
+            title: "Snippets",
+            href: "/dashboard/snippets",
+            icon: "snippets",
         },
         {
             title: "Todo",

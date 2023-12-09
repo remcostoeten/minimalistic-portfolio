@@ -22,6 +22,8 @@
 @import './components/html-to-jsx.scss';
 @import './components/skeleton.scss';
 
+@import './components/markdown.scss';
+
 @layer base {
   :root {
     --theme: rgba(253, 186, 114, 0.8509803922);

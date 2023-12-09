@@ -2,10 +2,9 @@ import { useQuery } from '@apollo/client';
 import { BsGithub as GithubIcon } from 'react-icons/bs';
 import { GET_GITHUB_CONTRIBUTION_STATS } from '@/core/(graphql)/(prev)_/queries';
 import Link from 'next/link';
-import SectionHeading from '@/components/layout/SectionHeading';
-import SectionSubHeading from '@/components/layout/SectionSubHeading';
-import OverviewItem from '@/components/data/github/OverviewItem';
-
+import SectionHeading from '../../layout/SectionHeading';
+import SectionSubHeading from '../../layout/SectionSubHeading';
+import OverviewItem from './OverviewItem';
 
 type ContributionsProps = {
     username: string;
@@ -54,10 +53,13 @@ const Contributions = ({ type }: ContributionsProps) => {
             }
         });
     });
+
+    // Filter out days with 0 commits
     const nonZeroContributionCountMap = new Map(
         [...contributionCountMap].filter(([_, count]) => count > 0)
     );
 
+    // Initialize maxDay with the first entry in nonZeroContributionCountMap if it's not empty
     let maxDay: [string, number] | undefined;
 
     if (nonZeroContributionCountMap.size !== 0) {
@@ -65,6 +67,7 @@ const Contributions = ({ type }: ContributionsProps) => {
         maxDay = [initialDate, initialCount];
     }
 
+    // Find the day with the maximum contribution count
     if (maxDay) {
         [...nonZeroContributionCountMap.entries()].forEach((entry) => {
             if (entry[1] > maxDay![1]) {
