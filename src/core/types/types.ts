@@ -64,3 +64,10 @@ export type iconProps = {
     w?: string | number;
     h?: string | number;
 }
+
+export type SearchFormProps = {
+    handleSubmit: (e: { preventDefault: () => void; }) => void;
+    inputValue: string;
+    setInputValue: (value: string) => void;
+}
+
