@@ -1,9 +1,7 @@
+import { useState } from "react";
+
 export function useUsername() {
-    const context = useContext(UsernameContext);
+    const [username, setUsername] = useState('');
 
-    if (context === undefined) {
-        throw new Error('useUsername must be used within a UsernameProvider');
-    }
-
-    return context;
+    return [username, setUsername];
 }

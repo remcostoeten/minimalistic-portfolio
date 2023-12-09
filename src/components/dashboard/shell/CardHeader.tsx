@@ -21,7 +21,6 @@ export default function CardHeader({ title, button, toggleCardbody }: CardHeader
             <div className="flex items-center space-x-4">
                 <CodeIcon className="text-white h-6 w-6" />
                 <h1 className="text-white font-semibold">{title}</h1>
-                <button className="inline-flex items-center justify-center rounded-3xl text-xs font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground hover:bg-primary/90 h-8 px-2 py-2 border border-white  bg-transparent text-white">{button}</button>
             </div>
             <div className="flex items-center space-x-4">
                 <div className="bg-orange-500 rounded-full h-3 w-3" />

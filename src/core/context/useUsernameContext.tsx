@@ -1,13 +1,14 @@
-import { createContext, useContext, ReactNode } from 'react';
+import { useContext, useState } from "react";
+import { UsernameContext } from "./UsernameContextProvider";
 
-// Create a context for the username
-const UsernameContext = createContext('');
+export function useUsername() {
+    const context = useContext(UsernameContext);
 
-// Create a provider component for the UsernameContext
-export const UsernameProvider: React.FC = ({ children }: { children?: ReactNode }) => {
-    return (
-        <UsernameContext.Provider value={''}>
-            {children}
-        </UsernameContext.Provider>
-    );
+    if (context === undefined) {
+        throw new Error('useUsername must be used within a UsernameProvider');
+    }
+
+    const [username, setUsername] = useState(context);
+
+    return [username, setUsername];
 }

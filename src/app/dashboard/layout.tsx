@@ -5,7 +5,7 @@ import DashboardNav from "@/components/layout/DashboardNav";
 import DashboardNavigation from "@/components/layout/navbar";
 import { Navigation } from "@/core/types/types";
 import useAuthRedirect from '@/hooks/useAuthRoutes';
-import { UsernameProvider } from '@/core/context/useUsernameContext';
+import { UsernameProvider } from '@/core/context/UsernameContextProvider';
 
 const dashboardLinks: Navigation = {
     data: [
@@ -66,7 +66,7 @@ export default function DashboardLayout({
     return (
         <UsernameProvider>
             <body className='dashboard'>
-                <div className="flex min-h-screen flex-col space-y-6">
+                <span className="flex min-h-screen flex-col space-y-6">
                     <DashboardNavigation />
                     <div className="w-screen px-8 grid flex-1 gap-12 md:grid-cols-[200px_2fr_350px]">
                         <aside className="hidden w-[200px] flex-col md:flex">
@@ -77,7 +77,7 @@ export default function DashboardLayout({
                             <ActivityStream />
                         </aside>
                     </div>
-                </div>
+                </span>
             </body>
         </UsernameProvider>
     )

@@ -18,9 +18,14 @@ type CardShellProps = {
 export default function CardShell({ error }: CardShellProps) {
     const [visibleCard, setVisibleCard] = useState([]);
     const [query, setQuery] = useState('remcostoeten');
-    const [username, setUsername] = useUsername();
     const [inputValue, setInputValue] = useState('');
     const [userNotFound, setUserNotFound] = useState(false);
+    const [username, setUsername] = useUsername();
+
+    const handleSubmit = async (e: { preventDefault: () => void }) => {
+        e.preventDefault();
+        await refetch({ login: inputValue, first: 5 });
+    };
 
     const { loading, data, refetch } = useQuery(GET_USER_REPOSITORIES, {
         variables: { login: query, first: 5 },
@@ -35,11 +40,10 @@ export default function CardShell({ error }: CardShellProps) {
         }
     });
 
-    const handleSubmit = async (e: { preventDefault: () => void; }) => {
-        e.preventDefault();
-        setUsername(inputValue);
-        await refetch({ login: inputValue, first: 5 });
-    };
+
+    if (error) {
+        return <p>Error: {error.message}</p>;
+    }
 
     if (error) {
         return <p>Error: {error.message}</p>;
