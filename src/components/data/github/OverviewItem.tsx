@@ -1,14 +1,14 @@
 import AnimateCounter from "@/components/effects/AnimateCounter";
-import { Card } from "@nextui-org/react";
+import { Card } from "@/components/ui/card";
 
 interface OverviewItemProps {
   label: string;
-  value: number;
+  value: any;
   unit?: string;
 }
 
 const OverviewItem = ({ label, value, unit = '' }: OverviewItemProps) => (
-  <Card className='flex flex-col self-center rounded-xl bg-neutral-100 py-3 px-4 border border-neutral-200 dark:border-neutral-900'>
+  <Card className='flex flex-col self-center rounded-xl py-3 px-4 border'>
     <span className='text-sm dark:text-neutral-400'>{label}</span>
     <div>
       <AnimateCounter

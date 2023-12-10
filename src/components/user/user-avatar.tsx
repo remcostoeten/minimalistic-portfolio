@@ -22,13 +22,13 @@ export default function UserAvatar() {
     if (loading) {
         return (
             <>
-                <div className='flex gap-0.5 justify-center'>
-                    <div className='flex flex-col gap-1 items-end justify-center'>
-                        <div className="skeleton w-[125px] h-3"></div>
-                        <div className="skeleton w-[100px] h-3"></div>
-                    </div>
-                    <div className="skeleton w-20 scale-75 h-20 rounded-full shrink-0"></div>
-                </div>
+                <span className='flex gap-0.5 justify-center'>
+                    <span className='flex flex-col gap-1 items-end justify-center'>
+                        <span className="skeleton w-[125px] h-3"></span>
+                        <span className="skeleton w-[100px] h-3"></span>
+                    </span>
+                    <span className="skeleton w-20 scale-75 h-20 rounded-full shrink-0"></span>
+                </span>
             </>
         );
     }
@@ -46,33 +46,33 @@ export default function UserAvatar() {
     return (
         <>
             {user && (
-                <div className="flex gap-2">
-                    <div className='flex flex-col gap-0.5 justify-center'>
-                        <div className="text-base font-bold text-right">
+                <span className="flex gap-2">
+                    <span className='flex flex-col gap-0.5 justify-center'>
+                        <span className="text-base font-bold text-right">
                             {loading ? <SkeletonBar height={4} width='100%' /> : displayName}
-                        </div>
+                        </span>
                         <p className="text-xs text-muted-foreground text-right">
                             {loading ? <SkeletonBar height={4} width='100%' /> : subTitle}
                         </p>
-                    </div>
+                    </span>
                     <DropdownMenu>
                         <DropdownMenuTrigger>
-                            <div className="avatar">
-                                <div className="w-14 rounded">
+                            <span className="avatar">
+                                <span className="w-14 rounded">
                                     {loading ?
                                         <>
-                                            <div className='flex gap-0.5 justify-center'>
-                                                <div className="skeleton w-20 scale-75 h-20 rounded-full shrink-0"></div>
-                                                <div className="skeleton w-20 scale-75 h-20 rounded-full shrink-0"></div>
-                                                <div className="skeleton w-20 scale-75 h-20 rounded-full shrink-0"></div>
-                                            </div>
-                                            <div className="skeleton w-20 scale-75 h-20 rounded-full shrink-0"></div>
+                                            <span className='flex gap-0.5 justify-center'>
+                                                <span className="skeleton w-20 scale-75 h-20 rounded-full shrink-0"></span>
+                                                <span className="skeleton w-20 scale-75 h-20 rounded-full shrink-0"></span>
+                                                <span className="skeleton w-20 scale-75 h-20 rounded-full shrink-0"></span>
+                                            </span>
+                                            <span className="skeleton w-20 scale-75 h-20 rounded-full shrink-0"></span>
                                         </>
                                         :
                                         <Image className="rounded-full scale-75" src={photoURL} alt={currentUser.displayName} width={90} height={90} />
                                     }
-                                </div>
-                            </div>
+                                </span>
+                            </span>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
                             <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -81,7 +81,7 @@ export default function UserAvatar() {
                             <DropdownMenuItem><span onClick={signOut}>Sign out</span></DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
-                </div>
+                </span>
             )}
         </>
     );

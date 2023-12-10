@@ -8,11 +8,30 @@ html {
 }
 
 body {
-    background-color: radial-gradient(ellipse 60% 50% at 50% -30%, rgba(45, 212, 191, .15) 0, rgba(8, 0, 0, 0)) !important;
+    background: radial-gradient(ellipse 60% 50% at 50% -30%, rgba(45, 212, 191, .15) 0, rgba(8, 0, 0, 0)) !important;
+    animation: changeBodyColor 10s ease-in-out infinite alternate;
+}
+
+@keyframes changeBodyColor {
+    0% {
+        background: radial-gradient(ellipse 60% 50% at 50% -30%, rgba(45, 212, 191, .15) 0, rgba(8, 0, 0, 0)) !important;
+    }
+
+    100% {
+        background: radial-gradient(ellipse 60% 50% at 50% -30%, rgba(145, 45, 212, 0.15) 0, rgba(8, 0, 0, 0)) !important;
+    }
+
 }
 
 .home-container {
     max-width: 1280px !important;
+}
+
+.toasti {
+    svg {
+        margin-right: 10px;
+        padding-right: 10px;
+    }
 }
 
 .contained {

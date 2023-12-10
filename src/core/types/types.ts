@@ -8,6 +8,11 @@ export type ChildProps = {
     size?: 'large' | 'medium' | 'small';
 };
 
+export type ContributionsProps = {
+    username: string;
+    type: string;
+    endpoint: string;
+};
 
 export type NavItem = {
     title: string
