@@ -1,5 +1,5 @@
-import { GitCommitIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
+import { GitCommitIcon } from "lucide-react";
 import Link from "next/link";
 import { Drawer } from 'vaul'
 

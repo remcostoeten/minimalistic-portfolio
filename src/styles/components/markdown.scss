@@ -1,0 +1,12 @@
+$editor-background: #11100E;
+$toolbar-background: #1F1E1B;
+
+.ql-editor.ql-blank {
+    background-color: $editor-background !important;
+    color: white !important;
+}
+
+.ql-container.ql-snow {
+    border:
+        0 !important;
+}
