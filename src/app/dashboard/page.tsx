@@ -3,15 +3,18 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useQuery } from "@apollo/client";
 import { GET_USER_REPOSITORIES } from "@/core/(graphql)/(prev)_/queries";
-import { SearchIcon } from 'lucide-react';
+import { GithubIcon, SearchIcon } from 'lucide-react';
 import CardFooter from '@/components/dashboard/shell/CardFooter';
 import CardBody from '@/components/dashboard/shell/CardBody';
 import CardHeader from '@/components/dashboard/shell/CardHeader';
 import { CardShellSkeleton } from '@/components/loaders/Skeleton';
-import { DashboardHeader } from '@/components/dashboard/dashboard-header';
 import { auth } from '@/core/(database)/firebase';
-import SkeletonBar from '@/components/loaders/Skeleton';
 import { SearchFormProps } from '@/core/types/types';
+import SectionSubHeading from '@/components/layout/SectionSubHeading';
+import Link from 'next/link';
+import GitHubCalendar from '@/components/data/github/GithubCalender';
+import SectionHeading from '@/components/layout/SectionHeading';
+import GithubContributionCards from '@/components/data/github/GithubContributions';
 
 const SearchForm: React.FC<SearchFormProps> = ({ handleSubmit, inputValue, setInputValue }) => {
     return (
@@ -70,29 +73,6 @@ export default function CardShell() {
 
     const repositories = loading ? [] : data.user.repositories.nodes;
 
-    const countingSort = (arr) => {
-        const maxCommits = Math.max(...arr.map((repo) => repo.ref?.target?.history?.totalCount || 0));
-        const countArray = new Array(maxCommits + 1).fill(0);
-
-        arr.forEach((repo) => {
-            const commits = repo.ref?.target?.history?.totalCount || 0;
-            countArray[commits]++;
-        });
-
-        let sortedArray = [];
-
-        countArray.forEach((count, commits) => {
-            sortedArray = sortedArray.concat(Array(count).fill(commits));
-        });
-
-        return sortedArray;
-    };
-
-    const commitsOrder = countingSort(repositories);
-    const sortedRepositories = commitsOrder.map((commits) =>
-        repositories.filter((repo) => (repo.ref?.target?.history?.totalCount || 0) === commits)
-    ).flat();
-
     const getUserName = () => {
         if (user?.displayName) {
             return user?.displayName;
@@ -107,17 +87,23 @@ export default function CardShell() {
 
     return (
         <>
-            <DashboardHeader
-                heading={
-                    userName
-                        ? `So ${userName}....`
-                        : <div style={{ display: 'flex', alignItems: 'center' }}>So <SkeletonBar additionalClasses='w-[200px] ml-2' height={4} /></div>
-                }
-                text="here are your 2023 Github metrics 💡🎯."
-            >
-            </DashboardHeader>
-            <SearchForm handleSubmit={handleSubmit} inputValue={inputValue} setInputValue={setInputValue} />
-            {sortedRepositories.map((repository) => {
+            <section className='flex flex-col gap-y-2'>
+                <SectionHeading title='Contributions' icon={<GithubIcon className='mr-1' />} />
+                <SectionSubHeading>
+                    <p className='dark:text-neutral-400'>My contributions from last year on github.</p>
+                    <Link
+                        href={`https://github.com/${data?.user?.login}`}
+                        target='_blank'
+                        passHref
+                        className='text-primary-500 dark:text-primary-400'
+                    >
+                        View on Github
+                    </Link>
+                </SectionSubHeading>
+                <GithubContributionCards />
+                <GitHubCalendar username="remcostoeten" />
+            </section>
+            {repositories.map((repository) => {
                 let formattedDate = 'Invalid date';
 
                 if (typeof repository.createdAt === 'string') {
