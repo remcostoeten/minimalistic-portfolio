@@ -1,13 +1,15 @@
 'use client';
-import React, { useRef } from 'react'
-import { SectionTitle } from '../core/Typography'
-import Link from 'next/link'
-import Image from 'next/image'
-import ShowcaseLabel from '../core/Labels'
-import { articles, blogPosts } from '@/core/config/BlogPosts'
-import { fadeInDelays100 } from '@/core/utillities/animations'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import ShowcaseLabel from '../core/Labels';
+import { articles, blogPosts } from '@/core/config/BlogPosts';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@nextui-org/react';
+import SectionHeading from '../layout/SectionHeading';
+import SectionSubHeading from '../layout/SectionSubHeading';
+import { FileIcon } from '@radix-ui/react-icons';
+import { DocumentScannerOutlined } from '@mui/icons-material';
 
 export default function LatestBlogSingle() {
     const ref = useRef<HTMLDivElement>(null);
@@ -41,11 +43,11 @@ export default function LatestBlogSingle() {
 
     return (
         <>
-
-            <div className='flex gap-4 flex-col'>
-                <SectionTitle><motion.span
-                    initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: fadeInDelays100[6], delay: fadeInDelays100[12] }}
-                >Some blogs & snippets</motion.span> </SectionTitle>
+            <section className='flex flex-col gap-y-2'>
+                <SectionHeading title=' Snippets & Blogs' icon={<DocumentScannerOutlined />} className='mr-1' />
+                <SectionSubHeading>
+                    <p className='dark:text-neutral-400'>Some snippets, documentation, tools and guides i've created for myself for future reference. And who knows someone actually finds them usefull.</p>
+                </SectionSubHeading>
 
                 <div className='blog-preview'>
                     {blogPosts.map((post, index) => (
@@ -149,7 +151,7 @@ export default function LatestBlogSingle() {
                         </Link>
                     </Button>
                 </div>
-            </div >
+            </section >
         </>
     )
 }

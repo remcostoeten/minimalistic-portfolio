@@ -3,7 +3,6 @@
 
 import Cursor from '@/components/Cursor';
 import { TooltipProvider } from '@/components/ui/tooltip';
-import GraphqlConnection from '@/core/(graphql)/ApolloClient';
 import clienttt from '@/core/(graphql)/ApolloClient';
 import ThemeContextProvider from '@/core/context/ThemeContext';
 import ActiveSectionContextProvider from '@/core/utillities/SectionObserver';
@@ -16,6 +15,7 @@ import { AnimatePresence } from 'framer-motion';
 import { Inter, Libre_Baskerville } from 'next/font/google';
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from 'sonner';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const serif = Libre_Baskerville({
   subsets: ['latin'],
@@ -51,6 +51,7 @@ export default function RootLayout({
                   </main>
                   <Toaster invert />
                   <Analytics />
+                  <SpeedInsights />
                 </TooltipProvider>
               </body>
             </html>

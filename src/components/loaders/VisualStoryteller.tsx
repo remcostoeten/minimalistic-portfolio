@@ -8,7 +8,12 @@ import { ProjectData } from '@/config/data/ProjectData';
 import { Link, Button } from "@nextui-org/react";
 import useInView from '@/hooks/useInView';
 import { SectionTitle } from '../core/Typography';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { m, motion, useScroll, useTransform } from 'framer-motion';
+import { AiFillProject } from 'react-icons/ai';
+import { BsFillProjectorFill } from 'react-icons/bs';
+import { Code2Icon } from 'lucide-react';
+import SectionSubHeading from '../layout/SectionSubHeading';
+import SectionHeading from '../layout/SectionHeading';
 
 export default function VisualStoryteller() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -33,16 +38,15 @@ export default function VisualStoryteller() {
 
   return (
     <>
-      <SectionTitle>
-        <motion.span
-          initial={{ opacity: 0, y: 20, x: 15 }}
-          animate={{ opacity: .5, y: 0, x: 0 }}
-          transition={{ duration: .6, delay: 1 }}>
-          Things I made
-        </motion.span>
-      </SectionTitle >
+      <m.div initial={{ opacity: 0, y: 20, x: 15 }}
+        animate={{ opacity: 1, y: 0, x: 0 }}>
+        <SectionHeading title='Code creations ✨' icon={<Code2Icon />} className='mr-1' />
+        <SectionSubHeading>
+          <p className='dark:text-neutral-400'>Loads more projects over on my Github. Loads off unreleased features.</p>
+        </SectionSubHeading>
+      </m.div >
       <div style={{
-        maxHeight: isExpanded ? (window.innerWidth <= 768 ? '650px' : '2250px') : '1000px',
+        maxHeight: isExpanded ? (isMobile ? '650px' : '2250px') : (isMobile ? '1000px' : '1000px'),
         overflow: 'hidden',
         transition: 'max-height 0.5s ease-in-out'
       }}>
@@ -58,9 +62,6 @@ export default function VisualStoryteller() {
               animate={{ opacity: .5, y: 0, x: 0 }}
               transition={{ duration: .6, delay: 1 }}
               ref={ref}
-              style={{
-                scale: scaleProgess,
-              }}
               id="projects"
               key={index}
               className="w-[650px] sm:pt-10 max-w-full sm:ml-5 mb-8 self-start"
@@ -77,7 +78,7 @@ export default function VisualStoryteller() {
                 <div
                   className="flex flex-col items-stretch w-full sm:ml-5 sm:pl-4 max-md:w-full max-md:ml-0"
                 >
-                  <div className="flex gap-[10px] grow flex-col max-md:max-w-full max-md:mt-10">
+                  <div className="flex gap-[10px] grow flex-col max-md:max-w-full max">
                     <h4 className="text-gray-200 text-lg font-medium regular-font">
                       {data.title}
                     </h4>

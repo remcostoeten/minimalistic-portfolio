@@ -1,18 +1,20 @@
 
 
-import Head from 'next/head'
+import Head from 'next/head';
 import Grid from "@/components/landing/Grid";
-import { Suspense, lazy } from 'react';
+import { lazy } from 'react';
 import { seoKeywords } from '@/config/keywords';
+import HeaderBar from '@/components/core/HeaderBar';
+import ContactComponent from '@/components/landing/nav/footer';
+import GithubContributionCards from '@/components/data/github/GithubContributions';
+import GitHubCalendar from '@/components/data/github/GithubCalender';
+import SectionHeading from '@/components/layout/SectionHeading';
+import SectionSubHeading from '@/components/layout/SectionSubHeading';
+import { GithubIcon } from 'lucide-react';
+import Link from 'next/link';
 
 const BlogPreviews = lazy(() => import("@/components/landing/BlogPreviews"));
 const VisualStoryteller = lazy(() => import("@/components/loaders/VisualStoryteller"));
-import Spinner from '@/components/loaders/Spinners';
-import HeaderBar from '@/components/core/HeaderBar';
-import ArticleList from '@/components/blog/article-list';
-import Contact from '@/components/landing/Contact';
-import ContactComponent from '@/components/landing/nav/footer';
-import Contributions from './dashboard/snippets/page';
 
 export default function page() {
   return (
@@ -26,7 +28,21 @@ export default function page() {
         <HeaderBar />
         <Grid />
         <VisualStoryteller />
-        <Contributions />
+        <section className='my-20 sm:my-10 flex flex-col gap-y-2'>
+          <SectionHeading title='Contributions' icon={<GithubIcon className='mr-1' />} />
+          <SectionSubHeading>
+            <p className='dark:text-neutral-400'>My contributions from last year on github.</p>
+            <Link
+              href='https://github.com/remcostoeten'
+              target='_blank'
+              className='text-primary-500 dark:text-primary-400'
+            >
+              View on Github
+            </Link>
+          </SectionSubHeading>
+          <GithubContributionCards />
+          <GitHubCalendar username="remcostoeten" />
+        </section>
         <BlogPreviews />
         <ContactComponent />
       </div>

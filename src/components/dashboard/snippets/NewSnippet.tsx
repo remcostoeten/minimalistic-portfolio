@@ -98,6 +98,7 @@ export function NewThought({ content }: NewThoughtProps) {
                     className="min-h-20vh"
                     onChange={setMarkdownContent}
                 />
+                <button className="btn btn-primary" type="submit" />
             </form >
         </>
     )
