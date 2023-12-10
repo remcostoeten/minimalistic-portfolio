@@ -1,9 +1,8 @@
 import { formatDate } from "@/core/utillities/utils"
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
-import { GET_TOTAL_REPOSITORIES_AND_COMMITS } from "../(database)/graphql/queries/GetTotalReposQuery"
 import { useQuery } from "@apollo/client"
+import { GET_TOTAL_REPOSITORIES_AND_COMMITS } from "@/core/(graphql)/queries/queries"
 
 type SearchParams = {
   from?: string
