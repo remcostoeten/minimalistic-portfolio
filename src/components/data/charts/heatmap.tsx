@@ -7,10 +7,10 @@ import "react-calendar-heatmap/dist/styles.css"
 
 import { formatDate } from "@/core/utillities/utils"
 
-import { LogsDeleteDialog } from "../activity/logs/logs-delete-dialog"
 import { Card } from "@/components/ui/card"
 import { toast } from "sonner"
 import { BsTropicalStorm } from "react-icons/bs"
+import { LogsDeleteDialog } from "@/components/activity/logs/logs-delete-dialog"
 
 interface Value {
   id: string
