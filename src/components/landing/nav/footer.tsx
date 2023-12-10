@@ -1,10 +1,7 @@
-import Icon from '@/components/core/icons';
 import { Input } from '@/components/ui/input';
-import { EmailOutlined, LinkedIn, WhatshotSharp } from '@mui/icons-material';
+import { EmailOutlined, LinkedIn } from '@mui/icons-material';
 import { Github } from 'lucide-react';
-import React from 'react';
 import Link from 'next/link'; // Make sure to import the appropriate Link component
-import { Textarea } from '@nextui-org/react';
 import { BsWhatsapp } from 'react-icons/bs';
 import { Button } from "@nextui-org/react";
 

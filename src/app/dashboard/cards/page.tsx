@@ -1,15 +1,13 @@
 
 'use client';
-import { GET_TOTAL_REPOSITORIES_AND_COMMITS } from '@/components/(database)/graphql/queries/GetTotalReposQuery';
 import { DashboardHeader } from '@/components/dashboard/dashboard-header';
-import CardShell from '@/components/dashboard/shell/CardShell';
-import IntroWrapper from '@/components/dashboard/shell/IntroWrapper.';
 import { DateRangePicker } from '@/components/date-range-picker';
 import { Icons } from '@/components/icons';
 import { Shell } from '@/components/layout/shell';
 import SkeletonBar from '@/components/loaders/Skeleton';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { auth } from '@/core/(database)/firebase';
+import { GET_TOTAL_REPOSITORIES_AND_COMMITS } from '@/core/(graphql)/queries/queries';
 import { useQuery } from '@apollo/client';
 import React from 'react';
 
