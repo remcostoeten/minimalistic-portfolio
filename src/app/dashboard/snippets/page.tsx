@@ -9,12 +9,13 @@ import OverviewItem from '@/components/data/github/OverviewItem';
 import { GithubStatisticsSkeleton } from '@/components/loaders/Skeleton';
 import { ContributionsProps } from '@/core/types/types';
 import { useMemo } from 'react';
+import GitHubCalendar from '@/components/data/github/GithubCalender';
+import Calendar from '@/components/data/github/Calender';
 
-const Contributions = ({ type }: ContributionsProps) => {
+export default function Contributions({ }: ContributionsProps) {
     const { loading, error, data } = useQuery(GET_GITHUB_CONTRIBUTION_STATS, {
         variables: { username: 'remcostoeten' },
     });
-
     const totalCommits = useMemo(() => {
         return data?.user.repositories.nodes.reduce(
             (total: any, repo: { defaultBranchRef: { target: { history: { totalCount: any } } } }) => {
@@ -58,7 +59,6 @@ const Contributions = ({ type }: ContributionsProps) => {
     if (error) return <p>Error: {error.message}</p>;
     if (loading) return <GithubStatisticsSkeleton />;
 
-    // Rest of your component
     return (
         <section className='flex flex-col gap-y-2'>
             <SectionHeading title='Contributions' icon={<GithubIcon className='mr-1' />} />
@@ -79,8 +79,7 @@ const Contributions = ({ type }: ContributionsProps) => {
                 <OverviewItem label='Best day' value={highestDay !== null ? highestDay : 'Loading...'} />
                 <OverviewItem label='Different languages' value={highestDay !== null ? amountOfLanguages : 'Loading...'} />
             </div>
+            <GitHubCalendar username="remcostoeten" />
         </section>
     );
 };
-
-export default Contributions;

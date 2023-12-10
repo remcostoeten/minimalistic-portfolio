@@ -19,7 +19,7 @@ interface CalendarProps {
     data?: {
         weeks: {
             firstDay: string;
-            contributionDays: Contribution[];
+            contributionDays: Contribution[];s
         }[];
         months: Month[];
         colors: string[];

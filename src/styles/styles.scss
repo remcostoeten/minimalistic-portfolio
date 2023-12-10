@@ -81,6 +81,23 @@
   }
 }
 
+/* GitHubCalendar.css */
+.chart-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 10px;
+}
+
+.contribution-day {
+  height: 20px;
+  background-color: #eee;
+  transition: background-color 0.3s ease;
+}
+
+.contribution-day:hover {
+  background-color: #000;
+}
+
 @property --angle {
   syntax: '<angle>';
   initial-value: 90deg;
