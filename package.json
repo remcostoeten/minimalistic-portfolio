@@ -58,7 +58,7 @@
     "html-differ": "^1.4.0",
     "install": "^0.13.0",
     "lucide-react": "^0.294.0",
-    "next": "latest",
+    "next": "canary",
     "next-themes": "^0.2.1",
     "nextjs-toploader": "^1.4.2",
     "nodemailer": "^6.9.7",
