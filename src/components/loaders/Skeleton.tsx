@@ -1,4 +1,8 @@
+import { Card } from '@nextui-org/react';
+import { GithubIcon, Link } from 'lucide-react';
 import React from 'react';
+import SectionHeading from '../layout/SectionHeading';
+import SectionSubHeading from '../layout/SectionSubHeading';
 
 type SkeletonBarProps = {
     width?: string | number;
@@ -95,3 +99,54 @@ export const ActivityStreamSkeleton = () => {
 }
 
 export default React.memo(SkeletonBar);
+
+export const GithubStatisticsSkeleton = () => {
+    return (
+        <section className='flex flex-col gap-y-2'>
+            <SectionHeading title='Contributions' icon={<GithubIcon className='mr-1' />} />
+            <SectionSubHeading>
+                <p className='dark:text-neutral-400'>My contributions from last year on github.</p>
+                <Link
+                    href='https://github.com/remcostoeten'
+                    target='_blank'
+                    className='text-primary-500 dark:text-primary-400'
+                >
+                    View on Github
+                </Link>
+            </SectionSubHeading>
+            <div className='grid grid-cols-2 gap-3 py-2 sm:grid-cols-4'>
+                <Card className='flex gap-2 flex-col self-center rounded-xl py-3 px-4 border'>
+                    <span className='text-sm dark:text-neutral-400'>Total</span>
+                    <div>
+                        <SkeletonBar width={12} height={4} />
+                    </div>
+                </Card>
+                <Card className='flex gap-2 flex-col self-center rounded-xl py-3 px-4 border'>
+                    <span className='text-sm dark:text-neutral-400'>
+                        <span className='text-sm dark:text-neutral-400'>Avarage per day</span>
+                    </span>
+                    <div className='flex gap-2'>
+                        <SkeletonBar width={6} height={4} />
+                        <SkeletonBar width={8} height={4} />
+                    </div>
+                </Card>
+                <Card className='flex gap-2 flex-col self-center rounded-xl py-3 px-4 border'>
+                    <span className='text-sm dark:text-neutral-400'>
+                        <span className='text-sm dark:text-neutral-400'>Best day</span>
+                    </span>
+                    <div>
+                        <SkeletonBar width={12} height={4} />
+                    </div>
+                </Card>
+                <Card className='flex gap-2 flex-col self-center rounded-xl py-3 px-4 border'>
+                    <span className='text-sm dark:text-neutral-400'>
+                        <span className='text-sm dark:text-neutral-400'>Different languages</span>
+                    </span>
+                    <div>
+                        <SkeletonBar width={12} height={4} />
+                    </div>
+                </Card>
+            </div>
+        </section>
+    );
+}
