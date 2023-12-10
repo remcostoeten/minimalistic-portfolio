@@ -1,3 +1,4 @@
+'use client';
 import { useQuery } from '@apollo/client';
 import { BsGithub as GithubIcon } from 'react-icons/bs';
 import { GET_GITHUB_CONTRIBUTION_STATS } from '@/core/(graphql)/(prev)_/queries';
@@ -5,7 +6,6 @@ import Link from 'next/link';
 import SectionHeading from '@/components/layout/SectionHeading';
 import SectionSubHeading from '@/components/layout/SectionSubHeading';
 import OverviewItem from '@/components/data/github/OverviewItem';
-
 
 type ContributionsProps = {
     username: string;
@@ -21,7 +21,6 @@ const Contributions = ({ type }: ContributionsProps) => {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
 
-    // Find the day with the highest commits
     let highestCommitsDay = null;
     data.user.contributionsCollection.contributionCalendar.weeks.forEach((week) => {
         week.contributionDays.forEach((day) => {
@@ -31,7 +30,7 @@ const Contributions = ({ type }: ContributionsProps) => {
         });
     });
 
-    console.log(highestCommitsDay);
+    const highestDay = highestCommitsDay.contributionCount;
 
     const totalCommits = data.user.repositories.nodes.reduce(
         (total: any, repo: { defaultBranchRef: { target: { history: { totalCount: any } } } }) => {
@@ -39,43 +38,6 @@ const Contributions = ({ type }: ContributionsProps) => {
         },
         0
     );
-
-    const contributionCountMap = new Map();
-
-    data.user.contributionsCollection.contributionCalendar.weeks.forEach((week) => {
-        week.contributionDays.forEach((day) => {
-            const date = day.date;
-            const count = day.contributionCount;
-
-            if (contributionCountMap.has(date)) {
-                contributionCountMap.set(date, contributionCountMap.get(date) + count);
-            } else {
-                contributionCountMap.set(date, count);
-            }
-        });
-    });
-    const nonZeroContributionCountMap = new Map(
-        [...contributionCountMap].filter(([_, count]) => count > 0)
-    );
-
-    let maxDay: [string, number] | undefined;
-
-    if (nonZeroContributionCountMap.size !== 0) {
-        const [initialDate, initialCount] = nonZeroContributionCountMap.entries().next().value;
-        maxDay = [initialDate, initialCount];
-    }
-
-    if (maxDay) {
-        [...nonZeroContributionCountMap.entries()].forEach((entry) => {
-            if (entry[1] > maxDay![1]) {
-                maxDay = entry;
-            }
-        });
-
-        console.log("Day with the most commits:", maxDay[0], "with", maxDay[1], "commits");
-    } else {
-        console.log("No contributions found with non-zero commits.");
-    }
 
     const averageCommits = totalCommits / 365;
 
@@ -96,6 +58,7 @@ const Contributions = ({ type }: ContributionsProps) => {
             <div className='grid grid-cols-2 gap-3 py-2 sm:grid-cols-4'>
                 <OverviewItem label='Total' value={totalCommits} />
                 <OverviewItem label='Average per day' value={averageCommits} unit='/ day' />
+                <OverviewItem label='Best day' value={highestDay} />
             </div>
         </section>
     );

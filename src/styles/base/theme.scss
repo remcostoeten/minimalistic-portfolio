@@ -7,6 +7,10 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    background-color: radial-gradient(ellipse 60% 50% at 50% -30%, rgba(45, 212, 191, .15) 0, rgba(8, 0, 0, 0)) !important;
+}
+
 .home-container {
     max-width: 1280px !important;
 }
