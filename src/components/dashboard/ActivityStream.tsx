@@ -52,21 +52,21 @@ const ActivityStream: React.FC = () => {
           commits.slice(0, 15).map((commit: any, index: number) => (
             <li key={index} className='py-4'>
               <div className='flex items-center'>
-                <span className='text-left flex flex-col gap-1 w-full'>
+                <div className='text-left flex flex-col gap-1 w-full'>
                   <div className='flex items-center gap-2'>
                     <BsActivity className='h-6 w-6  commit-icon text-white' />
-                    <span className='text-left flex flex-col gap-1'>
-                      <span className='text-left flex flex-col gap-1 w-4/5' style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                    <div className='text-left flex flex-col gap-1'>
+                      <div className='text-left flex flex-col gap-1 w-4/5' style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                         {commit.commit.message.length > 45 ? `${commit.commit.message.slice(0, 45)}...` : commit.commit.message}
-                      </span>
+                      </div>
                       <div className='flex items-center flex-wrap-reverse text-[14px] gap-2 text-muted-foreground'>
                         {new Date(commit.commit.author.date).toLocaleDateString()}
                         <span> - </span>
                         {commit.commit.author.name}
                       </div>
-                    </span>
+                    </div>
                   </div>
-                </span>
+                </div>
               </div>
             </li>
           ))

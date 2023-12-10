@@ -22,6 +22,8 @@
 @import './components/html-to-jsx.scss';
 @import './components/skeleton.scss';
 
+@import './components/markdown.scss';
+
 @layer base {
   :root {
     --theme: rgba(253, 186, 114, 0.8509803922);
@@ -77,6 +79,23 @@
     --input: 0 0% 14.9%;
     --ring: 0 72.2% 50.6%;
   }
+}
+
+/* GitHubCalendar.css */
+.chart-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 10px;
+}
+
+.contribution-day {
+  height: 20px;
+  background-color: #eee;
+  transition: background-color 0.3s ease;
+}
+
+.contribution-day:hover {
+  background-color: #000;
 }
 
 @property --angle {

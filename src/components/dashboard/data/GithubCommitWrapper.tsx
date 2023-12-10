@@ -1,28 +1,9 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import { useGithubCommits } from '@/core/(database)/github';
+import React from 'react';
 
 const FetchCommits: React.FC = () => {
-    const [commits, setCommits] = useState([]);
-
-    useEffect(() => {
-        const fetchGithubCommits = async () => {
-            try {
-                const response = await fetch(
-                    'https://api.github.com/repos/remcostoeten/remcostoeten/commits?per_page=20'
-                );
-                const data = await response.json();
-                setCommits(data);
-            } catch (error) {
-                console.error('Error fetching commits:', error);
-            }
-        }
-        fetchGithubCommits();
-    }
-        , []);
-
-
-
-
+    const commits = useGithubCommits();
 
     const countCommitsByDate = () => {
         const counts = {};

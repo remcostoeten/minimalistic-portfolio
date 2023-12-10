@@ -5,7 +5,7 @@ import CardBody from "./CardBody";
 import CardHeader from "./CardHeader";
 import CardFooter from "./CardFooter";
 import { ApolloError, useQuery } from "@apollo/client";
-import { GET_USER_REPOSITORIES } from "@/core/(graphql)/(prev)_/queries";
+import { GET_USER_REPOSITORIES } from "@/core/(graphql)/queries/queries";
 import SkeletonBar from "@/components/loaders/Skeleton";
 import { Input } from '@/components/ui/input';
 import { SearchIcon } from 'lucide-react';
