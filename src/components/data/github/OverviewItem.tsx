@@ -9,7 +9,7 @@ interface OverviewItemProps {
 }
 
 const OverviewItem = ({ label, value, unit = '', loading = false }: OverviewItemProps) => (
-  <Card className='flex flex-col self-center rounded-xl py-3 px-4 border'>
+  <Card className='grid--card flex flex-col self-center rounded-xl py-3 px-4 border'>
     <span className='text-sm dark:text-neutral-400'>{label}</span>
     <div>
       {loading ? (

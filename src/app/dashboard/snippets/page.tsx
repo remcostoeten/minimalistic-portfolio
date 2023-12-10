@@ -11,6 +11,7 @@ import { ContributionsProps } from '@/core/types/types';
 import { useMemo } from 'react';
 import GitHubCalendar from '@/components/data/github/GithubCalender';
 import Calendar from '@/components/data/github/Calender';
+import CreateCommunityModal from '@/components/dashboard/snippets/CreateCommunity';
 export default function Contributions() {
     const { loading, error, data } = useQuery(GET_GITHUB_CONTRIBUTION_STATS, {
         variables: { username: 'remcostoeten' },
@@ -59,12 +60,12 @@ export default function Contributions() {
     if (loading) return <GithubStatisticsSkeleton />;
 
     return (
-        <section className='flex flex-col gap-y-2'>
+        <section className='flex my-8 flex-col gap-y-2'>
             <SectionHeading title='Contributions' icon={<GithubIcon className='mr-1' />} />
             <SectionSubHeading>
                 <p className='dark:text-neutral-400'>My contributions from last year on github.</p>
                 <Link
-                    href={`https://github.com/${data?.user?.login}`}
+                    href='https://github.com/remcostoeten'
                     target='_blank'
                     passHref
                     className='text-primary-500 dark:text-primary-400'
@@ -72,7 +73,7 @@ export default function Contributions() {
                     View on Github
                 </Link>
             </SectionSubHeading>
-            <div className='grid grid-cols-2 gap-3 py-2 sm:grid-cols-4'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 gap-3 py-2'>
                 <OverviewItem label='Total' value={totalCommits !== null ? totalCommits : 'Loading...'} />
                 <OverviewItem label='Average per day' value={averageCommits !== null ? averageCommits : 'Loading...'} unit='/ day' />
                 <OverviewItem label='Best day' value={highestDay !== null ? highestDay : 'Loading...'} />

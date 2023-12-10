@@ -11,13 +11,9 @@ import LogoIconAnimated from "../effects/RemcoLogoAnimated";
 export default function DashboardNavigation() {
   return (
     <header className="flex justify-between items-center  p-4 ">
-      <span className="contained mx-auto flex justify-between items-center ml-20">
+      <span className=" flex justify-between items-center w-full pr-4 ">
         <LogoIconAnimated />
-        <span className="flex justify-between items-center w-screen">
-          <span className="flex gap-6 contained">
-          </span>
-          <UserAvatar />
-        </span>
+        <UserAvatar />
       </span >
     </header >
   );

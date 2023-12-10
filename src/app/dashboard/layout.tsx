@@ -68,6 +68,7 @@ export default function DashboardLayout({
                 <DashboardNavigation />
                 <span className="w-screen px-8 grid flex-1 gap-12 md:grid-cols-[200px_2fr_350px]">
                     <aside className="hidden w-[200px] flex-col md:flex">
+                        <DashboardNav items={dashboardLinks.data} />
                     </aside>
                     {children}
                     <aside className="hidden w-[350px] flex-col md:flex">

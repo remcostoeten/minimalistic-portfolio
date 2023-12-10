@@ -42,16 +42,19 @@ const GitHubCalendar = ({ username }: { username: string }) => {
 
   const getContributionColor = (count: number) => {
     if (count === 0) return '#171C21';
-    if (count < 5) return '#0E4529';
-    if (count < 10) return '#006A32';
-    if (count < 25) return '##3ED054';
+    if (count < 5) return '#1a5923';
+    if (count < 10) return '#2c913a';
+    if (count < 25) return '#3ED054';
+    if (count < 50) return '#46e35c';
     return '#196127';
   };
   const months: string[] = [];
   weeks.forEach((week) => {
-    const month = format(new Date(week.firstDay), 'MMMM');
-    if (!months.includes(month)) {
-      months.push(month);
+    if (Date.parse(week.firstDay)) {
+      const month = format(new Date(week.firstDay), 'MMMM');
+      if (!months.includes(month)) {
+        months.push(month);
+      }
     }
   });
 

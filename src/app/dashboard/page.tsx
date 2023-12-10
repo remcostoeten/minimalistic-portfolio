@@ -93,7 +93,7 @@ export default function CardShell() {
                     <SectionSubHeading>
                         <p className='dark:text-neutral-400'>My contributions from last year on github.</p>
                         <Link
-                            href={`https://github.com/${data?.user?.login}`}
+                            href='https://github.com/remcostoeten'
                             target='_blank'
                             passHref
                             className='text-primary-500 dark:text-primary-400'

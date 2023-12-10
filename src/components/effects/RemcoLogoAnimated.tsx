@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
+import Link from 'next/link';
 
 const containerVariants = {
     hidden: {
@@ -47,27 +48,28 @@ export default function LogoIconAnimated({ fill }: logoProps) {
     }, [controls]);
 
     return (
-        <>   <motion.svg
-            xmlSpace="preserve"
-            id="Laag_1"
-            width="209.8"
-            height={89}
-            x={0}
-            y={0}
-            className=''
-        >
-            <motion.path
-                d="M23.885 19.583a13.83 13.83 0 0 0 1.604-3.552c1.474 3.161 4.679 5.36 8.39 5.36v3.219h-.029c-5.098 0-9.25 4.156-9.25 9.265h-3.214c-.01-4.669 2.557-8.743 6.355-10.884a12.485 12.485 0 0 1-3.856-3.408z"
-                className="st0 scale-125 svg-elem-1 logo__icon-right"
-                fill="#fb8817" variants={pathVariants}
-            />
-            <motion.path
-                d="M20.499 29.92c-1.426-3.025-4.432-5.156-7.95-5.316-.14.005-.28.005-.426.005V21.37c.14 0 .286.005.426.005a9.175 9.175 0 0 0 6.118-2.697 9.204 9.204 0 0 0 2.707-6.554h3.219c0 3.335-1.296 6.467-3.654 8.825a12.464 12.464 0 0 1-2.673 2.045 12.559 12.559 0 0 1 3.842 3.392A13.93 13.93 0 0 0 20.5 29.92z"
-                className="st0 svg-elem-2 scale-125 logo__icon-left"
-                fill="#fb8817" variants={pathVariants}
-            />
+        <>
+            <Link href='/'>
+                <motion.svg
+                    xmlSpace="preserve"
+                    width="60"
+                    height={60}
+                    x={0}
+                    y={0}
+                    className=''
+                >
+                    <motion.path
+                        d="M23.885 19.583a13.83 13.83 0 0 0 1.604-3.552c1.474 3.161 4.679 5.36 8.39 5.36v3.219h-.029c-5.098 0-9.25 4.156-9.25 9.265h-3.214c-.01-4.669 2.557-8.743 6.355-10.884a12.485 12.485 0 0 1-3.856-3.408z"
+                        className="st0 scale-125 svg-elem-1 logo__icon-right"
+                        fill="#fb8817" variants={pathVariants}
+                    />
+                    <motion.path
+                        d="M20.499 29.92c-1.426-3.025-4.432-5.156-7.95-5.316-.14.005-.28.005-.426.005V21.37c.14 0 .286.005.426.005a9.175 9.175 0 0 0 6.118-2.697 9.204 9.204 0 0 0 2.707-6.554h3.219c0 3.335-1.296 6.467-3.654 8.825a12.464 12.464 0 0 1-2.673 2.045 12.559 12.559 0 0 1 3.842 3.392A13.93 13.93 0 0 0 20.5 29.92z"
+                        className="st0 svg-elem-2 scale-125 logo__icon-left"
+                        fill="#fb8817" variants={pathVariants}
+                    />
 
-            {/* <motion.path
+                    {/* <motion.path
                 d="M46.3 17.9c.6-.4 1.4-.5 2.2-.5V20h-.7c-1 0-1.8.3-2.3.8-.5.5-.8 1.4-.8 2.7V30h-2.6V17.5h2.6v1.8c.5-.6 1-1.1 1.6-1.4z"
                 className="st0 svg-elem-3 r"
                 fill="#fff" variants={pathVariants}
@@ -92,8 +94,8 @@ export default function LogoIconAnimated({ fill }: logoProps) {
                 className="st0 svg-elem-7 o"
                 fill="#fff" variants={pathVariants}
             /> */}
-        </motion.svg >
-
+                </motion.svg >
+            </Link >
         </>
 
     );

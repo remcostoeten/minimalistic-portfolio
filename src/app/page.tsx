@@ -12,6 +12,7 @@ import HeaderBar from '@/components/core/HeaderBar';
 import ArticleList from '@/components/blog/article-list';
 import Contact from '@/components/landing/Contact';
 import ContactComponent from '@/components/landing/nav/footer';
+import Contributions from './dashboard/snippets/page';
 
 export default function page() {
   return (
@@ -21,10 +22,11 @@ export default function page() {
         <meta name="description" content="Remco Stoeten - remcostoeten.com - Front-end developer" />
         <meta name="keywords" content={seoKeywords.join(', ')} />
       </Head>
-      <div className='home-container'>
+      <div className='mx-auto px-4 sm:px-6 lg:px-8 w-screen lg:w-[1280px]'>
         <HeaderBar />
         <Grid />
         <VisualStoryteller />
+        <Contributions />
         <BlogPreviews />
         <ContactComponent />
       </div>
