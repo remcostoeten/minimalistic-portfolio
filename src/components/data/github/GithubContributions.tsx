@@ -1,6 +1,6 @@
 'use client';
 import { useQuery } from '@apollo/client';
-import { GET_GITHUB_CONTRIBUTION_STATS } from '@/core/(graphql)/(prev)_/queries';
+import { GET_GITHUB_CONTRIBUTION_STATS } from '@/core/(graphql)/queries/queries';
 import OverviewItem from '@/components/data/github/OverviewItem';
 import { GithubStatisticsSkeleton } from '@/components/loaders/Skeleton';
 import { ContributionsProps } from '@/core/types/types';

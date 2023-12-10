@@ -2,21 +2,10 @@
 
 import React, { useEffect, useState } from "react"
 import { addDoc, collection, serverTimestamp } from "firebase/firestore"
-import { Calendar, PlusSquare } from "lucide-react"
 import ReactQuill from "react-quill"
-import { Drawer } from "vaul"
 
 import "react-quill/dist/quill.snow.css"
-import { CalendarIcon } from "@radix-ui/react-icons"
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "@radix-ui/react-popover"
-import { format } from "date-fns"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { auth } from "@/core/(database)/firebase"
+import { auth, db } from "@/core/(database)/firebase"
 import { toast } from "sonner"
 import { Input } from "@/components/ui/input"
 

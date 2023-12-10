@@ -1,4 +1,4 @@
-import Icon from '@/components/icons/icons';
+import Icon from '@/components/core/icons';
 import { Input } from '@/components/ui/input';
 import { EmailOutlined, LinkedIn, WhatshotSharp } from '@mui/icons-material';
 import { Github } from 'lucide-react';

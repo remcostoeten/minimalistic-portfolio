@@ -1,7 +1,7 @@
 'use client';
 import { useQuery } from '@apollo/client';
 import { BsGithub as GithubIcon } from 'react-icons/bs';
-import { GET_GITHUB_CONTRIBUTION_STATS } from '@/core/(graphql)/(prev)_/queries';
+import { GET_GITHUB_CONTRIBUTION_STATS } from '@/core/(graphql)/queries/queries';
 import Link from 'next/link';
 import SectionHeading from '@/components/layout/SectionHeading';
 import SectionSubHeading from '@/components/layout/SectionSubHeading';
@@ -11,8 +11,7 @@ import { ContributionsProps } from '@/core/types/types';
 import { useMemo } from 'react';
 import GitHubCalendar from '@/components/data/github/GithubCalender';
 import Calendar from '@/components/data/github/Calender';
-
-export default function Contributions({ }: ContributionsProps) {
+export default function Contributions() {
     const { loading, error, data } = useQuery(GET_GITHUB_CONTRIBUTION_STATS, {
         variables: { username: 'remcostoeten' },
     });

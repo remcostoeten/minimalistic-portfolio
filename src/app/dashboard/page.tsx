@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useQuery } from "@apollo/client";
-import { GET_USER_REPOSITORIES } from "@/core/(graphql)/(prev)_/queries";
+import { GET_USER_REPOSITORIES } from "@/core/(graphql)/queries/queries";
 import { GithubIcon, SearchIcon } from 'lucide-react';
 import CardFooter from '@/components/dashboard/shell/CardFooter';
 import CardBody from '@/components/dashboard/shell/CardBody';
