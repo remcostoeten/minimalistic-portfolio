@@ -87,71 +87,73 @@ export default function CardShell() {
 
     return (
         <>
-            <section className='flex flex-col gap-y-2'>
-                <SectionHeading title='Contributions' icon={<GithubIcon className='mr-1' />} />
-                <SectionSubHeading>
-                    <p className='dark:text-neutral-400'>My contributions from last year on github.</p>
-                    <Link
-                        href={`https://github.com/${data?.user?.login}`}
-                        target='_blank'
-                        passHref
-                        className='text-primary-500 dark:text-primary-400'
-                    >
-                        View on Github
-                    </Link>
-                </SectionSubHeading>
-                <GithubContributionCards />
-                <GitHubCalendar username="remcostoeten" />
-            </section>
-            {repositories.map((repository) => {
-                let formattedDate = 'Invalid date';
+            <main className="flex w-full flex-1 flex-col gap-4">
+                <section className='flex flex-col gap-y-2'>
+                    <SectionHeading title='Contributions' icon={<GithubIcon className='mr-1' />} />
+                    <SectionSubHeading>
+                        <p className='dark:text-neutral-400'>My contributions from last year on github.</p>
+                        <Link
+                            href={`https://github.com/${data?.user?.login}`}
+                            target='_blank'
+                            passHref
+                            className='text-primary-500 dark:text-primary-400'
+                        >
+                            View on Github
+                        </Link>
+                    </SectionSubHeading>
+                    <GithubContributionCards />
+                    <GitHubCalendar username="remcostoeten" />
+                </section>
+                {repositories.map((repository) => {
+                    let formattedDate = 'Invalid date';
 
-                if (typeof repository.createdAt === 'string') {
-                    const date = new Date(repository.createdAt);
-                    if (!isNaN(date.getTime())) {
-                        formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
+                    if (typeof repository.createdAt === 'string') {
+                        const date = new Date(repository.createdAt);
+                        if (!isNaN(date.getTime())) {
+                            formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
+                        }
                     }
-                }
 
-                return (
-                    <div key={repository.id}>
-                        <CardHeader
-                            title={repository.name}
-                            toggleCardbody={() => {
-                                if (visibleCard.includes(repository.id)) {
-                                    setVisibleCard(visibleCard.filter(id => id !== repository.id));
-                                } else {
-                                    setVisibleCard([...visibleCard, repository.id]);
-                                }
-                            }}
-                        />
-                        <AnimatePresence>
-                            {visibleCard.includes(repository.id) && (
-                                <motion.div
-                                    initial={{ opacity: 0, height: 0 }}
-                                    animate={{ opacity: 1, height: "auto" }}
-                                    exit={{ opacity: 0, height: 0 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <CardBody
-                                        loading={loading}
-                                        created={formattedDate}
-                                        name={repository.name}
-                                        description={repository.description}
-                                        open_issues_count={repository.issues.totalCount}
-                                        language={repository.languages.nodes.map(lang => lang.name).join(', ')}
-                                        updated_at={repository.updatedAt}
-                                        created_at={formattedDate}
-                                        clone_url={repository.url}
-                                        homepage={repository.homepageUrl}
-                                    />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                        <CardFooter button="view repository" href={`https://github.com/${repository.owner.login}/${repository.name}`} />
-                    </div>
-                );
-            })}
+                    return (
+                        <div key={repository.id}>
+                            <CardHeader
+                                title={repository.name}
+                                toggleCardbody={() => {
+                                    if (visibleCard.includes(repository.id)) {
+                                        setVisibleCard(visibleCard.filter(id => id !== repository.id));
+                                    } else {
+                                        setVisibleCard([...visibleCard, repository.id]);
+                                    }
+                                }}
+                            />
+                            <AnimatePresence>
+                                {visibleCard.includes(repository.id) && (
+                                    <motion.div
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: "auto" }}
+                                        exit={{ opacity: 0, height: 0 }}
+                                        transition={{ duration: 0.3 }}
+                                    >
+                                        <CardBody
+                                            loading={loading}
+                                            created={formattedDate}
+                                            name={repository.name}
+                                            description={repository.description}
+                                            open_issues_count={repository.issues.totalCount}
+                                            language={repository.languages.nodes.map(lang => lang.name).join(', ')}
+                                            updated_at={repository.updatedAt}
+                                            created_at={formattedDate}
+                                            clone_url={repository.url}
+                                            homepage={repository.homepageUrl}
+                                        />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                            <CardFooter button="view repository" href={`https://github.com/${repository.owner.login}/${repository.name}`} />
+                        </div>
+                    );
+                })}
+            </main>
         </>
     );
 }
