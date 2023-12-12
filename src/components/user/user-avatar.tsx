@@ -69,9 +69,7 @@ export default function UserAvatar() {
                                             <span className="skeleton w-20 scale-75 h-20 rounded-full shrink-0"></span>
                                         </>
                                         :
-                                        // BEGIN: ed8c6549bwf9
                                         <Image className="rounded-full scale-75" src={photoURL} alt={currentUser && currentUser.displayName ? currentUser.displayName : 'User avatar'} width={90} height={90} />
-                                        // END: ed8c6549bwf9
                                     }
                                 </span>
                             </span>
