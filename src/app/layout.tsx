@@ -16,6 +16,7 @@ import { Inter, Libre_Baskerville } from 'next/font/google';
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from 'sonner';
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { CommitsGraph } from '@/components/data/charts/CommitsGraph';
 
 const serif = Libre_Baskerville({
   subsets: ['latin'],
@@ -31,21 +32,17 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  if (__DEV__) {
-    loadDevMessages();
-    loadErrorMessages();
-  }
   return (
     <ApolloProvider client={clienttt}>
       <ThemeContextProvider>
         <ActiveSectionContextProvider>
           <AnimatePresence mode='wait'>
-            <html className={`${inter.className} dark text-foreground bg-background`} lang="en">
-              <body className='dark-background pb-20 min-h-screen flex'>
+            <html className={`${inter.className} dark text-foreground !bg-body`} lang="en">
+              <body className='!dark-background pb-20 min-h-screen flex'>
                 <NextTopLoader color="#fb8817" height={3.5} showSpinner={false} />
                 <TooltipProvider>
                   <Cursor />
-                  <span className='absolute top-0 right-0 bg-gradient-to-r from-green-400 to-[##0E0E0E]'></span>
+
                   <main className="mx-auto ">
                     {children}
                   </main>

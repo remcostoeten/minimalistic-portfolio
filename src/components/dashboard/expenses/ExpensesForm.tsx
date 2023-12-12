@@ -1,4 +1,8 @@
+'use client';
+import { useState, useEffect } from "react";
 import { FirebaseForm } from "./FirebaseForm";
+import firebase, { db } from "@/core/(database)/firebase";
+import { collection, onSnapshot, query } from "firebase/firestore";
 
 type Field = {
     name?: string;
@@ -7,21 +11,34 @@ type Field = {
     options?: { id: string, name: string }[];
 }
 
-export function CreateExpense() {
-    const fields: Field[] = [
+
+
+export default function CreateExpense() {
+    const [categories, setCategories] = useState([]);
+    const [fields, setFields] = useState<Field[]>([
         { name: 'amount', type: 'number', placeholder: 'Amount' },
         { name: 'description', type: 'text', placeholder: 'Description' },
-        { name: 'category', type: 'select', options: [{ id: 'categories', name: 'Categories' }] },
-    ]
+        { name: 'category', type: 'select', options: [] },
+    ]);
+
+    useEffect(() => {
+        const q = query(collection(db, 'categories'));
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            const categories = [];
+            querySnapshot.forEach((doc) => {
+                categories.push({ id: doc.id, ...doc.data() });
+            });
+            setFields(fields => fields.map(field => {
+                if (field.name === 'category') {
+                    return { ...field, options: categories };
+                }
+                return field;
+            }));
+        });
+
+        return () => unsubscribe();
+    }, []);
+
 
     return <FirebaseForm fields={fields} collectionName="expenses" />
-}
-
-export function CreateIncome() {
-    const fields: Field[] = [
-        { name: 'amount', type: 'number', placeholder: 'Amount' },
-        { name: 'source', type: 'text', placeholder: 'Source' },
-    ]
-
-    return <FirebaseForm fields={fields} collectionName="income" />
 }

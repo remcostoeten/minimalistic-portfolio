@@ -11,7 +11,7 @@ import { SectionTitle } from '../core/Typography';
 import { m, motion, useScroll, useTransform } from 'framer-motion';
 import { AiFillProject } from 'react-icons/ai';
 import { BsFillProjectorFill } from 'react-icons/bs';
-import { Code2Icon } from 'lucide-react';
+import { Code2Icon, WorkflowIcon } from 'lucide-react';
 import SectionSubHeading from '../layout/SectionSubHeading';
 import SectionHeading from '../layout/SectionHeading';
 
@@ -38,13 +38,16 @@ export default function VisualStoryteller() {
 
   return (
     <>
-      <m.div initial={{ opacity: 0, y: 20, x: 15 }}
-        animate={{ opacity: 1, y: 0, x: 0 }}>
+
+      <motion.div initial={{ opacity: 0, y: 20, x: 10, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+        transition={{ duration: .6, delay: .8 }}
+      >
         <SectionHeading title='Code creations ✨' icon={<Code2Icon />} className='mr-1' />
         <SectionSubHeading>
           <p className='dark:text-neutral-400'>Loads more projects over on my Github. Loads off unreleased features.</p>
         </SectionSubHeading>
-      </m.div >
+      </motion.div >
       <div style={{
         maxHeight: isExpanded ? (isMobile ? '650px' : '2250px') : (isMobile ? '1000px' : '1000px'),
         overflow: 'hidden',

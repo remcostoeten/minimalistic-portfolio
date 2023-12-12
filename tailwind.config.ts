@@ -26,7 +26,6 @@ module.exports = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
@@ -105,13 +104,13 @@ module.exports = {
         'darkalt': '#7d7d7d',
       },
       backgroundColor: {
-        'body': '#020000',
+        'body': 'var(--body)',
         'grid': '#E4E5E4',
-        'card-inner': '#161616',
+        'card-inner': 'var(--accent)',
         'card-inner-dark': '#111',
         'body-dark': 'var(--darkmain)',
         'body-dark-accent': 'var(--mainaccentn)',
-        'dark-alt': '#0d0d0d',
+        'dark-alt': 'var(--accent)',
       },
       width: {
         '198': '792px'

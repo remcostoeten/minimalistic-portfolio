@@ -53,7 +53,7 @@ export default function LatestBlogSingle() {
                     {blogPosts.map((post, index) => (
                         <motion.div
 
-                            className={`highlighted blog-highlighted sm:w-1/3 flex p-[14px] gap-[24px] flex-col blog-card bg-[#151515] rounded-[16px] overflow-hidden shadow-lg ${post.highlighted ? 'highlighted' : ''}`}>
+                            className={`highlighted blog-highlighted sm:w-1/3 flex p-[14px] gap-[24px] flex-col blog-card grid--grey grid--card rounded-[16px] overflow-hidden shadow-lg ${post.highlighted ? 'highlighted' : ''}`}>
                             <Link href={post.url} className="geist flex gap-1 justify-between items-center text-sm single">
                                 <span className='flex gap-2'>
                                     {Array.isArray(post.label) ? post.label.map((label, index) => (

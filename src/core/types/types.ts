@@ -58,6 +58,7 @@ export type Transaction = {
     type: "deposit" | "withdrawal";
     timestamp: any;
     date: string;
+    description: string;
 }
 
 export type iconProps = {

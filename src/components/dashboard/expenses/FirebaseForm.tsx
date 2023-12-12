@@ -4,13 +4,15 @@ import { db } from "@/core/(database)/firebase"
 import { addDoc, collection, onSnapshot } from "firebase/firestore"
 import { Input } from "@/components/ui/input"
 import { toast } from "sonner"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 type Field = {
     name: string;
     type: 'text' | 'number' | 'select';
     placeholder?: string;
-    options?: { id: string, name: string }[];
+    optionsCollection?: string;
 }
+
 
 type FormProps = {
     fields: Field[] | any[];
@@ -22,9 +24,9 @@ export function FirebaseForm({ fields, collectionName }: FormProps) {
 
     useEffect(() => {
         fields.forEach(field => {
-            if (field.type === 'select' && field.options) {
-                const unsubscribe = onSnapshot(collection(db, field.options[0].id), (snapshot) => {
-                    const options: { id: string, name: string }[] = []
+            if (field.type === 'select' && field.optionsCollection) {
+                const unsubscribe = onSnapshot(collection(db, field.optionsCollection), (snapshot) => {
+                    const options: { id: string, categoryName: string }[] = []
                     snapshot.forEach((doc) => {
                         const option = doc.data()
                         option.id = doc.id
@@ -63,7 +65,7 @@ export function FirebaseForm({ fields, collectionName }: FormProps) {
                             <SelectValue placeholder={field.placeholder} />
                         </SelectTrigger>
                         <SelectContent>
-                            {field.options?.map(option => (
+                            {field.options?.map((option) => (
                                 <SelectItem key={option.id} value={option.id}>
                                     {option.name}
                                 </SelectItem>
