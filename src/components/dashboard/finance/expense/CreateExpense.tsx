@@ -6,7 +6,7 @@ import {
     SelectItem,
 } from "@/components/ui/select";
 
-import { FirebaseForm } from "./FirebaseForm";
+import { FirebaseForm } from "../FirebaseForm";
 
 export function CreateExpense() {
     const fields = [

@@ -23,44 +23,44 @@ export function FirebaseForm({ fields, collectionName }: FormProps) {
     const [values, setValues] = useState<{ [key: string]: any }>({});
 
     useEffect(() => {
-        fields.forEach(field => {
+        fields.forEach((field) => {
             if (field.type === 'select' && field.optionsCollection) {
                 const unsubscribe = onSnapshot(collection(db, field.optionsCollection), (snapshot) => {
-                    const options: { id: string, categoryName: string }[] = []
+                    const options: { id: string; categoryName: string }[] = [];
                     snapshot.forEach((doc) => {
-                        const option = doc.data()
-                        option.id = doc.id
-                        options.push(option)
-                    })
-                    field.options = options
-                })
-                return (): void => unsubscribe()
+                        const option = doc.data();
+                        option.id = doc.id;
+                        options.push(option);
+                    });
+                    field.options = options;
+                });
+                return () => unsubscribe();
             }
-        })
-    }, [fields])
+        });
+    }, [fields]);
 
     const handleChange = (name: string, value: any) => {
-        setValues(prevValues => ({ ...prevValues, [name]: value }));
-    }
+        setValues((prevValues) => ({ ...prevValues, [name]: value }));
+    };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+        e.preventDefault();
 
         try {
-            await addDoc(collection(db, collectionName), values)
-            setValues({})
-            toast.success("Item added!")
+            await addDoc(collection(db, collectionName), values);
+            setValues({});
+            toast.success('Item added!');
         } catch (error) {
-            toast.error("Something went wrong!")
-            console.error(error)
+            toast.error('Something went wrong!');
+            console.error(error);
         }
-    }
+    };
 
     return (
         <form className="flex gap-2 flex-col" onSubmit={handleSubmit}>
-            {fields.map(field => (
-                field.type === 'select' ?
-                    <select className="select select-secondary w-full max-w-xs" key={field.name} onChange={e => handleChange(field.name, e.target.value)}>
+            {fields.map((field) => (
+                field.type === 'select' ? (
+                    <select className="select select-secondary w-full max-w-xs" key={field.name} onChange={(e) => handleChange(field.name, e.target.value)}>
                         <option disabled selected>Select a category</option>
                         {field.options?.map((option) => (
                             <option key={option.id} value={option.id}>
@@ -68,16 +68,19 @@ export function FirebaseForm({ fields, collectionName }: FormProps) {
                             </option>
                         ))}
                     </select>
-                    :
+                ) : (
                     <Input
                         key={field.name}
                         type={field.type}
                         value={values[field.name] ?? ''}
-                        onChange={e => handleChange(field.name, field.type === 'number' ? e.target.valueAsNumber : e.target.value)}
+                        onChange={(e) => handleChange(field.name, field.type === 'number' ? e.target.valueAsNumber : e.target.value)}
                         placeholder={field.placeholder}
                     />
+                )
             ))}
-            <button type="submit" className='btn btn-primary'>Add Item</button>
-        </form >
-    )
+            <button type="submit" className="btn btn-primary">
+                Add Item
+            </button>
+        </form>
+    );
 }

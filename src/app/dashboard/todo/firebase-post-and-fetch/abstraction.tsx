@@ -2,12 +2,14 @@
 'use client'
 import Link from "next/link";
 import { auth } from "@/core/(database)/firebase";
-import CreateExpense from "@/components/dashboard/expenses/ExpensesForm";
-import { ConfirmDialog } from "@/components/dashboard/expenses/ConfirmDialaog";
-import EditTransactionForm from "@/components/dashboard/expenses/EditTransactionForm";
+import CreateExpense from "@/components/dashboard/finance/ExpensesForm";
+import { ConfirmDialog } from "@/components/dashboard/finance/ConfirmDialaog";
+import EditTransactionForm from "@/components/dashboard/finance/EditTransactionForm";
 import { Button } from "@nextui-org/react";
 import { useState } from "react";
-import { CreateCategory } from "@/components/dashboard/expenses/CreateCategory";
+import { CreateCategory } from "@/components/dashboard/finance/CreateCategory";
+import GoalSetting from "@/components/dashboard/finance/goal/CreateGoal";
+import DisplayGoal from "@/components/dashboard/finance/goal/DisplayGoal";
 
 interface Transaction {
     id?: string;
@@ -65,8 +67,11 @@ export default function Abstra({
 
     return (
         <div className="flex flex-col gap-2">
+
+            <GoalSetting />
             <CreateCategory />
             <CreateExpense />
+            <DisplayGoal />
             <div>
                 {transactions && transactions.map((transaction) => (
                     <div key={transaction.id}>
