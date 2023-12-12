@@ -50,8 +50,9 @@ const ContactComponent = () => {
             </div>
             <SectionHeading title='Contact' icon={<ContactIcon className='mr-1' />} />
             <SectionSubHeading>
-                <p className='dark:text-neutral-400'>Got something to say?.</p>
-            </SectionSubHeading>            <form>
+                <p className='dark:text-neutral-400'>Got something to say?</p>
+            </SectionSubHeading>
+            <form>
                 <div className="grid grid-cols-1 gap-4 mb-6">
                     <Input placeholder="Name" className="!bg-transparent border-[#57534e]" />
                     <Input className="!bg-transparent border border-gray-700" placeholder="Email" />
