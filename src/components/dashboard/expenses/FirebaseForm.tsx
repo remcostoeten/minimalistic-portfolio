@@ -60,18 +60,14 @@ export function FirebaseForm({ fields, collectionName }: FormProps) {
         <form className="flex gap-2 flex-col" onSubmit={handleSubmit}>
             {fields.map(field => (
                 field.type === 'select' ?
-                    <Select key={field.name} onChange={value => handleChange(field.name, value)}>
-                        <SelectTrigger className="w-[180px]">
-                            <SelectValue placeholder={field.placeholder} />
-                        </SelectTrigger>
-                        <SelectContent>
-                            {field.options?.map((option) => (
-                                <SelectItem key={option.id} value={option.id}>
-                                    {option.name}
-                                </SelectItem>
-                            ))}
-                        </SelectContent>
-                    </Select>
+                    <select className="select select-primary w-full max-w-xs" key={field.name} onChange={e => handleChange(field.name, e.target.value)}>
+                        <option disabled selected>Select a category</option>
+                        {field.options?.map((option) => (
+                            <option key={option.id} value={option.id}>
+                                {option.categoryName}
+                            </option>
+                        ))}
+                    </select>
                     :
                     <Input
                         key={field.name}

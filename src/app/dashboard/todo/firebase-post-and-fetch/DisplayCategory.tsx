@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 
 type Category = {
   id: string;
-  name: string;
-}
+  categoryName: string;
+};
 
 export function CategoriesList() {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -43,7 +43,7 @@ export function CategoriesList() {
     <div className=" flex flex-col gap-2">
       {categories.map(category => (
         <div key={category.id}>
-          <span>{category.name}</span>
+          <span>{category.categoryName}</span>
           <div className="flex gap-2 mt-1">
             <Button variant="secondary" onClick={() => setEditingCategoryId(category.id)} >Edit</Button>
             <Button variant="ghost" onClick={() => handleDelete(category.id)} >Delete</Button>
