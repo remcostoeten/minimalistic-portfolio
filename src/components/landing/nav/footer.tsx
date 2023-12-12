@@ -1,9 +1,11 @@
 import { Input } from '@/components/ui/input';
 import { EmailOutlined, LinkedIn } from '@mui/icons-material';
-import { Github } from 'lucide-react';
+import { ContactIcon, Github } from 'lucide-react';
 import Link from 'next/link'; // Make sure to import the appropriate Link component
 import { BsWhatsapp } from 'react-icons/bs';
 import { Button } from "@nextui-org/react";
+import SectionHeading from '@/components/layout/SectionHeading';
+import SectionSubHeading from '@/components/layout/SectionSubHeading';
 
 const contactLinks = [
     {
@@ -31,7 +33,10 @@ const contactLinks = [
 const ContactComponent = () => {
     return (
         <div className="b mx-auto">
-            <h2 className="text-3xl font-bold mt-20 mb-10">Contact</h2>
+            <SectionHeading title='Contact' icon={<ContactIcon className='mr-1' />} />
+            <SectionSubHeading>
+                <p className='dark:text-neutral-400'>Got something to say?.</p>
+            </SectionSubHeading>
             <div className="flex flex-wrap gap-8 mb-16">
                 {contactLinks.map((link, index) => (
                     <Link

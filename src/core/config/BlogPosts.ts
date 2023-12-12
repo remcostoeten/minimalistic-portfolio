@@ -11,7 +11,7 @@ export const blogPosts = [
     },
     {
 
-        label: ["Framer motion", "Hooks"],
+        label: ["Framer motion"],
         readTime: "2 min read",
         imageSrc: "/b2.png",
         title: "Scroll in view hook",

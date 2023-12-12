@@ -8,7 +8,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@nextui-org/react';
 import SectionHeading from '../layout/SectionHeading';
 import SectionSubHeading from '../layout/SectionSubHeading';
-import { FileIcon } from '@radix-ui/react-icons';
 import { DocumentScannerOutlined } from '@mui/icons-material';
 
 export default function LatestBlogSingle() {
