@@ -1,3 +1,4 @@
+
 'use client';
 import { db } from "@/core/(database)/firebase";
 import { onSnapshot, collection } from "firebase/firestore";
@@ -9,12 +10,13 @@ const DisplayGoal = () => {
 
     useEffect(() => {
         const unsubscribeGoals = onSnapshot(collection(db, 'goals'), (snapshot) => {
-            const goalsData = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+            const goalsData = snapshot.docs.map((doc) => ({ id: doc.id, goalAmount: Number(doc.data().goalAmount) || 0, ...doc.data() }));
             setGoals(goalsData);
+            console.log('Goals:', goalsData);
         });
 
         const unsubscribeExpenses = onSnapshot(collection(db, 'expenses'), (snapshot) => {
-            const expensesData = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+            const expensesData = snapshot.docs.map((doc) => ({ id: doc.id, amount: Number(doc.data().amount), ...doc.data() }));
             setExpenses(expensesData);
         });
 
@@ -25,11 +27,12 @@ const DisplayGoal = () => {
     }, []);
 
     // Calculate total expenses
-    const totalExpenses = expenses.reduce((total, expense) => total + expense.amount, 0);
+    const totalGoalAmount = goals.reduce((total, goal) => total + goal.targetAmount, 0);
 
     // Calculate total goal amount
-    const totalGoalAmount = goals.reduce((total, goal) => total + goal.goalAmount, 0);
-
+    // const totalGoalAmount = goals.reduce((total, goal) => total + goal.goalAmount, 0);
+    const totalExpenses = expenses.reduce((total, expense) => total + expense.amount, 0);
+    
     // Calculate progress percentage
     const progress = (totalExpenses / totalGoalAmount) * 100;
 

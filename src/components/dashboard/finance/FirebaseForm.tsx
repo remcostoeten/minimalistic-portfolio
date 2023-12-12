@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useEffect, useState } from "react"
 import { db } from "@/core/(database)/firebase"
 import { addDoc, collection, onSnapshot } from "firebase/firestore"
@@ -12,7 +11,6 @@ type Field = {
     placeholder?: string;
     optionsCollection?: string;
 }
-
 
 type FormProps = {
     fields: Field[] | any[];
@@ -28,7 +26,7 @@ export function FirebaseForm({ fields, collectionName }: FormProps) {
                 const unsubscribe = onSnapshot(collection(db, field.optionsCollection), (snapshot) => {
                     const options: { id: string; categoryName: string }[] = [];
                     snapshot.forEach((doc) => {
-                        const option = doc.data();
+                        const option = doc.data() as { id: string; categoryName: string };
                         option.id = doc.id;
                         options.push(option);
                     });
@@ -45,7 +43,6 @@ export function FirebaseForm({ fields, collectionName }: FormProps) {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-C
         try {
             await addDoc(collection(db, collectionName), values);
             setValues({});

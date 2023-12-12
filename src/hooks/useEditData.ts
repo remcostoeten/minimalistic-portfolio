@@ -6,7 +6,7 @@ import { toast } from "sonner";
 export function useEditData(collectionName) {
     const [data, setData] = useState(null);
 
-    const updateData = async (id, newData) => {
+    const updateData = async (id: string, newData: any) => {
         try {
             await updateDoc(doc(db, collectionName, id), newData);
             toast.success("Data updated successfully.");

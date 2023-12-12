@@ -1,5 +1,5 @@
 'use client';
-ximport React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Paginate from 'react-paginate';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
@@ -57,7 +57,6 @@ const ChatHistory = () => {
                 pageRangeDisplayed={5}
                 onPageChange={handlePageClick}
                 containerClassName={'pagination'}
-                subContainerClassName={'pages pagination'}
                 activeClassName={'active'}
             />
         </div>
