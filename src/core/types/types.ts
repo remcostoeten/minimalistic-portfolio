@@ -53,12 +53,12 @@ export interface SiteConfig {
 }
 
 export type Transaction = {
-    id: string;
-    amount: number;
-    type: "deposit" | "withdrawal";
-    timestamp: any;
-    date: string;
-    description: string;
+    id?: string;
+    amount?: number;
+    type?: "deposit" | "withdrawal";
+    timestamp?: any;
+    date?: string;
+    description?: string;
 }
 
 export type iconProps = {

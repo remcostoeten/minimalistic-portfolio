@@ -2,30 +2,31 @@
 
 import React, { useEffect, useState } from "react"
 import { addDoc, collection, serverTimestamp } from "firebase/firestore"
-import ReactQuill from "react-quill"
 
 import "react-quill/dist/quill.snow.css"
 import { auth, db } from "@/core/(database)/firebase"
 import { toast } from "sonner"
 import { Input } from "@/components/ui/input"
 
-
-interface NewThoughtProps {
-    content?: string
+type SnippetProps = {
+    id?: string
+    title?: string
+    description?: string
+    createdAt?: any
+    userId?: string
+    subject?: string
+    selectedDate?: Date | null
+    label?: string
 }
 
-type Thought = {
-    id: string
-    title: string
-    description: string
-    createdAt: any
-    userId: string
-    subject: string
-    selectedDate: Date | null
-    label: string
+
+let ReactQuill;
+if (typeof window !== 'undefined') {
+    ReactQuill = require('react-quill');
 }
 
-export function NewThought({ content }: NewThoughtProps) {
+
+export default function NewSnippet(): JSX.Element {
     const [open, setOpen] = useState(false)
     const [title, setTitle] = useState("")
     const [date, setDate] = useState<Date | null>(null)
@@ -53,7 +54,7 @@ export function NewThought({ content }: NewThoughtProps) {
         }
 
         try {
-            const newThought: Thought = {
+            const newThought: SnippetProps = {
                 title,
                 userId: user.uid,
                 description: markdownContent,
@@ -92,12 +93,13 @@ export function NewThought({ content }: NewThoughtProps) {
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
-                <ReactQuill
+                {ReactQuill && <ReactQuill
                     placeholder="Thought content"
                     value={markdownContent}
                     className="min-h-20vh"
                     onChange={setMarkdownContent}
                 />
+                };
                 <button className="btn btn-primary" type="submit" />
             </form >
         </>
