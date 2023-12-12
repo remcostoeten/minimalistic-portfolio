@@ -3,8 +3,8 @@ import { FirebaseForm } from '../FirebaseForm';
 
 const GoalSetting = () => {
     const fields = [
-        { name: 'goalAmount', type: 'number', placeholder: 'Goal Amount' },
-        { name: 'currentSavings', type: 'number', placeholder: 'Current Savings' },
+        { name: 'targetAmount', type: 'number', placeholder: 'Goal Amount' },
+        { name: 'initialSavings', type: 'number', placeholder: 'Initial Savings' },
     ];
 
     return <FirebaseForm fields={fields} collectionName="goals" />;

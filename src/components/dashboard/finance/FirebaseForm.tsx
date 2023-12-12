@@ -45,7 +45,7 @@ export function FirebaseForm({ fields, collectionName }: FormProps) {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
+C
         try {
             await addDoc(collection(db, collectionName), values);
             setValues({});

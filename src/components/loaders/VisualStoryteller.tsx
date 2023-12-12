@@ -45,7 +45,7 @@ export default function VisualStoryteller() {
       >
         <SectionHeading title='Code creations ✨' icon={<Code2Icon />} className='mr-1' />
         <SectionSubHeading>
-          <p className='dark:text-neutral-400'>Loads more projects over on my Github. Loads off unreleased features.</p>
+          <p className='dark:text-neutral-400'>Loads of (unfinished) projects over on my Github.</p>
         </SectionSubHeading>
       </motion.div >
       <div style={{
