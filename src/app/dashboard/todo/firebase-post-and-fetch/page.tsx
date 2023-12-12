@@ -1,9 +1,4 @@
 'use client'
-'use client'
-import { NewCategory } from "./NewCategory";
-import { NewItemInCategory } from "./NewItemInCategory";
-import { CategoriesList } from "./DisplayCategory";
-import DisplayItemInCategory from "./DisplayItemInCategory";
 import Link from "next/link";
 import { auth } from "@/core/(database)/firebase";
 import CreateExpense from "@/components/dashboard/expenses/ExpensesForm";
