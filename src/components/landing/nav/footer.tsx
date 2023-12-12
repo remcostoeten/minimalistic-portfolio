@@ -32,11 +32,7 @@ const contactLinks = [
 
 const ContactComponent = () => {
     return (
-        <div className="b mx-auto">
-            <SectionHeading title='Contact' icon={<ContactIcon className='mr-1' />} />
-            <SectionSubHeading>
-                <p className='dark:text-neutral-400'>Got something to say?.</p>
-            </SectionSubHeading>
+        <div className="b mx pt-20-auto">
             <div className="flex flex-wrap gap-8 mb-16">
                 {contactLinks.map((link, index) => (
                     <Link
@@ -52,8 +48,10 @@ const ContactComponent = () => {
                     </Link>
                 ))}
             </div>
-            <h3 className="text-xl font-semibold mb-6">Got something to say?</h3>
-            <form>
+            <SectionHeading title='Contact' icon={<ContactIcon className='mr-1' />} />
+            <SectionSubHeading>
+                <p className='dark:text-neutral-400'>Got something to say?.</p>
+            </SectionSubHeading>            <form>
                 <div className="grid grid-cols-1 gap-4 mb-6">
                     <Input placeholder="Name" className="!bg-transparent border-[#57534e]" />
                     <Input className="!bg-transparent border border-gray-700" placeholder="Email" />

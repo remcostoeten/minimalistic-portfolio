@@ -42,7 +42,7 @@ export default function LatestBlogSingle() {
 
     return (
         <>
-            <section className='flex flex-col gap-y-2'>
+            <section className='flex flex-col gap-y-2 pt-0 pb-28'>
                 <SectionHeading title=' Snippets & Blogs' icon={<DocumentScannerOutlined />} className='mr-1' />
                 <SectionSubHeading>
                     <p className='dark:text-neutral-400'>Some snippets, documentation, tools and guides i've created for myself for future reference. And who knows someone actually finds them usefull.</p>
@@ -143,13 +143,12 @@ export default function LatestBlogSingle() {
                             </li>
                         ))}
                     </ul>
-                    <Button className='mt-8' variant='ghost' aria-label='Read more on my snippets page
- '>
+                    <Button className='mt-8' variant='ghost' aria-label='Read more on my snippets page'>
                         <Link href='https://snippets.remcostoeten.com/' target="_blank">
                             More snippets
                         </Link>
                     </Button>
-                </div>
+                </div >
             </section >
         </>
     )
