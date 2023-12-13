@@ -10,6 +10,7 @@ import { useState } from "react";
 import { CreateCategory } from "@/components/dashboard/finance/CreateCategory";
 import GoalSetting from "@/components/dashboard/finance/goal/CreateGoal";
 import DisplayGoal from "@/components/dashboard/finance/goal/DisplayGoal";
+import { CreateIncome } from "@/components/dashboard/finance/income/CreateIncome";
 
 interface Transaction {
     id?: string;
@@ -71,6 +72,7 @@ export default function Abstra({
             <GoalSetting />
             <CreateCategory />
             <CreateExpense />
+            <CreateIncome />
             <DisplayGoal />
             <div>
                 {transactions && transactions.map((transaction) => (

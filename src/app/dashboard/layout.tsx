@@ -72,7 +72,7 @@ export default function DashboardLayout({
                     </aside>
                     {children}
                     <aside className="hidden w-[350px] flex-col md:flex">
-                        <ActivityStream />
+                        {/* <ActivityStream /> */}
                     </aside>
                 </span>
             </div>

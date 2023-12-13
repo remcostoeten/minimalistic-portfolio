@@ -1,8 +1,11 @@
 import React from 'react'
 import Abstra from './abstraction';
 import { CategoriesList } from './DisplayCategory';
+import FinanceCards from '@/components/dashboard/finance/shell/Blocks';
 export default function page() {
     return (
-        <><Abstra transactions={[]} collectionName={''} /><CategoriesList /></>
+        <>
+            <FinanceCards />
+            <Abstra transactions={[]} collectionName={''} /><CategoriesList /></>
     )
 }

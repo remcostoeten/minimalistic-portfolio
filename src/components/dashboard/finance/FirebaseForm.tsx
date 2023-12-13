@@ -55,6 +55,7 @@ export function FirebaseForm({ fields, collectionName }: FormProps) {
 
     return (
         <form className="flex gap-2 flex-col" onSubmit={handleSubmit}>
+            <h2>Create a {collectionName}</h2>
             {fields.map((field) => (
                 field.type === 'select' ? (
                     <select className="select select-secondary w-full max-w-xs" key={field.name} onChange={(e) => handleChange(field.name, e.target.value)}>
