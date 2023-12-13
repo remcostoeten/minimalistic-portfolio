@@ -1,11 +1,12 @@
-import { ApolloClient, InMemoryCache, NormalizedCacheObject } from '@apollo/client';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-const GraphqlConnection: ApolloClient<NormalizedCacheObject> = new ApolloClient({
+const client = new ApolloClient({
     uri: 'https://api.github.com/graphql',
     cache: new InMemoryCache(),
     headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`
+        Authorization: `Bearer re_Vks5t5ob_8LipLMaoZFAa7Jy4zDwzqNWQ`,
     },
 });
 
-export default GraphqlConnection;
+export default client;
+
