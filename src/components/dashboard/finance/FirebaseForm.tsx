@@ -31,7 +31,7 @@ export function FirebaseForm({ fields, collectionName }: FormProps) {
                         options.push(option);
                     });
                     field.options = options;
-                });
+                }); a
                 return () => unsubscribe();
             }
         });
@@ -56,26 +56,41 @@ export function FirebaseForm({ fields, collectionName }: FormProps) {
     return (
         <form className="flex gap-2 flex-col" onSubmit={handleSubmit}>
             <h2>Create a {collectionName}</h2>
-            {fields.map((field) => (
-                field.type === 'select' ? (
-                    <select className="select select-secondary w-full max-w-xs" key={field.name} onChange={(e) => handleChange(field.name, e.target.value)}>
-                        <option disabled selected>Select a category</option>
-                        {field.options?.map((option) => (
-                            <option key={option.id} value={option.id}>
-                                {option.categoryName}
-                            </option>
-                        ))}
-                    </select>
-                ) : (
-                    <Input
-                        key={field.name}
-                        type={field.type}
-                        value={values[field.name] ?? ''}
-                        onChange={(e) => handleChange(field.name, field.type === 'number' ? e.target.valueAsNumber : e.target.value)}
-                        placeholder={field.placeholder}
-                    />
-                )
-            ))}
+            {fields.map((field) => {
+                switch (field.type) {
+                    case 'select':
+                        return (
+                            <select className="select select-secondary w-full max-w-xs" key={field.name} onChange={(e) => handleChange(field.name, e.target.value)}>
+                                <option disabled selected>Select a category</option>
+                                {field.options?.map((option) => (
+                                    <option key={option.id} value={option.id}>
+                                        {option.categoryName}
+                                    </option>
+                                ))}
+                            </select>
+                        );
+                    case 'date':
+                        return (
+                            <Input
+                                key={field.name}
+                                type="date"
+                                value={values[field.name] ?? ''}
+                                onChange={(e) => handleChange(field.name, new Date(e.target.value))}
+                                placeholder={field.placeholder}
+                            />
+                        );
+                    default:
+                        return (
+                            <Input
+                                key={field.name}
+                                type={field.type}
+                                value={values[field.name] ?? ''}
+                                onChange={(e) => handleChange(field.name, field.type === 'number' ? e.target.valueAsNumber : e.target.value)}
+                                placeholder={field.placeholder}
+                            />
+                        );
+                }
+            })}
             <button type="submit" className="btn btn-primary">
                 Add Item
             </button>
