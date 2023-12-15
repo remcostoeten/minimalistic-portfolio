@@ -1,15 +1,10 @@
 'use client'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { useFirestoreCollection } from '@/hooks/useFirestoreCollection'
 import { useState, useEffect } from 'react'
 
 export default function FinacneHeader() {
-    const incomes = useFirestoreCollection("incomes");
-    const expenses = useFirestoreCollection("expenses");
-
-    const incomeAmoun = incomes.reduce((acc, cur) => acc + cur.amount, 0)
-    const expenseAmount = expenses.reduce((acc, cur) => acc + cur.amount, 0)
-    console.log(expenseAmount, incomeAmoun)
+    const incomeAmoun = 'd'
+    const expenseAmount = 'd'
     return (
         <>
             <div className="flex w-full items-center">

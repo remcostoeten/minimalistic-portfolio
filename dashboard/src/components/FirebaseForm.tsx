@@ -4,6 +4,7 @@ import { addDoc, collection, onSnapshot } from "firebase/firestore"
 import { toast } from "sonner"
 import { db } from "@/core/firebase";
 import { Input } from "./ui/Input";
+import { Button, Select, SelectItem } from "@nextui-org/react";
 
 type Field = {
     name: string;
@@ -44,7 +45,6 @@ export function FirebaseForm({ fields, collectionName }: FormProps) {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            // Add a date field to the values
             const valuesWithDate = { ...values, date: new Date() };
             await addDoc(collection(db, collectionName), valuesWithDate);
             setValues({});
@@ -62,14 +62,15 @@ export function FirebaseForm({ fields, collectionName }: FormProps) {
                 switch (field.type) {
                     case 'select':
                         return (
-                            <select className="select select-secondary w-full max-w-xs" key={field.name} onChange={(e) => handleChange(field.name, e.target.value)}>
-                                <option disabled selected>Select a category</option>
+                            <Select
+                                className="max-w-xs"
+                            >
                                 {field.options?.map((option) => (
-                                    <option key={option.id} value={option.id}>
+                                    <SelectItem key={option.id} value={option.id}>
                                         {option.categoryName}
-                                    </option>
+                                    </SelectItem>
                                 ))}
-                            </select>
+                            </Select>
                         );
                     case 'date':
                         return (
@@ -93,10 +94,8 @@ export function FirebaseForm({ fields, collectionName }: FormProps) {
                         );
                 }
             })}
-            <button type="submit" className="btn btn-primary">
-                Add Item
-            </button>
-        </form>
+            <Button>Add item</Button>
+        </form >
     );
 }
 

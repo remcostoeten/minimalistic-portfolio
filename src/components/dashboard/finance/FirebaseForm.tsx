@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useState } from "react"
 import { db } from "@/core/(database)/firebase"
 import { addDoc, collection, onSnapshot } from "firebase/firestore"

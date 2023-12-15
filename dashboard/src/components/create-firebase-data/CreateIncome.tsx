@@ -1,13 +1,12 @@
 'use client';
 import useFetchFirestore from "@/core/hooks/useFetchFirestore";
 import { FirebaseForm } from "../FirebaseForm";
-import { Spinner } from "@nextui-org/react";
 
-export function CreateExpense() {
+export function CreateIncome() {
     const { data: categories, loading, error } = useFetchFirestore('categories');
 
     if (loading) {
-        return <div className="skeleton">...</div>;
+        return <div className="skeleton">Loading...</div>;
     }
 
     if (error) {
@@ -20,5 +19,5 @@ export function CreateExpense() {
         { name: 'category', type: 'select', options: categories },
     ];
 
-    return <FirebaseForm fields={fields} collectionName="expenses" />;
+    return <FirebaseForm fields={fields} collectionName="income" />;
 }
