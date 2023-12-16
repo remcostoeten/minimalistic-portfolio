@@ -1,27 +1,27 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import { getDocs, collection } from 'firebase/firestore';
 import { db } from '@/core/firebase';
 
-interface DataState {
-    loading: boolean;
-    data: any[];
-    error: Error | null;
-}
-
-const useFetchFirestore = (collectionName: string): DataState => {
+function useFetchFirestore(collectionName) {
+    const [data, setData] = useState([]);
+    const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [data, setData] = useState<any[]>([]);
-    const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const querySnapshot = await getDocs(collection(db, collectionName));
-                const fetchedData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                setData(fetchedData);
-            } catch (err) {
-                setError(err);
+                const documents = [];
+                querySnapshot.forEach((doc) => {
+                    documents.push({
+                        id: doc.id,
+                        ...doc.data(),
+                    });
+                });
+                setData(documents);
+            } catch (error) {
+                setError(error);
             } finally {
                 setLoading(false);
             }
@@ -30,7 +30,7 @@ const useFetchFirestore = (collectionName: string): DataState => {
         fetchData();
     }, [collectionName]);
 
-    return { loading, data, error };
-};
+    return { data, error, loading };
+}
 
 export default useFetchFirestore;
