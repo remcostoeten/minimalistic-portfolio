@@ -1,8 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
-import { addDoc, collection, serverTimestamp } from "firebase/firestore"
-
+import { addDoc, collection, getDocs, serverTimestamp } from "firebase/firestore"
 import "react-quill/dist/quill.snow.css"
 import { auth, db } from "@/core/(database)/firebase"
 import { toast } from "sonner"
@@ -44,6 +43,14 @@ export default function NewSnippet(): JSX.Element {
             }
             setLoading(false)
         })
+
+        const fetchCategories = async () => {
+            const querySnapshot = await getDocs(collection(db, "snippet-categories"));
+            setCategories(querySnapshot.docs.map(doc => doc.data().categoryName));
+        };
+
+        fetchCategories();
+
         return (): void => unsubscribe()
     }, [])
 

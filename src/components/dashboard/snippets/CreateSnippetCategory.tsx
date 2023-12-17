@@ -1,37 +1,35 @@
 'use client';
-import { Input } from '@/components/ui/input';
-import { useFirestoreAdd } from '@/hooks/useFirestoreAdd';
-import { Button } from '@nextui-org/react';
 import React, { useState } from 'react';
-import { toast } from 'sonner';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '@/core/(database)/firebase';
 
-function CategoryForm() {
-    const [categoryName, setCategoryName] = useState("");
-    const addData = useFirestoreAdd();
+const CreateSnippetCategory = () => {
+    const [categoryName, setCategoryName] = useState('');
 
-    const handleSubmit = async (e: { preventDefault: () => void; }) => {
-        e.preventDefault();
+    const handleSubmit = async (event: React.FormEvent) => {
+        event.preventDefault();
 
-        const data = {
-            categoryName,
-        };
-
-        const docId = await addData("snippet-categories", data);
-        toast.success("Category added successfully");
-        setCategoryName("");
+        try {
+            await addDoc(collection(db, 'snippet-categories'), { categoryName });
+            setCategoryName(''); // reset the input field
+        } catch (error) {
+            console.error('Error adding document: ', error);
+        }
     };
 
     return (
-        <form className='flex flex-col gap-2' onSubmit={handleSubmit}>
-            <Input
-                type="text"
-                value={categoryName}
-                onChange={(e) => setCategoryName(e.target.value)}
-                placeholder="Category name"
-            />
-            <Button variant='ghost' type="submit">Add Category</Button>
+        <form onSubmit={handleSubmit}>
+            <label>
+                Category Name:
+                <input
+                    type="text"
+                    value={categoryName}
+                    onChange={(e) => setCategoryName(e.target.value)}
+                />
+            </label>
+            <button type="submit">Add Category</button>
         </form>
     );
-}
+};
 
-export default CategoryForm;
+export default CreateSnippetCategory;
