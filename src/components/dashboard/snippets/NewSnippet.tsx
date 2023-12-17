@@ -6,6 +6,7 @@ import "react-quill/dist/quill.snow.css"
 import { auth, db } from "@/core/(database)/firebase"
 import { toast } from "sonner"
 import { Input } from "@/components/ui/input"
+import { Button } from "@nextui-org/react"
 
 type SnippetProps = {
     id: string
@@ -16,6 +17,7 @@ type SnippetProps = {
     subject?: string
     selectedDate?: Date | null
     label?: string
+    shortDesc?: string
 }
 
 let ReactQuill;
@@ -27,14 +29,12 @@ export default function NewSnippet(): JSX.Element {
     const [open, setOpen] = useState(false)
     const [title, setTitle] = useState("")
     const [date, setDate] = useState<Date | null>(null)
-    const [description, setDescription] = useState("")
-    const [label, setLabel] = useState("")
-    const [thoughts, setThoughts] = useState<SnippetProps[]>([])
-    const [loading, setLoading] = useState(false)
     const user = auth?.currentUser
     const [markdownContent, setMarkdownContent] = useState("")
     const [category, setCategory] = useState<string>('')
     const [categories, setCategories] = useState<string[]>([])
+    const [shortDesc, setShortDesc] = useState<string>("")
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -60,34 +60,31 @@ export default function NewSnippet(): JSX.Element {
             return
         }
 
+        setLoading(true);
         try {
             const newThought: SnippetProps = {
                 id: "",
                 title,
-                userId: user.uid,
                 description: markdownContent,
                 createdAt: serverTimestamp(),
-                selectedDate: date,
-                label,
-                subject: category
-            }
+                userId: user?.uid,
+                subject: category,
+                shortDesc
+            };
 
-            const docRef = await addDoc(collection(db, "thoughts"), newThought)
-            newThought.id = docRef.id
+            const docRef = await addDoc(collection(db, "snippets"), newThought);
+            newThought.id = docRef.id;
 
-            setThoughts([newThought, ...thoughts])
-            setDescription("")
-            setTitle("")
-            setDate(null)
-            setLabel("")
-            setCategory("")
-            setMarkdownContent("")
-            toast.success("Thought added successfully.")
+            setTitle("");
+            setMarkdownContent("");
+            setCategory("");
+            setShortDesc("");
+            toast.success("Thought added successfully.");
         } catch (error) {
-            toast.error("Error adding thought.")
-            console.error(error)
+            console.error(error);
+            toast.error("Error adding thought.");
         } finally {
-            setOpen(false)
+            setLoading(false);
         }
     }
 
@@ -101,6 +98,7 @@ export default function NewSnippet(): JSX.Element {
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
+                <Input type="text" placeholder="Short description" value={shortDesc} onChange={(e) => setShortDesc(e.target.value)} />
                 <select value={category} onChange={(e) => setCategory(e.target.value)}>
                     {categories.map((category) => (
                         <option value={category}>{category}</option>
@@ -108,13 +106,13 @@ export default function NewSnippet(): JSX.Element {
                 </select>
                 {ReactQuill && (
                     <ReactQuill
-      w                  placeholder="Thought content"
+                        placeholder="Thought content"
                         value={markdownContent}
                         className="min-h-20vh"
                         onChange={setMarkdownContent}
                     />
                 )}
-                <button className="btn btn-primary" type="submit">Submit</button>
+                <Button variant="ghost" className="btn btn-primary" type="submit" loading={loading}>Submit</Button>
             </form>
         </>
     );

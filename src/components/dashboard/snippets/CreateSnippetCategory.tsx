@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '@/core/(database)/firebase';
 import { Button } from '@nextui-org/react';
+import { Input } from '@/components/ui/input';
 
 const CreateSnippetCategory = () => {
     const [categoryName, setCategoryName] = useState('');
@@ -23,7 +24,6 @@ const CreateSnippetCategory = () => {
             <label>
                 Category Name:
                 <Input
-                    type="text"
                     value={categoryName}
                     onChange={(e) => setCategoryName(e.target.value)}
                 />
