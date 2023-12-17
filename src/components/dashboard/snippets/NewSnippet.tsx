@@ -9,22 +9,20 @@ import { toast } from "sonner"
 import { Input } from "@/components/ui/input"
 
 type SnippetProps = {
-    id?: string
-    title?: string
+    id: string
+    title: string
     description?: string
     createdAt?: any
-    userId?: string
+    userId: string
     subject?: string
     selectedDate?: Date | null
     label?: string
 }
 
-
 let ReactQuill;
 if (typeof window !== 'undefined') {
     ReactQuill = require('react-quill');
 }
-
 
 export default function NewSnippet(): JSX.Element {
     const [open, setOpen] = useState(false)
@@ -32,10 +30,12 @@ export default function NewSnippet(): JSX.Element {
     const [date, setDate] = useState<Date | null>(null)
     const [description, setDescription] = useState("")
     const [label, setLabel] = useState("")
-    const [thoughts, setThoughts] = useState([])
+    const [thoughts, setThoughts] = useState<SnippetProps[]>([])
     const [loading, setLoading] = useState(false)
     const user = auth?.currentUser
     const [markdownContent, setMarkdownContent] = useState("")
+    const [category, setCategory] = useState<string>('')
+    const [categories, setCategories] = useState<string[]>([])
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -55,24 +55,25 @@ export default function NewSnippet(): JSX.Element {
 
         try {
             const newThought: SnippetProps = {
+                id: "",
                 title,
                 userId: user.uid,
                 description: markdownContent,
                 createdAt: serverTimestamp(),
-                id: "",
                 selectedDate: date,
                 label,
-                subject: ""
+                subject: category
             }
 
             const docRef = await addDoc(collection(db, "thoughts"), newThought)
             newThought.id = docRef.id
 
-            setThoughts([newThought, ...thoughts] as any)
+            setThoughts([newThought, ...thoughts])
             setDescription("")
             setTitle("")
             setDate(null)
             setLabel("")
+            setCategory("")
             setMarkdownContent("")
             toast.success("Thought added successfully.")
         } catch (error) {
@@ -93,15 +94,21 @@ export default function NewSnippet(): JSX.Element {
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
-                {ReactQuill && <ReactQuill
-                    placeholder="Thought content"
-                    value={markdownContent}
-                    className="min-h-20vh"
-                    onChange={setMarkdownContent}
-                />
-                };
-                <button className="btn btn-primary" type="submit" />
-            </form >
+                <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                    {categories.map((category) => (
+                        <option value={category}>{category}</option>
+                    ))}
+                </select>
+                {ReactQuill && (
+                    <ReactQuill
+                        placeholder="Thought content"
+                        value={markdownContent}
+                        className="min-h-20vh"
+                        onChange={setMarkdownContent}
+                    />
+                )}
+                <button className="btn btn-primary" type="submit">Submit</button>
+            </form>
         </>
-    )
+    );
 }
