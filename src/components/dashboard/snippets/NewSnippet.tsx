@@ -7,6 +7,7 @@ import { auth, db } from "@/core/(database)/firebase"
 import { toast } from "sonner"
 import { Input } from "@/components/ui/input"
 import { Button } from "@nextui-org/react"
+import dynamic from "next/dynamic"
 
 type SnippetProps = {
     id: string
@@ -20,10 +21,7 @@ type SnippetProps = {
     shortDesc?: string
 }
 
-let ReactQuill;
-if (typeof window !== 'undefined') {
-    ReactQuill = require('react-quill');
-}
+const ReactQuill = dynamic(import('react-quill'), { ssr: false });
 
 export default function NewSnippet(): JSX.Element {
     const [open, setOpen] = useState(false)
@@ -63,7 +61,6 @@ export default function NewSnippet(): JSX.Element {
         setLoading(true);
         try {
             const newThought: SnippetProps = {
-                id: "",
                 title,
                 description: markdownContent,
                 createdAt: serverTimestamp(),

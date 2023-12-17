@@ -5,15 +5,21 @@ import { db } from '@/core/(database)/firebase';
 import { Button } from '@nextui-org/react';
 import { Input } from '@/components/ui/input';
 
-const CreateSnippetCategory = () => {
+type CreateSnippet = {
+    onCategoryAdded?: (newCategory: any) => void;
+};
+
+const CreateSnippetCategory = ({ onCategoryAdded }): CreateSnippet => {
     const [categoryName, setCategoryName] = useState('');
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
         try {
-            await addDoc(collection(db, 'snippet-categories'), { categoryName });
+            const docRef = await addDoc(collection(db, 'snippet-categories'), { categoryName });
+            const newCategory = { id: docRef.id, categoryName };
             setCategoryName(''); // reset the input field
+            onCategoryAdded(newCategory); // callback to parent component
         } catch (error) {
             console.error('Error adding document: ', error);
         }

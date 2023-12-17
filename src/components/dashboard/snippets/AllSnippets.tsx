@@ -1,45 +1,47 @@
 'use client';
-import { Badge } from "@/components/ui/badge"
 import { db } from "@/core/(database)/firebase";
 import { onSnapshot, collection } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { FilesIcon, FolderIcon } from "lucide-react";
 
 export default function Component() {
     const [snippets, setSnippets] = useState([]);
 
+    const handleCategoryAdded = (newCategory) => {
+        setSnippets(prevSnippets => [...prevSnippets, newCategory]);
+    };
+
     useEffect(() => {
-        const unsubscribeSnippets = onSnapshot(collection(db, 'thoughts'), (snapshot) => {
+        const unsubscribeSnippets = onSnapshot(collection(db, 'snippets'), (snapshot) => {
             const snippetsData = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-            console.log(snippetsData); // Log the data to the console
             setSnippets(snippetsData);
         });
+
         return () => {
             unsubscribeSnippets();
         };
     }, []);
 
     return (
-        <aside className=" w-[300px] text-white border-l-1 bg-[#121212] border-zinc-800 border-r-1 ">
-            <div className="overflow-y-auto">
-                <div className="p-4 space-y-4">
-                    {snippets.map((snippet) => (
-                        <div key={snippet.id} className="border p-4 rounded-lg space-y-2 bg-[##151817] border-neutral-800">
-                            <div className="flex items-center space-x-2">
-                                <TextIcon className="text-gray-400 w-6 h-6" />
-                                <span className="text-sm font-semibold">{snippet.title}</span>
-                            </div>
-                            {/* <p className="text-gray-400 text-xs">{snippet.cpp</p> */}
-                            <Badge className="text-xs" variant="secondary">
-                                {snippet.categoryName}
-                            </Badge>
+        <aside className="flex flex-col gap-4 bg-[#1A1C1F] p-4 border-l border-r border-[#262626]">
+            {snippets.map((snippet) => (
+                <div className="w-[300px] flex flex-col  rounded-md gap-4 text-white border-l-1 bg-[#313235] border-zinc-800 border-r-1">
+                    <div key={snippet.id} className="p-4 rounded-lg space-y-2 bg-[##151817]">
+                        <div className="flex items-center space-x-2">
+                            <FilesIcon className="text-gray-400 w-4 h-4" />
+                            <span className="text-sm font-semibold">{snippet.title}</span>
                         </div>
-                    ))}
-                </div>
-            </div>
+                        <p className="text-gray-400 text-xs">{snippet.shortDesc}</p>
+                        <span className="text-xs px-3 py-2  flex rounded-md mt-4 bg-[#424344] text-white  items-center space-x-2">
+                            <FolderIcon className="text-yellow-400 text-xs" />
+                            <span className="text-neutral-300 text-sm">Programming</span>
+                        </span>
+                    </div>
+                </div >
+            ))}
         </aside >
-    )
+    );
 }
-
 function PlusIcon(props) {
     return (
         <svg
@@ -58,6 +60,10 @@ function PlusIcon(props) {
             <path d="M12 5v14" />
         </svg>
     )
+}
+
+function FileIcon(props) {
+    return
 }
 
 
