@@ -108,7 +108,7 @@ export default function NewSnippet(): JSX.Element {
                 </select>
                 {ReactQuill && (
                     <ReactQuill
-                        placeholder="Thought content"
+      w                  placeholder="Thought content"
                         value={markdownContent}
                         className="min-h-20vh"
                         onChange={setMarkdownContent}

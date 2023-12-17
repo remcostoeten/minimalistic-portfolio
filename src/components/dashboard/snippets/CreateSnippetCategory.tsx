@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '@/core/(database)/firebase';
+import { Button } from '@nextui-org/react';
 
 const CreateSnippetCategory = () => {
     const [categoryName, setCategoryName] = useState('');
@@ -18,16 +19,16 @@ const CreateSnippetCategory = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='flex flex-col gap-2' onSubmit={handleSubmit}>
             <label>
                 Category Name:
-                <input
+                <Input
                     type="text"
                     value={categoryName}
                     onChange={(e) => setCategoryName(e.target.value)}
                 />
             </label>
-            <button type="submit">Add Category</button>
+            <Button variant='ghost' type="submit">Add Category</Button>
         </form>
     );
 };

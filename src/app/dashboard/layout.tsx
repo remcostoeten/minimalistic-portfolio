@@ -63,19 +63,16 @@ export default function DashboardLayout({
     useAuthRedirect(false, '/signin');
 
     return (
-        <div className='dashboard'>
+        <div className='dashboard pt-8'>
             <div className="flex min-h-screen flex-col space-y-6">
-                <DashboardNavigation />
-                <span className="w-screen px-8 grid flex-1 gap-4 md:grid-cols-[200px_2fr_350px]">
-                    <aside className="hidden w-[200px] flex-col md:flex">
+                <span className="w-screen px-8 grid flex-1 gap-2 md:grid-cols-[300px_auto]"> {/* Adjusted here */}
+                    <aside className="hidden w-[300px] flex-col md:flex"> {/* Adjusted here */}
                         <DashboardNav items={dashboardLinks.data} />
                     </aside>
                     {children}
-                    <aside className="hidden w-[350px] flex-col md:flex">
-                        {/* <ActivityStream /> */}
-                    </aside>
                 </span>
             </div>
-        </div>
+        </div >
     )
 }
+

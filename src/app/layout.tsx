@@ -17,6 +17,7 @@ import NextTopLoader from "nextjs-toploader";
 import { Toaster } from 'sonner';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { CommitsGraph } from '@/components/data/charts/CommitsGraph';
+import { HydrationOverlay } from '@builder.io/react-hydration-overlay';
 
 const serif = Libre_Baskerville({
   subsets: ['latin'],
@@ -33,28 +34,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ApolloProvider client={clienttt}>
-      <ThemeContextProvider>
-        <ActiveSectionContextProvider>
-          <AnimatePresence mode='wait'>
-            <html className={`${inter.className} dark text-foreground !bg-body`} lang="en">
-              <body className='!dark-background pb-20 min-h-screen flex'>
-                <NextTopLoader color="#fb8817" height={3.5} showSpinner={false} />
-                <TooltipProvider>
-                  <Cursor />
+    <HydrationOverlay>
+      <ApolloProvider client={clienttt}>
+        <ThemeContextProvider>
+          <ActiveSectionContextProvider>
+            <AnimatePresence mode='wait'>
+              <html className={`${inter.className} dark text-foreground !bg-body`} lang="en">
+                <body className='!dark-background pb-20 min-h-screen flex'>
+                  <NextTopLoader color="#fb8817" height={3.5} showSpinner={false} />
+                  <TooltipProvider>
+                    <Cursor />
 
-                  <main className="mx-auto ">
-                    {children}
-                  </main>
-                  <Toaster invert />
-                  <Analytics />
-                  <SpeedInsights />
-                </TooltipProvider>
-              </body>
-            </html>
-          </AnimatePresence>
-        </ActiveSectionContextProvider>
-      </ThemeContextProvider>
-    </ApolloProvider>
+                    <main className="mx-auto ">
+                      {children}
+                    </main>
+                    <Toaster invert />
+                    <Analytics />
+                    <SpeedInsights />
+                  </TooltipProvider>
+                </body>
+              </html>
+            </AnimatePresence>
+          </ActiveSectionContextProvider>
+        </ThemeContextProvider>
+      </ApolloProvider>
+    </HydrationOverlay >
+
   )
 }

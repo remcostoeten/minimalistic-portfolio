@@ -5,10 +5,12 @@ import React from 'react'
 
 export default function page() {
     return (
-        <>
+        <div className='flex gap-2 '>
             <AllSnippets />
-            <CategoryForm />
-            <NewSnippet />
-        </>
+            <div className='flex flex-col space-y-4'>
+                <CategoryForm />
+                <NewSnippet />
+            </div>
+        </div>
     )
 }

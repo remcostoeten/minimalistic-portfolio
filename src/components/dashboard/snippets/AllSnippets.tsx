@@ -2,21 +2,7 @@ import { Badge } from "@/components/ui/badge"
 
 export default function Component() {
     return (
-        <aside className=" w-max text-white border-l-1 bg-[#121212] border-zinc-800 border-r-1 min-h-screen">
-            <div className="flex items-center justify-between p-4">
-                <div className="flex items-center border border-zinc-800     p-2 rounded-lg">
-                    <SearchIcon className="text-[#5e5ce6] mr-2" />
-                    <input
-                        aria-label="Search"
-                        className="bg-transparent flex-1 text-white placeholder-gray-400 border-none focus:ring-0"
-                        placeholder="Search .."
-                        type="text"
-                    />
-                    <button className="ml-2 bg-[#3a3a3c] text-white px-3 py-1 rounded-lg">
-                        <PlusIcon className="text-white" />
-                    </button>
-                </div>
-            </div>
+        <aside className=" w-[300px] text-white border-l-1 bg-[#121212] border-zinc-800 border-r-1 ">
             <div className="overflow-y-auto">
                 <div className="p-4 space-y-4">
                     <div className="border p-4 rounded-lg space-y-2 bg-[##151817] border-neutral-800">
