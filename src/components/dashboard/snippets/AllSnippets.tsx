@@ -34,7 +34,7 @@ export default function Component() {
                         <p className="text-gray-400 text-xs">{snippet.shortDesc}</p>
                         <span className="text-xs px-3 py-2  flex rounded-md mt-4 bg-[#424344] text-white  items-center space-x-2">
                             <FolderIcon className="text-yellow-400 text-xs" />
-                            <span className="text-neutral-300 text-sm">Programming</span>
+                            <span className="text-neutral-300 text-sm">{snippet.subject}</span>
                         </span>
                     </div>
                 </div >

@@ -10,11 +10,11 @@ import { Button } from "@nextui-org/react"
 import dynamic from "next/dynamic"
 
 type SnippetProps = {
-    id: string
+    id?: string
     title: string
     description?: string
     createdAt?: any
-    userId: string
+    userId?: string
     subject?: string
     selectedDate?: Date | null
     label?: string
