@@ -21,8 +21,10 @@ type SnippetProps = {
     shortDesc?: string
 }
 
-const ReactQuill = dynamic(import('react-quill'), { ssr: false });
-
+const ReactQuill = dynamic(() => import('react-quill'), {
+    ssr: false,
+    loading: () => <p>Loading editor...</p>,
+});
 export default function NewSnippet(): JSX.Element {
     const [open, setOpen] = useState(false)
     const [title, setTitle] = useState("")
@@ -71,7 +73,6 @@ export default function NewSnippet(): JSX.Element {
 
             const docRef = await addDoc(collection(db, "snippets"), newThought);
             newThought.id = docRef.id;
-
             setTitle("");
             setMarkdownContent("");
             setCategory("");
