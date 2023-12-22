@@ -1,6 +1,6 @@
 
 'use client'
-
+import { useEffect, useState } from 'react';
 import Cursor from '@/components/Cursor';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import clienttt from '@/core/(graphql)/ApolloClient';
@@ -28,11 +28,15 @@ const inter = Inter({
   weight: ['400', '700'],
 });
 export default function RootLayout({
-
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [views, setViews] = useState(0);
+
+  useEffect(() = > {
+    
+  })
   return (
     <HydrationOverlay>
       <ApolloProvider client={clienttt}>

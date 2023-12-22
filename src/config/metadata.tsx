@@ -32,7 +32,7 @@ const MetaData = {
     githubProfile: 'https://github.com/remcostoeten',
     gitlabProfile: 'https://gitlab.com/remcostoeten',
     snippetsUrl: 'https://snippets.remcostoeten.com',
-    whatsapp: 'https://wa.me/31636590707',
+    whatsapp: 'https://wa.me/000000',
 
     footerItems: {
         'Github': 'https://github.com/remcostoeten',

@@ -14,7 +14,6 @@ type SnippetProps = {
     title: string
     description?: string
     createdAt?: any
-    userId?: string
     subject?: string
     selectedDate?: Date | null
     label?: string
@@ -66,7 +65,6 @@ export default function NewSnippet(): JSX.Element {
                 title,
                 description: markdownContent,
                 createdAt: serverTimestamp(),
-                userId: user?.uid,
                 subject: category,
                 shortDesc
             };
@@ -85,7 +83,6 @@ export default function NewSnippet(): JSX.Element {
             setLoading(false);
         }
     }
-
     return (
         <>
             <form className="flex flex-col gap-2 py-6" onSubmit={handleSubmit}>

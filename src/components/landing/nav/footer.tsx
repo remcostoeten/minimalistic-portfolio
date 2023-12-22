@@ -24,9 +24,9 @@ const contactLinks = [
         text: "@remcostoeten",
     },
     {
-        href: "https://wa.me/3636590707",
+        href: "#",
         icon: <BsWhatsapp />,
-        text: "WhatsApp",
+        text: "WhatsApp on request",
     },
 ];
 

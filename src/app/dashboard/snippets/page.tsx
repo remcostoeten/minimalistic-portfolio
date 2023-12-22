@@ -5,6 +5,6 @@ import React from 'react'
 
 export default function page() {
     return (
-        <><CategoryForm /><NewSnippet /></>
+        <><CategoryForm onCategoryAdded={undefined} /><NewSnippet /></>
     )
 }
