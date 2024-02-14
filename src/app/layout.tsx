@@ -8,15 +8,12 @@ import ThemeContextProvider from '@/core/context/ThemeContext';
 import ActiveSectionContextProvider from '@/core/utillities/SectionObserver';
 import '@/styles/styles.scss';
 import { ApolloProvider } from '@apollo/client';
-import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev';
-import { __DEV__ } from '@apollo/client/utilities/globals';
 import { Analytics } from '@vercel/analytics/react';
 import { AnimatePresence } from 'framer-motion';
 import { Inter, Libre_Baskerville } from 'next/font/google';
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from 'sonner';
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { CommitsGraph } from '@/components/data/charts/CommitsGraph';
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const serif = Libre_Baskerville({
   subsets: ['latin'],
