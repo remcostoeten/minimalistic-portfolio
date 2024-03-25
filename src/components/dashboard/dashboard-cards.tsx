@@ -1,8 +1,9 @@
+import { GET_TOTAL_REPOSITORIES_AND_COMMITS } from "@/core/(graphql)/queries/queries"
 import { formatDate } from "@/core/utillities/utils"
+import { useQuery } from "@apollo/client"
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
-import { useQuery } from "@apollo/client"
-import { GET_TOTAL_REPOSITORIES_AND_COMMITS } from "@/core/(graphql)/queries/queries"
 
 type SearchParams = {
   from?: string
@@ -26,46 +27,57 @@ function displayDateRange(searchParams: SearchParams) {
     <>
       {searchParams.from && searchParams.to
         ? `${formatDate(
-          new Date(searchParams.from).toISOString()
-        )} - ${formatDate(new Date(searchParams.to).toISOString())}`
+            new Date(searchParams.from).toISOString()
+          )} - ${formatDate(new Date(searchParams.to).toISOString())}`
         : "Last year"}
     </>
   )
 }
 
 export function DashboardCards({ data, searchParams }: DashboardCardsProps) {
+  const {
+    loading,
+    error,
+    data: githubData,
+  } = useQuery(GET_TOTAL_REPOSITORIES_AND_COMMITS, {
+    variables: { login: "remcostoeten" },
+  })
 
-  const { loading, error, data: githubData } = useQuery(GET_TOTAL_REPOSITORIES_AND_COMMITS, {
-    variables: { login: 'remcostoeten' },
-  });
+  if (loading) return <p>aaas...</p>
+  if (error) return <p>Error :(</p>
 
-  if (loading) return <p>aaas...</p>;
-  if (error) return <p>Error :(</p>;
+  const totalCommits = githubData.user.repositories.nodes.reduce(
+    (total, repo) => {
+      return total + (repo.defaultBranchRef?.target.history.totalCount || 0)
+    },
+    0
+  )
 
-  const totalCommits = githubData.user.repositories.nodes.reduce((total, repo) => {
-    return total + (repo.defaultBranchRef?.target.history.totalCount || 0);
-  }, 0);
-
-  const languageCounts = githubData.user.repositories.nodes.reduce((counts, repo) => {
-    if (repo.languages) {
-      repo.languages.nodes.forEach((language) => {
-        counts[language.name] = (counts[language.name] || 0) + 1;
-      });
-    }
-    return counts;
-  }, {});
+  const languageCounts = githubData.user.repositories.nodes.reduce(
+    (counts, repo) => {
+      if (repo.languages) {
+        repo.languages.nodes.forEach((language) => {
+          counts[language.name] = (counts[language.name] || 0) + 1
+        })
+      }
+      return counts
+    },
+    {}
+  )
 
   const mostUsedLanguages = Object.entries(languageCounts)
     .sort((a, b) => (b[1] as number) - (a[1] as number))
     .slice(0, 10)
     .map(([language]: [string, number]): string => language)
-    .join(', ');
+    .join(", ")
 
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Most Used Languages</CardTitle>
+          <CardTitle className="text-sm font-medium">
+            Most Used Languages
+          </CardTitle>
           <Icons.github className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
@@ -89,11 +101,15 @@ export function DashboardCards({ data, searchParams }: DashboardCardsProps) {
       </Card>
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Total Repositories</CardTitle>
+          <CardTitle className="text-sm font-medium">
+            Total Repositories
+          </CardTitle>
           <Icons.github className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{githubData && githubData.user.repositories.totalCount}</div>
+          <div className="text-2xl font-bold">
+            {githubData && githubData.user.repositories.totalCount}
+          </div>
           <p className="text-xs text-muted-foreground">
             {displayDateRange(searchParams)}
           </p>

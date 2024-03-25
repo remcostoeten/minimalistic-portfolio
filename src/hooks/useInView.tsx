@@ -1,38 +1,39 @@
-'use client';
-import { useState, useEffect, Ref } from 'react';
+"use client"
+
+import { Ref, useEffect, useState } from "react"
 
 interface Options extends IntersectionObserverInit {
-  freezeOnceVisible?: boolean;
+  freezeOnceVisible?: boolean
 }
 
 function useInView(options: Options): [Ref<any>, boolean] {
-  const [ref, setRef] = useState<Element | null>(null);
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [ref, setRef] = useState<Element | null>(null)
+  const [isVisible, setIsVisible] = useState<boolean>(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        setIsVisible(true);
+        setIsVisible(true)
         if (options.freezeOnceVisible) {
-          observer.unobserve(entry.target);
+          observer.unobserve(entry.target)
         }
       } else {
-        setIsVisible(false);
+        setIsVisible(false)
       }
-    }, options);
+    }, options)
 
     if (ref) {
-      observer.observe(ref);
+      observer.observe(ref)
     }
 
     return () => {
       if (ref) {
-        observer.unobserve(ref);
+        observer.unobserve(ref)
       }
-    };
-  }, [ref, options]);
+    }
+  }, [ref, options])
 
-  return [setRef, isVisible];
+  return [setRef, isVisible]
 }
 
-export default useInView;
+export default useInView

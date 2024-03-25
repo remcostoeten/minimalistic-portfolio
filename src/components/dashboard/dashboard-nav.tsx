@@ -2,10 +2,10 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-
-import { Icons } from "@/components/icons"
-import { NavItem } from "@/core/types/types"
 import { cn } from "@/core/utillities/utils"
+
+import { NavItem } from "@/core/types/types"
+import { Icons } from "@/components/icons"
 
 interface DashboardNavProps {
   items: NavItem[]

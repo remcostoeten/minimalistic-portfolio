@@ -1,6 +1,29 @@
-import { Variants } from 'framer-motion';
+import { Variants } from "framer-motion"
 
-export const fadeInDelays100 = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, , 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2];
+export const fadeInDelays100 = [
+  0,
+  0.1,
+  0.2,
+  0.3,
+  0.4,
+  0.5,
+  0.6,
+  0.7,
+  0.8,
+  0.9,
+  1,
+  1.1,
+  1.2,
+  ,
+  1.3,
+  1.4,
+  1.5,
+  1.6,
+  1.7,
+  1.8,
+  1.9,
+  2,
+]
 
 export const GridIn = {
   initial: {
@@ -8,14 +31,14 @@ export const GridIn = {
     y: -5,
   },
   animate: {
-    y: 0, opacity: 1,
+    y: 0,
+    opacity: 1,
     transition: {
-      staggerChildren: .2,
-      delay: .4
+      staggerChildren: 0.2,
+      delay: 0.4,
     },
   },
-};
-
+}
 
 export const topSlideIn = {
   hidden: {
@@ -26,7 +49,7 @@ export const topSlideIn = {
   visible: {
     opacity: 1,
     y: 0,
-  }
+  },
 }
 
 export const fadeScaleUp = {
@@ -40,12 +63,12 @@ export const fadeScaleUp = {
     y: 0,
     scale: 1,
     transition: {
-      duration: .2,
+      duration: 0.2,
       type: " spring",
       stiffness: 50,
     },
   },
-};
+}
 
 export const smoothFadeUp = {
   initial: {
@@ -62,8 +85,7 @@ export const smoothFadeUp = {
       stiffness: 5,
     },
   },
-};
-
+}
 
 export const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -74,16 +96,16 @@ export const containerVariants: Variants = {
       staggerChildren: 0.2,
     },
   },
-};
+}
 export const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 60 },
   visible: { opacity: 1, y: 0 },
-};
+}
 
 export const itemVariants: Variants = {
   hidden: { opacity: 0, y: -10 },
   visible: { opacity: 1, y: 0 },
-};
+}
 export const bounceVariant = {
   hidden: { opacity: 0, scale: 0 },
   visible: {
@@ -95,7 +117,7 @@ export const bounceVariant = {
       stiffness: 100,
     },
   },
-};
+}
 export const fadeInVariant = {
   hidden: { opacity: 0 },
   visible: {
@@ -104,7 +126,7 @@ export const fadeInVariant = {
       duration: 0.5,
     },
   },
-};
+}
 export const slideInLeftVariant = {
   hidden: { opacity: 0, x: -50 },
   visible: {
@@ -114,7 +136,7 @@ export const slideInLeftVariant = {
       duration: 0.5,
     },
   },
-};
+}
 export const slideInRightVariant = {
   hidden: { opacity: 0, x: 50 },
   visible: {
@@ -124,7 +146,7 @@ export const slideInRightVariant = {
       duration: 0.5,
     },
   },
-};
+}
 export const scaleVariant = {
   hidden: { opacity: 0, scale: 0 },
   visible: {
@@ -134,10 +156,20 @@ export const scaleVariant = {
       duration: 0.5,
     },
   },
-};
+}
 
 export const pageTransition = {
-  hidden: { scale: .9, opacity: 0, y: '-20px' },
-  show: { opacity: 1, scale: 1, y: '0', transition: { duration: 1, ease: [0.6, -0.05, 0.01, 0.99] } },
-  exit: { scale: 0.1, opacity: 0, y: '-20px', transition: { duration: 1, ease: [0.9, -0.95, 0.01, 0.99] } },
-};
+  hidden: { scale: 0.9, opacity: 0, y: "-20px" },
+  show: {
+    opacity: 1,
+    scale: 1,
+    y: "0",
+    transition: { duration: 1, ease: [0.6, -0.05, 0.01, 0.99] },
+  },
+  exit: {
+    scale: 0.1,
+    opacity: 0,
+    y: "-20px",
+    transition: { duration: 1, ease: [0.9, -0.95, 0.01, 0.99] },
+  },
+}

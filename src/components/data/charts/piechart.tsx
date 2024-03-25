@@ -1,6 +1,7 @@
 "use client"
 
-import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from "recharts"
+import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts"
+
 import { Card } from "@/components/ui/card"
 
 type ActivityEntry = {

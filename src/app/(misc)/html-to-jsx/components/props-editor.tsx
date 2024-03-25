@@ -8,7 +8,6 @@ import { motion } from "framer-motion"
 import { Input } from "@/components/ui/input"
 import { Switch } from "@/components/ui/switch"
 
-
 const PropsEditor = ({
   removeProp,
   propsArray,

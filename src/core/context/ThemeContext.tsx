@@ -1,65 +1,66 @@
-'use client'
-import React, { useEffect, useState, createContext, useContext } from 'react';
+"use client"
 
-type Theme = 'light' | 'dark';
+import React, { createContext, useContext, useEffect, useState } from "react"
+
+type Theme = "light" | "dark"
 
 type ThemeContextProviderProps = {
-    children: React.ReactNode;
-};
+  children: React.ReactNode
+}
 
 type ThemeContextType = {
-    theme: Theme;
-    toggleTheme: () => void;
-};
+  theme: Theme
+  toggleTheme: () => void
+}
 
-const ThemeContext = createContext<ThemeContextType | null>(null);
+const ThemeContext = createContext<ThemeContextType | null>(null)
 
 export default function ThemeContextProvider({
-    children,
+  children,
 }: ThemeContextProviderProps) {
-    const [theme, setTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>("dark")
 
-    const toggleTheme = () => {
-        setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-    };
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"))
+  }
 
-    useEffect(() => {
-        const localTheme = window.localStorage.getItem('theme') as Theme | null;
+  useEffect(() => {
+    const localTheme = window.localStorage.getItem("theme") as Theme | null
 
-        if (localTheme) {
-            setTheme(localTheme);
+    if (localTheme) {
+      setTheme(localTheme)
 
-            if (localTheme === 'dark') {
-                document.documentElement.classList.add('dark');
-            }
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            setTheme('dark');
-            document.documentElement.classList.add('dark');
-        }
-    }, []);
+      if (localTheme === "dark") {
+        document.documentElement.classList.add("dark")
+      }
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setTheme("dark")
+      document.documentElement.classList.add("dark")
+    }
+  }, [])
 
-    useEffect(() => {
-        document.documentElement.classList.toggle('dark', theme === 'dark');
-    }, [theme]);
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark")
+  }, [theme])
 
-    return (
-        <ThemeContext.Provider
-            value={{
-                theme,
-                toggleTheme,
-            }}
-        >
-            {children}
-        </ThemeContext.Provider>
-    );
+  return (
+    <ThemeContext.Provider
+      value={{
+        theme,
+        toggleTheme,
+      }}
+    >
+      {children}
+    </ThemeContext.Provider>
+  )
 }
 
 export function useTheme() {
-    const context = useContext(ThemeContext);
+  const context = useContext(ThemeContext)
 
-    if (context === null) {
-        throw new Error('useTheme must be used within a ThemeContextProvider');
-    }
+  if (context === null) {
+    throw new Error("useTheme must be used within a ThemeContextProvider")
+  }
 
-    return context;
+  return context
 }

@@ -1,21 +1,21 @@
-import { useState, useEffect } from "react";
-import { db } from "@/core/(database)/firebase";
-import { onSnapshot, collection } from "firebase/firestore";
+import { useEffect, useState } from "react"
+import { db } from "@/core/(database)/firebase"
+import { collection, onSnapshot } from "firebase/firestore"
 
 export function useCategories() {
-    const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([])
 
-    useEffect(() => {
-        const unsubscribe = onSnapshot(collection(db, "categories"), (snapshot) => {
-            const newCategories = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-            }));
-            setCategories(newCategories);
-        });
+  useEffect(() => {
+    const unsubscribe = onSnapshot(collection(db, "categories"), (snapshot) => {
+      const newCategories = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }))
+      setCategories(newCategories)
+    })
 
-        return () => unsubscribe();
-    }, []);
+    return () => unsubscribe()
+  }, [])
 
-    return categories;
+  return categories
 }

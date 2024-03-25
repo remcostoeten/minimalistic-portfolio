@@ -1,25 +1,27 @@
-'use client'
-import { Card } from '@nextui-org/react';
-import { useState } from 'react';
+"use client"
+
+import { useState } from "react"
+import { Card } from "@nextui-org/react"
 
 const Casino = () => {
-  const [totalDebt, setTotalDebt] = useState<number>(0);
-  const [totalSessionDeposited, setTotalSessionDeposited] = useState<number>(0);
-  const [totalSessionWithdrawn, setTotalSessionWithdrawn] = useState<number>(0);
+  const [totalDebt, setTotalDebt] = useState<number>(0)
+  const [totalSessionDeposited, setTotalSessionDeposited] = useState<number>(0)
+  const [totalSessionWithdrawn, setTotalSessionWithdrawn] = useState<number>(0)
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
 
     // Calculate total debt
-    const newTotalDebt = totalDebt + totalSessionDeposited - totalSessionWithdrawn;
-    setTotalDebt(newTotalDebt);
+    const newTotalDebt =
+      totalDebt + totalSessionDeposited - totalSessionWithdrawn
+    setTotalDebt(newTotalDebt)
 
     // Reset form values
-    setTotalSessionDeposited(0);
-    setTotalSessionWithdrawn(0);
-  };
+    setTotalSessionDeposited(0)
+    setTotalSessionWithdrawn(0)
+  }
 
-  const sessionDifference = totalSessionDeposited - totalSessionWithdrawn;
+  const sessionDifference = totalSessionDeposited - totalSessionWithdrawn
 
   return (
     <Card className="container mx-auto mt-8 text-white p-10">
@@ -32,12 +34,16 @@ const Casino = () => {
         </div>
 
         <div className="col-span-4 md:col-span-2 lg:col-span-1">
-          <h2 className="text-xl font-semibold mb-2">Total Session Deposited</h2>
+          <h2 className="text-xl font-semibold mb-2">
+            Total Session Deposited
+          </h2>
           <p className="text-2xl font-bold">{totalSessionDeposited} €</p>
         </div>
 
         <div className="col-span-4 md:col-span-2 lg:col-span-1">
-          <h2 className="text-xl font-semibold mb-2">Total Session Withdrawn</h2>
+          <h2 className="text-xl font-semibold mb-2">
+            Total Session Withdrawn
+          </h2>
           <p className="text-2xl font-bold">{totalSessionWithdrawn} €</p>
         </div>
 
@@ -78,8 +84,7 @@ const Casino = () => {
         </button>
       </form>
     </Card>
-  );
-};
+  )
+}
 
-export default Casino;
-
+export default Casino

@@ -41,5 +41,5 @@ export const seoKeywords: string[] = [
   "Head Component",
   "Meta Tags",
   "Viewport",
-  "Loading Fallback"
-];
+  "Loading Fallback",
+]

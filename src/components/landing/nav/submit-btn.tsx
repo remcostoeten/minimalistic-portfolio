@@ -1,10 +1,11 @@
-import React from "react";
-import { FaPaperPlane } from "react-icons/fa";
-import { Button } from "@/components/ui/button";
-import { useFormStatus } from "react-dom";
+import React from "react"
+import { useFormStatus } from "react-dom"
+import { FaPaperPlane } from "react-icons/fa"
+
+import { Button } from "@/components/ui/button"
 
 export default function SubmitBtn() {
-  const { pending } = useFormStatus();
+  const { pending } = useFormStatus()
 
   return (
     <Button
@@ -21,5 +22,5 @@ export default function SubmitBtn() {
         </>
       )}
     </Button>
-  );
+  )
 }

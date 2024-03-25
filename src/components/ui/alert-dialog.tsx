@@ -1,9 +1,9 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "@/core/utillities/utils"
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog"
 
-import { cn } from "@/core/utillities/utils"
 import { buttonVariants } from "@/components/ui/button"
 
 const AlertDialog = AlertDialogPrimitive.Root
@@ -19,7 +19,6 @@ const AlertDialogPortal: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
     <div className={className}>{children}</div>
   </AlertDialogPrimitive.Portal>
 )
-
 
 const AlertDialogOverlay = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Overlay>,

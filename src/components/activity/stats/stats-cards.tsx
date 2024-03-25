@@ -8,7 +8,6 @@ type SearchParams = {
   to?: string
 }
 
-
 interface StatsCardsProps {
   data: {
     streak: {
@@ -26,8 +25,8 @@ function displayDateRange(searchParams: SearchParams) {
     <>
       {searchParams.from && searchParams.to
         ? `${formatDate(
-          new Date(searchParams.from).toISOString()
-        )} - ${formatDate(new Date(searchParams.to).toISOString())}`
+            new Date(searchParams.from).toISOString()
+          )} - ${formatDate(new Date(searchParams.to).toISOString())}`
         : "Last year"}
     </>
   )

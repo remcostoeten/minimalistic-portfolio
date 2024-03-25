@@ -1,49 +1,49 @@
-import { type ClassValue, clsx } from "clsx"
+import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export const sleep = (ms: number) => new Promise(rs => setTimeout(rs, ms))
+export const sleep = (ms: number) => new Promise((rs) => setTimeout(rs, ms))
 
-export const StringSpace = () => "\u00A0";
+export const StringSpace = () => "\u00A0"
 
 export const validateString = (
   value: unknown,
   maxLength: number
 ): value is string => {
   if (!value || typeof value !== "string" || value.length > maxLength) {
-    return false;
+    return false
   }
 
-  return true;
-};
+  return true
+}
 
 export const getErrorMessage = (error: unknown): string => {
-  let message: string;
+  let message: string
 
   if (error instanceof Error) {
-    message = error.message;
+    message = error.message
   } else if (error && typeof error === "object" && "message" in error) {
-    message = String(error.message);
+    message = String(error.message)
   } else if (typeof error === "string") {
-    message = error;
+    message = error
   } else {
-    message = "Something went wrong";
+    message = "Something went wrong"
   }
 
-  return message;
-};
+  return message
+}
 
 export function formatDate(input: string | number): string {
-  const date = new Date(input);
+  const date = new Date(input)
 
   return Intl.DateTimeFormat("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
-  }).format(date);
+  }).format(date)
 }
 
 export function dateRangeParams(searchParams: { from: string; to: string }) {

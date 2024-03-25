@@ -1,7 +1,11 @@
-import React from 'react'
-import Abstra from './abstraction';
+import React from "react"
+
+import Abstra from "./abstraction"
+
 export default function page() {
-    return (
-        <><Abstra transactions={[]} collectionName={''} /></>
-    )
+  return (
+    <>
+      <Abstra transactions={[]} collectionName={""} />
+    </>
+  )
 }

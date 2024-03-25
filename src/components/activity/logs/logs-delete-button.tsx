@@ -1,11 +1,12 @@
 "use client"
 
 import * as React from "react"
+import { toast } from "sonner"
 
-import { LogsDeleteDialog } from "./logs-delete-dialog"
 import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
-import { toast } from "sonner"
+
+import { LogsDeleteDialog } from "./logs-delete-dialog"
 
 interface LogsDeleteButtonProps {
   logs: {

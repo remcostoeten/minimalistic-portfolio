@@ -1,10 +1,12 @@
 "use client"
 
-import { Todo } from "@prisma/client"
-import { Checkbox } from "@/components/ui/checkbox"
 import { useTransition } from "react"
-import { DropdownTodo } from "./dropdown-todo"
 import { updateTodoStatusAction } from "@/core/actions/TodoActions"
+import { Todo } from "@prisma/client"
+
+import { Checkbox } from "@/components/ui/checkbox"
+
+import { DropdownTodo } from "./dropdown-todo"
 
 type TodoProps = {
   todo: Todo & { category: string }
@@ -32,7 +34,7 @@ function TodoList({ todo }: TodoProps) {
         <span>{todo?.title}</span>
         <span>{todo?.category}</span>
       </label>
-      <span className='ml-auto text-sm text-slate-500 peer-checked:line-through'>
+      <span className="ml-auto text-sm text-slate-500 peer-checked:line-through">
         {todo.updatedAt.toUTCString()}
       </span>
       <DropdownTodo id={todo?.id} />

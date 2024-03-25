@@ -2,6 +2,7 @@ import * as React from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Activity } from "@prisma/client"
+import { toast } from "sonner"
 
 import {
   AlertDialog,
@@ -20,8 +21,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { toast } from 'sonner'
 import { Icons } from "@/components/icons"
+
 import { LogsAddForm } from "./logs/logs-add-form"
 
 async function deleteActivity(activityId: string) {

@@ -1,12 +1,12 @@
-const { nextui } = require("@nextui-org/react");
+const { nextui } = require("@nextui-org/react")
 
 module.exports = {
   darkMode: "class",
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -19,8 +19,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['var(--font-geist-sans)'],
-        mono: ['var(--font-geist-mono)'],
+        sans: ["var(--font-geist-sans)"],
+        mono: ["var(--font-geist-mono)"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -71,50 +71,50 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       padding: {
-        'card-outer': '16px',
-        'card-inner': '14px',
-        'default': '24px',
+        "card-outer": "16px",
+        "card-inner": "14px",
+        default: "24px",
       },
       borderRadius: {
-        'card-inner': '8px',
-        'card-outer': '12px',
-        '16': '16px',
+        "card-inner": "8px",
+        "card-outer": "12px",
+        "16": "16px",
       },
       borderColor: {
-        'active': '#B3775F',
-        'dark': '#252121ee',
+        active: "#B3775F",
+        dark: "#252121ee",
       },
       fontSize: {
-        '16': '16px',
-        '18': "18px",
-        '20': '20px',
-        '22 ': '22px',
-        '28': '28px',
+        "16": "16px",
+        "18": "18px",
+        "20": "20px",
+        "22 ": "22px",
+        "28": "28px",
       },
       gap: {
-        xs: '8px',
-        s: '12px',
-        m: '16px',
-        l: '24px',
+        xs: "8px",
+        s: "12px",
+        m: "16px",
+        l: "24px",
       },
       lineHeight: {
-        '25': '25px',
+        "25": "25px",
       },
       color: {
-        'darkalt': '#7d7d7d',
+        darkalt: "#7d7d7d",
       },
       backgroundColor: {
-        'body': 'var(--body)',
-        'grid': '#E4E5E4',
-        'card-inner': 'var(--accent)',
-        'card-inner-dark': '#111',
-        'body-dark': 'var(--darkmain)',
-        'body-dark-accent': 'var(--mainaccentn)',
-        'dark-alt': 'var(--accent)',
+        body: "var(--body)",
+        grid: "#E4E5E4",
+        "card-inner": "var(--accent)",
+        "card-inner-dark": "#111",
+        "body-dark": "var(--darkmain)",
+        "body-dark-accent": "var(--mainaccentn)",
+        "dark-alt": "var(--accent)",
       },
       width: {
-        '198': '792px'
-      }
+        "198": "792px",
+      },
     },
   },
   plugins: [
@@ -138,4 +138,4 @@ module.exports = {
       },
     }),
   ],
-};
+}

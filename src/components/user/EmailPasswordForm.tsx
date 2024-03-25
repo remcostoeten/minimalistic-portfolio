@@ -1,39 +1,38 @@
-'use client'
-import * as React from "react";
-import { useRouter } from "next/navigation";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { toast } from "sonner";
-import { Input } from "../ui/input";
-import { Button } from "@nextui-org/react";
-import Spinner from "../loaders/Spinners";
+"use client"
 
-const LoadingSpinner = () => (
-  <Spinner variant="mini" />
-);
+import * as React from "react"
+import { useRouter } from "next/navigation"
+import { Button } from "@nextui-org/react"
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
+import { toast } from "sonner"
+
+import Spinner from "../loaders/Spinners"
+import { Input } from "../ui/input"
+
+const LoadingSpinner = () => <Spinner variant="mini" />
 
 export default function EmailPasswordForm() {
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const router = useRouter();
+  const [isLoading, setIsLoading] = React.useState(false)
+  const [email, setEmail] = React.useState("")
+  const [password, setPassword] = React.useState("")
+  const router = useRouter()
 
   const handleSignIn = async (event: React.FormEvent) => {
-    event.preventDefault();
-    setIsLoading(true);
+    event.preventDefault()
+    setIsLoading(true)
 
-    const auth =
-      getAuth();
+    const auth = getAuth()
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      toast.success("Signed in successfully");
-      router.push("/dashboard");
+      await signInWithEmailAndPassword(auth, email, password)
+      toast.success("Signed in successfully")
+      router.push("/dashboard")
     } catch (error) {
-      console.error(error);
-      toast.error(error.message);
+      console.error(error)
+      toast.error(error.message)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   return (
     <form className="flex flex-col gap-2 " onSubmit={handleSignIn}>
@@ -51,9 +50,14 @@ export default function EmailPasswordForm() {
         placeholder="Password"
         required
       />
-      <Button className="bg-white text-black" variant='solid' type="submit" disabled={isLoading}>
+      <Button
+        className="bg-white text-black"
+        variant="solid"
+        type="submit"
+        disabled={isLoading}
+      >
         {isLoading ? <LoadingSpinner /> : "Sign in"}
       </Button>
     </form>
-  );
+  )
 }

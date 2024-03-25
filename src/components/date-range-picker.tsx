@@ -1,11 +1,10 @@
 "use client"
 
-import { usePathname, useRouter } from "next/navigation"
 import * as React from "react"
-
+import { usePathname, useRouter } from "next/navigation"
+import { cn } from "@nextui-org/react"
 import { format } from "date-fns"
 import { DateRange } from "react-day-picker"
-import { Icons } from "./icons"
 
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -14,7 +13,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { cn } from "@nextui-org/react"
+
+import { Icons } from "./icons"
 
 function urlDate(input: string): string {
   const date = new Date(input)

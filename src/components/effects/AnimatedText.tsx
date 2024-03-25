@@ -1,12 +1,22 @@
 // @ts-nocheck
-'use client';
-
+"use client"
 
 import React from "react"
-import { MotionValue, motion } from "framer-motion"
-import ts from "typescript";
+import { motion, MotionValue } from "framer-motion"
+import ts from "typescript"
 
-const Wrapper = (props: { children: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; }) => {
+const Wrapper = (props: {
+  children:
+    | string
+    | number
+    | boolean
+    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+    | Iterable<React.ReactNode>
+    | React.ReactPortal
+    | React.PromiseLikeOfReactNode
+    | null
+    | undefined
+}) => {
   return <span className="word-wrapper">{props.children}</span>
 }
 
@@ -16,7 +26,7 @@ const tagMap = {
   heading2: "h2",
 }
 
-const AnimatedCharacters = (props: { text: string; type: string | number; }) => {
+const AnimatedCharacters = (props: { text: string; type: string | number }) => {
   const item = {
     hidden: {
       y: "200%",
@@ -49,24 +59,45 @@ const AnimatedCharacters = (props: { text: string; type: string | number; }) => 
       {words.map((word, index) => {
         return (
           <Wrapper key={index}>
-            {words[index].flat().map((element: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | MotionValue<number> | MotionValue<string> | null | undefined, index: React.Key | null | undefined) => {
-              return (
-                <span
-                  style={{
-                    overflow: "hidden",
-                    display: "inline-block",
-                  }}
-                  key={index}
-                >
-                  <motion.span
-                    style={{ display: "inline-block" }}
-                    variants={item}
-                  >
-                    {element}
-                  </motion.span>
-                </span>
-              )
-            })}
+            {words[index]
+              .flat()
+              .map(
+                (
+                  element:
+                    | string
+                    | number
+                    | boolean
+                    | React.ReactElement<
+                        any,
+                        string | React.JSXElementConstructor<any>
+                      >
+                    | Iterable<React.ReactNode>
+                    | React.ReactPortal
+                    | React.PromiseLikeOfReactNode
+                    | MotionValue<number>
+                    | MotionValue<string>
+                    | null
+                    | undefined,
+                  index: React.Key | null | undefined
+                ) => {
+                  return (
+                    <span
+                      style={{
+                        overflow: "hidden",
+                        display: "inline-block",
+                      }}
+                      key={index}
+                    >
+                      <motion.span
+                        style={{ display: "inline-block" }}
+                        variants={item}
+                      >
+                        {element}
+                      </motion.span>
+                    </span>
+                  )
+                }
+              )}
           </Wrapper>
         )
       })}

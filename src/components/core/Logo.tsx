@@ -7,7 +7,8 @@ export default function Logo() {
         x="0"
         y="0"
         className="icon-svg scale-[1.4]"
-        xmlSpace="preserve">
+        xmlSpace="preserve"
+      >
         <path
           fill="#fb8817"
           strokeDasharray="1px 1px"
@@ -25,7 +26,7 @@ export default function Logo() {
           strokeDasharray="1px 1px"
           strokeDashoffset="0"
           d="M20.499 29.92c-1.426-3.025-4.432-5.156-7.95-5.316-.14.005-.28.005-.426.005V21.37c.14 0 .286.005.426.005a9.175 9.175 0 006.118-2.697 9.204 9.204 0 002.707-6.554h3.219c0 3.335-1.296 6.467-3.654 8.825a12.464 12.464 0 01-2.673 2.045 12.559 12.559 0 013.842 3.392A13.93 13.93 0 0020.5 29.92z"
-          className="st0 svg-elem-2 logo__icon-left"  
+          className="st0 svg-elem-2 logo__icon-left"
           pathLength="1"
           style={{
             WebkitTransformOrigin: 18.358,
@@ -92,7 +93,7 @@ export default function Logo() {
             transformOrigin: 107.1,
           }}
         ></path> */}
-      </svg >
+      </svg>
     </>
   )
 }

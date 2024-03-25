@@ -1,9 +1,9 @@
 "use client"
 
 import Link from "next/link"
+import { formatDate } from "@/core/utillities/utils"
 import { Activity } from "@prisma/client"
 
-import { formatDate } from "@/core/utillities/utils"
 import { Skeleton } from "@/components/ui/skeleton"
 import { ActivityOperations } from "@/components/activity/activity-operations"
 
@@ -39,8 +39,8 @@ export function ActivityItem({ activity }: ActivityItemProps) {
           </div>
         </div>
         {activity?.description ? (
-          <div className="text-sm text-muted-foreground">s
-            {activity?.description}
+          <div className="text-sm text-muted-foreground">
+            s{activity?.description}
           </div>
         ) : null}
       </div>

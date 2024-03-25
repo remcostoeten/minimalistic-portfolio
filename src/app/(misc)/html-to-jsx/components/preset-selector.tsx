@@ -2,8 +2,10 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
+import { cn } from "@/core/utillities/utils"
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
 import { PopoverProps } from "@radix-ui/react-popover"
+
 import { Button } from "@/components/ui/button"
 import {
   Command,
@@ -19,7 +21,6 @@ import {
 } from "@/components/ui/popover"
 
 import { Preset } from "../data/presets"
-import { cn } from "@/core/utillities/utils"
 
 interface PresetSelectorProps extends PopoverProps {
   presets: Preset[]

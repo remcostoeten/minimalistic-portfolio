@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef } from "react"
+
 const Typewriter: React.FC = () => {
   const typedRef = useRef<HTMLSpanElement | null>(null)
 

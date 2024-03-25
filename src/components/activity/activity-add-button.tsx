@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
+import { toast } from "sonner"
 
 import {
   AlertDialog,
@@ -14,9 +15,8 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Button, ButtonProps } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
-import { toast } from "sonner"
 
-interface ActivityAddButtonProps extends ButtonProps { }
+interface ActivityAddButtonProps extends ButtonProps {}
 
 export function ActivityAddButton({
   className,
@@ -45,7 +45,7 @@ export function ActivityAddButton({
       setIsLoading(false)
       setShowAddAlert(false)
 
-      return toast.error("Something went wrong!",)
+      return toast.error("Something went wrong!")
     }
 
     const activity = await response.json()

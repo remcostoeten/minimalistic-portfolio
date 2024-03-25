@@ -4,6 +4,7 @@ import * as React from "react"
 import { useRouter } from "next/navigation"
 import { Dialog } from "@radix-ui/react-dialog"
 import { DotsHorizontalIcon } from "@radix-ui/react-icons"
+import { toast } from "sonner"
 
 import {
   AlertDialog,
@@ -31,7 +32,6 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
-import { toast } from "sonner"
 
 export function PresetActions() {
   const [open, setIsOpen] = React.useState(false)

@@ -1,5 +1,6 @@
 import * as React from "react"
 import { useRouter } from "next/navigation"
+import { formatDate } from "@/core/utillities/utils"
 
 import {
   AlertDialog,
@@ -12,8 +13,6 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
 import { Icons } from "@/components/icons"
-
-import { formatDate } from "@/core/utillities/utils"
 
 interface LogsDeleteDialogProps {
   logDate?: Date
@@ -50,7 +49,7 @@ export function LogsDeleteDialog({
             Delete logs from {formatDate(logDate.toLocaleDateString())}?
           </AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. 
+            This action cannot be undone.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

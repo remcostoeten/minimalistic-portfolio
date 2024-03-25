@@ -1,70 +1,95 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-import { Card } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import blackjackData from '@/core/config/blackjack.json';
-import { toast } from 'sonner'
-import SingleHand from '@/components/misc/BlackjackSingleHand';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import Link from 'next/link';
-import BettingTable from '@/components/misc/tables/BetTable';
+"use client"
+
+import React, { useEffect, useState } from "react"
+import Link from "next/link"
+import { toast } from "sonner"
+
+import blackjackData from "@/core/config/blackjack.json"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import SingleHand from "@/components/misc/BlackjackSingleHand"
+import BettingTable from "@/components/misc/tables/BetTable"
 
 const Page = () => {
-  const [playerCard1, setPlayerCard1] = useState('');
-  const [playerCard2, setPlayerCard2] = useState('');
-  const [dealerUpcard, setDealerUpcard] = useState('');
-  const [decision, setDecision] = useState('');
-  const [winChance, setWinChance] = useState(0);
-  const [selectedCard1, setSelectedCard1] = useState('');
-  const [selectedCard2, setSelectedCard2] = useState('');
-  const [selectedDealerCard, setSelectedDealerCard] = useState('');
-  const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'A', 'Q', 'K'];
-  const [playerStrategy, setPlayerStrategy] = useState();
+  const [playerCard1, setPlayerCard1] = useState("")
+  const [playerCard2, setPlayerCard2] = useState("")
+  const [dealerUpcard, setDealerUpcard] = useState("")
+  const [decision, setDecision] = useState("")
+  const [winChance, setWinChance] = useState(0)
+  const [selectedCard1, setSelectedCard1] = useState("")
+  const [selectedCard2, setSelectedCard2] = useState("")
+  const [selectedDealerCard, setSelectedDealerCard] = useState("")
+  const cardValues = [
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "A",
+    "Q",
+    "K",
+  ]
+  const [playerStrategy, setPlayerStrategy] = useState()
   useEffect(() => {
-    document.body.classList.add('blackjack');
+    document.body.classList.add("blackjack")
     return () => {
-      document.body.classList.remove('blackjack');
-    };
+      document.body.classList.remove("blackjack")
+    }
 
-    toast.success('Work in progress.!');
-  }, []);
+    toast.success("Work in progress.!")
+  }, [])
 
   useEffect(() => {
     if (playerCard1 && playerCard2 && dealerUpcard) {
-      const cardValuesMap = { 'A': 11, 'J': 10, 'Q': 10, 'K': 10 };
-      const card1Value = isNaN(Number(playerCard1)) ? cardValuesMap[playerCard1] : parseInt(playerCard1);
-      const card2Value = isNaN(Number(playerCard2)) ? cardValuesMap[playerCard2] : parseInt(playerCard2);
-      let playerHandValue;
+      const cardValuesMap = { A: 11, J: 10, Q: 10, K: 10 }
+      const card1Value = isNaN(Number(playerCard1))
+        ? cardValuesMap[playerCard1]
+        : parseInt(playerCard1)
+      const card2Value = isNaN(Number(playerCard2))
+        ? cardValuesMap[playerCard2]
+        : parseInt(playerCard2)
+      let playerHandValue
       if (card1Value === 10 && card2Value === 10) {
-        playerHandValue = 'T,T';
-      } else if (playerCard1 === 'A' && playerCard2 === 'A') {
-        playerHandValue = 'A,A';
+        playerHandValue = "T,T"
+      } else if (playerCard1 === "A" && playerCard2 === "A") {
+        playerHandValue = "A,A"
       } else if (card1Value === 10 && card2Value === 11) {
-        playerHandValue = 'A,T';
+        playerHandValue = "A,T"
       } else if (card1Value === 11 && card2Value === 10) {
-        playerHandValue = 'A,T';
+        playerHandValue = "A,T"
       } else {
-        playerHandValue = (card1Value + card2Value).toString().toUpperCase();
+        playerHandValue = (card1Value + card2Value).toString().toUpperCase()
       }
 
-      const dealerUpcardValue = dealerUpcard.toUpperCase();
+      const dealerUpcardValue = dealerUpcard.toUpperCase()
 
       if (blackjackData.strategy[playerHandValue]) {
-        const action = blackjackData.strategy[playerHandValue][dealerUpcardValue];
-        setDecision(action);
+        const action =
+          blackjackData.strategy[playerHandValue][dealerUpcardValue]
+        setDecision(action)
       } else {
-        setDecision('Invalid input');
+        setDecision("Invalid input")
       }
     }
-  }, [playerCard1, playerCard2, dealerUpcard]);
+  }, [playerCard1, playerCard2, dealerUpcard])
 
   const calculateHandValue = (hand) => {
-    const cardValuesMap = { 'A': 11, 'J': 10, 'Q': 10, 'K': 10 };
-    return hand.split('').reduce((total, card) => {
-      return total + (cardValuesMap[card] || parseInt(card));
-    }, 0);
-  };
+    const cardValuesMap = { A: 11, J: 10, Q: 10, K: 10 }
+    return hand.split("").reduce((total, card) => {
+      return total + (cardValuesMap[card] || parseInt(card))
+    }, 0)
+  }
 
   return (
     <>
@@ -77,17 +102,24 @@ const Page = () => {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-      <span className='underline'><Link href='transactions'> Transactions</Link></span>
+      <span className="underline">
+        <Link href="transactions"> Transactions</Link>
+      </span>
       {decision && (
-        <div className={`shadow animated-decision inset-0 absolute z-10 pointer-events-none flex items-center justify-center ${decision.toLowerCase()}`}>
+        <div
+          className={`shadow animated-decision inset-0 absolute z-10 pointer-events-none flex items-center justify-center ${decision.toLowerCase()}`}
+        >
           {decision}
         </div>
       )}
       <section className=" mx-auto flex flex-col gap-2">
-
         <Card className="p-5 flex flex-col gap-2">
           <h2 className="text-2xl font-bold mb-4">Result:</h2>
-          <p className={`text-lg ${decision === 'hit' ? 'text-green-500' : 'text-red-500'} dark:text-zinc-400`}>{decision}</p>
+          <p
+            className={`text-lg ${decision === "hit" ? "text-green-500" : "text-red-500"} dark:text-zinc-400`}
+          >
+            {decision}
+          </p>
         </Card>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
           <Card className="p-5 flex flex-col gap-8">
@@ -102,13 +134,21 @@ const Page = () => {
               {cardValues.map((value) => (
                 <button
                   key={value}
-                  className={selectedCard1 === value ? ' transition-all  ease-in-out duration-300 flex z-50 shadow-xl rainbow-shadow scale-150' : 'scale-100 transition-all  ease-in-out duration-300'}
+                  className={
+                    selectedCard1 === value
+                      ? " transition-all  ease-in-out duration-300 flex z-50 shadow-xl rainbow-shadow scale-150"
+                      : "scale-100 transition-all  ease-in-out duration-300"
+                  }
                   onClick={() => {
-                    setPlayerCard1(value);
-                    setSelectedCard1(value);
+                    setPlayerCard1(value)
+                    setSelectedCard1(value)
                   }}
                 >
-                  <img style={{ width: '120px' }} src={`/cards/${value}.svg`} alt={value} />
+                  <img
+                    style={{ width: "120px" }}
+                    src={`/cards/${value}.svg`}
+                    alt={value}
+                  />
                 </button>
               ))}
             </div>
@@ -126,18 +166,26 @@ const Page = () => {
               {cardValues.map((value) => (
                 <button
                   key={value}
-                  className={selectedCard2 === value ? ' transition-all  ease-in-out duration-300 flex shadow-xl rainbow-shadow scale-150 z-50' : 'scale-100 transition-all  ease-in-out duration-300'}
+                  className={
+                    selectedCard2 === value
+                      ? " transition-all  ease-in-out duration-300 flex shadow-xl rainbow-shadow scale-150 z-50"
+                      : "scale-100 transition-all  ease-in-out duration-300"
+                  }
                   onClick={() => {
-                    setPlayerCard2(value);
-                    setSelectedCard2(value);
+                    setPlayerCard2(value)
+                    setSelectedCard2(value)
                   }}
                 >
-                  <img style={{ width: '121px' }} src={`/cards/${value}.svg`} alt={value} />
+                  <img
+                    style={{ width: "121px" }}
+                    src={`/cards/${value}.svg`}
+                    alt={value}
+                  />
                 </button>
               ))}
             </div>
           </Card>
-        </div >
+        </div>
 
         <Card className="p-5 flex flex-col gap-8">
           <label htmlFor="dealerCard">Dealer's Card</label>
@@ -151,21 +199,28 @@ const Page = () => {
             {cardValues.map((value) => (
               <button
                 key={value}
-                className={selectedDealerCard === value ? ' transition-all  ease-in-out duration-300 flex z-50 shadow-xl rainbow-shadow scale-150' : 'scale-100 transition-all  ease-in-out duration-300'}
+                className={
+                  selectedDealerCard === value
+                    ? " transition-all  ease-in-out duration-300 flex z-50 shadow-xl rainbow-shadow scale-150"
+                    : "scale-100 transition-all  ease-in-out duration-300"
+                }
                 onClick={() => {
-                  setDealerUpcard(value);
-                  setSelectedDealerCard(value);
+                  setDealerUpcard(value)
+                  setSelectedDealerCard(value)
                 }}
               >
-                <img style={{ width: '121px' }} src={`/cards/${value}.svg`} alt={value} />
+                <img
+                  style={{ width: "121px" }}
+                  src={`/cards/${value}.svg`}
+                  alt={value}
+                />
               </button>
             ))}
           </div>
         </Card>
-
-      </section >
+      </section>
     </>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page

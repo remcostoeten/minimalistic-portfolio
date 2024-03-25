@@ -1,18 +1,17 @@
 "use client"
 
+import { formatDate } from "@/core/utillities/utils"
 import {
+  CartesianGrid,
   Line,
   LineChart,
   ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
 } from "recharts"
+
 import { Card } from "@/components/ui/card"
-import { formatDate } from "@/core/utillities/utils"
-
-
 
 type activityByDate = {
   date: string

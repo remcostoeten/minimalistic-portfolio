@@ -11,7 +11,6 @@ export interface Model<Type = string> {
 }
 
 export const models: Model<ModelType>[] = [
- 
   {
     id: "1",
     name: "Typescript",
@@ -22,8 +21,7 @@ export const models: Model<ModelType>[] = [
   {
     id: "2",
     name: "Javascript",
-    description:
-      "I miss jQuery.",
+    description: "I miss jQuery.",
     type: "Language",
   },
 ]

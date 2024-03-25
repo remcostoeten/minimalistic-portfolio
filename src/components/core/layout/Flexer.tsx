@@ -1,14 +1,25 @@
-import React, { ReactNode } from 'react';
-import { motion } from 'framer-motion';
+import React, { ReactNode } from "react"
+import { motion } from "framer-motion"
 
 interface FlexerProps {
-    direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
-    align?: 'items-stretch' | 'items-start' | 'items-end' | 'items-center' | 'items-baseline';
-    justify?: 'justify-start' | 'justify-end' | 'justify-center' | 'justify-between' | 'justify-around' | 'justify-evenly';
-    children: ReactNode;
-    useMotion?: boolean;
-    gap?: string;
-    motionProps?: any;
+  direction?: "row" | "row-reverse" | "column" | "column-reverse"
+  align?:
+    | "items-stretch"
+    | "items-start"
+    | "items-end"
+    | "items-center"
+    | "items-baseline"
+  justify?:
+    | "justify-start"
+    | "justify-end"
+    | "justify-center"
+    | "justify-between"
+    | "justify-around"
+    | "justify-evenly"
+  children: ReactNode
+  useMotion?: boolean
+  gap?: string
+  motionProps?: any
 }
 /**
  * Flexer component
@@ -27,13 +38,24 @@ interface FlexerProps {
  *
  * // This will create a flex container with row direction, items aligned at the center, items justified at the start, and a fade-in animation.
  */
-const Flexer: React.FC<FlexerProps> = ({ direction = 'flex-col', align = 'items-stretch', justify = 'justify-start', children, useMotion = false, motionProps, gap }) => {
-    const Component = useMotion ? motion.div : 'div';
-    return (
-        <Component className={`flex ${direction} ${align} ${justify} gap-${gap}`} {...motionProps}>
-            {children}
-        </Component>
-    );
-};
+const Flexer: React.FC<FlexerProps> = ({
+  direction = "flex-col",
+  align = "items-stretch",
+  justify = "justify-start",
+  children,
+  useMotion = false,
+  motionProps,
+  gap,
+}) => {
+  const Component = useMotion ? motion.div : "div"
+  return (
+    <Component
+      className={`flex ${direction} ${align} ${justify} gap-${gap}`}
+      {...motionProps}
+    >
+      {children}
+    </Component>
+  )
+}
 
-export default Flexer;
+export default Flexer

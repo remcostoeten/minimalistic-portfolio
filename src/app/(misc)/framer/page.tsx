@@ -1,71 +1,76 @@
-'use client';
-import React, { useState } from 'react';
-import { m } from 'framer-motion';
+"use client"
+
+import React, { useState } from "react"
+import { m } from "framer-motion"
 
 const AnimationDemo: React.FC = () => {
-  const [boxes, setBoxes] = useState<Array<{ stiffness: number; xValue: number }>>([
+  const [boxes, setBoxes] = useState<
+    Array<{ stiffness: number; xValue: number }>
+  >([
     { stiffness: 100, xValue: 100 },
     { stiffness: 100, xValue: 100 },
     { stiffness: 100, xValue: 100 },
     { stiffness: 100, xValue: 100 },
     { stiffness: 100, xValue: 100 },
-  ]);
-  const [duration, setDuration] = useState<number>(1);
-  const [selectedExample, setSelectedExample] = useState<number | null>(null);
+  ])
+  const [duration, setDuration] = useState<number>(1)
+  const [selectedExample, setSelectedExample] = useState<number | null>(null)
 
   const Variants = {
     initial: { opacity: 0 },
     animate: { opacity: 1, transition: { staggerChildren: 0.1 } },
-  };
+  }
 
   const itemVariants = {
     initial: { opacity: 0, y: 50 },
     animate: { opacity: 1, y: 0 },
-  };
+  }
 
   const circleVariants = {
     initial: { scale: 0 },
     animate: { scale: 1 },
-  };
+  }
 
   const textVariants = {
     initial: { opacity: 0, x: -50 },
     animate: { opacity: 1, x: 0 },
-  };
+  }
 
   const boxVariants = (stiffness: any, xValue: any) => ({
     initial: { x: -xValue },
     animate: {
       x: xValue,
       transition: {
-        type: 'spring',
+        type: "spring",
         stiffness: stiffness,
         duration: duration,
         repeat: Infinity,
-        repeatType: 'loop',
+        repeatType: "loop",
       },
     },
-  });
+  })
 
   const handleStiffnessChange = (index: number, value: number) => {
     setBoxes((prevBoxes) =>
-      prevBoxes.map((box, i) => (i === index ? { ...box, stiffness: value } : box))
-    );
-  };
+      prevBoxes.map((box, i) =>
+        i === index ? { ...box, stiffness: value } : box
+      )
+    )
+  }
 
   const handleXValueChange = (index: number, value: number) => {
     setBoxes((prevBoxes) =>
       prevBoxes.map((box, i) => (i === index ? { ...box, xValue: value } : box))
-    );
-  };
+    )
+  }
 
   const handleDurationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDuration(Number(e.target.value));
-  };
+    setDuration(Number(e.target.value))
+  }
 
   const handleExampleClick = (index: number) => {
-    setSelectedExample(index);
-  };
+    setSelectedExample(index)
+  }
 
   return (
     <div className="w-screen h-screen p-16 grid text-white place-items-center">
@@ -111,12 +116,21 @@ const AnimationDemo: React.FC = () => {
             <m.div
               className="box bg-green-500"
               // @ts-ignore
-              variants={boxVariants(boxes[key - 1].stiffness, boxes[key - 1].xValue)}
+              variants={boxVariants(
+                boxes[key - 1].stiffness,
+                boxes[key - 1].xValue
+              )}
               initial="initial"
-              animate={selectedExample === null || selectedExample === key ? 'animate' : 'initial'}
+              animate={
+                selectedExample === null || selectedExample === key
+                  ? "animate"
+                  : "initial"
+              }
             ></m.div>
             <div className="slider-">
-              <label htmlFor={`stiffness-slider-${key}`}>Stiffness {key}:</label>
+              <label htmlFor={`stiffness-slider-${key}`}>
+                Stiffness {key}:
+              </label>
               <input
                 type="range"
                 min="1"
@@ -124,7 +138,12 @@ const AnimationDemo: React.FC = () => {
                 step="1"
                 id={`stiffness-slider-${key}`}
                 value={boxes[key - 1].stiffness}
-                onInput={(e) => handleStiffnessChange(key - 1, Number((e.target as HTMLInputElement).value))}
+                onInput={(e) =>
+                  handleStiffnessChange(
+                    key - 1,
+                    Number((e.target as HTMLInputElement).value)
+                  )
+                }
               />
               <span>{boxes[key - 1].stiffness}</span>
             </div>
@@ -137,7 +156,12 @@ const AnimationDemo: React.FC = () => {
                 step="1"
                 id={`xValue-slider-${key}`}
                 value={boxes[key - 1].xValue}
-                onInput={(e) => handleXValueChange(key - 1, Number((e.target as HTMLInputElement).value))}
+                onInput={(e) =>
+                  handleXValueChange(
+                    key - 1,
+                    Number((e.target as HTMLInputElement).value)
+                  )
+                }
               />
               <span>{boxes[key - 1].xValue}</span>
             </div>
@@ -145,7 +169,7 @@ const AnimationDemo: React.FC = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AnimationDemo;
+export default AnimationDemo

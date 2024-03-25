@@ -1,10 +1,9 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "@nextui-org/react"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
 import { X } from "lucide-react"
-import { cn } from "@nextui-org/react"
-
 
 const Dialog = DialogPrimitive.Root
 

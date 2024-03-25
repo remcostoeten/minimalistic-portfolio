@@ -1,12 +1,11 @@
+import { Suspense } from "react"
 import Link from "next/link"
 import { siteConfig } from "@/config/site"
-import UserAvatar from "../user/user-avatar";
-import { auth } from "@/core/(database)/firebase";
-import Spinner from "../loaders/Spinners";
-import { Suspense } from "react";
-import LogoIconAnimated from "../effects/RemcoLogoAnimated";
+import { auth } from "@/core/(database)/firebase"
 
-
+import LogoIconAnimated from "../effects/RemcoLogoAnimated"
+import Spinner from "../loaders/Spinners"
+import UserAvatar from "../user/user-avatar"
 
 export default function DashboardNavigation() {
   return (
@@ -14,7 +13,7 @@ export default function DashboardNavigation() {
       <span className=" flex justify-between items-center w-full pr-4 ">
         <LogoIconAnimated />
         <UserAvatar />
-      </span >
-    </header >
-  );
+      </span>
+    </header>
+  )
 }

@@ -1,15 +1,15 @@
 "use client"
 
 import * as React from "react"
-
 import CalendarHeatmap from "react-calendar-heatmap"
+
 import "react-calendar-heatmap/dist/styles.css"
 
 import { formatDate } from "@/core/utillities/utils"
+import { BsTropicalStorm } from "react-icons/bs"
+import { toast } from "sonner"
 
 import { Card } from "@/components/ui/card"
-import { toast } from "sonner"
-import { BsTropicalStorm } from "react-icons/bs"
 import { LogsDeleteDialog } from "@/components/activity/logs/logs-delete-dialog"
 
 interface Value {
@@ -86,8 +86,9 @@ export function Heatmap({ data, params }: HeatmapProps) {
 
   const getTitle = (value: Value) => {
     if (value && value.count) {
-      return `${value.count} ${value.count === 1 ? "log" : "logs"
-        } on ${formatDate(value.date)}`
+      return `${value.count} ${
+        value.count === 1 ? "log" : "logs"
+      } on ${formatDate(value.date)}`
     }
     return "No logs"
   }

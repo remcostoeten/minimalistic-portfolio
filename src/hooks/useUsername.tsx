@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState } from "react"
 
 export function useUsername() {
-    const [username, setUsername] = useState('');
+  const [username, setUsername] = useState("")
 
-    return [username, setUsername];
+  return [username, setUsername]
 }
